@@ -62,7 +62,7 @@
 		<developer>
 			<id>lguerin</id>
 			<name>Laurent Guerin</name>
-			<email>zlau.dreamcat@gmail.com</email>
+			<email>laurent@dreamcat.fr</email>
 		</developer>
 		<developer>
 			<id>jmaupoux</id>
@@ -193,17 +193,16 @@
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<!-- 
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-provider-gitexe</artifactId>
-				<version>1.3</version>
+				<version>1.4</version>
 			</extension>
 			<extension>
 				<groupId>org.apache.maven.scm</groupId>
 				<artifactId>maven-scm-manager-plexus</artifactId>
-				<version>1.3</version>
+				<version>1.4</version>
 			</extension>
 			<extension>
 				<groupId>org.kathrynhuxtable.maven.wagon</groupId>
@@ -211,7 +210,6 @@
 				<version>0.3.1</version>
 			</extension>
 		</extensions>
-		-->
 	</build>
 
 	<reporting>
