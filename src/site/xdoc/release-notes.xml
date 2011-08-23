@@ -11,10 +11,11 @@
   <body>
 
     <section name="Release notes">
-      <p>
-        09-13-2010 : 1.0.0 : TODO
-      </p>
-     <hr/>
+    	<h3>1.0.0 : 09-04-2011</h3>
+        <ul>
+        	<li>First release of the library !</li>
+        </ul>
+        <hr/>
     </section>
 
   </body>
