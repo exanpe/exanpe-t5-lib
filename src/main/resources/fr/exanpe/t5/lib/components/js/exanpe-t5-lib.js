@@ -1322,7 +1322,8 @@ Exanpe.AjaxLoader.prototype.load = function()
 	var callback = 
 	{
 		success: successHandler,
-		failure: failureHandler
+		failure: failureHandler,
+		cache: false
 	};	
 	
 	// Show Panel
