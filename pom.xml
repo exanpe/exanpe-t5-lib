@@ -251,8 +251,7 @@
 	<distributionManagement>
 		<site>
 			<id>gh-pages-exanpe-t5-lib</id>
-			<!-- TODO : replace with final repo -->
-			<url>gitsite:git@gitproxy/lguerin/exanpe-t5-lib.git</url>
+			<url>gitsite:git@gitproxy/exanpe/exanpe-t5-lib.git</url>
 		</site>
 	</distributionManagement>
 
