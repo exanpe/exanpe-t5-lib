@@ -59,7 +59,8 @@
       <answer>
         <p>
          	Our demo is hosted by Google App Engine (GAE). We are limited by daily quotas and instances restrictions.<br/>
-         	A way for you to test easily would be to download our war (@see github exanpe-t5-demo project TODO link) and deploy it anywhere.<br/>
+         	A way for you to test easily would be to have a look to our examples sources (@see github <a href="https://github.com/exanpe/exanpe-t5-demo">exanpe-t5-demo</a> project) 
+         	and test them anywhere or download the war TODO lien vers le war ??.<br/>
          	We apologize for any inconvenience about this but we do not own a J2EE server on the web. Contact us for any offer :)
         </p>
       </answer>
