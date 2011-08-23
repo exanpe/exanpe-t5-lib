@@ -1,0 +1,671 @@
+/**
+ * 	Modifiy this file to customize the components' rendering
+ */
+ 
+/********* Accordion **********/
+
+/** Root class **/
+.exanpe-acc {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+
+/** Accordion header containing title **/
+.exanpe-acc .acc-header {
+	background: #E2E2E2 url("../img/acc/accordion-header.png") repeat-x;
+    font-weight: normal;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 10px;
+    font-weight: bold;
+    color : #909090;
+}
+
+/** Accordion item title **/
+.exanpe-acc .acc-title {
+	background: #E2E2E2 url("../img/acc/accordion-title.png") repeat-x;
+    font-size: 85%;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+/** Accordion item content **/
+.exanpe-acc .acc-content {
+	background: #F6F6F6;
+    border-bottom: 1px solid #CCCCCC;
+    color: #555555;
+    line-height: 25px;
+    font-size: 12px;
+}
+
+/** Accordion item title link **/
+.exanpe-acc ul li .acc-title a {
+	color: #909090;
+	text-decoration: none;
+}
+
+/** Accordion item title link, when opened **/
+.exanpe-acc ul li.opened .acc-title a {
+	background: url('../img/acc/open.png') no-repeat 5px 5px;
+}
+	
+/** Accordion item title link, when closed **/
+.exanpe-acc ul li.closed .acc-title a {
+	background: url('../img/acc/closed.png') no-repeat 5px 5px;
+}
+
+/** Accordion item title and content text presentation **/
+.exanpe-acc ul li .acc-title a span, .exanpe-acc .acc-content {
+	padding-left: 25px;	
+}
+
+/********* Hideable Panel **********/
+
+/** Bar to hide the panel **/
+.exanpe-hdp .hidebar {
+	width: 4px;
+	cursor: pointer;
+	background: #D1D1D1;
+}
+
+/** Bar to hide the panel, on mouseover **/
+.exanpe-hdp .hidebarHover {
+	background-color: #A7A7A7;
+}
+
+/** Part hideable, on left side **/
+.exanpe-hdp .hideablePart {
+	vertical-align: top;
+}
+
+/** Part visible, on right side **/
+.exanpe-hdp .visiblePart {
+	vertical-align: top;
+}
+
+/** Position related to the width of the image used for show and hide panel **/
+.exanpe-hdp img.hiddenImg, .exanpe-hdp img.shownImg {	
+	left: -7px;
+}
+
+/********* SecurePassword **********/
+
+/** Root css class **/
+.exanpe-spwd {
+	border: 1px solid #CCCCCC;
+	width: 110px;
+	background: #F6F6F6;
+	padding-bottom: 3px;
+}
+
+/** Password input field style **/
+.exanpe-spwd input {
+	margin-left: 4px;
+	margin-right: 5px;
+}
+
+/** Password input disabled field style **/
+.exanpe-spwd input[disabled="disabled"], .exanpe-spwd input[disabled], .exanpe-spwd input.disabled {
+	border: 1px solid #CCCCCC;
+	background-color: #D5D5D4;
+}
+
+/** Panel with characters style **/
+.exanpe-spwd table {
+	padding-left: 2px;
+	padding-bottom: 2px;
+}
+
+/** Panel cell style **/
+.exanpe-spwd table td {
+	background: url("../img/spwd/keyboard-case.png") no-repeat;
+    font-size: 93%;
+    font-weight: bold; 
+}
+
+/********* Border **********/
+/** TODO everything **/
+.exanpe-bor{
+	
+}
+
+.exanpe-bor-top{
+	height:5px;
+	margin-left:5px;
+	margin-right:5px;
+	background:url('../img/bor/top.png') transparent repeat-x top;
+}
+
+.exanpe-bor-topLeft{
+	height:5px;
+	background:url('../img/bor/topLeft.png') transparent no-repeat top left;
+}
+
+.exanpe-bor-topRight{
+	height:5px;
+	background:url('../img/bor/topRight.png') transparent no-repeat top right;
+}
+.exanpe-bor-midLeft{
+	background:url('../img/bor/midLeft.png') transparent repeat-y left;
+}
+.exanpe-bor-midRight{
+	background:url('../img/bor/midRight.png') transparent repeat-y right;
+}
+
+.exanpe-bor-mid{
+	padding-left:5px;
+	padding-right:5px;	
+}
+/* TODO la flemme !! */
+.exanpe-bor-bottom{
+	height:5px;
+	margin-left:5px;
+	margin-right:5px;
+	background:url('../img/bor/top.png') transparent repeat-x top;
+}
+
+.exanpe-bor-bottomLeft{
+	height:5px;
+	background:url('../img/bor/topLeft.png') transparent no-repeat top left;
+}
+
+.exanpe-bor-bottomRight{
+	height:5px;
+	background:url('../img/bor/topRight.png') transparent no-repeat top right;
+}
+
+/********* Slider **********/
+
+/** Slider style when horizontal **/
+.exanpe-slider-bg-horizontal {
+	height: 25px;
+	background:url('../img/slider/bg-fader.gif') transparent no-repeat 5px 0;
+}
+
+/** Slider style when vertical **/
+.exanpe-slider-bg-vertical {
+	height: 210px;
+	width: 35px;
+	background:url('../img/slider/bg-v-e.gif') transparent no-repeat 1px 1px;
+}
+
+/** Slider thumb when horizontal **/
+.exanpe-slider-thumb-horizontal {
+	background:url('../img/slider/bg-h.gif') transparent no-repeat 5px 0;
+}
+
+/** Horizontal Slider cursor position **/
+.exanpe-slider-thumb-horizontal img {
+	padding-top: 4px;
+}
+
+/** Vertical Slider cursor position **/
+.exanpe-slider-thumb-vertical img {
+	padding-left: 4px;
+}
+
+/********* Slider Show **********/
+.exanpe-sls{
+	min-width: 115px;
+	overflow: hidden;
+    position: relative;
+}
+
+.yui-carousel-nav{
+	/* TODO */
+	 background: #EEEEEE;	
+	 padding: 3px;
+	 height:28px;
+}
+
+.exanpe-sls ul {
+	display:none;
+}
+
+.yui-carousel-button{
+	background: url("../../../../assets/skins/sam/sprite.png") no-repeat scroll 0 -600px transparent;
+    float: right;
+    height: 19px;
+    margin: 5px;
+    overflow: hidden;
+    width: 40px;	
+}
+
+.yui-carousel-first-button{
+    margin-left: -100px;
+    margin-right: 50px;
+    background:red;
+}
+
+.exanpe-sls button{
+	background-color: transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: block;
+    height: 44px;
+    margin: -2px 0 0 -2px;
+    padding: 0 0 0 50px;
+}
+
+.yui-carousel-content {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.exanpe-sls ol{
+    width: 320000px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+}
+
+.exanpe-sls li{
+	display: inline;
+    margin: 0 22px 0 12px;
+	position: absolute;
+    padding-right: 80px;
+    list-style: none outside none;
+    padding: 0;
+    overflow: hidden;
+}
+
+/********* TabView **********/
+
+/** Style for tabs wrapper **/
+.exanpe-tab .header ul {
+    border-bottom:1px solid #CCCCCC;
+    font-size: 14px;
+    font-weight: bold;
+    list-style: none outside none;
+}
+
+/** Style for tabs **/
+.exanpe-tab .header ul li {
+	margin: 0 5px 0 0;
+	height: 25px;
+	line-height: 25px;
+	border-left:1px solid #CCCCCC; 
+	border-top:1px solid #CCCCCC; 
+	border-right:1px solid #CCCCCC;
+}
+
+/** Style for tabs links **/
+.exanpe-tab .header ul li a {
+	background: #F6F6F6 url("../img/common/exanpe-sprite.png") repeat-x 0 -240px;
+    color: #000000;
+	border-bottom: 1px solid #F6F6F6; 
+}
+
+/** Style for tabs links when content hidden **/
+.exanpe-tab .header ul li a.exanpe-tab-hidden {
+	background: white url("../img/common/exanpe-sprite.png") repeat-x 0 -275px;
+    color: #909090;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+/** Style for tabs content **/
+.exanpe-tab .exanpe-tab-content {
+	padding: 5px 5px 5px 5px;
+	background-color: #F6F6F6;
+	border-left:1px solid #CCCCCC; 
+	border-bottom:1px solid #CCCCCC; 
+	border-right:1px solid #CCCCCC;	
+}
+
+/** Dialog **/
+
+/** Style for Dialog panel **/
+.exanpe-dialog .yui-panel {
+    border: 1px solid #cccccc;
+}
+
+/** Style for Dialog panel header **/
+.exanpe-dialog .yui-panel .hd {
+	background: #E2E2E2 url("../img/common/exanpe-sprite.png") repeat-x scroll 0 0;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+/** Style for Dialog panel body **/
+.exanpe-dialog .yui-panel .bd {
+	padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+
+/** Styles for Dialog close button **/
+.exanpe-dialog .container-close {
+    background: url("../img/common/exanpe-sprite.png") no-repeat scroll 0 -35px;
+    cursor: pointer;
+}
+.exanpe-dialog .yui-panel-container .container-close {
+    text-decoration: none;
+    color: #F6F6F6;
+}
+
+/** Styles for Dialog footer, with buttons **/
+.exanpe-dialog .yui-dialog .ft {
+    padding: 0 10px 10px 0;
+}
+.exanpe-dialog .yui-panel .ft {
+    border-top: 1px solid #cccccc;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+.exanpe-dialog .yui-dialog .ft .button-group {
+    text-align: right;
+}
+
+/** Style for the modal mask, displayed in background of a panel window **/
+.mask {
+    background-color: #000000;
+    opacity: 0.55;
+    filter: alpha(opacity = 55);
+}
+
+/** Ajax Loader **/
+
+/** Style for AjaxLoader panel **/
+.exanpe-ajaxloader .yui-panel {
+    border-color: #808080;
+    border-style: solid;
+    border-width: 1px 0;
+}
+
+/** Style for AjaxLoader panel header **/
+.exanpe-ajaxloader .yui-panel .hd {
+	background: #FDFDFD url("../img/common/exanpe-gradient-bg.png") repeat-x top;
+	height: 25px;
+	text-align: center;
+}
+
+/** Style for AjaxLoader panel body **/
+.exanpe-ajaxloader .yui-panel .bd {
+	padding-top: 5px;
+	background: #FDFDFD;
+	text-align: center;
+}
+
+/** Color Picker **/
+
+/** Style for colorpicker input field, receiving the final color code. **/
+.exanpe-cpk .exanpe-cpk-code {
+	border: 1px solid #BBBBBB;
+	background-color: #D5D5D4;
+}
+
+/** Style for colorpicker panel **/
+.exanpe-cpk .yui-panel {
+    border: 1px solid #cccccc;
+    background-color: #FDFDFD;
+}
+
+/** Style for colorpicker panel header **/
+.exanpe-cpk .yui-panel .hd {
+	background: #FDFDFD url("../img/common/exanpe-sprite.png") repeat-x scroll 0 0;
+    color: #000000;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/** Style for colorpicker panel close button **/
+.exanpe-cpk .container-close {
+    background: url("../img/common/exanpe-sprite.png") no-repeat scroll 0 -35px;
+    cursor: pointer;
+}
+
+/** Style for the principal zone (gradient effet) of colorpicker **/
+.exanpe-cpk .yui-picker-bg {
+	background: url("../img/cpk/picker_mask.png") no-repeat scroll 0 0 transparent;
+}
+
+/** Style for the principal zone cusor of colorpicker **/
+.exanpe-cpk .yui-picker-thumb {
+	background:	url("../img/cpk/picker_thumb.png") no-repeat scroll 0 0 transparent;
+}
+
+/** Style for the vertical slider (gradient effet) of colorpicker **/
+.exanpe-cpk .yui-picker-hue-bg {
+    background: url("../img/cpk/hue_bg.png") no-repeat scroll 0 0 transparent;
+}
+
+/** Style for the vertical slider zone cusor of colorpicker **/
+.exanpe-cpk  .yui-picker-hue-thumb {
+	background:	url("../img/cpk/hue_thumb.png") no-repeat scroll 0 0 transparent;
+}
+
+/** Style for the result color zone of the colorpicker, before validate **/
+.exanpe-cpk .yui-picker-swatch {
+    border: 1px solid #888888;
+}
+
+/** Tooltip **/
+
+/** Style for Tooltip container **/
+.exanpe-tooltip {
+	border: 1px solid #CCCCCC;
+	background-color: #F6F6F6;
+    color: #555555;
+    font-size: 93%;
+    padding-left: 5px;
+    width: 200px;
+}
+
+/** Other common components */
+
+/** Style for exanpe buttons **/
+.exanpe-dialog .button-group button, .exanpe-button button {
+    background: #E2E2E2;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+    font-family: inherit;
+    margin-left: 5px;
+    height: 25px;	
+    color: #555555;
+}
+
+/** Style for exanpe buttons, on mouse hover **/
+.exanpe-dialog .button-group button:HOVER, .exanpe-button button:HOVER {
+	background: #cccccc;
+}
+
+/********* Exanpe Tapestry Skin **********/
+
+/** GridPager **/
+
+/** Style for pager wrapper **/
+.exanpe-skin div.t-data-grid-pager {
+	background: #E2E2E2 url("../img/t5/gridpager-bg.png") repeat-x;
+	margin: 0;
+	text-align: right;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+/** Style for pager links **/
+.exanpe-skin div.t-data-grid-pager a, .exanpe-skin div.t-data-grid-pager span.current {
+	cursor: pointer;
+	padding: 0px 4px;
+	margin: 0;
+	line-height: 25px;	
+	border: 1px solid #CCCCCC;
+	color: #555555;
+}
+
+/** Style for current page grid, when selected  **/
+.exanpe-skin div.t-data-grid-pager span.current {
+	background : #CCCCCC;
+	color: white;
+}
+
+/** Style for page grid, when non selected **/
+.exanpe-skin div.t-data-grid-pager a {
+	background : #F6F6F6;
+}
+
+/** Grid **/
+
+/** Style for grid wrapper **/
+.exanpe-skin div.t-data-grid {
+	font-family: inherit;
+}
+
+/** Style for grid table **/
+.exanpe-skin table.t-data-grid {
+	background: url("../img/t5/grid-bg.png") repeat-x;
+	border: 1px solid #CCCCCC;
+}
+
+/** Style for grid header line **/
+.exanpe-skin table.t-data-grid thead tr {
+	height: 25px;
+	background-color: transparent;
+}
+
+/** Style for grid header line cell **/
+.exanpe-skin table.t-data-grid thead tr th {
+	padding: 0 5px 0 5px;
+    margin: 0;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: none;
+	text-align: center;
+	color: #555555;
+	font-size: 93%;
+    font-weight: bold;
+}
+
+/** Style for grid header line cell link, default sort **/
+.exanpe-skin table.t-data-grid tr th a {
+    background: url("../img/t5/sortable.png") no-repeat scroll right center;
+    color: #555555;
+    text-decoration: none;
+    display: block;
+    padding-right: 20px;
+}
+
+/** Style for grid header line cell link, descending sort **/
+.exanpe-skin table.t-data-grid tr th.t-sort-column-descending a {
+    background: url("../img/t5/sort-desc.png") no-repeat scroll right center;
+}
+
+/** Style for grid header line cell link, ascending sort **/
+.exanpe-skin table.t-data-grid tr th.t-sort-column-ascending a {
+    background: url("../img/t5/sort-asc.png") no-repeat scroll right center;
+}
+
+/** Style for grid body odd line **/
+.exanpe-skin table.t-data-grid tbody tr.odd {
+    background-color: #F6F6F6;
+}
+
+/** Style for grid body line cell **/
+.exanpe-skin table.t-data-grid tbody tr td {
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    padding-left: 5px;
+}
+
+/** Hide native t5 Grid icons **/
+.exanpe-skin img.t-sort-icon {    
+    display: none;
+}
+
+/** Auto complete **/
+
+/** Style for autocomplete menu **/
+.exanpe-skin div.t-autocomplete-menu ul {
+	background-color: #F6F6F6;
+    border: 1px solid #CCCCCC;
+    margin-top: 0;
+}
+
+/** Style for autocomplete menu item **/
+.exanpe-skin div.t-autocomplete-menu li {
+    border-bottom: 1px solid #CCCCCC;
+    color: #555555;
+}
+
+/** Style for autocomplete ajax loader icon **/
+.exanpe-skin img.t-autoloader-icon {
+	background: url("../img/t5/ajax-loader.gif") no-repeat;
+}
+
+/** Palette **/
+
+/** Style for palette title **/
+.exanpe-skin div.t-palette-title {
+	background: #FDFDFD url("../img/common/exanpe-sprite.png") repeat-x 0 0;
+	border: 1px solid #CCCCCC;
+    color: #555555;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/** Style for palette controls buttons **/
+.exanpe-skin .t-palette-controls {
+	padding-top: 60px;	
+}
+
+/** Style for palette controls button **/
+.exanpe-skin .t-palette-controls button {
+	background: none;
+	border: none;	
+	cursor: pointer;
+}
+
+/** Style for palette controls button, when disable **/
+.exanpe-skin div.t-palette-controls button[disabled] img {
+	opacity: 0.55;
+	filter: alpha(opacity = 55);
+}
+
+/** Style for palette select elements, left and right **/
+.exanpe-skin .t-palette select {
+	border: 1px solid #CCCCCC;
+	cursor: pointer;		
+}
+ 
+/** BeanEditor **/
+
+/** Style for beaneditor wrapper **/
+.exanpe-skin div.t-beaneditor {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border: 1px solid #CCCCCC;
+    font-family: inherit;
+}
+
+/** Style for beaneditor submit button **/
+.exanpe-skin div.t-beaneditor .t-beaneditor-submit {
+    background: #E2E2E2;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+    font-family: inherit;
+    margin-left: 5px;
+    height: 25px;	
+    color: #555555;
+}
+
+/** Style for beaneditor submit button, on mouse hover **/
+.exanpe-skin div.t-beaneditor  input.t-beaneditor-submit:hover {
+	background: #CCCCCC;
+}
+
+/** Style for beaneditor label element, left part **/
+.exanpe-skin div.t-beaneditor-row label {
+	width: 40%;
+	padding-right: 10px;
+}
+
+/** Style for beaneditor row, containing label and input field **/
+.exanpe-skin div.t-beaneditor-row {
+	clear: left;
+}

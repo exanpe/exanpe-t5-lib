@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Tapestry 5 Tldgen - Getting Started - Exanpe T5 Lib</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Exanpe" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://exanpe.free.fr/" id="bannerLeft">
+    
+                                    <img src="http://maven.apache.org/images/apache-maven-project.png" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                    <img src="http://maven.apache.org/images/maven-small.gif" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+              <div class="xright">            <a href="fr/index.html">French</a>
+            
+  
+
+  
+    
+            
+  
+    
+            &nbsp;| Last Published: 08-23-2011
+            </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Exanpe T5 Lib</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Presentation</a>
+          </li>
+              
+    <li class="none">
+              <strong>Getting started</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="reference.html">Component Reference</a>
+          </li>
+              
+    <li class="none">
+                    <a href="user_guide.html">User Guide</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://exanpe-t5-lib.appspot.com/" class="externalLink">Demo</a>
+          </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+                    <a href="release-notes.html">Release Notes</a>
+          </li>
+              
+    <li class="none">
+                    <a href="roadmap.html">Road Map</a>
+          </li>
+              
+    <li class="none">
+                    <a href="faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="about.html">About us</a>
+          </li>
+          </ul>
+              <h5>Our links</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="http://tapestry.apache.org/" class="externalLink">Tapestry 5</a>
+          </li>
+              
+    <li class="none">
+                    <a href="http://maven.apache.org/" class="externalLink">Maven 2</a>
+          </li>
+              
+    <li class="none">
+                    <a href="TODO">Exanpe GitHub</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+              
+                
+              
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-reports.html">Project Reports</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+            <div id="lastPublished">
+        Version: 1.0.0-SNAPSHOT
+      </div>
+            </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a name="Requirements"></a>Requirements</h2>
+
+        The library usage requires nothing more than a standard Tapestry 5 application :
+        <ul><li>Java 1.5 (as Tapestry 5 do)</li>
+<li>Tapestry 5.2.x</li>
+<li>Maven 2+</li>
+<li>Internet Explorer 7+ / Firefox 3.5+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="Set_up"></a>Set up</h2>
+<p>
+        Setting up exanpe-t5-lib requires 2 minutes :<br />
+</p>
+<ul><li>Open the pom.xml in your library project </li>
+<li>Declare a Tapestry 5 dependency (obviously we do not import one)</li>
+<li>Paste the following configuration is your plugins descriptor :
+        
+            <div class="source"><pre>
+     
+    &lt;dependency&gt;
+        &lt;groupId&gt;fr.exanpe&lt;/groupId&gt;
+        &lt;artifactId&gt;exanpe-t5-lib&lt;/artifactId&gt;
+        &lt;version&gt;${set the version here}&lt;/version&gt;
+    &lt;/dependency&gt;
+    
+            </pre>
+</div>
+</li>
+<li>
+        	Annotate your Module class with :
+        	<div class="source"><pre>
+        	@SubModule(ExanpeLibraryModule.class)
+        	</pre>
+</div>
+</li>
+</ul>
+</div>
+<div class="section"><h2><a name="TML_Integration"></a>TML Integration</h2>
+
+    	The TML integration is as simple as the previous step.<br />
+
+    	Open your TML and add in the root tag :<br />
+<div class="source"><pre>
+     
+    	&lt;... (xmlns:t=&quot;http://tapestry.apache.org...)	xmlns:ex=&quot;tapestry-library:exanpe&quot; ...&gt;
+    
+    	</pre>
+</div>
+</div>
+<div class="section"><h2><a name="Start_coding_"></a>Start coding !</h2>
+
+        Your are now ready to take advantage of all the components provided by the library<br />
+
+        Have a look to our <a class="externalLink" href="http://exanpe-t5-lib.appspot.com/">Demo</a> and the <a href="reference.html">Reference</a> page detailing each component usage.  
+    </div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2011
+    
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
