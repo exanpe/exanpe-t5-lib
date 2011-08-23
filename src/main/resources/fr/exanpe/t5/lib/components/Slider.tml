@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<t:container
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+	<div id="exanpe-slider-${clientId}" class="exanpe-slider">
+		<div class="exanpe-slider-container-${orientation}">
+			<t:if test="${displayEmbeddedValue}">
+				<span id="slider-label-${clientId}">0</span>
+			</t:if>
+			<div id="slider-bg-${clientId}" class="exanpe-slider-bg-${orientation}" tabindex="-1">
+				<div id="slider-thumb-${clientId}"
+					class="exanpe-slider-thumb exanpe-slider-thumb-${orientation}">
+					<img id="slider-img-${clientId}" class="exanpe-slider-thumb-img" src="#" />
+				</div>
+			</div>	
+		</div>	
+	</div>
+	<t:hidden id="${clientId}" value="value"/>
+	<div class="cleared" />
+</t:container>

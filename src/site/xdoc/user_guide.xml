@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>Architecture - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+  
+	<section name="Rules of coding">
+		Here are some rules that you <b>should seriously</b> respect to avoid any problem using the library :
+		<ul>
+			<li>To all components (except Border), define an id throught the <b>t:id</b> attribute.</li>
+			<li>Two css files are present : a <b>core</b> one and <b>skin</b> one.
+			Although the attributes defined in the skin one can be overriden without impacting the component layout, we do not guarantee any modification in the core one.</li>
+		</ul>
+	</section>
+
+	<section name="Relation between Java/HTML/JavaScript/CSS">
+        Each component is designed over a strict relation between the different languages to ensure coherency and increase the development.<br/>
+        Based on the <i>t:id</i> provided to the component, here are the normas you can rely on :<br/> 
+        <ul>
+        	<li>
+        		If a JavaScript class is defined for the component, an instance is available through the id provided, allowing to act on the component via JavaScript.
+        	</li>
+        	<li>If the JavaScript component uses a YUI one, the YUI instance is available through a yui var contained inside the JavaScript Exanpe component instance</li>
+        	<li>The root HTML tag id is the id provided to the component.</li>
+        	<li>Some component's parameters can be automatically injecting via properties files, based on the component id suffixed (see each component documentation).</li>
+        </ul>
+     </section>
+     
+     <section name="CSS customization">
+        CSS properties have been split between core ones (deciding the positionning) and skin ones (declaring the rendering).<br/>
+        Two CSS files are present :
+        <ul>
+        	<li>exanpe-t5-lib-core.css</li>
+        	<li>exanpe-t5-lib-skin.css</li>
+        </ul>
+        To customize our component rendering, we strongly advise you to check the skin file and override any of the CSS class that correspond to your needs.
+     </section>
+  </body>
+  
+</document>

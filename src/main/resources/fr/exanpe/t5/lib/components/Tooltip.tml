@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<t:container
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+	
+	<span id="${clientId}">
+		<t:body />
+	</span>
+		
+	<div id="exanpe-tooltip-${clientId}">
+		<t:if test="${isBuildFromBlock}">
+			<t:delegate to="textBlock" />
+		</t:if>
+	</div>
+	
+</t:container>

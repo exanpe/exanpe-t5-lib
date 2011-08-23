@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>exanpe-parent</artifactId>
+		<groupId>fr.exanpe</groupId>
+		<version>1.1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>exanpe-t5-lib</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>Exanpe Tapestry 5 Library</name>
+	<description>Enhanced components, services and utilities for Tapestry 5</description>
+
+	<scm>
+		<connection>scm:git:git@gitproxy:lguerin/tapestry-tldgen.git</connection>
+		<developerConnection>scm:git:git@gitproxy:lguerin/tapestry-tldgen.git</developerConnection>
+		<url>http://github.com/lguerin/exanpe-t5-lib</url>
+	</scm>
+
+	<issueManagement>
+		<system>Github</system>
+		<!-- TODO open repo -->
+		<url>http://github.com/lguerin/exanpe-t5-lib</url>
+	</issueManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-core</artifactId>
+			<version>${tapestry-release-version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-test</artifactId>
+			<version>${tapestry-release-version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Provided by the servlet container, but sometimes referenced in the 
+			application code. -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+	</dependencies>
+
+	<developers>
+		<developer>
+			<id>lguerin</id>
+			<name>Laurent Guerin</name>
+			<email>zlau.dreamcat@gmail.com</email>
+		</developer>
+		<developer>
+			<id>jmaupoux</id>
+			<name>Julien Maupoux</name>
+			<email>attonnnn@gmail.com</email>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<!-- 
+			<plugin>
+				<groupId>fr.exanpe</groupId>
+				<artifactId>tapestry-tldgen</artifactId>
+				<version>1.1.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>tld-generate</goal>
+						</goals>
+						<phase>process-classes</phase>
+						<configuration>
+							<uri>fr.exanpe.t5</uri>
+							<rootPackage>fr.exanpe.t5.lib</rootPackage>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.tapestry</groupId>
+						<artifactId>tapestry-core</artifactId>
+						<version>${tapestry-release-version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>enforce-java</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireJavaVersion>
+									<version>[1.5.0,1.6.0)</version>
+								</requireJavaVersion>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludes>
+						<exclude>**/yui/**</exclude>
+					</excludes>
+					<jswarn>false</jswarn>
+					<nosuffix>true</nosuffix>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${compileSource}</source>
+					<target>${compileSource}</target>
+					<optimize>true</optimize>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>copy site resources</id>
+						<phase>site</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="target/site/data" />
+								<copy
+									file="src/main/resources/fr/exanpe/t5/lib/components/css/exanpe-t5-lib-skin.css"
+									todir="target/site/data" />
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Tapestry-Module-Classes>fr.exanpe.t5.lib.services.ExanpeLibraryModule</Tapestry-Module-Classes>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<!-- 
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-provider-gitexe</artifactId>
+				<version>1.3</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.scm</groupId>
+				<artifactId>maven-scm-manager-plexus</artifactId>
+				<version>1.3</version>
+			</extension>
+			<extension>
+				<groupId>org.kathrynhuxtable.maven.wagon</groupId>
+				<artifactId>wagon-gitsite</artifactId>
+				<version>0.3.1</version>
+			</extension>
+		</extensions>
+		-->
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>gr.abiss.mvn.plugins</groupId>
+				<artifactId>maven-jstools-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<jsDir>src/main/resources/</jsDir>
+					<excludes>**/yui/**</excludes>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>jslint</report>
+							<report>jsdoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<distributionManagement>
+		<site>
+			<id>gh-pages-exanpe-t5-lib</id>
+			<!-- TODO : replace with final repo -->
+			<url>gitsite:git@gitproxy/lguerin/exanpe-t5-lib.git</url>
+		</site>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tapestry-release-version>5.2.6</tapestry-release-version>
+		<compileSource>1.5</compileSource>
+	</properties>
+</project>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>Component Reference - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+     
+	    
+	
+	<section name="Components">
+		This page displays the component reference of the library.<br/><br/>
+		
+<a href="#accordion">accordion</a><br/><a href="#accordionitem">accordionitem</a><br/><a href="#ajaxloader">ajaxloader</a><br/><a href="#border">border</a><br/><a href="#colorpicker">colorpicker</a><br/><a href="#hideablepanel">hideablepanel</a><br/><a href="#securepassword">securepassword</a><br/><a href="#slider">slider</a><br/><a href="#slideshow">slideshow</a><br/><a href="#slideshowitem">slideshowitem</a><br/><a href="#tab">tab</a><br/><a href="#tabview">tabview</a><br/><a href="#tooltip">tooltip</a><br/><br/><br/><a name="accordion"> </a><h3>accordion</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Specify the event to use for switching an item from a step to an other. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>fr.exanpe.t5.lib.constants.AccordionEventTypeEnum</td><td>true</td><td>click</td></tr><tr class="a"><td><b>duration</b></td><td>The duration in seconds of the animation during the accordion opening/closing <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>float</td><td>false</td><td>1.0</td></tr><tr class="b"><td><b>multiple</b></td><td>Specify if a multiple items car be opened simultaneously <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>boolean</td><td>false</td><td>true</td></tr><tr class="a"><td><b>title</b></td><td>The title of the accordion. If set, display a header with this title. <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="accordionitem"> </a><h3>accordionitem</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>content</b></td><td>The content of the item. May be initialized through a resource file. <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="a"><td><b>opened</b></td><td>The default state of the item. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="b"><td><b>title</b></td><td>The title of the item. May be initialized through a resource file. <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="ajaxloader"> </a><h3>ajaxloader</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>width*</b></td><td>The width of the panel, in pixel. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>int</td><td>true</td><td>300</td></tr><tr class="a"><td><b>autoLoad</b></td><td>Decide if auto load the content on dom ready. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr><tr class="b"><td><b>image</b></td><td>Image displayed during loading. <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/ajaxloader/ajax-loader.gif</td></tr><tr class="a"><td><b>message</b></td><td>Message displayed to the user during asynchronous loading. <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td>exanpe-ajaxloader-default-message</td></tr><tr class="b"><td><b>showPanel</b></td><td>Decide to show the panel during the ajax load, or not. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr></table><a name="border"> </a><h3>border</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr></table><a name="colorpicker"> </a><h3>colorpicker</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>closeText*</b></td><td>Define the text to close the component. <br/> Allow null : false
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>true</td><td>literal:Close</td></tr><tr class="a"><td><b>icon</b></td><td>Define the icon to open the color picker. <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/cpk/color_wheel.png</td></tr><tr class="b"><td><b>value</b></td><td>Define the name of the value to set the color in the container. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="hideablepanel"> </a><h3>hideablepanel</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>duration*</b></td><td>Duration of show <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>float</td><td>true</td><td>1.0</td></tr><tr class="a"><td><b>hideWidth*</b></td><td>Width in pixel for the hideable panel <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>int</td><td>true</td><td></td></tr><tr class="b"><td><b>hideable*</b></td><td>Bloc hideable, disposed on left <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>org.apache.tapestry5.Block</td><td>true</td><td></td></tr><tr class="a"><td><b>visible*</b></td><td>Bloc always visible, on right <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>org.apache.tapestry5.Block</td><td>true</td><td></td></tr><tr class="b"><td><b>hideImg</b></td><td>Image displayed to hide the panel <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/hide.png</td></tr><tr class="a"><td><b>showImg</b></td><td>Image displayed to show the panel <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/show.png</td></tr></table><a name="securepassword"> </a><h3>securepassword</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>characters*</b></td><td>Defines the set of characters to display in the password grid. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td>0123456789</td></tr><tr class="a"><td><b>eventType*</b></td><td>Defines the event triggering the number. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum</td><td>true</td><td>click</td></tr><tr class="b"><td><b>gridHeight*</b></td><td>Defines the height of the grid where are randomly positioned the numbers (row number). <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>int</td><td>true</td><td>4</td></tr><tr class="a"><td><b>gridWidth*</b></td><td>Defines the width of the grid where are randomly positioned the numbers (column number). <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>int</td><td>true</td><td>4</td></tr><tr class="b"><td><b>resetImage*</b></td><td>Defines the asset displayed to clear the password field. <br/> Allow null : false
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>true</td><td>img/spwd/reset.png</td></tr><tr class="a"><td><b>maxlength</b></td><td>Defines the max length of the input password field. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Integer</td><td>false</td><td></td></tr><tr class="b"><td><b>value</b></td><td>Defined the name of the value to set the password in the page. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="slider"> </a><h3>slider</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>max*</b></td><td>Maximum value <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.Float</td><td>true</td><td>100</td></tr><tr class="a"><td><b>min*</b></td><td>Minimum value <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.Float</td><td>true</td><td>0</td></tr><tr class="b"><td><b>orientation*</b></td><td>Specify the orientation of the slider <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum</td><td>true</td><td>horizontal</td></tr><tr class="a"><td><b>value*</b></td><td>Value to read or update <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>java.lang.Object</td><td>true</td><td></td></tr><tr class="b"><td><b>displayCurrentValue</b></td><td>Display the current value or not <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>boolean</td><td>false</td><td>true</td></tr><tr class="a"><td><b>displayId</b></td><td>If displayCurrentValue=true, specify a default html element id to display the value into.
+ By default, display into a span just upside of the slider. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="b"><td><b>horizontalCursor</b></td><td>Image used for horizontal cursor <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/slider/thumb-n.gif</td></tr><tr class="a"><td><b>interval</b></td><td>Optional parameter for the interval : used to set the unit on the slider move.
+ For example, an interval of 10 force the selection value from ten to ten. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Float</td><td>false</td><td>1</td></tr><tr class="b"><td><b>verticalCursor</b></td><td>Image used for vertical cursor <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/slider/thumb-e.gif</td></tr></table><a name="slideshow"> </a><h3>slideshow</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>autoPlayMillis*</b></td><td>Defines the auto play behavior of the component by setting a milliseconds interval. 0 means
+ no autoplay. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>int</td><td>true</td><td>0</td></tr><tr class="a"><td><b>itemHeight*</b></td><td>Defines the height, in pixels, of items in the slideShow <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>int</td><td>true</td><td></td></tr><tr class="b"><td><b>numVisible*</b></td><td>Defines the number of visible elements in this slide show. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>int</td><td>true</td><td>1</td></tr><tr class="a"><td><b>circular</b></td><td>Defines whether this slide show is circular. Circular means that once displayed, the content
+ goes back to the begining. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>boolean</td><td>false</td><td>true</td></tr></table><a name="slideshowitem"> </a><h3>slideshowitem</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>image</b></td><td>Image displayed as part of the item <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td></td></tr><tr class="a"><td><b>title</b></td><td>Title of the image displayed as part of the item <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="tab"> </a><h3>tab</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>icon</b></td><td>Specify the icon of the tab <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td></td></tr><tr class="a"><td><b>title</b></td><td>Specify the title of the tab <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="tabview"> </a><h3>tabview</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>defaultActiveTabId*</b></td><td>Defines the tab active by default. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr><tr class="a"><td><b>loadAll</b></td><td>Defines the loading behavior of all hidden tab contents. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>boolean</td><td>false</td><td>false</td></tr></table><a name="tooltip"> </a><h3>tooltip</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>blockId</b></td><td>The id of the org.apache.tapestry5.Block used for displaying Tooltip content <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="a"><td><b>message</b></td><td>Message used for displaying Tooltip content <br/> Allow null : false
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table>
+     </section>
+
+	 <section name="Mixins">
+		<h3>dialog</h3>
+		<table width="100" border="1">
+			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
+			<tr class="b">
+				<td>
+					<b>message</b>
+				</td>
+				<td>The message of the Dialog box<br/> Allow null : true
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td>exanpe-dialog-default-message</td>
+			</tr>
+			<tr class="b">
+				<td>
+					<b>title</b>
+				</td>
+				<td>The title of the Dialog box<br/> Allow null : true
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td>exanpe-dialog-default-title</td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>yesLabelButton</b>
+				</td>
+				<td>The label of the yes button<br/> Allow null : false
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td>exanpe-dialog-yes-button-label</td>
+			</tr>
+			<tr class="b">
+				<td>
+					<b>noLabelButton</b>
+				</td>
+				<td>The label of the no button<br/> Allow null : false
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td>exanpe-dialog-no-button-label</td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>okLabelButton</b>
+				</td>
+				<td>The label of the ok button<br/> Allow null : false
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td>exanpe-dialog-ok-button-label</td>
+			</tr>			
+			<tr class="b">
+				<td>
+					<b>renderMode</b>
+				</td>
+				<td>Specify the render mode to used for displaying Dialog.<br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>fr.exanpe.t5.lib.constants.DialogRenderModeEnum</td>
+				<td>true</td>
+				<td>confirm</td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>width</b>
+				</td>
+				<td>Width of the Dialog, in pixel.<br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Integer</td>
+				<td>true</td>
+				<td>300</td>
+			</tr>
+		</table>
+		
+		<h3>selectloader</h3>
+		<table width="100" border="1">
+			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
+			<tr class="b">
+				<td>
+					<b>targetId</b>
+				</td>
+				<td>Defines the target select id to populate<br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.String</td>
+				<td>true</td>
+				<td></td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>targetEncoder</b>
+				</td>
+				<td>Defines the target select id to populate<br/> Allow null : false
+ 					<br/> Default prefix : prop
+				</td>
+				<td>org.apache.tapestry5.ValueEncoder</td>
+				<td>false</td>
+				<td></td>
+			</tr>
+		</table>
+     </section>
+     
+  </body>
+  
+</document>

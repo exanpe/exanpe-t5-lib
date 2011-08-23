@@ -1,0 +1,13 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+
+		<t:hidden id="${clientId}_hidden" maxlength="6" size="6" value="value"/>
+		<span>#</span>
+		<input type="text" id="${clientId}_input" class="exanpe-cpk-code" disabled="disabled" maxlength="6" size="6"/>
+		<input id="${clientId}_img" type="image" class="exanpe-cpk-image" onclick="${clientId}.show(); return false;" src="${icon}"/>
+
+		<div class="exanpe-cpk-wrapper">
+			<div id="${clientId}_colorpicker"> </div>
+			<div id="${clientId}_popup"> </div>
+		</div>
+		
+</t:container>

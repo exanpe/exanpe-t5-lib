@@ -1,0 +1,76 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  	Accordion standard, default open : <br/>
+  	<ex:accordion class="mystyle">
+  		<ex:accordionItem title="${literal:title1}" content="${literal:content1}" opened="true"/>
+  		<ex:accordionItem title="${literal:title2}">
+  			Content coded in body
+  		</ex:accordionItem>
+  	</ex:accordion>
+  		
+  	<br/><hr/><br/>
+  	
+  	Accordion with header title : <br/>
+  	<div style="width: 200px">
+	  	<ex:accordion title="literal:Header Title">
+	  		<ex:accordionItem title="${literal:title1}" content="${literal:content1}" opened="true"/>
+	  		<ex:accordionItem title="${literal:title2}">
+	  			Content coded in body with very long content
+	  		</ex:accordionItem>
+	  	</ex:accordion>
+  	</div>
+  		
+  	<br/><hr/><br/>  	
+  	
+  	Accordion from resources : <br/>
+    <ex:accordion t:id="acc">
+    	<ex:accordionItem t:id="accitem1"/>
+    	<ex:accordionItem t:id="accitem2"/>
+    </ex:accordion>
+    
+    <br/><hr/><br/>
+    
+    Accordion without multiple : <br/>
+    <ex:accordion multiple="false">
+  		<ex:accordionItem title="${literal:title1}" content="${literal:content1}"/>
+  		<ex:accordionItem title="${literal:title2}" content="${literal:content2}"/>
+    </ex:accordion>
+    
+    <br/><hr/><br/>
+    
+    Accordion with over for expand : <br/>
+    <ex:accordion eventType="hover">
+  		<ex:accordionItem title="${literal:title1}" content="${literal:content1}"/>
+  		<ex:accordionItem title="${literal:title2}" content="${literal:content2}"/>
+    </ex:accordion>
+    
+    <br/><hr/><br/>
+    
+    Accordion with over for expand / not multiple : <br/>
+    <ex:accordion eventType="hover" multiple="false">
+  		<ex:accordionItem title="${literal:title1}" content="${literal:content1}"/>
+  		<ex:accordionItem title="${literal:title2}" content="${literal:content2}"/>
+    </ex:accordion>
+    
+    <br/><hr/><br/>
+    
+    Accordion with duration boosted : <br/>
+    <ex:accordion duration="0.1">
+  		<ex:accordionItem title="${literal:title1}" content="${literal:content1}"/>
+  		<ex:accordionItem title="${literal:title2}" content="${literal:content2}"/>
+    </ex:accordion>    
+    
+        <br/><hr/><br/>
+    
+    Accordion controlled by JavaScript : <br/>
+    <button onclick="accjs.open('accjs1')">Open 1st item</button>
+    <button onclick="accjs.close('accjs1')">Close 1st item</button>
+    <ex:accordion t:id="accjs">
+  		<ex:accordionItem t:id="accjs1" title="${literal:title1}" content="${literal:content1}"/>
+  		<ex:accordionItem title="${literal:title2}" content="${literal:content2}"/>
+    </ex:accordion>   
+    
+    <br/><hr/><br/>
+  	    
+</t:layout>

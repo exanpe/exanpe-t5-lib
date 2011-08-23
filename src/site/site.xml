@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Tapestry 5 Tldgen">
+  <bannerLeft>
+    <name>Exanpe T5 Lib</name>
+    <src>http://maven.apache.org/images/apache-maven-project.png</src>
+    <href>http://exanpe.free.fr/</href>
+  </bannerLeft>
+  <bannerRight>
+    <src>http://maven.apache.org/images/maven-small.gif</src>
+  </bannerRight>
+  <publishDate position="right" format="MM-dd-yyyy"/>
+  <version position="navigation-bottom"/>
+  <body>
+    <links>
+      <item name="French" href="fr/index.html"/>
+    </links>
+
+    <menu name="Exanpe T5 Lib">
+      <item name="Presentation" href="index.html"/>
+      <item name="Getting started" href="getting_started.html"/>
+      <item name="Component Reference" href="reference.html"/>
+      <item name="User Guide" href="user_guide.html"/>
+      <item name="Demo" href="http://exanpe-t5-lib.appspot.com/" target="_blank"/>
+      <item name="Download" href="download.html"/>
+      <item name="Release Notes" href="release-notes.html" />
+      <item name="Road Map" href="roadmap.html" />
+      <item name="FAQ" href="faq.html" />
+      <item name="About us" href="about.html" />
+    </menu>
+    
+    <menu name="Our links">
+      <item name="Tapestry 5" href="http://tapestry.apache.org/"/>
+      <item name="Maven 2" href="http://maven.apache.org/"/>
+      <item name="Exanpe GitHub" href="TODO"/>
+    </menu>
+
+    <menu ref="reports"/>
+  </body>
+</project>

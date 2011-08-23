@@ -1,0 +1,15 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  	<t:form>
+  
+	  	ColorPicker : <br/>
+	  	<ex:colorPicker t:id="cp" value="color"/>
+
+		ColorPicker from resources : <br/>
+	  	<ex:colorPicker t:id="cp2" value="color2"/>
+		<t:submit/>
+
+	</t:form>
+	
+</t:layout>

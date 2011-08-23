@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs title="Frequently Asked Questions">
+  <part id="General">
+    <faq id="yui">
+      <question>Can you tell more about YUI integration ?</question>
+      <answer>
+        <p>
+          Exanpe library include YUI 2 JavaScript modules as basis for almost all components.<br/>
+          The current version of YUI embedded is 2.9.0.<br/>
+          The YUI resources are automatically loaded through @Import over the components classes.<br/>
+           Obviously, only the component's required resources are loaded, not all YUI.<br/><br/>
+           Regardless the embedding of the JavaScript framework, Exanpe provides a way to include your own YUI2 distribution. 
+           This can be really easily set up by contributing the symbol <b>ExanpeSymbols.YUI2_BASE</b> in your Module class.<br/>
+           The requirement is that you own a YUI distribution package as standards, containing all the Exanpe dependencies.<br/>.
+           <source>
+           public static void contributeApplicationDefaults(MappedConfiguration&lt;String, String&gt; configuration)
+   		        configuration.add(ExanpeSymbols.YUI2_BASE, "context:/js/yui/mydistrib/");
+   		   </source>  
+   		   With that overriding, Exanpe library will expect to find a file <b>context:/js/yui/mydistrib/animation/animation-min.js</b> in your application.
+   		   <br/>
+   		   Here are the YUI dependencies :
+   		   <ul>
+   		   	  <li><b>animation</b>-min</li>
+   		   	  <li><b>button</b>-min</li>
+   		   	  <li><b>carousel</b>-min</li>
+   		   	  <li><b>colorpicker</b>-min</li>
+   		   	  <li><b>connection</b>-min</li>
+   		   	  <li><b>container</b>-min</li>
+   		   	  <li><b>dragdrop</b>-min</li>
+   		   	  <li><b>element</b>-min</li>
+   		   	  <li><b>json</b>-min</li>
+   		   	  <li><b>slider</b>-min</li>
+   		   	  <li><b>utilities</b></li>
+   		   	  <li><b>yahoo-dom-event</b></li>   		   	  
+   		   </ul>
+        </p>
+      </answer>
+    </faq>
+    <faq id="ie6">
+      <question>Why no Internet Explorer 6 support ?</question>
+      <answer>
+        <p>
+         	Internet Explorer 6 is now a 10 years old browser, and not the best one.<br/>
+         	It is such a mess and causes so much pain that, as Internet Explorer 5.5 and lower, we have not tested and would be scared to see the result.<br/>
+   			Sorry, move on !
+        </p>
+      </answer>
+    </faq>
+    <faq id="cssskin">
+      <question>Where can i find the CSS file to help me customizing ?</question>
+      <answer>
+        <p>
+         	You can download the CSS skin file, with comments, <a href="data/exanpe-t5-lib-skin.css">here</a>.
+        </p>
+      </answer>
+    </faq>
+    <faq id="demoslow">
+      <question>Why is the demo so slow to access ?</question>
+      <answer>
+        <p>
+         	Our demo is hosted by Google App Engine (GAE). We are limited by daily quotas and instances restrictions.<br/>
+         	A way for you to test easily would be to download our war (@see github exanpe-t5-demo project TODO link) and deploy it anywhere.<br/>
+         	We apologize for any inconvenience about this but we do not own a J2EE server on the web. Contact us for any offer :)
+        </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>

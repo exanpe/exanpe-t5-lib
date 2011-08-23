@@ -1,0 +1,48 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+	<div class="exanpe-skin">		
+		<div><b>GridPager :</b></div><br />
+		
+		<t:gridpager currentPage="current" rowsPerPage="10" source="users" />
+		<hr />
+		
+		<div><b>Grid :</b></div><br />
+		
+		<div class="gridExampleWrapper" style="width:343px !important; width/**/:/**/ 353px;">
+			<t:grid t:id="grid1" source="users" row="userRow" rowClass="prop:evenodd.next" pagerPosition="bottom" rowsPerPage="10" add="fullName">
+				<p:empty>
+					<p>
+						There are no users to display.
+					</p>
+				</p:empty>
+				<p:fullNameCell>
+                	<span>${userRow.lastname} ${userRow.firstname}</span>
+            	</p:fullNameCell>
+			</t:grid>
+		</div>
+		<hr />
+
+		<div><b>Autocomplete :</b></div><br />
+		<form t:type="form">
+			Type in a country name: <input t:id="countryName" t:type="TextField"
+				t:mixins="autocomplete" t:value="country" />
+		</form>
+
+		<hr />
+
+		<div><b>Palette :</b></div><br />
+		<t:form>
+			<t:palette t:id="handling" encoder="encoder" model="model"
+				selected="selected" select="selectImg" deselect="deselectImg" />
+		</t:form>
+
+		<hr />
+
+		<div><b>BeanEditForm :</b></div><br />
+		<div class="beaneditformExampleWrapper" style="width: 460px">
+		<t:beaneditform t:id="user" submitlabel="literal:Create"
+			object="userEdit" />
+		</div>
+	</div>
+</t:layout>

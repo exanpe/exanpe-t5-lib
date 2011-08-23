@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: 
+Tapestry-Module-Classes: fr.exanpe.t5.lib.services.ExanpeLibraryModule

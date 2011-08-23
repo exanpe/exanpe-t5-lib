@@ -1,0 +1,17 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+<body>
+
+	<span t:type="any" t:id="link1" t:mixins="exanpe/dialog" t:renderMode="info" t:message="literal:This is a the INFO render mode !" t:okLabelButton="literal:Continuer" t:width="500">link1</span>
+
+	<br />
+	<t:actionlink t:id="link2" context="6" t:mixins="exanpe/dialog">link2</t:actionlink>
+
+	<br />
+	<t:actionlink t:id="linkDisable" t:mixins="exanpe/dialog" class="${disableClass}">Dialog disable</t:actionlink>
+
+	<br />
+	<t:actionlink t:id="link3" t:mixins="exanpe/dialog">Dialog from properties</t:actionlink>
+
+</body>
+</t:layout>

@@ -1,0 +1,48 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+   
+	<div class="header">
+		<ul id="${clientId}_header_hook">
+			
+		</ul>
+		
+	</div>
+	
+	<div id="${clientId}_content_hook">
+	</div>
+
+	<div id="_${clientId}_content_container" style="display:none">
+		<t:body/>
+		
+		<t:loop source="model.tabs" value="iteTabModel">
+			<t:block id="loadBlock">
+		  
+			  	<li id="_${iteTabModel.id}_title">
+			  		<a href="#" onclick="${clientId}.show('${iteTabModel.id}');return false;" class="${tabCssClassName}">
+						<t:if test="iteTabModel.icon">
+							<img src="${iteTabModel.icon}" border="0"/>
+						</t:if>
+						${iteTabModel.title}
+					</a>
+				</li>
+				
+			</t:block>
+			
+			<t:block id="noLoadBlock">
+		  
+			  	<li id="_${iteTabModel.id}_title">
+			  		<t:actionlink t:id="switchTab" context="iteTabModel.id" class="${tabCssClassName}">
+			  			<t:if test="iteTabModel.icon">
+							<img src="${iteTabModel.icon}" border="0"/>
+						</t:if>
+						${iteTabModel.title}
+					</t:actionlink>
+				</li>
+				
+			</t:block>
+		
+			<t:delegate to="renderedBlock"/>
+		</t:loop>
+	</div>
+	
+  
+</t:container>

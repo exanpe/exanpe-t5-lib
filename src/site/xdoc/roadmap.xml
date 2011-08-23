@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>Roadmap - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+
+    <section name="Roadmap">
+
+      <p>
+        The library is designed to help the use of Tapestry 5 as much as possible.<br/>
+        Feel free to suggest ideas and improvement requests in our <a href="http://github.com/exanpe/TODO">GitHub space</a>!
+     </p>
+
+    </section>
+
+  </body>
+
+</document>
+
+
+  

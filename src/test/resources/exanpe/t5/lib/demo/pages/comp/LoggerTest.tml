@@ -1,0 +1,10 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  <t:form>
+  	<t:select t:mixins="exanpe/selectLoader" t:targetId="city" t:id="country" model="country" value="countryValue" encoder="countryEncoder"/>
+  </t:form>
+  
+  <input type="button" onclick="Exanpe.Log.error('log me as error')" value="Log error"/>
+  
+</t:layout>

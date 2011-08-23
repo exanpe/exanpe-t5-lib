@@ -1,0 +1,33 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  	
+  <t:form>	
+	<span>slider1 value: ${sliderValue}</span>
+  	<div>
+  		<ex:slider t:id="slider1" value="sliderValue" min="0" max="100" interval="0.5"/>
+  	</div>
+  	<br /><br />
+
+	<span>slider2 value: ${sliderValue2}</span><br/>
+	Display Id temps reel : <span id="sl2display"></span>
+  	<div>
+  		<ex:slider t:id="slider2" displayId="sl2display" value="sliderValue2" min="0" max="40"  interval="10" />
+  	</div>
+  	<br /><br />	
+  	
+  	<span>slider3 value: ${sliderValue3}</span>
+  	<div>
+  		<ex:slider t:id="slider3" displayCurrentValue="false" value="sliderValue3" tickSize="30" orientation="vertical" />
+  	</div>
+  	<br /><br />
+  	
+  	  	<span>slider4 value: ${sliderValue4}</span>
+  	<div>
+  		<ex:slider t:id="slider4" value="sliderValue4" min="-10" max="10" tickSize="1"/>
+  	</div>
+  	<br /><br />
+	
+	<t:submit value="Form Submit" />
+  </t:form>  
+    
+</t:layout>

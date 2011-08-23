@@ -1,0 +1,17 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+  <ul>
+    <li><t:pagelink page="comp/AccordionTest">Accordion</t:pagelink></li>
+    <li><t:pagelink page="comp/HideablePanelTest">HideablePanel</t:pagelink></li>
+    <li><t:pagelink page="comp/SecurePasswordTest">SecurePassword</t:pagelink></li>
+    <li><t:pagelink page="comp/BorderTest">Border</t:pagelink></li>
+    <li><t:pagelink page="comp/SliderTest">Slider</t:pagelink></li>
+    <li><t:pagelink page="comp/SlideShowTest">SlideShow</t:pagelink></li>
+    <li><t:pagelink page="comp/TabViewTest">TabView</t:pagelink></li>
+    <li><t:pagelink page="comp/TapestrySkin">TapestrySkin</t:pagelink></li>
+    <li><t:pagelink page="comp/TooltipTest">Tooltip</t:pagelink></li>
+    <li><t:pagelink page="comp/DialogTest">Dialog</t:pagelink></li>
+    <li><t:pagelink page="comp/AjaxLoaderTest">AjaxLoader</t:pagelink></li>
+    <li><t:pagelink page="comp/ColorPickerTest">ColorPicker</t:pagelink></li>
+    <li><t:pagelink page="comp/SelectLoaderTest">SelectLoader</t:pagelink></li>
+  </ul>
+</t:layout>

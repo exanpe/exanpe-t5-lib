@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd
+"> 
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+  
+  	 <div class="exanpe-bor-topLeft">
+  	 	<div class="exanpe-bor-topRight">
+  	 		<div class="exanpe-bor-top">
+  	 			&nbsp;
+  	 		</div>
+  	 	</div>
+  	 </div>
+  	 
+  	 <div class="exanpe-bor-midLeft">
+  	 	<div class="exanpe-bor-midRight">
+  	 		<div class="exanpe-bor-mid">
+  	 			<t:body/>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  	 
+  	 <div class="exanpe-bor-bottomLeft">
+  	 	<div class="exanpe-bor-bottomRight">
+  	 		<div class="exanpe-bor-bottom">
+  	 			&nbsp;
+  	 		</div>
+  	 	</div>
+  	 </div>
+  
+</t:container>

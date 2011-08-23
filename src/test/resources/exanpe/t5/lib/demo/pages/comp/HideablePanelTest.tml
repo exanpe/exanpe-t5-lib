@@ -1,0 +1,26 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+  xmlns:ex="tapestry-library:exanpe">
+
+	Classic :<br/>
+	<ex:HideablePanel cellspacing="5" t:id="testPanel" hideWidth="200" class="testc">
+		<t:parameter name="hideable">
+			hideeeeeeeeeee hideeeeeeeeeee hide<br/><br/><br/>this
+		</t:parameter>
+		<t:parameter name="visible">
+			show
+		</t:parameter>
+	</ex:HideablePanel>
+	
+	<br/><hr/><br/>
+	Fast duration : <br/>
+	
+	<ex:HideablePanel t:id="testPanel2" hideWidth="400" class="testc" duration="0.2">
+		<t:parameter name="hideable">
+			hideeeeeeeeeee hideeeeeeeeeee hide<br/><br/><br/>this
+		</t:parameter>
+		<t:parameter name="visible">
+			show
+		</t:parameter>
+	</ex:HideablePanel>
+	
+</t:layout>

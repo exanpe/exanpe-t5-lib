@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>About us - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+
+    <section name="About us">
+
+      <p>
+            Exanpe is a french team eager to discover new frameworks and technologies related to Java EE.<br/>
+            We are trying to help people, speed up and ease their development on our free time.
+  
+        <br/><br/>
+            Feel free to report any mistake we could have made, we enjoy learning too ;).
+      </p>
+    </section>
+
+  </body>
+
+</document>

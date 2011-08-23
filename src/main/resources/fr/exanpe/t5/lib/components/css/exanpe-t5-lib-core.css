@@ -1,0 +1,469 @@
+/**
+ * 	WARNING : Modify this file may result in unexpected rendering
+ */
+ 
+ /** Common **/
+ 
+.cleared {
+	float: none;
+	clear: both;
+}
+ 
+/** Accordion **/
+
+.exanpe-acc {
+}
+
+.exanpe-acc ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.exanpe-acc ul li {
+	display: block;
+}
+
+.exanpe-acc .acc-header {
+	background: #757575;
+	color: #FFFFFF;
+}
+
+.exanpe-acc .acc-title {
+	display: block;	
+	background: #B6B6B5;
+}
+
+.exanpe-acc .acc-content  {
+	background: #D5D5D4;
+}
+
+.exanpe-acc ul li .acc-title a{
+	display: block;
+}
+
+.exanpe-acc ul li.opened div.acc-content{
+	overflow: hidden;
+	display: block;
+}
+
+.exanpe-acc ul li.closed div.acc-content{
+	overflow: hidden;
+	display: none;
+}
+
+
+/** HideablePanel **/
+
+/* Default goes to visible panel */
+table.exanpe-hdp {
+	table-layout: fixed;
+	width: 100%;
+	border: 0
+}
+
+.exanpe-hdp .hideablePart {
+	overflow: hidden;
+}
+
+.exanpe-hdp .hidebar {
+	width: 20px;
+}
+
+.exanpe-hdp .hidebarHover {
+}
+
+.exanpe-hdp .visiblePart{
+}
+
+.exanpe-hdp img.hiddenImg {
+	display: none;
+	position: relative;
+}
+
+.exanpe-hdp img.shownImg {
+	display:inline;
+	position: relative;
+}
+
+/* Hidden behavior */
+table.hidden {
+}
+
+.hidden img.hiddenImg {
+	display: inline;
+}
+
+.hidden img.shownImg {
+	display: none;
+}
+
+
+/** Border **/
+
+.exanpe-bor{
+	
+}
+
+.exanpe-bor-top{
+}
+
+.exanpe-bor-topLeft{
+	width:100%;
+}
+
+.exanpe-bor-topRight{
+	width:100%;
+}
+.exanpe-bor-midLeft{
+	height:100%;
+}
+.exanpe-bor-midRight{
+	height:100%;
+}
+
+.exanpe-bor-mid{
+	height: 100%;
+}
+
+.exanpe-bor-bottom{
+}
+
+.exanpe-bor-bottomLeft{
+	width:100%;
+}
+
+.exanpe-bor-bottomRight{
+	width:100%;
+}
+
+
+/** SecurePassword **/
+
+.exanpe-spwd {
+}
+
+.exanpe-spwd td {
+	padding: 0;
+	cursor:pointer;	
+	text-align:center;
+	vertical-align: middle;
+}
+
+.exanpe-spwd table td {
+	width:24px;
+	height:24px;
+	background: #E2E2E2;
+}
+
+.exanpe-spwd .exanpe-spwd-reset {
+	width:16px;
+	height:16px;
+	cursor: pointer;
+}
+
+.exanpe-spwd input {
+	width: 75px;
+}
+
+.exanpe-spwd img {
+	position: relative;
+	top: 3px;
+}
+
+/** Slider **/
+
+.exanpe-slider {
+}
+.exanpe-slider-bg-horizontal, .exanpe-slider-bg-vertical {
+	position: relative;
+}
+
+.exanpe-slider-container-horizontal {
+	height: 45px;
+}
+
+.exanpe-slider-container-vertical {
+	height: 245px;
+}
+
+.exanpe-slider-bg-horizontal {
+	height: 5px;
+	width: 210px;
+	background: #E2E2E2;
+}
+
+.exanpe-slider-bg-vertical {
+	height: 210px;
+	width: 5px;
+	background: #E2E2E2;
+}
+
+.exanpe-slider-bg-horizontal  .exanpe-slider-thumb, .exanpe-slider-bg-vertical .exanpe-slider-thumb {
+	position: absolute;
+	cursor: default;
+}
+
+/** Tooltip **/
+
+.exanpe-tooltip {
+	position: absolute;
+}
+
+/** Dialog **/
+
+.exanpe-dialog {
+	
+}
+
+.exanpe-dialog .yui-overlay, .exanpe-dialog .yui-panel-container {
+	visibility: hidden;
+	position: absolute;
+	z-index: 2;
+}
+
+.exanpe-dialog .yui-panel {
+	position: relative;
+	z-index: 999;
+}
+
+.exanpe-dialog .yui-panel .hd {
+	background: #E2E2E2;
+}
+
+.exanpe-dialog .yui-panel .bd, .exanpe-dialog .yui-panel .ft {
+    background-color: #FDFDFD;
+}
+
+.exanpe-dialog .bd {
+	overflow: hidden;
+}
+
+.exanpe-dialog .container-close {
+	position: absolute;
+	height: 16px;	
+	width: 15px;
+	right: 10px;
+    top: 2px;
+}
+
+.exanpe-dialog .yui-panel-container .container-close {
+    overflow: hidden;
+    text-indent: -10000em;
+}
+
+.exanpe-dialog .yui-dialog .ft .button-group {
+    display: block;
+}
+
+.mask {
+	bottom: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;	
+}
+
+/** AjaxLoader **/
+
+.exanpe-ajaxloader {
+}
+
+.exanpe-ajaxloader .yui-overlay, .exanpe-ajaxloader .yui-panel-container {
+	visibility: hidden;
+	position: absolute;
+	z-index: 2;
+}
+
+.exanpe-ajaxloader .yui-panel {
+	position: relative;
+    z-index: 999;
+}
+
+/** 
+ * TabView
+ */
+ 
+.exanpe-tab {
+	
+}
+
+.exanpe-tab .header {
+
+}
+
+.exanpe-tab .header ul:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.exanpe-tab .header ul {
+    display: inline-block;
+}
+
+* html .exanpe-tab .header ul {
+    height: 1%;
+}
+
+.exanpe-tab .header ul {
+    display: block;
+}
+
+.exanpe-tab .header ul {
+    padding: 0;
+    margin : 0;
+    list-style: none outside none;
+}
+
+.exanpe-tab .header ul li {
+    float: left;
+	list-style: none outside none;
+	padding:0;
+	position: relative;
+    top: 1px;
+    white-space: nowrap;
+	margin-bottom: 0;
+	padding-bottom: 1px;
+}
+
+.exanpe-tab .header ul li a {
+	float: left;
+    text-align: center;
+    text-decoration: none;	
+}
+
+.exanpe-tab .header ul li a img {
+	vertical-align : middle;
+	border:0;
+}
+
+.exanpe-tab div.exanpe-tab-hidden {
+	border: 0 none;
+    height: 0;
+    left: -999999px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+}
+
+.exanpe-tab .header ul li a {
+	background: #E2E2E2;
+	padding: 0px 5px 0px 5px;
+}
+
+.exanpe-tab .header ul li a.exanpe-tab-hidden {
+	background: #F6F6F6;
+}
+
+.exanpe-tab .exanpe-tab-content {
+	background: #F6F6F6;
+}
+
+/** Color Picker **/
+
+.exanpe-cpk .yui-panel {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.exanpe-cpk .yui-panel .hd {
+	background: silver;
+}
+
+.exanpe-cpk .exanpe-cpk-code {
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 55px;
+}
+
+.exanpe-cpk .exanpe-cpk-image {
+	position: relative;
+	top: 2px;
+	height: 16px;
+	width: 16px;
+}
+
+.exanpe-cpk .yui-panel-container, .exanpe-cpk .yui-panel {
+	position: absolute;
+	height: 230px;
+	width: 292px;
+}
+
+.exanpe-cpk .yui-panel .hd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+.exanpe-cpk .container-close {
+    position: absolute;
+    width: 20px;
+    text-decoration: none;
+    left: 272px;
+    height: 16px;
+    top: 2px;
+	z-index: 5;
+	color: #F6F6F6;
+}
+
+.exanpe-cpk .yui-picker-bg, .exanpe-cpk .yui-picker-hue-bg {
+	margin-top: 30px;	
+}
+
+.exanpe-cpk .yui-picker-bg {
+	width: 182px;
+	height: 182px;
+	float: left;
+	margin-left: 10px;
+}
+
+.exanpe-cpk .yui-picker-hue-bg {
+    height: 183px;
+    width: 14px;
+	float: left;
+	margin-left: 10px;
+	background: silver;
+}
+
+.exanpe-cpk  .yui-picker-hue-thumb {
+	width: 18px;
+	height: 18px;
+	margin-left: -2px;
+}
+
+.exanpe-cpk .yui-picker-hue-thumb img {
+	display: none;
+}
+
+.exanpe-cpk .yui-picker-thumb {
+	width: 11px;
+	height: 11px;
+}
+
+.exanpe-cpk .yui-picker-thumb img {
+	display: none;
+}
+
+.exanpe-cpk .yui-picker-swatch {
+    height: 100px;
+    width: 55px;
+    float: left;
+	margin-left: 10px;
+	margin-top: 50px;
+	border: 1px solid silver;
+}
+
+.exanpe-cpk .exanpe-button {
+	position: absolute;
+	top: 155px;
+	left: 223px;
+}

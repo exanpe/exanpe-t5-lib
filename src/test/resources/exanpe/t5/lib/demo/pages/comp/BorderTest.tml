@@ -1,0 +1,28 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  <div style="width:300px">
+  <ex:border>
+  	This text is contained in a border ! a a a a a a a a a 
+  	a a a a a a a a a <br/><br/>
+  	a a a 
+  	a a a 
+  	a a a 
+  
+  </ex:border>
+  </div>
+  
+  <br/><br/><br/>
+  Informal parameters
+  
+  <ex:border id="toto" style="height:400px;">
+  	This text is contained in a border ! a a a a a a a a a 
+  	a a a a a a a a a <br/><br/>
+  	a a a 
+  	a a a 
+  	a a a 
+  
+  </ex:border>
+  <br/><br/><br/><br/>
+    
+</t:layout>

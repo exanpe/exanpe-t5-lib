@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>Getting Started - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+  
+     <section name="Requirements">
+        The library usage requires nothing more than a standard Tapestry 5 application :
+        <ul>
+            <li>Java 1.5 (as Tapestry 5 do)</li>
+            <li>Tapestry 5.2.x</li>
+            <li>Maven 2+</li>
+            <li>Internet Explorer 7+ / Firefox 3.5+</li>
+        </ul> 
+     </section>
+
+    <section name="Set up">
+
+      <p>
+        Setting up exanpe-t5-lib requires 2 minutes :<br/>
+      </p>
+      <ul>
+        <li>Open the pom.xml in your library project </li>
+        <li>Declare a Tapestry 5 dependency (obviously we do not import one)</li>
+        <li>Paste the following configuration is your plugins descriptor :
+        
+            <source>
+    <![CDATA[ 
+    <dependency>
+        <groupId>fr.exanpe</groupId>
+        <artifactId>exanpe-t5-lib</artifactId>
+        <version>${set the version here}</version>
+    </dependency>
+    ]]>
+            </source>
+        </li>
+        <li>
+        	Annotate your Module class with :
+        	<source>
+        	@SubModule(ExanpeLibraryModule.class)
+        	</source>
+        </li>
+      </ul>
+             
+    </section>
+    
+    <section name="TML Integration">
+    	The TML integration is as simple as the previous step.<br/>
+    	Open your TML and add in the root tag :<br/>
+    	<source>
+    <![CDATA[ 
+    	<... (xmlns:t="http://tapestry.apache.org...)	xmlns:ex="tapestry-library:exanpe" ...>
+    ]]>
+    	</source>
+    	
+    </section>
+
+    <section name="Start coding !">
+        Your are now ready to take advantage of all the components provided by the library<br/>
+        Have a look to our <a href="http://exanpe-t5-lib.appspot.com/">Demo</a> and the <a href="reference.html">Reference</a> page detailing each component usage.  
+    </section>
+
+  </body>
+  
+</document>

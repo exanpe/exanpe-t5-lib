@@ -1,0 +1,22 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+  
+	<li id="${clientId}" class="${defaultClassName}">
+		<span class="acc-title">
+			<a href="#" onclick="return false;">
+				<span>${title}</span>
+			</a>
+		</span>
+		
+		<div class="acc-content">
+			<t:if test="content">
+  	  		${content}
+  	  	
+	  	  	<p:else>
+	  	  		<t:body/>	
+	  	  	</p:else>
+	  	  	
+	  	  	</t:if>
+		</div>
+	</li>
+  
+</t:container>

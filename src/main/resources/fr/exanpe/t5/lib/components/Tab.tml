@@ -1,0 +1,20 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+  
+  	<t:block id="loadBlock">
+  	
+		<div id="_${clientId}_content" class="exanpe-tab-content ${cssClassName}">
+			<t:body/>
+		</div>
+		
+	</t:block>
+	
+	<t:block id="noLoadBlock">
+
+		<div id="_${clientId}_content" class="exanpe-tab-content ${cssClassName}">
+		</div>
+		
+	</t:block>
+	
+	<t:delegate to="renderedBlock"/>
+	
+</t:container>

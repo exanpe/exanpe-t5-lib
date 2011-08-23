@@ -1,0 +1,31 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  	
+  	<ex:tabview t:id="tab" defaultActiveTabId="tab11" loadAll="true">
+  		<ex:tab t:id="tab11" t:title="literal:Tab 1" icon="context:img/tab/application.png">
+  			This is my tab 1 <br/>1<br/>1<br/><br/><br/>
+  			content 11
+  		</ex:tab>
+  		<ex:tab t:id="tab12" t:title="literal:Tab 2" icon="context:img/tab/comments.png">
+  			This is my tab 2 <br/>2<br/>2<br/><br/><br/>
+  			content22
+  		</ex:tab>
+  			<ex:tab t:id="tab13" t:title="literal:Tab 3" icon="context:img/tab/email.png">
+  			This is my tab 3 <br/>2<br/>2<br/><br/><br/>
+  			content23
+  		</ex:tab>
+  	</ex:tabview>  	
+  	
+  	
+  		<ex:tabview t:id="tab2" defaultActiveTabId="tab21" loadAll="false">
+	  		<ex:tab t:id="tab21">
+	  			This is my tab 1 <br/>1<br/>1<br/><br/><br/>
+	  			content 11
+	  		</ex:tab>
+	  		<ex:tab t:id="tab22" t:title="literal:Tab 2">
+	  			This is my tab 2 <br/>2<br/>2<br/><br/><br/>
+	  			content22
+	  		</ex:tab>
+	  	</ex:tabview>  
+  	
+</t:layout>

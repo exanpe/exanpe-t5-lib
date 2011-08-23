@@ -1,0 +1,39 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  	<div>
+
+  	slideShow 2 visibles:<br/>
+  	<ex:slideShow t:id="sc" numVisible="2" itemHeight="240">
+  		<ex:slideShowItem image="context:img/sc/astro1.jpg" title="literal:First Image"/>
+  		<ex:slideShowItem image="context:img/sc/astro2.jpg"/>
+  		<ex:slideShowItem image="context:img/sc/astro3.jpg"/>
+  	</ex:slideShow>
+    
+    <br/><br/><br/><br/>
+    
+    slideShow not circular, with content for items :<br/>
+  	<ex:slideShow t:id="sc2" circular="false" itemHeight="240">
+  		<ex:slideShowItem>
+  			content 1
+  		</ex:slideShowItem>
+  		<ex:slideShowItem>
+  			content 2
+  		</ex:slideShowItem>
+  		<ex:slideShowItem>
+  			content 3
+  		</ex:slideShowItem>
+  	</ex:slideShow>
+    
+    <br/><br/><br/><br/>
+    
+    slideShow Autoplaying:<br/>
+   	<ex:slideShow t:id="sc3" autoPlayMillis="2000"  itemHeight="240">
+  		<ex:slideShowItem image="context:img/sc/astro1.jpg" title="literal:First Image"/>
+  		<ex:slideShowItem image="context:img/sc/astro2.jpg"/>
+  		<ex:slideShowItem image="context:img/sc/astro3.jpg"/>
+  	</ex:slideShow>
+    
+    <br/><br/><br/><br/>
+
+    </div>
+</t:layout>

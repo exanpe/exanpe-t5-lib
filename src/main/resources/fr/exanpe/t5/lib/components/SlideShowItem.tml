@@ -1,0 +1,12 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+  
+  	<li class="item" style="height:${height}px"> 
+      <t:if test="image">
+			<img src="${image}" title="${title}"/>      	       		
+   	  <t:parameter name="else">
+   	  		<t:body/>
+   	  </t:parameter>
+      </t:if>
+    </li> 
+  
+</t:container>

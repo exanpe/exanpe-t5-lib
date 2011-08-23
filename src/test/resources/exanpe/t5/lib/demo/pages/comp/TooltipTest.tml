@@ -1,0 +1,27 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  	
+	<div t:type="exanpe/tooltip" t:id="tooltip1" t:blockId="tooltipBlock" class="exanpe-gradient">
+		Tooltip on div element, content from block...
+	</div>
+	<br />
+    
+	<p t:type="exanpe/tooltip" t:id="tooltip2" t:message="msg1">
+		Tooltip on p element, content from message...
+	</p>	
+    <br />    
+    
+    <t:form>
+	    <p t:type="exanpe/tooltip" t:id="tooltip3">
+			<t:submit t:value="Tooltip on submit button" />
+		</p>	
+	</t:form>
+    
+    <t:block t:id="tooltipBlock">
+    	The content of my <b>Tooltip</b> is <span style="color: red">rich</span>...
+ 		<br />
+    </t:block>
+    
+    <t:tooltipwrapper/>
+    
+</t:layout>

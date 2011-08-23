@@ -1,0 +1,27 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+	<body>
+		<ex:ajaxLoader t:id="loader1" message="literal:Loading...">
+			<t:grid source="users1" row="userRow">
+			     <p:empty>
+			       <p>There are no users to display.</p>
+			     </p:empty>
+			</t:grid>
+		</ex:ajaxLoader>
+		
+		<br />
+		<ex:ajaxLoader t:id="loader2" message="loader2-msg">
+			<t:grid source="users2" row="userRow">
+			     <p:empty>
+			       <p>There are no users to display.</p>
+			     </p:empty>
+			 </t:grid>
+		</ex:ajaxLoader>
+		
+		
+		<ex:ajaxLoader t:id="loader3" message="literal:Loading..." autoLoad="false" showPanel="false">
+			${date}
+		</ex:ajaxLoader>
+		<input type="button" onclick="loader3.load()" value="reload"/>
+	</body>
+</t:layout>
