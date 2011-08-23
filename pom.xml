@@ -13,15 +13,14 @@
 	<description>Enhanced components, services and utilities for Tapestry 5</description>
 
 	<scm>
-		<connection>scm:git:git@gitproxy:lguerin/tapestry-tldgen.git</connection>
-		<developerConnection>scm:git:git@gitproxy:lguerin/tapestry-tldgen.git</developerConnection>
-		<url>http://github.com/lguerin/exanpe-t5-lib</url>
+		<connection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</connection>
+		<developerConnection>scm:git:git@github.com:exanpe/exanpe-t5-lib.gitt</developerConnection>
+		<url>https://github.com/exanpe/exanpe-t5-lib</url>
 	</scm>
 
 	<issueManagement>
 		<system>Github</system>
-		<!-- TODO open repo -->
-		<url>http://github.com/lguerin/exanpe-t5-lib</url>
+		<url>https://github.com/exanpe/exanpe-t5-lib/issues</url>
 	</issueManagement>
 
 	<dependencies>
