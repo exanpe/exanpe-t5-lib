@@ -13,14 +13,14 @@
     <section name="Presentation">
 
       <p>
-            Exanpe T5 Lib is a library of components design for the J2EE Tapestry 5 framework, developed by the Exanpe organization.<br/>
+            Exanpe T5 Lib is a library of components designed for the J2EE Tapestry 5 framework, developed by the Exanpe organization.<br/>
             The purpose of this library is to provide additional components to Tapestry 5 as well as skinning the native components.<br/>
             Our final purpose is to provide a fully harmonized set of components, ready to be included in your web application.<br/>
-            Easy to use and to integrate, this library target the real needs of any web application, 
+            Easy to use and to integrate, this library targets the real needs of any web application, 
             taking a real care of possible application conflicts as well as depending on a minimal number of third party library !<br/>
         <br/><br/>
             The library is fully integrated with Maven 2 and validated with Tapestry version 5.2.x.<br/><br/>
-            Please have a look to the <a href="getting_started.html">Getting Started</a> documentation to learn how to setup and use our components in 2 minutes !
+            Please have a look at the <a href="getting_started.html">Getting Started</a> documentation to learn how to setup and use our components in 2 minutes !
       </p>
     </section>
     
@@ -29,7 +29,7 @@
      	<ul>
      		<li><b>Easy</b> to use</li>
      		<li><b>Fast</b> integration</li>
-     		<li>Focus on enterprises web applications <b>real needs</b>, based on our experience</li>
+     		<li>Focuses on the <b>real needs</b> of web applications, based on our experience</li>
      		<li><b>Fully skinned</b>, along with a new skin for core Tapestry 5 components</li>
      		<li>Only <b>2 dependencies</b> : commons-lang and commons-collection</li>
      		<li><b>Avoid conflicts</b> with other libraries by full prefixing (JavaScript/CSS)</li>
@@ -52,7 +52,7 @@
             	<li><b>Accordion :</b> Show/Hide some content with animation</li>
             	<li><b>AjaxLoader :</b> Load a content with Ajax, displaying a loader icon</li>
             	<li><b>Border :</b> A simple skinned border</li>
-            	<li><b>ColorPicker :</b> Choose a Color and get it easily server side</li>
+            	<li><b>ColorPicker :</b> Choose a Color and get it easily on the server side</li>
             	<li><b>HideablePanel :</b> Show/Hide a left side Panel</li>
             	<li><b>SecurePassword :</b> Enter a Password without typing characters</li>
             	<li><b>Slider :</b> Select a value on a range using a Slider</li>
@@ -61,13 +61,13 @@
             	<li><b>Tooltip :</b> Display all kind of tooltips in your page</li>
             </ul>
          <h3>Mixins</h3>
-            Some mixins provides additional features to existing components:<br/>
+            Some mixins provide additional features to existing components:<br/>
             <ul>
             	<li><b>Dialog :</b> Display a dialog to print information or confirmation on user action.</li>
-            	<li><b>SelectLoader :</b> Load a <i>select</i> content options according to a first <i>select</i> component selection.</li>
+            	<li><b>SelectLoader :</b> Load <i>select</i> content options according to a first <i>select</i> component selection.</li>
             </ul>
          <h3>Skin</h3>
-            The core Tapestry components have been re skinned to fit easier inside any application.   
+            The core Tapestry components have been re skinned to fit better in any application.   
       </p>
     </section>
 

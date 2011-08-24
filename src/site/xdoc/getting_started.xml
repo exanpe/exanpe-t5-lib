@@ -11,7 +11,7 @@
   <body>
   
      <section name="Requirements">
-        The library usage requires nothing more than a standard Tapestry 5 application :
+       Use of the library requires nothing more than a standard Tapestry 5 application :
         <ul>
             <li>Java 1.5 (as Tapestry 5 do)</li>
             <li>Tapestry 5.2.x</li>
@@ -28,7 +28,7 @@
       <ul>
         <li>Open the pom.xml in your library project </li>
         <li>Declare a Tapestry 5 dependency (obviously we do not import one)</li>
-        <li>Paste the following configuration is your plugins descriptor :
+        <li>Paste the following configuration is your Maven descriptor :
         
             <source>
     <![CDATA[ 
@@ -63,7 +63,7 @@
 
     <section name="Start coding !">
         Your are now ready to take advantage of all the components provided by the library<br/>
-        Have a look to our <a href="http://exanpe-t5-lib.appspot.com/">Demo</a> and the <a href="reference.html">Reference</a> page detailing each component usage.  
+        Have a look at our <a href="http://exanpe-t5-lib.appspot.com/">Demo</a> and at the <a href="reference.html">Reference</a> page detailing each component usage.  
     </section>
 
   </body>
