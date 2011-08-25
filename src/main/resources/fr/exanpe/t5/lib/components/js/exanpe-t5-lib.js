@@ -1221,8 +1221,9 @@ Tapestry.Initializer.dialogBuilder = function(data){
  * @param {String} url the url used to execute AJAX request.
  * @param {Boolean} autoLoad to Load the URL or not on dom ready.
  * @param {Boolean} showPanel to show the panel on request, or not.
+ * @param {Boolean} highlight to highlight result, after loading, or not.
  */
-Exanpe.AjaxLoader = function(id, message, image, width, url, autoLoad, showPanel) {
+Exanpe.AjaxLoader = function(id, message, image, width, url, autoLoad, showPanel, highlight) {
 	/**
 	 * The id of the instance
 	 */
@@ -1262,6 +1263,11 @@ Exanpe.AjaxLoader = function(id, message, image, width, url, autoLoad, showPanel
 	 * Panel shown on ajax request
 	 */
 	this.yuiPanel = null;
+	
+	/**
+	 * Highlight the result, after loading, or not.
+	 */
+	this.highlight = highlight;
 	
 	/**
 	 * Current request
@@ -1314,14 +1320,37 @@ Exanpe.AjaxLoader.prototype.getResponseEl = function(itemId){
 };
 
 /**
+ * Highlight the result after loading, or not (fade-in animation effect).
+ * @param {int} start the opacity value used to begin animation on the target result
+ * @param {int} end the opacity value used to end animation on the target result
+ * @param {float} duration the speed of animation
+ * @private
+ */
+Exanpe.AjaxLoader.prototype._highlight = function(start, end, duration){
+	
+	// Target DIV to highlight
+	var target = this.getResponseEl(this.id);
+	
+	YAHOO.util.Dom.setStyle(target, 'opacity', start);
+	var anim = new YAHOO.util.Anim(target, 
+				{opacity: {from: start, to: end }}, 
+				duration, 
+				YAHOO.util.Easing.easeIn);
+	
+	// Fire animation
+	anim.animate();
+};
+
+/**
  * Execute the Ajax query responsible for loading the body of the component.
- * Can be executed on demand
+ * Can be executed on demand.
  */
 Exanpe.AjaxLoader.prototype.load = function()
 {
 	var showPanel = this.showPanel;
 	var panel = this.yuiPanel;//or null if none
 	var ajaxLoader = this;
+	var highlight = this.highlight;
 	
 	// Target DIV to update
 	var target = this.getResponseEl(this.id);
@@ -1341,6 +1370,10 @@ Exanpe.AjaxLoader.prototype.load = function()
 		target.innerHTML = result;
 		if(showPanel){
 			panel.hide();
+		}
+		
+		if(highlight){
+			ajaxLoader._highlight(0, 1, 1);
 		}
 	};
 	
@@ -1417,7 +1450,7 @@ Exanpe.AjaxLoader.prototype._init = function() {
  * @static
  */
 Tapestry.Initializer.ajaxLoaderBuilder = function(data){
-	var ajaxLoader = new Exanpe.AjaxLoader(data.id, data.message, data.image, data.width, data.url, data.autoLoad, data.showPanel);
+	var ajaxLoader = new Exanpe.AjaxLoader(data.id, data.message, data.image, data.width, data.url, data.autoLoad, data.showPanel, data.highlight);
 	window[data.id] = ajaxLoader;
 	ajaxLoader._init();
 };

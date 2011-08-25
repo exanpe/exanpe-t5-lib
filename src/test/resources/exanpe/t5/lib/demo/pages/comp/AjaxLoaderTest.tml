@@ -19,7 +19,7 @@
 		</ex:ajaxLoader>
 		
 		
-		<ex:ajaxLoader t:id="loader3" message="literal:Loading..." autoLoad="false" showPanel="false">
+		<ex:ajaxLoader t:id="loader3" message="literal:Loading..." autoLoad="false" showPanel="false" highlight="true">
 			${date}
 		</ex:ajaxLoader>
 		<input type="button" onclick="loader3.load()" value="reload"/>

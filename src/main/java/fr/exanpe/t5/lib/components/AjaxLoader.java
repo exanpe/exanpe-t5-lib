@@ -73,6 +73,12 @@ public class AjaxLoader
     @Parameter(value = "true", defaultPrefix = BindingConstants.LITERAL)
     private Boolean showPanel;
 
+    /**
+     * Decide to highlight the result at the end of the loading, or not.
+     */
+    @Parameter(value = "false", defaultPrefix = BindingConstants.LITERAL)
+    private Boolean highlight;
+
     @Property
     private Link link;
 
@@ -137,6 +143,7 @@ public class AjaxLoader
         data.accumulate("url", link.toURI());
         data.accumulate("autoLoad", autoLoad);
         data.accumulate("showPanel", showPanel);
+        data.accumulate("highlight", highlight);
         return data;
     }
 
