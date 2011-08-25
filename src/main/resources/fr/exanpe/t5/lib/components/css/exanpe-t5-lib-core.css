@@ -101,42 +101,26 @@ table.hidden {
 
 /** Border **/
 
-.exanpe-bor{
+.exanpe-bor {
 	
 }
 
-.exanpe-bor-top{
-}
-
-.exanpe-bor-topLeft{
+.exanpe-bor-topLeft, .exanpe-bor-topRight, .exanpe-bor-bottomLeft, .exanpe-bor-bottomRight {
 	width:100%;
 }
 
-.exanpe-bor-topRight{
-	width:100%;
-}
-.exanpe-bor-midLeft{
-	height:100%;
-}
-.exanpe-bor-midRight{
+.exanpe-bor-midLeft, .exanpe-bor-midRight, .exanpe-bor-mid {
 	height:100%;
 }
 
-.exanpe-bor-mid{
-	height: 100%;
+.exanpe-bor-top, .exanpe-bor-topLeft, .exanpe-bor-topRight, .exanpe-bor-bottom, .exanpe-bor-bottomLeft, .exanpe-bor-bottomRight {
+	height: 10px;
 }
 
-.exanpe-bor-bottom{
+.exanpe-bor-top, .exanpe-bor-middle, .exanpe-bor-bottom {
+	margin-left: 10px;
+	margin-right: 10px;
 }
-
-.exanpe-bor-bottomLeft{
-	width:100%;
-}
-
-.exanpe-bor-bottomRight{
-	width:100%;
-}
-
 
 /** SecurePassword **/
 
