@@ -372,16 +372,13 @@
 
 /** Style for AjaxLoader panel **/
 .exanpe-ajaxloader .yui-panel {
-    border-color: #808080;
-    border-style: solid;
-    border-width: 1px 0;
+	text-align: center;
 }
 
-/** Style for AjaxLoader panel header **/
-.exanpe-ajaxloader .yui-panel .hd {
-	background: #FDFDFD url("../img/common/exanpe-gradient-bg.png") repeat-x top;
-	height: 25px;
+/** Style for AjaxLoader message displayed during loading **/
+.exanpe-ajaxloader-panel-content {
 	text-align: center;
+	display: block;
 }
 
 /** Style for AjaxLoader panel body **/

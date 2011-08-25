@@ -56,7 +56,8 @@ public class AjaxLoader
     /**
      * The width of the panel, in pixel.
      */
-    @Parameter(value = "300", required = true, defaultPrefix = BindingConstants.LITERAL)
+    @Property
+    @Parameter(value = "150", required = true, defaultPrefix = BindingConstants.LITERAL)
     private int width;
 
     /**
@@ -68,6 +69,7 @@ public class AjaxLoader
     /**
      * Decide to show the panel during the ajax load, or not.
      */
+    @Property
     @Parameter(value = "true", defaultPrefix = BindingConstants.LITERAL)
     private Boolean showPanel;
 

@@ -1,10 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <t:container
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
-	xmlns:p="tapestry:parameter">
+	xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
 	
 	<t:block t:id="loading">
 		<div id="exanpe-ajaxloader-response-${clientId}"> </div>
 	</t:block>
+
+	<t:if test="showPanel">
+		<span id="exanpe-ajaxloader-panel-${clientId}">
+			<ex:Border style="width:${width}px;">
+				<span class="exanpe-ajaxloader-panel-content" id="exanpe-ajaxloader-panel-content-${clientId}"></span>		
+			</ex:Border>
+		</span>
+		<p:else>
+			<span id="exanpe-ajaxloader-panel-content-${clientId}"></span>
+		</p:else>
+	</t:if>
 
 </t:container>

@@ -1270,11 +1270,37 @@ Exanpe.AjaxLoader = function(id, message, image, width, url, autoLoad, showPanel
 };
 
 /**
- * Method to get the id of the YUI Panel component.
- * @return {String} the YUI Panel id
+ * AjaxLoader Panel element id prefix
+ * @constant
+ * @static
+ * @private
+ */
+Exanpe.AjaxLoader.PANEL_ID_PREFIX = "exanpe-ajaxloader-panel-";
+
+/**
+ * AjaxLoader Panel content element id prefix
+ * @constant
+ * @static
+ * @private
+ */
+Exanpe.AjaxLoader.PANEL_CONTENT_ID_PREFIX = "exanpe-ajaxloader-panel-content-";
+
+/**
+ * Method to get the id of the Panel element used by YUI.
+ * @return {String} the Panel element id
+ * @private
  */
 Exanpe.AjaxLoader.prototype.getPanelId = function(){
-	return this.id + "_panel";
+	return Exanpe.AjaxLoader.PANEL_ID_PREFIX + this.id;
+};
+
+/**
+ * Method to get the id of the Panel content element used to display loading message.
+ * @return {String} the Panel content element id
+ * @private
+ */
+Exanpe.AjaxLoader.prototype.getPanelContentId = function(){
+	return Exanpe.AjaxLoader.PANEL_CONTENT_ID_PREFIX + this.id;
 };
 
 /**
@@ -1354,6 +1380,9 @@ Exanpe.AjaxLoader.prototype.load = function()
  */
 Exanpe.AjaxLoader.prototype._init = function() {
 	
+	// The Panel content element display the loading message
+	var panelContentEl = YAHOO.util.Dom.get(this.getPanelContentId());
+	
 	if(this.showPanel){
 		// Initialise YUI Panel
 		this.yuiPanel = new YAHOO.widget.Panel(this.getPanelId(), 
@@ -1368,9 +1397,12 @@ Exanpe.AjaxLoader.prototype._init = function() {
 			 });
 		
 		// Render the panel
-		this.yuiPanel.setHeader(this.message);
-		this.yuiPanel.setBody("<img src='" + this.image + "' />");
+		panelContentEl.innerHTML = "<img src='" + this.image + "' alt='' border='' /> <br />" + this.message;
 		this.yuiPanel.render(this.id);
+	}
+	else{
+		YAHOO.util.Dom.setStyle(panelContentEl,"visibility","hidden");		
+		YAHOO.util.Dom.setStyle(panelContentEl,"position","absolute");
 	}
 	
 	if(this.autoLoad){
