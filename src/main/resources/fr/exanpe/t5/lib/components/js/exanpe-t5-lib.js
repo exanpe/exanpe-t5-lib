@@ -1798,7 +1798,7 @@ Exanpe.SelectLoader.prototype.executeRequest = function (value){
 	var selectLoader = this;
 	
 	if(this.request){
-		YAHOO.util.Connect.abord(this.request);
+		YAHOO.util.Connect.abort(this.request);
 	}
 	
 	// Ajax Failure handler
