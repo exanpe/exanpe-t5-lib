@@ -5,7 +5,9 @@ package fr.exanpe.t5.lib.components;
 
 import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.BindingConstants;
+import org.apache.tapestry5.ComponentEventCallback;
 import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.Link;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Events;
 import org.apache.tapestry5.annotations.Import;
@@ -14,9 +16,11 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.RequestParameter;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.internal.util.Holder;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
+import org.slf4j.Logger;
 
 import fr.exanpe.t5.lib.constants.ExanpeEventConstants;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
@@ -32,7 +36,7 @@ import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
  */
 @Import(library =
 { "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/dragdrop/dragdrop-min.js", "${exanpe.yui2-base}/slider/slider-min.js",
-        "${exanpe.yui2-base}/connection/connection-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
+        "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.yui2-base}/json/json-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @Events(ExanpeEventConstants.SLIDER_EVENT)
 public class Slider
@@ -79,7 +83,7 @@ public class Slider
      */
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "true")
-    private boolean displayCurrentValue;
+    private Boolean displayCurrentValue;
 
     /**
      * If displayCurrentValue=true, specify a default html element id to display the value into.<br/>
@@ -102,12 +106,30 @@ public class Slider
     @Parameter(defaultPrefix = BindingConstants.ASSET, value = "img/slider/thumb-e.gif")
     private Asset verticalCursor;
 
+    /**
+     * Decide if the update is made in Ajax mode, or not
+     */
+    @Parameter(value = "false", defaultPrefix = BindingConstants.LITERAL)
+    private Boolean ajax;
+
+    /**
+     * Use with ajax parameter to allow update a zone element
+     */
+    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    private String zone;
+
     @Property
     private String uniqueId;
 
     @Property
     @SuppressWarnings("unused")
     private boolean displayEmbeddedValue;
+
+    @Property
+    private Link link;
+
+    @Inject
+    private Logger log;
 
     /**
      * Request param send (in Ajax) at the end of the slide operation.
@@ -118,6 +140,11 @@ public class Slider
      * Prefix for default display value container
      */
     private static final String SLIDER_LABEL_PREFIX = "slider-label-";
+
+    /**
+     * Event triggered in Ajax mode.
+     */
+    private static final String EVENT_NAME = "slideEnd";
 
     @Inject
     private ComponentResources resources;
@@ -140,15 +167,35 @@ public class Slider
     @AfterRender
     void end()
     {
+        link = resources.createEventLink(EVENT_NAME);
         JSONObject data = buildJSONData();
         javascriptSupport.addInitializerCall("sliderBuilder", data);
     }
 
-    @OnEvent(value = ExanpeEventConstants.SLIDER_EVENT)
-    void onSlideEnd(@RequestParameter(PARAM_NAME)
+    @OnEvent(value = EVENT_NAME)
+    Object onSlideEnd(@RequestParameter(PARAM_NAME)
     Object newValue)
     {
+        log.debug("Ajax value received: " + value);
         value = newValue;
+        final Holder<Object> holder = Holder.create();
+        final ComponentEventCallback<Object> callback = new ComponentEventCallback<Object>()
+        {
+            public boolean handleResult(final Object result)
+            {
+                holder.put(result);
+                return true;
+            }
+        };
+
+        log.debug("Triggering event to container...");
+        resources.triggerEvent(ExanpeEventConstants.SLIDER_EVENT, new Object[]
+        { value }, callback);
+
+        final Object result = holder.get();
+
+        log.debug("Sending result from container...");
+        return result;
     }
 
     private JSONObject buildJSONData()
@@ -166,6 +213,9 @@ public class Slider
         data.accumulate("orientation", orientation.toString());
         data.accumulate("horizontalCursorImage", horizontalCursor.toClientURL());
         data.accumulate("verticalCursorImage", verticalCursor.toClientURL());
+        data.accumulate("ajax", ajax);
+        data.accumulate("url", link.toURI());
+        data.accumulate("zone", zone);
         return data;
     }
 

@@ -561,8 +561,11 @@ Tapestry.Initializer.securePasswordBuilder = function(data){
  * @param {int} min the minimum slider value
  * @param {int} max the maximum slider value
  * @param {String} displayId the HTML element id to display the value, or null if no display
+ * @param {Boolean} ajax whether the Slider update is executed in Ajax mode, or not
+ * @param {String} url the url used to execute AJAX request
+ * @param {String} zone the Tapestry zone element to update at the end of the ajax request
  */
-Exanpe.Slider = function(id, min, max, displayId){
+Exanpe.Slider = function(id, min, max, displayId, ajax, url, zone){
 	/**
 	 * The id of the instance
 	 */
@@ -584,14 +587,34 @@ Exanpe.Slider = function(id, min, max, displayId){
 	this.displayId = displayId;
 	
 	/**
-	 * Nombre de pixels pour 1 unit�
+	 * Pixels number for 1 unit
 	 */
 	this.unit = Exanpe.Slider.LENGTH/(this.max-this.min);
 	
 	/**
-	 * this wrapped yui slider instance
+	 * This wrapped yui slider instance
 	 */
 	this.yui = null;
+	
+	/**
+	 * Is ajax mode or not
+	 */
+	this.ajax = ajax;
+	
+	/**
+	 * Used to execute an AJAX request for updating the Slider
+	 */
+	this.url = url;
+	
+	/**
+	 * Used to update a Tapestry zone element
+	 */
+	this.zone = zone;
+	
+	/**
+	 * Current request
+	 */
+	this.request = null;
 };
 
 /**
@@ -633,6 +656,15 @@ Exanpe.Slider.SLIDER_THUMB_PREFIX = "slider-thumb-";
  * @private
  */
 Exanpe.Slider.SLIDER_BACKGROUND_PREFIX = "slider-bg-";
+
+/**
+ * Request parameter used to send the slide offset value in Ajax mode
+ * @see Java Slider.PARAM_NAME
+ * @constant
+ * @static
+ * @private
+ */
+Exanpe.Slider.PARAM_NAME = "value";
 
 /**
  * Slider length (width of height depanding on orientation)
@@ -711,6 +743,56 @@ Exanpe.Slider.prototype._getDisplayEl = function() {
 };
 
 /**
+ * Execute an Ajax request to update the slider value
+ * @private
+ */
+Exanpe.Slider.prototype._ajaxSliderUpdate = function (){ 	
+	
+	var slider = this;
+	
+	// Ajax Failure handler
+	var failureHandler = function(o){
+		slider.request = null;
+		Exanpe.Log.error("Could not process ajax Slider update");
+	};
+
+	// Ajax Success handler
+	var successHandler = function(o){
+		if (slider.zone){
+			var zone = YAHOO.util.Dom.get(slider.zone);
+			var json = YAHOO.lang.JSON.parse(o.responseText);
+			var result = json.content;
+			if (result){
+				zone.innerHTML = result;
+				Tapestry.ElementEffect.highlight(zone);
+			}
+		}
+	};
+
+	// Callback objects
+	var callback = 
+	{
+		success: successHandler,
+		failure: failureHandler
+	};
+
+	var request = YAHOO.util.Connect.asyncRequest(
+			"GET",
+			this.url + "?" + Exanpe.Slider.PARAM_NAME + "=" + this.value, 
+			callback, 
+			null
+	);
+	
+	// Ajax protection
+	if(YAHOO.util.Connect.isCallInProgress(this.request)){
+	    YAHOO.util.Connect.abort(request);
+	}
+	else {
+		this.request = request;
+	}
+};
+
+/**
  * Initialize the YUI Slider component.
  * @private
  */
@@ -731,6 +813,9 @@ Exanpe.Slider.prototype._init = function() {
 	this.yui.subscribe("change", function (newOffset) {
 		slider.setValue(slider._pixelToValue(newOffset), true);
 	});
+	if(this.ajax){
+		this.yui.subscribe("slideEnd", Exanpe.Slider.prototype._ajaxSliderUpdate, this, true);
+	}
 };
 
 /**
@@ -740,7 +825,7 @@ Exanpe.Slider.prototype._init = function() {
  * @static
  */
 Tapestry.Initializer.sliderBuilder = function(data){
-	var slider = new Exanpe.Slider(data.id, data.min, data.max, data.displayId);
+	var slider = new Exanpe.Slider(data.id, data.min, data.max, data.displayId, data.ajax, data.url, data.zone);
 	
 	// The slider can move min pixels up or left 
 	var topLeftConstraint = 0; 

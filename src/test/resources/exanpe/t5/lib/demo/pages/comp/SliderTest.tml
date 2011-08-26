@@ -1,6 +1,6 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
 	xmlns:ex="tapestry-library:exanpe">
-  	
+
   <t:form>	
 	<span>slider1 value: ${sliderValue}</span>
   	<div>
@@ -15,9 +15,12 @@
   	</div>
   	<br /><br />	
   	
-  	<span>slider3 value: ${sliderValue3}</span>
+	<t:zone t:id="zone" id="zone">
+		<span class="colored">slider3 value: ${sliderValue3}</span>
+	</t:zone>
+  	
   	<div>
-  		<ex:slider t:id="slider3" displayCurrentValue="false" value="sliderValue3" tickSize="30" orientation="vertical" />
+  		<ex:slider t:id="slider3" displayCurrentValue="false" value="sliderValue3" tickSize="30" orientation="vertical" ajax="true" zone="zone" />
   	</div>
   	<br /><br />
   	
