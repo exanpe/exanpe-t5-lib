@@ -14,7 +14,7 @@
 
 	<scm>
 		<connection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</connection>
-		<developerConnection>scm:git:git@github.com:exanpe/exanpe-t5-lib.gitt</developerConnection>
+		<developerConnection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</developerConnection>
 		<url>https://github.com/exanpe/exanpe-t5-lib</url>
 	</scm>
 
