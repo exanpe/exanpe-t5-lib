@@ -55,7 +55,7 @@
             
   
     
-            &nbsp;| Last Published: 08-23-2011
+            &nbsp;| Last Published: 09-03-2011
             </div>
       <div class="clear">
         <hr/>
@@ -126,7 +126,7 @@
           </li>
               
     <li class="none">
-                    <a href="TODO">Exanpe GitHub</a>
+                    <a href="https://github.com/exanpe/exanpe-t5-lib" class="externalLink">Exanpe GitHub</a>
           </li>
           </ul>
               <h5>Project Documentation</h5>
@@ -189,22 +189,22 @@
     <div id="bodyColumn">
       <div id="contentBox">
         <div class="section"><h2><a name="top">Frequently Asked Questions</a></h2>
-<ol type="1"><li><a href="#yui">Can you tell more about YUI integration ?</a></li>
+<ol type="1"><li><a href="#yui">Can you tell me more about YUI integration ?</a></li>
 <li><a href="#ie6">Why no Internet Explorer 6 support ?</a></li>
-<li><a href="#cssskin">Where can i find the CSS file to help me customizing ?</a></li>
-<li><a href="#demoslow">Why is the demo so slow to access ?</a></li>
+<li><a href="#cssskin">Where can I find the CSS file to help me customizing the library?</a></li>
+<li><a href="#demoslow">Why is the demo access so slow?</a></li>
 </ol>
 </div>
-<dl><dt><a name="yui">Can you tell more about YUI integration ?</a></dt>
+<dl><dt><a name="yui">Can you tell me more about YUI integration ?</a></dt>
 <dd>
         <p>
-          Exanpe library include YUI 2 JavaScript modules as basis for almost all components.<br></br>
+          Exanpe library includes YUI 2 JavaScript modules as basis for almost all components.<br></br>
           The current version of YUI embedded is 2.9.0.<br></br>
           The YUI resources are automatically loaded through @Import over the components classes.<br></br>
-           Obviously, only the component's required resources are loaded, not all YUI.<br></br><br></br>
+           Obviously, only the components required resources are loaded, not all YUI.<br></br><br></br>
            Regardless the embedding of the JavaScript framework, Exanpe provides a way to include your own YUI2 distribution. 
            This can be really easily set up by contributing the symbol <b>ExanpeSymbols.YUI2_BASE</b> in your Module class.<br></br>
-           The requirement is that you own a YUI distribution package as standards, containing all the Exanpe dependencies.<br></br>.
+           The requirement is that you own a YUI distribution packaged as standards, containing all the Exanpe dependencies.<br></br>.
            <div class="source"><pre>
            public static void contributeApplicationDefaults(MappedConfiguration&lt;String, String&gt; configuration)
    		        configuration.add(ExanpeSymbols.YUI2_BASE, &quot;context:/js/yui/mydistrib/&quot;);
@@ -234,24 +234,25 @@
 <dt><a name="ie6">Why no Internet Explorer 6 support ?</a></dt>
 <dd>
         <p>
-         	Internet Explorer 6 is now a 10 years old browser, and not the best one.<br></br>
-         	It is such a mess and causes so much pain that, as Internet Explorer 5.5 and lower, we have not tested and would be scared to see the result.<br></br>
+         	Internet Explorer 6 is now a 10 year old browser, and not the best one.<br></br>
+         	It is such a mess and causes so much pain that, as for Internet Explorer 5.5 and previous versions, we have not tested the components and would be scared to see the result.<br></br>
    			Sorry, move on !
        </p>
       <table border="0"><tr><td align="right"><a href="#top">[top]</a></td></tr></table><hr />
 </dd>
-<dt><a name="cssskin">Where can i find the CSS file to help me customizing ?</a></dt>
+<dt><a name="cssskin">Where can I find the CSS file to help me customizing the library?</a></dt>
 <dd>
         <p>
          	You can download the CSS skin file, with comments, <a href="data/exanpe-t5-lib-skin.css">here</a>.
        </p>
       <table border="0"><tr><td align="right"><a href="#top">[top]</a></td></tr></table><hr />
 </dd>
-<dt><a name="demoslow">Why is the demo so slow to access ?</a></dt>
+<dt><a name="demoslow">Why is the demo access so slow?</a></dt>
 <dd>
         <p>
          	Our demo is hosted by Google App Engine (GAE). We are limited by daily quotas and instances restrictions.<br></br>
-         	A way for you to test easily would be to download our war (@see github exanpe-t5-demo project TODO link) and deploy it anywhere.<br></br>
+         	A way for you to test it easily would be to have a look at our examples sources (@see github <a href="https://github.com/exanpe/exanpe-t5-demo">exanpe-t5-demo</a> project) 
+         	and test them anywhere or download the war file <a href="https://github.com/downloads/exanpe/exanpe-t5-demo/exanpe-t5-demo.war">here</a>.<br></br>
          	We apologize for any inconvenience about this but we do not own a J2EE server on the web. Contact us for any offer :)
        </p>
       <table border="0"><tr><td align="right"><a href="#top">[top]</a></td></tr></table></dd>

@@ -254,7 +254,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Exanpe.Slider.html#constructor">Exanpe.Slider</a></b>(id, min, max, displayId)
+								<b><a href="../symbols/Exanpe.Slider.html#constructor">Exanpe.Slider</a></b>(id, min, max, displayId, ajax, url, zone)
 							</div>
 							<div class="description">Constructor</div>
 						</td>
@@ -276,6 +276,16 @@ ul.inheritsList
 						</tr>
 					</thead>
 					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Exanpe.Slider.html#ajax">ajax</a></b>
+								</div>
+								<div class="description">Is ajax mode or not</div>
+							</td>
+						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
@@ -321,9 +331,29 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
+								<b><a href="../symbols/Exanpe.Slider.html#request">request</a></b>
+								</div>
+								<div class="description">Current request</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
 								<b><a href="../symbols/Exanpe.Slider.html#unit">unit</a></b>
 								</div>
-								<div class="description">Nombre de pixels pour 1 unit�</div>
+								<div class="description">Pixels number for 1 unit</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Exanpe.Slider.html#url">url</a></b>
+								</div>
+								<div class="description">Used to execute an AJAX request for updating the Slider</div>
 							</td>
 						</tr>
 					
@@ -333,7 +363,17 @@ ul.inheritsList
 								<div class="fixedFont">
 								<b><a href="../symbols/Exanpe.Slider.html#yui">yui</a></b>
 								</div>
-								<div class="description">this wrapped yui slider instance</div>
+								<div class="description">This wrapped yui slider instance</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Exanpe.Slider.html#zone">zone</a></b>
+								</div>
+								<div class="description">Used to update a Tapestry zone element</div>
 							</td>
 						</tr>
 					
@@ -391,7 +431,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Exanpe.Slider</b>(id, min, max, displayId)
+						<b>Exanpe.Slider</b>(id, min, max, displayId, ajax, url, zone)
 				</div>
 				
 				<div class="description">
@@ -430,6 +470,24 @@ ul.inheritsList
 							</dt>
 								<dd>the HTML element id to display the value, or null if no display</dd>
 						
+							<dt>
+								<span class="light fixedFont">{Boolean}</span>  <b>ajax</b>
+								
+							</dt>
+								<dd>whether the Slider update is executed in Ajax mode, or not</dd>
+						
+							<dt>
+								<span class="light fixedFont">{String}</span>  <b>url</b>
+								
+							</dt>
+								<dd>the url used to execute AJAX request</dd>
+						
+							<dt>
+								<span class="light fixedFont">{String}</span>  <b>zone</b>
+								
+							</dt>
+								<dd>the Tapestry zone element to update at the end of the ajax request</dd>
+						
 						</dl>
 					
 					
@@ -447,6 +505,29 @@ ul.inheritsList
 				<div class="sectionTitle">
 					Field Detail
 				</div>
+				
+					<a name="ajax"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>ajax</b>
+					
+					</div>
+					<div class="description">
+						Is ajax mode or not
+						
+						
+					</div>
+					
+					
+				
+					
+						
+						
+						
+						
+
+					<hr />
 				
 					<a name="displayId"> </a>
 					<div class="fixedFont">
@@ -540,6 +621,29 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name="request"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>request</b>
+					
+					</div>
+					<div class="description">
+						Current request
+						
+						
+					</div>
+					
+					
+				
+					
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="unit"> </a>
 					<div class="fixedFont">
 					
@@ -548,7 +652,30 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Nombre de pixels pour 1 unit�
+						Pixels number for 1 unit
+						
+						
+					</div>
+					
+					
+				
+					
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="url"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>url</b>
+					
+					</div>
+					<div class="description">
+						Used to execute an AJAX request for updating the Slider
 						
 						
 					</div>
@@ -571,7 +698,30 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						this wrapped yui slider instance
+						This wrapped yui slider instance
+						
+						
+					</div>
+					
+					
+				
+					
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="zone"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>zone</b>
+					
+					</div>
+					<div class="description">
+						Used to update a Tapestry zone element
 						
 						
 					</div>
@@ -689,7 +839,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Tue Aug 23 2011 20:29:13 GMT+0200 (CEST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Sat Sep 03 2011 15:44:45 GMT+0200 (CEST)
 		</div>
 	</body>
 </html>
