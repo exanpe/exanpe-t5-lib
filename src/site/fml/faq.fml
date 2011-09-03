@@ -60,7 +60,7 @@
         <p>
          	Our demo is hosted by Google App Engine (GAE). We are limited by daily quotas and instances restrictions.<br/>
          	A way for you to test it easily would be to have a look at our examples sources (@see github <a href="https://github.com/exanpe/exanpe-t5-demo">exanpe-t5-demo</a> project) 
-         	and test them anywhere or download the war TODO lien vers le war ??.<br/>
+         	and test them anywhere or download the war file <a href="https://github.com/downloads/exanpe/exanpe-t5-demo/exanpe-t5-demo.war">here</a>.<br/>
          	We apologize for any inconvenience about this but we do not own a J2EE server on the web. Contact us for any offer :)
         </p>
       </answer>
