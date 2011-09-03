@@ -1,9 +1,12 @@
 Exanpe T5 Lib
-=============
+-------------
 
 Exanpe T5 Lib is a library of components design for the J2EE Tapestry 5 framework, developed by the Exanpe organization.
+
 The purpose of this library is to provide additional components to Tapestry 5 as well as skinning the native components.
+
 Our final purpose is to provide a fully harmonized set of components, ready to be included in your web application.
+
 Easy to use and to integrate, this library target the real needs of any web application, taking a real care of possible application conflicts as well as depending on a minimal number of third party library !
 
 The library is fully :
