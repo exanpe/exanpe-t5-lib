@@ -1,4 +1,20 @@
 /**
+ * Copyright 2011 EXANPE <exanpe@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
  * 	Modifiy this file to customize the components' rendering
  */
  
@@ -125,54 +141,50 @@
 }
 
 /********* Border **********/
-/** TODO everything **/
-.exanpe-bor{
-	
+
+/** Border Top Left **/
+.exanpe-bor-topLeft {
+	background: url('../img/bor/topLeft.png') transparent no-repeat top left;
 }
 
-.exanpe-bor-top{
-	height:5px;
-	margin-left:5px;
-	margin-right:5px;
+/** Border Top **/
+.exanpe-bor-top {
 	background:url('../img/bor/top.png') transparent repeat-x top;
 }
 
-.exanpe-bor-topLeft{
-	height:5px;
-	background:url('../img/bor/topLeft.png') transparent no-repeat top left;
+/** Border Top Right **/
+.exanpe-bor-topRight {
+	background: url('../img/bor/topRight.png') transparent no-repeat top right;
 }
 
-.exanpe-bor-topRight{
-	height:5px;
-	background:url('../img/bor/topRight.png') transparent no-repeat top right;
-}
-.exanpe-bor-midLeft{
-	background:url('../img/bor/midLeft.png') transparent repeat-y left;
-}
-.exanpe-bor-midRight{
-	background:url('../img/bor/midRight.png') transparent repeat-y right;
+/** Border Middle Left **/
+.exanpe-bor-middleLeft {
+	background: url('../img/bor/middleLeft.png') transparent repeat-y left;
 }
 
-.exanpe-bor-mid{
-	padding-left:5px;
-	padding-right:5px;	
-}
-/* TODO la flemme !! */
-.exanpe-bor-bottom{
-	height:5px;
-	margin-left:5px;
-	margin-right:5px;
-	background:url('../img/bor/top.png') transparent repeat-x top;
+/** Border Middle **/
+.exanpe-bor-middle {
+	background: #F6F6F6;	
 }
 
-.exanpe-bor-bottomLeft{
-	height:5px;
-	background:url('../img/bor/topLeft.png') transparent no-repeat top left;
+/** Border Middle Right **/
+.exanpe-bor-middleRight {
+	background: url('../img/bor/middleRight.png') transparent repeat-y right;
 }
 
-.exanpe-bor-bottomRight{
-	height:5px;
-	background:url('../img/bor/topRight.png') transparent no-repeat top right;
+/** Border Bottom Left **/
+.exanpe-bor-bottomLeft {
+	background: url('../img/bor/bottomLeft.png') transparent no-repeat top left;
+}
+
+/** Border Bottom **/
+.exanpe-bor-bottom {
+	background: url('../img/bor/bottom.png') transparent repeat-x top;
+}
+
+/** Border Bottom Right **/
+.exanpe-bor-bottomRight {
+	background: url('../img/bor/bottomRight.png') transparent no-repeat top right;
 }
 
 /********* Slider **********/
@@ -376,16 +388,13 @@
 
 /** Style for AjaxLoader panel **/
 .exanpe-ajaxloader .yui-panel {
-    border-color: #808080;
-    border-style: solid;
-    border-width: 1px 0;
+	text-align: center;
 }
 
-/** Style for AjaxLoader panel header **/
-.exanpe-ajaxloader .yui-panel .hd {
-	background: #FDFDFD url("../img/common/exanpe-gradient-bg.png") repeat-x top;
-	height: 25px;
+/** Style for AjaxLoader message displayed during loading **/
+.exanpe-ajaxloader-panel-content {
 	text-align: center;
+	display: block;
 }
 
 /** Style for AjaxLoader panel body **/
