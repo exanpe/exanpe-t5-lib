@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Tapestry 5 Tldgen">
+<project name="Exanpe T5 Lib">
   <bannerLeft>
     <name>Exanpe T5 Lib</name>
     <src>http://maven.apache.org/images/apache-maven-project.png</src>
-    <href>http://exanpe.free.fr/</href>
+    <href>http://exanpe.github.com/exanpe-t5-lib/</href>
   </bannerLeft>
   <bannerRight>
     <src>http://maven.apache.org/images/maven-small.gif</src>
@@ -11,9 +11,6 @@
   <publishDate position="right" format="MM-dd-yyyy"/>
   <version position="navigation-bottom"/>
   <body>
-    <links>
-      <item name="French" href="fr/index.html"/>
-    </links>
 
     <menu name="Exanpe T5 Lib">
       <item name="Presentation" href="index.html"/>
