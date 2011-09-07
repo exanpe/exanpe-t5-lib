@@ -83,7 +83,6 @@ public class Tab implements ClientElement
     private String uniqueId;
 
     @Property
-    @SuppressWarnings("unused")
     private String cssClassName;
 
     /**
