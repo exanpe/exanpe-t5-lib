@@ -74,16 +74,6 @@ public class SelectLoader
     private static final String PARAM_NAME = "value";
 
     /**
-     * Value to substring from ajax response
-     */
-    private static final String RESPONSE_ROOT_START = "<root>";
-
-    /**
-     * Value to substring from ajax response
-     */
-    private static final String RESPONSE_ROOT_END = "</root>";
-
-    /**
      * Defines the target select id to populate
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, required = true, allowNull = false)
@@ -185,7 +175,7 @@ public class SelectLoader
         {
             log.debug("Sending options to client :" + reponse);
         }
-        // substract the prefix <root> and suffix </root>
+
         return new TextStreamResponse(contentType.toString(), reponse);
     }
 
