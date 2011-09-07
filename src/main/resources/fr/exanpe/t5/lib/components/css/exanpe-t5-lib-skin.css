@@ -678,3 +678,41 @@
 .exanpe-skin div.t-beaneditor-row {
 	clear: left;
 }
+
+/**
+ * MenuBar
+ */
+/** Style for the main **/
+.exanpe-menu{
+	background : yellow;
+	border: 1px solid black;
+	line-height: 2;
+} 
+
+.exanpe-menu .exanpe-menubaritem {
+    border-right: 1px solid blue;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.exanpe-menu .yuimenubaritem-hassubmenu{
+	/* TODO background url center right arrow*/	
+}
+
+.exanpe-menu .yuimenubaritem-selected{
+	background:red;	
+}
+
+.exanpe-menu .exanpe-menuitem {
+    background:green;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.exanpe-menu .yuimenuitem-hassubmenu{
+	/* TODO background url center right arrow*/	
+}
+
+.exanpe-menu .yuimenuitem-selected{
+	background:blue;	
+}

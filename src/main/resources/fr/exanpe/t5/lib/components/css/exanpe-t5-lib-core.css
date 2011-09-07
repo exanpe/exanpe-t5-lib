@@ -467,3 +467,82 @@ table.hidden {
 	top: 155px;
 	left: 223px;
 }
+
+/**
+ * MenuBar
+ * @see YUI
+ */
+.yuimenu {
+    left: -999em;
+    top: -999em;
+}
+.yuimenubar {
+    position: static;
+}
+.yuimenu .yuimenu, .yuimenubar .yuimenu {
+    position: absolute;
+}
+.yuimenubar li, .yuimenu li {
+    list-style-type: none;
+}
+.yuimenubar ul, .yuimenu ul, .yuimenubar li, .yuimenu li, .yuimenu h6, .yuimenubar h6 {
+    margin: 0;
+    padding: 0;
+}
+.yuimenuitemlabel, .yuimenubaritemlabel {
+    text-align: left;
+    white-space: nowrap;
+}
+.yuimenubar ul {
+}
+.yuimenubar .yuimenu ul {
+}
+.yuimenubar > .bd > ul:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.yuimenubaritem {
+    float: left;
+}
+.yuimenubaritemlabel, .yuimenuitemlabel {
+    display: block;
+}
+.yuimenuitemlabel .helptext {
+    display: block;
+    font-style: normal;
+    margin: -1em 0 0 10em;
+}
+.yui-menu-shadow {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+}
+.yui-menu-shadow-visible {
+    bottom: -3px;
+    left: -3px;
+    right: -3px;
+    top: 2px;
+    visibility: visible;
+}
+.hide-scrollbars * {
+    overflow: hidden;
+}
+.hide-scrollbars select {
+    display: none;
+}
+.yuimenu.show-scrollbars, .yuimenubar.show-scrollbars {
+    overflow: visible;
+}
+.yuimenu.hide-scrollbars .yui-menu-shadow, .yuimenubar.hide-scrollbars .yui-menu-shadow {
+    overflow: hidden;
+}
+.yuimenu.show-scrollbars .yui-menu-shadow, .yuimenubar.show-scrollbars .yui-menu-shadow {
+    overflow: auto;
+}
+.yui-overlay.yui-force-redraw {
+    margin-bottom: 1px;
+}

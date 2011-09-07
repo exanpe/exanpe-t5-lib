@@ -1888,3 +1888,48 @@ Tapestry.Initializer.selectLoaderBuilder = function(data){
 	sl._init();
 	window[data.id] = sl;
 };
+
+
+/** 
+ * Constructor
+ * @class Represents a MenuBar.
+ * @param {String} id the id of the menu bar
+ * @param {YUI} yui the yui MenuBar object wrapped
+ */
+Exanpe.MenuBar = function(id, yui){
+	/**
+	 * id
+	 */
+	this.id = id;
+	
+	/**
+	 * yui wrapped
+	 */
+	this.yui = yui;
+};
+
+/**
+ * Initialize the element with yui wrapping
+ * @private
+ */
+Exanpe.MenuBar.prototype._init = function(){
+	this.yui.render();
+};
+
+/**
+ * Initializes the select loader
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.menuBarBuilder = function(data){
+	var yui = new YAHOO.widget.MenuBar(data.id, {
+		hidedelay:500,
+		autosubmenudisplay: (data.eventType == "hover"),
+		lazyload: true
+	});
+	
+	var menuBar = new Exanpe.MenuBar(data.id, yui);
+	menuBar._init();
+	window[data.id] = menuBar;
+};

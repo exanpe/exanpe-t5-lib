@@ -1,0 +1,32 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+
+
+	<ex:menubar t:id="menu">
+		<ex:menuitem label="literal:cat1">
+			<ex:submenu>
+				<ex:menuitem>
+					sub1
+					<ex:submenu>
+					<ex:menuitem>
+						sub11
+						<ex:submenu>
+						<ex:menuitem>
+							<a href="http://www.google.fr/">Google Link</a>
+						</ex:menuitem>
+						</ex:submenu>
+					</ex:menuitem>
+					</ex:submenu>
+				</ex:menuitem>
+				<ex:menuitem label="literal:sub2">
+			
+				</ex:menuitem>
+			</ex:submenu>
+		</ex:menuitem>
+		<ex:menuitem>
+			cat 2
+		</ex:menuitem>		
+	</ex:menubar>
+	
+
+</t:layout>

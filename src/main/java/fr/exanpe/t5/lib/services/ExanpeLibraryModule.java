@@ -34,6 +34,7 @@ import org.slf4j.Logger;
 import fr.exanpe.t5.lib.constants.AccordionEventTypeEnum;
 import fr.exanpe.t5.lib.constants.DialogRenderModeEnum;
 import fr.exanpe.t5.lib.constants.ExanpeSymbols;
+import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
 
@@ -59,6 +60,7 @@ public class ExanpeLibraryModule
         configuration.add(CoercionTuple.create(String.class, AccordionEventTypeEnum.class, StringToEnumCoercion.create(AccordionEventTypeEnum.class)));
         configuration.add(CoercionTuple.create(String.class, DialogRenderModeEnum.class, StringToEnumCoercion.create(DialogRenderModeEnum.class)));
         configuration.add(CoercionTuple.create(String.class, SliderOrientationTypeEnum.class, StringToEnumCoercion.create(SliderOrientationTypeEnum.class)));
+        configuration.add(CoercionTuple.create(String.class, MenuEventTypeEnum.class, StringToEnumCoercion.create(MenuEventTypeEnum.class)));
 
         // ColorPicker
         Coercion<String, Color> coercionStringColor = new Coercion<String, Color>()
