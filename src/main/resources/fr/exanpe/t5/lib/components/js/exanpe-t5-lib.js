@@ -1917,7 +1917,7 @@ Exanpe.MenuBar.prototype._init = function(){
 };
 
 /**
- * Initializes the select loader
+ * Initializes the menuBar
  * @param {Object} data the json data coming from Java class initialization
  * @private
  * @static
@@ -1932,4 +1932,77 @@ Tapestry.Initializer.menuBarBuilder = function(data){
 	var menuBar = new Exanpe.MenuBar(data.id, yui);
 	menuBar._init();
 	window[data.id] = menuBar;
+};
+
+
+/** 
+ * Constructor
+ * @class Represents a Menu.
+ * @param {String} id the id of the menu bar
+ * @param {YUI} yui the yui Menu object wrapped
+ */
+Exanpe.Menu = function(id, yui){
+	/**
+	 * id
+	 */
+	this.id = id;
+	
+	/**
+	 * yui wrapped
+	 */
+	this.yui = yui;
+};
+
+/**
+ * Initialize the element with yui wrapping
+ * @private
+ */
+Exanpe.Menu.prototype._init = function(){
+	this.yui.render();
+};
+
+/**
+ * Show the menu
+ */
+Exanpe.Menu.prototype.show = function(){
+	this.yui.show();
+};
+
+/**
+ * Hide the menu
+ */
+Exanpe.Menu.prototype.hide = function(){
+	this.yui.hide();
+};
+
+/**
+ * Initializes the menu
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.menuBuilder = function(data){
+	var context = null;
+	if(data.targetHtmlId){
+		context = [];
+		context[0] = data.targetHtmlId;
+		context[1] = "tl";
+		context[2] = "br";
+	}
+		
+	
+	var yui = new YAHOO.widget.Menu(data.id, {
+		hidedelay:500,
+		autosubmenudisplay: true,
+		lazyload: true,
+		"context" : context,
+		position : "dynamic"
+	});
+	
+	var menu = new Exanpe.Menu(data.id, yui);
+	
+	//init on dom render to bind on HTML element
+	YAHOO.util.Event.onDOMReady(Exanpe.Menu.prototype._init, this, true);
+	
+	window[data.id] = menu;
 };

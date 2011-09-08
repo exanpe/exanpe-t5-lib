@@ -2,7 +2,7 @@
 	xmlns:ex="tapestry-library:exanpe">
 
 
-	<ex:menubar t:id="menu">
+	<ex:menubar t:id="menubar">
 		<ex:menuitem label="literal:cat1">
 			<ex:submenu>
 				<ex:menuitem>
@@ -28,5 +28,22 @@
 		</ex:menuitem>		
 	</ex:menubar>
 	
-
+	<ex:menu id="menu" targetHtmlId="target">
+		<ex:menuitem label="literal:sub2">
+			<ex:submenu>
+				<ex:menuitem label="literal:sub2">
+					
+				</ex:menuitem>
+				<ex:menuitem label="literal:sub2">
+			
+				</ex:menuitem>
+			</ex:submenu>
+		</ex:menuitem>
+		<ex:menuitem label="literal:sub2">
+	
+		</ex:menuitem>
+	</ex:menu>
+	
+	<button id="target" onclick="menu.show()">Open !</button>
+	
 </t:layout>
