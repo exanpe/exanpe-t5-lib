@@ -4,7 +4,7 @@
 	xmlns:p="tapestry:parameter">
 
 	<t:block id="barItemRender">
-		 <li id="${clientId}" class="yuimenubaritem exanpe-menubaritem">
+		 <li id="${clientId}" class="yuimenubaritem exanpe-menubaritem ${disabledClass}">
 		 	${label }
 		 	<t:body/>
 		 </li>
@@ -12,7 +12,7 @@
 
 	
 	<t:block id="itemRender">
-		<li id="${clientId}" class="yuimenuitem exanpe-menuitem">
+		<li id="${clientId}" class="yuimenuitem exanpe-menuitem ${disabledClass}">
 			${label }
 			<t:body/>
 		</li>

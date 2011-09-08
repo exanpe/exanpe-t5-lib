@@ -1913,6 +1913,7 @@ Exanpe.MenuBar = function(id, yui){
  * @private
  */
 Exanpe.MenuBar.prototype._init = function(){
+	Exanpe.Menu._initDisabled(this.yui);
 	this.yui.render();
 };
 
@@ -1958,7 +1959,30 @@ Exanpe.Menu = function(id, yui){
  * @private
  */
 Exanpe.Menu.prototype._init = function(){
+	Exanpe.Menu._initDisabled(this.yui);
 	this.yui.render();
+};
+
+
+Exanpe.Menu._initDisabled = function(yuimenu){
+	var disableMenuItems = function () {
+		
+		var aItems = this.getItems();
+		var	oItem;
+		var i;
+		if (aItems) {
+			for(var i=0;i<aItems.length;i++){
+				oItem = aItems[i];
+				if (YAHOO.util.Dom.hasClass(oItem.element, "yuimenuitem-disabled")) {
+					oItem.cfg.setProperty("disabled", true);
+				}
+				if (YAHOO.util.Dom.hasClass(oItem.element, "yuimenubaritem-disabled")) {
+					oItem.cfg.setProperty("disabled", true);
+				}
+			}
+		}
+	};
+	yuimenu.subscribe("render", disableMenuItems);
 };
 
 /**
@@ -2002,7 +2026,7 @@ Tapestry.Initializer.menuBuilder = function(data){
 	var menu = new Exanpe.Menu(data.id, yui);
 	
 	//init on dom render to bind on HTML element
-	YAHOO.util.Event.onDOMReady(Exanpe.Menu.prototype._init, this, true);
+	menu._init();
 	
 	window[data.id] = menu;
 };

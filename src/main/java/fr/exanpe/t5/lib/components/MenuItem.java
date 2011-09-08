@@ -38,11 +38,18 @@ public class MenuItem implements ClientElement
 {
 
     /**
-     * Specify the label of the item
+     * Specify the label of the item.
      */
     @Property
     @Parameter(required = false, defaultPrefix = BindingConstants.MESSAGE)
     private String label;
+
+    /**
+     * Specify the disabled state of the item.
+     */
+    @Property
+    @Parameter(required = false, defaultPrefix = BindingConstants.LITERAL, value = "false")
+    private Boolean disabled;
 
     /**
      * Block to render depending on menu item location
@@ -58,9 +65,26 @@ public class MenuItem implements ClientElement
     private String uniqueId;
 
     /**
+     * Set with real classname, if indeed disabled
+     */
+    @Property
+    @SuppressWarnings("unused")
+    private String disabledClass = "";
+
+    /**
      * title suffix
      */
     private static final String LABEL_SUFFIX = "-label";
+
+    /**
+     * css class name for item disabled
+     */
+    private static final String CSS_ITEM_DISABLED = "yuimenuitem-disabled";
+
+    /**
+     * css class name for item bar disabled
+     */
+    private static final String CSS_ITEMBAR_DISABLED = "yuimenubaritem-disabled";
 
     /**
      * Block to render a menu item
@@ -103,11 +127,19 @@ public class MenuItem implements ClientElement
         if (MenuRenderElement.ROOT.equals(model.getParent()))
         {
             rendered = barItemRender;
+            if (disabled)
+            {
+                disabledClass = CSS_ITEMBAR_DISABLED;
+            }
         }
         else
         {
             // render just a standard item ?
             rendered = itemRender;
+            if (disabled)
+            {
+                disabledClass = CSS_ITEM_DISABLED;
+            }
         }
 
         model.push(MenuRenderElement.MENUITEM);

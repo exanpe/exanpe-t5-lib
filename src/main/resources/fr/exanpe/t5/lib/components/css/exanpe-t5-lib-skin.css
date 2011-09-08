@@ -703,6 +703,10 @@
 	background:red;	
 }
 
+.exanpe-menu .yuimenubaritem-disabled{
+	color: white;	
+}
+
 .exanpe-menu .exanpe-menuitem {
     background:green;
     padding-left: 20px;
@@ -715,4 +719,8 @@
 
 .exanpe-menu .yuimenuitem-selected{
 	background:blue;	
+}
+
+.exanpe-menu .yuimenuitem-disabled{
+	color: white;	
 }

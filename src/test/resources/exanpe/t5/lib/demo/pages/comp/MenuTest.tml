@@ -24,7 +24,20 @@
 		</ex:menuitem>
 		<ex:menuitem>
 			cat 2
-		</ex:menuitem>		
+		</ex:menuitem>	
+		<ex:menuitem label="literal:cat3 disabled" disabled="true">
+			<ex:submenu>
+			<ex:menuitem>
+				<a href="http://www.google.fr/">Google Link</a>
+			</ex:menuitem>
+			<ex:menuitem>
+				<a href="http://www.google.fr/">Google Link</a>
+			</ex:menuitem>
+			<ex:menuitem>
+				<a href="http://www.google.fr/">Google Link</a>
+			</ex:menuitem>
+			</ex:submenu>
+		</ex:menuitem>	
 	</ex:menubar>
 	
 	<ex:menu id="menu" targetHtmlId="target">
@@ -38,8 +51,15 @@
 				</ex:menuitem>
 			</ex:submenu>
 		</ex:menuitem>
-		<ex:menuitem label="literal:sub2">
-	
+		<ex:menuitem label="literal:sub2222" disabled="true">
+			<ex:submenu>
+				<ex:menuitem label="literal:sub2">
+					
+				</ex:menuitem>
+				<ex:menuitem label="literal:sub2">
+			
+				</ex:menuitem>
+			</ex:submenu>
 		</ex:menuitem>
 	</ex:menu>
 	
