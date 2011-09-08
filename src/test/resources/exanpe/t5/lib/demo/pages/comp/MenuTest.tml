@@ -5,8 +5,7 @@
 	<ex:menubar t:id="menubar">
 		<ex:menuitem label="literal:cat1">
 			<ex:submenu>
-				<ex:menuitem>
-					sub1
+				<ex:menuitem t:id="sub1key">
 					<ex:submenu>
 					<ex:menuitem>
 						sub11
