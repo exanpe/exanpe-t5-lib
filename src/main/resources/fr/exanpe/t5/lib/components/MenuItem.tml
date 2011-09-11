@@ -18,6 +18,6 @@
 		</li>
 	</t:block>
 
-	<t:delegate to="rendered"/>
+	<t:delegate to="blockRendered"/>
     	
 </t:container>
