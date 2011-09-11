@@ -56,7 +56,7 @@ public class MenuItem implements ClientElement
      */
     @Property
     @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.LITERAL, value = "true")
-    private Boolean rendered;
+    private Boolean visible;
 
     /**
      * Block to render depending on menu item location
@@ -123,7 +123,7 @@ public class MenuItem implements ClientElement
     @SetupRender
     boolean init()
     {
-        if (!rendered) { return false; }
+        if (!visible) { return false; }
 
         uniqueId = javaScriptSupport.allocateClientId(resources);
         consolidateFromId();

@@ -38,7 +38,7 @@
 			</ex:menuitem>
 			</ex:submenu>
 		</ex:menuitem>	
-		<ex:menuitem label="literal:cat4" rendered="false">
+		<ex:menuitem label="literal:cat4" visible="false">
 		NOT RENDERED !!!!!!!!!
 		</ex:menuitem>
 	</ex:menubar>
@@ -66,7 +66,7 @@
 				</ex:menuitem>
 			</ex:submenu>
 		</ex:menuitem>
-		<ex:menuitem label="literal:sub3" rendered="false">
+		<ex:menuitem label="literal:sub3" visible="false">
 		NOT RENDERED !!!!!!!!!
 		</ex:menuitem>
 	</ex:menu>
