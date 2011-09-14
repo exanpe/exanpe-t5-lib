@@ -1,0 +1,19 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  <t:form>
+  
+	  <t:ajaxformloop t:id="dynauser" source="engine.list" value="iterator" encoder="engine.encoder">
+
+	          <t:textfield value="iterator.firstName"/><br/>
+	          <t:textfield value="iterator.lastName"/><br/>
+	          <t:textfield value="iterator.age"/><br/>
+	          <t:removerowlink>remove</t:removerowlink>
+			<hr/>
+	
+	   </t:ajaxformloop>
+  
+  		<t:submit/>
+  </t:form>
+  	    
+</t:layout>
