@@ -23,4 +23,19 @@
 		</t:parameter>
 	</ex:HideablePanel>
 	
+	<script type="text/javascript">
+		YAHOO.util.Event.onDOMReady(function(){
+			testPanel2.afterShow = function(){
+				YAHOO.util.Dom.get("info").innerHTML = "afterShow"+Math.random()*100;
+			}
+			testPanel2.afterHide = function(){
+				YAHOO.util.Dom.get("info").innerHTML = "afterHide"+Math.random()*100;
+			}
+		});
+	</script>
+	
+	<div id="info">
+	
+	</div>
+	
 </t:layout>

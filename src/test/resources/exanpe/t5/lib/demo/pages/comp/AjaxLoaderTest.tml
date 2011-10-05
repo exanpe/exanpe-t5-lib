@@ -22,6 +22,17 @@
 		<ex:ajaxLoader t:id="loader3" message="literal:Loading..." autoLoad="false" showPanel="false" highlight="true">
 			${date}
 		</ex:ajaxLoader>
+		
+		<script type="text/javascript">
+			YAHOO.util.Event.onDOMReady(function(){
+				loader3.afterUpdateSuccess = function(){
+					YAHOO.util.Dom.get("info").innerHTML = "afterUpdateSuccess"+Math.random()*100;
+				}
+			});
+		</script>
+		
+		<div id="info"></div>
+		
 		<input type="button" onclick="loader3.load()" value="reload"/>
 	</body>
 </t:layout>
