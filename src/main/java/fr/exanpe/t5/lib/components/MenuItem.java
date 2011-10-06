@@ -48,15 +48,22 @@ public class MenuItem implements ClientElement
      * Specify the disabled state of the item.
      */
     @Property
-    @Parameter(required = false, defaultPrefix = BindingConstants.LITERAL, value = "false")
+    @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.LITERAL, value = "false")
     private Boolean disabled;
+
+    /**
+     * Specify the rendered state of the item.
+     */
+    @Property
+    @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.LITERAL, value = "true")
+    private Boolean visible;
 
     /**
      * Block to render depending on menu item location
      */
     @Property
     @SuppressWarnings("unused")
-    private Block rendered;
+    private Block blockRendered;
 
     @Property
     private MenuInternalModel model;
@@ -114,8 +121,10 @@ public class MenuItem implements ClientElement
     private Logger log;
 
     @SetupRender
-    void init()
+    boolean init()
     {
+        if (!visible) { return false; }
+
         uniqueId = javaScriptSupport.allocateClientId(resources);
         consolidateFromId();
 
@@ -126,7 +135,7 @@ public class MenuItem implements ClientElement
         // render a baritem ?
         if (MenuRenderElement.ROOT.equals(model.getParent()))
         {
-            rendered = barItemRender;
+            blockRendered = barItemRender;
             if (disabled)
             {
                 disabledClass = CSS_ITEMBAR_DISABLED;
@@ -135,7 +144,7 @@ public class MenuItem implements ClientElement
         else
         {
             // render just a standard item ?
-            rendered = itemRender;
+            blockRendered = itemRender;
             if (disabled)
             {
                 disabledClass = CSS_ITEM_DISABLED;
@@ -143,6 +152,8 @@ public class MenuItem implements ClientElement
         }
 
         model.push(MenuRenderElement.MENUITEM);
+
+        return true;
     }
 
     private void consolidateFromId()

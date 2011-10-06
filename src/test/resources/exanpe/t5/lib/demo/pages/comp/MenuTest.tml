@@ -1,7 +1,7 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
 	xmlns:ex="tapestry-library:exanpe">
 
-
+	Menubar test, with disabled elements and cat 4 not rendered :<br/>
 	<ex:menubar t:id="menubar">
 		<ex:menuitem label="literal:cat1">
 			<ex:submenu>
@@ -38,8 +38,13 @@
 			</ex:menuitem>
 			</ex:submenu>
 		</ex:menuitem>	
+		<ex:menuitem label="literal:cat4" visible="false">
+		NOT RENDERED !!!!!!!!!
+		</ex:menuitem>
 	</ex:menubar>
 	
+	<br/>
+	Menu test, with disabled elements and sub 3 not rendered :<br/>
 	<ex:menu id="menu" targetHtmlId="target">
 		<ex:menuitem label="literal:sub2">
 			<ex:submenu>
@@ -60,6 +65,9 @@
 			
 				</ex:menuitem>
 			</ex:submenu>
+		</ex:menuitem>
+		<ex:menuitem label="literal:sub3" visible="false">
+		NOT RENDERED !!!!!!!!!
 		</ex:menuitem>
 	</ex:menu>
 	

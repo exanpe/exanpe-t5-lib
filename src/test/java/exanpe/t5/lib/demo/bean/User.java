@@ -16,9 +16,11 @@
 
 package exanpe.t5.lib.demo.bean;
 
+import java.io.Serializable;
+
 import org.apache.tapestry5.beaneditor.NonVisual;
 
-public class User
+public class User implements Serializable
 {
     @NonVisual
     private long id;
@@ -29,19 +31,43 @@ public class User
 
     private int age;
 
-    public long getId() { return id; }
+    public long getId()
+    {
+        return id;
+    }
 
-    public void setId(long id) { this.id = id; }
+    public void setId(long id)
+    {
+        this.id = id;
+    }
 
-    public String getFirstName() { return firstName; }
+    public String getFirstName()
+    {
+        return firstName;
+    }
 
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
 
-    public String getLastName() { return lastName; }
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 
-    public int getAge() { return age; }
+    public int getAge()
+    {
+        return age;
+    }
 
-    public void setAge(int age) { this.age = age; }
+    public void setAge(int age)
+    {
+        this.age = age;
+    }
 }

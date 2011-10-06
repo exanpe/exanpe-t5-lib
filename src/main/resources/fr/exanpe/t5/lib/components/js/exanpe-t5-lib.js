@@ -362,10 +362,12 @@ Exanpe.HideablePanel.prototype.reverse = function(){
 	if(this.hidden){
 		this.hidden = false;
 		this.animShow.animate();
+		this.afterShow();
 		return true;
 	}else{
 		this.hidden = true;
 		this.animHide.animate();
+		this.afterHide();
 		return false;
 	}	
 };
@@ -376,6 +378,24 @@ Exanpe.HideablePanel.prototype.reverse = function(){
  */
 Exanpe.HideablePanel.prototype.isVisible = function(){
 	return !this.hidden;
+};
+
+/**
+ * Called after hide.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.HideablePanel.prototype.afterHide = function(){
+	
+};
+
+/**
+ * Called after show.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.HideablePanel.prototype.afterShow = function(){
+	
 };
 
 
@@ -1461,6 +1481,7 @@ Exanpe.AjaxLoader.prototype.load = function()
 	{
 		ajaxLoader.request = null;
 		Exanpe.Log.error("Could not process request in order to get the AjaxLoder content.");
+		ajaxLoader.afterUpdateFailure();
 	};
 	
 	// Ajax Success handler
@@ -1476,6 +1497,7 @@ Exanpe.AjaxLoader.prototype.load = function()
 		if(highlight){
 			ajaxLoader._highlight(0, 1, 1);
 		}
+		ajaxLoader.afterUpdateSuccess();
 	};
 	
 	// Callback objects
@@ -1506,6 +1528,24 @@ Exanpe.AjaxLoader.prototype.load = function()
 	else {
 		this.request = request;
 	}
+};
+
+/**
+ * Called on Ajax update success.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.AjaxLoader.prototype.afterUpdateSuccess = function(){
+	
+};
+
+/**
+ * Called on Ajax update failure.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.AjaxLoader.prototype.afterUpdateFailure = function(){
+	
 };
 
 /**
@@ -1822,6 +1862,7 @@ Exanpe.SelectLoader.prototype.executeRequest = function (value){
 	{
 		selectLoader.request = null;
 		Exanpe.Log.error("Could not get the SelectLoader target's content. Fail id:"+selectLoader.id);
+		selectLoader.afterUpdateFailure();
 	};
 	
 	// Ajax Success handler
@@ -1860,6 +1901,7 @@ Exanpe.SelectLoader.prototype.executeRequest = function (value){
 				targetSelect.options.add(o);
 			}
 		}
+		selectLoader.afterUpdateSuccess();
 	};//end success
 	
 	// Callback objects
@@ -1875,6 +1917,25 @@ Exanpe.SelectLoader.prototype.executeRequest = function (value){
 		callback, 
 		null
 	);
+};
+
+
+/**
+ * Called on Ajax update success.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.SelectLoader.prototype.afterUpdateSuccess = function(){
+	
+};
+
+/**
+ * Called on Ajax update failure.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.SelectLoader.prototype.afterUpdateFailure = function(){
+	
 };
 
 /**

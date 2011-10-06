@@ -7,4 +7,15 @@
   	<t:select t:id="city" model="city" value="cityValue"/>
   </t:form>
   
+  <script type="text/javascript">
+		YAHOO.util.Event.onDOMReady(function(){
+			country.afterUpdateSuccess = function(){
+				YAHOO.util.Dom.get("info").innerHTML = "afterUpdateSuccess"+Math.random()*100;
+			}
+		});
+	</script>
+	
+	<div id="info">
+	</div>
+  
 </t:layout>
