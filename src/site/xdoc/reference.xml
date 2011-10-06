@@ -203,6 +203,44 @@
 			</tr>
 		</table>
 		
+		<h3>passwordstrengthchecker</h3>
+		<table width="100" border="1">
+			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
+			<tr class="b">
+				<td>
+					<b>ajax</b>
+				</td>
+				<td>Decide if password checking is made in Ajax mode, or not<br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Boolean</td>
+				<td>false</td>
+				<td>false</td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>javascriptChecker</b>
+				</td>
+				<td>The javascript function used client-side to check the password complexity.<br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td></td>
+			</tr>
+			<tr class="b">
+				<td>
+					<b>min</b>
+				</td>
+				<td>Minimum number of caracters before triggering ajax event.<br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Integer</td>
+				<td>false</td>
+				<td>4</td>
+			</tr>			
+		</table>		
+		
 		<h3>selectloader</h3>
 		<table width="100" border="1">
 			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>

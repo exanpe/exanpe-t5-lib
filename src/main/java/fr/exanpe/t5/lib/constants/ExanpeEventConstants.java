@@ -21,6 +21,7 @@ package fr.exanpe.t5.lib.constants;
 
 import fr.exanpe.t5.lib.components.AjaxLoader;
 import fr.exanpe.t5.lib.components.Slider;
+import fr.exanpe.t5.lib.mixins.PasswordStrengthChecker;
 import fr.exanpe.t5.lib.mixins.SelectLoader;
 
 /**
@@ -44,4 +45,9 @@ public class ExanpeEventConstants
      * Event triggered when load a {@link SelectLoader} content.
      */
     public static final String SELECTLOADER_EVENT = "selectLoaderAction";
+
+    /**
+     * Event triggered when {@link PasswordStrengthChecker} validate a password.
+     */
+    public static final String PASSWORDSTRENGTHCHECKER_EVENT = "passwordStrengthCheckerAction";
 }
