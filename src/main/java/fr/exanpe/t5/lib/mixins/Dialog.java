@@ -107,14 +107,14 @@ public class Dialog
      * 
      * @see DialogRenderModeEnum
      */
-    @Parameter(value = "confirm", required = true, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(value = "confirm", allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private DialogRenderModeEnum renderMode;
 
     /**
      * Width of the Dialog, in pixel
      */
-    @Parameter(value = "300", required = true, defaultPrefix = BindingConstants.LITERAL)
-    private int width;
+    @Parameter(value = "300", required = false, defaultPrefix = BindingConstants.LITERAL)
+    private Integer width;
 
     /**
      * CSS class used to disable dialog box
