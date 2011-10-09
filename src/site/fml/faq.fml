@@ -65,5 +65,42 @@
         </p>
       </answer>
     </faq>
+    <faq id="events">
+      <question>How can I bind some custom JavaScript code on components event?</question>
+      <answer>
+        <p>
+         	Some components provide JavaScript events that you can bind on in order to customize the component behavior (see the JsDoc, events are marked @event and named afterXXX/beforeXXX/onXXX).<br/>
+         	Overriding the event is really simple:<br/>
+         	- To override a single component instance, add the following code below the component declaration:<br/>
+         	<source>
+  YAHOO.util.Event.onDOMReady(function(){
+    ${componentId}.${eventFunction} = function(){
+      //write your code here !
+    }
+  });
+   		   </source>
+   		   - To override for all the components in your application, add the following code into a JavaScript file imported after the exanpe-t5-lib.js:<br/>
+         	<source>
+  Exanpe.${componentName}.prototype.${eventFunction} = function(){
+    //write your code here !
+  }
+   		   </source>  
+   		   <br/><br/>
+   		   Example : 
+   		   <source>
+<![CDATA[ 
+  <t:select t:mixins="exanpe/selectLoader" t:id="country" 
+            t:targetId="city"  model="country" value="countryValue" encoder="countryEncoder"/>
+   		   		
+    YAHOO.util.Event.onDOMReady(function(){
+      country.afterUpdateSuccess = function(){
+        YAHOO.util.Dom.get("type").options.length = 0;
+      }
+    });
+]]>
+   		   </source>
+        </p>
+      </answer>
+    </faq>
   </part>
 </faqs>
