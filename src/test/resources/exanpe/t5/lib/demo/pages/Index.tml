@@ -14,5 +14,6 @@
     <li><t:pagelink page="comp/ColorPickerTest">ColorPicker</t:pagelink></li>
     <li><t:pagelink page="comp/SelectLoaderTest">SelectLoader</t:pagelink></li>
     <li><t:pagelink page="comp/MenuTest">Menu</t:pagelink></li>
+    <li><t:pagelink page="comp/PasswordStrengthCheckerTest">PasswordStrengthChecker</t:pagelink></li>
   </ul>
 </t:layout>

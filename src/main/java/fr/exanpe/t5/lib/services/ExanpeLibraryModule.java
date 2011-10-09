@@ -35,6 +35,7 @@ import fr.exanpe.t5.lib.constants.AccordionEventTypeEnum;
 import fr.exanpe.t5.lib.constants.DialogRenderModeEnum;
 import fr.exanpe.t5.lib.constants.ExanpeSymbols;
 import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
+import fr.exanpe.t5.lib.constants.PasswordStrengthCheckerTypeEnum;
 import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
 
@@ -61,6 +62,10 @@ public class ExanpeLibraryModule
         configuration.add(CoercionTuple.create(String.class, DialogRenderModeEnum.class, StringToEnumCoercion.create(DialogRenderModeEnum.class)));
         configuration.add(CoercionTuple.create(String.class, SliderOrientationTypeEnum.class, StringToEnumCoercion.create(SliderOrientationTypeEnum.class)));
         configuration.add(CoercionTuple.create(String.class, MenuEventTypeEnum.class, StringToEnumCoercion.create(MenuEventTypeEnum.class)));
+        configuration.add(CoercionTuple.create(
+                String.class,
+                PasswordStrengthCheckerTypeEnum.class,
+                StringToEnumCoercion.create(PasswordStrengthCheckerTypeEnum.class)));
 
         // ColorPicker
         Coercion<String, Color> coercionStringColor = new Coercion<String, Color>()
