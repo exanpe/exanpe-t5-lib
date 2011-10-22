@@ -682,43 +682,57 @@
 /**
  * MenuBar
  */
+ 
 /** Style for the main **/
-.exanpe-menu{
-	background : yellow;
-	border: 1px solid black;
-	line-height: 2;
-} 
+.exanpe-menu {
+	line-height: 30px;
+	border: 1px solid #CCCCCC;
+	background: #E2E2E2 url("../img/menu/menu-title.png") repeat-x;
+}
 
 .exanpe-menu .exanpe-menubaritem {
-    border-right: 1px solid blue;
+    border-right: 1px solid #CCCCCC;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.exanpe-menu .yuimenubaritem-hassubmenu{
-	/* TODO background url center right arrow*/	
+.exanpe-menu .yuimenubaritem-hassubmenu {
+	background: #E2E2E2 url("../img/menu/menubaritem-hassubmenu.png") no-repeat center right;
 }
 
-.exanpe-menu .yuimenubaritem-selected{
-	background:red;	
+.exanpe-menu .yuimenubaritem-selected {
+	background: #E2E2E2;
+	cursor: pointer;	
 }
 
-.exanpe-menu .yuimenubaritem-disabled{
+.exanpe-menu .yuimenubaritem-disabled {
 	color: white;	
 }
 
 .exanpe-menu .exanpe-menuitem {
-    background:green;
+    background: #F6F6F6;
     padding-left: 20px;
     padding-right: 20px;
+    border-right: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;    
+}
+
+.exanpe-menu .yuimenuitemlabel, .exanpe-menu .yuimenubaritemlabel {
+	text-decoration: none;	
+	font-weight: bold;
+}
+
+.exanpe-menu .yuimenubaritem {
+	color: #909090;		
 }
 
 .exanpe-menu .yuimenuitem-hassubmenu{
-	/* TODO background url center right arrow*/	
+	background: #E2E2E2 url("../img/menu/menuitem-hassubmenu.png") no-repeat 95% 50%;	
 }
 
-.exanpe-menu .yuimenuitem-selected{
-	background:blue;	
+.exanpe-menu .yuimenuitem-selected {
+	background: #E2E2E2;
 }
 
 .exanpe-menu .yuimenuitem-disabled{
@@ -757,7 +771,7 @@
 }
 
 .exanpe-psc-tag-meter-strongest {
-	background-color: #6EC02A;		
+	background-color: #6ec02a;		
 }
 
 .exanpe-psc-tag-meter-strong {
@@ -772,3 +786,65 @@
 	background-color: red;		
 }
 
+/**
+ * Vertical Menu
+ */
+
+/** Root class **/
+.exanpe-vmenu {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+
+/** Vertical Menu item title **/
+.exanpe-vmenu .vmenu-title {
+	background: #E2E2E2 url("../img/vmenu/vmenu-title.png") repeat-x;
+    font-weight: normal;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    font-weight: bold;
+    color : #909090;
+    font-size: 1em;
+}
+
+/** Vertical Menu item icon **/
+.exanpe-vmenu .vmenu-title img.vmenu-title-icon {
+    vertical-align: middle;
+}
+
+/** Vertical Menu item content **/
+.exanpe-vmenu .vmenu-content {
+	background: #F6F6F6;
+    border-bottom: 1px solid #CCCCCC;
+    color: #555555;
+    line-height: 25px;
+    font-size: 0.8em;
+}
+
+/** Vertical Menu item title link **/
+.exanpe-vmenu ul li .vmenu-title a {
+	color: #909090;
+	text-decoration: none;
+}
+
+/** Vertical Menu item title link when selected **/
+.exanpe-vmenu ul li .vmenu-title .exanpe-vmenu-selected {
+	color: #333333;
+}
+
+/** Vertical Menu item title and content presentation **/
+.exanpe-vmenu ul li .vmenu-title a span, .exanpe-vmenu .vmenu-content {
+	padding-left: 25px;	
+}
+
+/** Vertical Menu item link **/
+.exanpe-vmenu .vmenu-content ul li a {
+	background: url('../img/vmenu/vmenuitem-link.png') no-repeat 0px 0px;
+	padding-left: 10px;
+	color: #909090;
+	text-decoration: none;
+	line-height: 20px;
+	display: inline-block;
+}

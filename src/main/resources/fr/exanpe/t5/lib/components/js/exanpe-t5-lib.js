@@ -2391,3 +2391,115 @@ Tapestry.Initializer.passwordStrengthCheckerBuilder = function(data){
 	psc._init();
 	window[data.id] = psc;
 };
+
+
+/** 
+ * Constructor
+ * @class Represents a VerticalMenu. Can be accessed through JavaScript by its id.
+ * @param {String} id the id of the menu
+ * @param {String} selectedId the selected item in the menu
+ */
+Exanpe.VerticalMenu = function(id, selectedId){
+	
+	/**
+	 * id of the instance
+	 */
+	this.id = id;
+	
+	/**
+	 * id of the selected menu item
+	 */
+	this.selectedId = selectedId;
+} ;
+
+/**
+ * CSS class for closed menu item
+ * @constant
+ * @static
+ * @private
+ */
+Exanpe.VerticalMenu.CSS_VMENU_CLOSED = "exanpe-vmenu-closed";
+
+/** 
+ * Prepare an item of the menu, during initialization phase
+ * @param {String} id the id of the menu item.
+ * @private
+ */
+Exanpe.VerticalMenu.prototype._initMenu = function(id){
+	var contentEl = this.getMenuItemContentEl(id);
+	this.getMenuItemContentContainer(id).appendChild(contentEl);
+	this.openOrCloseMenu(id);
+};
+
+/** 
+ * Open or close the content of a menu item. 
+ * Open the menu if  menu item is selected, close it otherwise.
+ * @param {String} id the id of the menu item.
+ */
+Exanpe.VerticalMenu.prototype.openOrCloseMenu = function(id){	
+	if (this.isMenuItemSelected(id)) {
+		this._open(id);
+	}
+	else {		
+		this._close(id);
+	}
+};
+
+/**
+ * Open a menu item content.
+ * @param {String} id the id of the menu item.
+ * @private
+ */
+Exanpe.VerticalMenu.prototype._open = function(id){
+	this.selectedId = id;
+	YAHOO.util.Dom.removeClass(this.getMenuItemContentContainer(id), Exanpe.VerticalMenu.CSS_VMENU_CLOSED);
+};
+
+/** 
+ * Close a menu item content.
+ * @param {String} id the id of the menu item.
+ * @private
+ */
+Exanpe.VerticalMenu.prototype._close = function(id){
+	YAHOO.util.Dom.addClass(this.getMenuItemContentContainer(id), Exanpe.VerticalMenu.CSS_VMENU_CLOSED);
+};
+
+/** 
+ * Returns the state of a menu item.
+ * @param {String} id the id of the menu item to check.
+ * @returns {boolean} true if the menu item is selected, false otherwise
+ */
+Exanpe.VerticalMenu.prototype.isMenuItemSelected = function(id){
+	return this.selectedId == id;
+};
+
+/**
+ * Dom method utility
+ * @private
+ */
+Exanpe.VerticalMenu.prototype.getMenuItemContentEl = function(id){
+	return YAHOO.util.Dom.get("exanpe-vmenuitem-content-" + id);
+};
+
+/**
+ * Dom method utility
+ * @private
+ */
+Exanpe.VerticalMenu.prototype.getMenuItemContentContainer = function(id){
+	return YAHOO.util.Dom.get("exanpe-vmenu-content-" + id);
+};
+
+/**
+ * Initializes the Vertical Menu on DOM load
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.verticalMenuBuilder = function(data){
+	var verticalMenu = new Exanpe.VerticalMenu(data.id, data.selectedId);
+
+	for(var i=0;i<data.items.length;i++){
+		verticalMenu._initMenu(data.items[i].id);
+	}	
+	window[data.id] = verticalMenu;
+};

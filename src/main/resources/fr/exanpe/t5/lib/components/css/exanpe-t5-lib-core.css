@@ -503,13 +503,13 @@ table.hidden {
     display: block;
     height: 0;
     line-height: 0;
-    visibility: hidden;
+    visibility: hidden;    
 }
 .yuimenubaritem {
-    float: left;
+    float: left;    
 }
 .yuimenubaritemlabel, .yuimenuitemlabel {
-    display: block;
+    display: block;    
 }
 .yuimenuitemlabel .helptext {
     display: block;
@@ -526,7 +526,7 @@ table.hidden {
     left: -3px;
     right: -3px;
     top: 2px;
-    visibility: visible;
+    visibility: hidden;
 }
 .hide-scrollbars * {
     overflow: hidden;
@@ -546,3 +546,45 @@ table.hidden {
 .yui-overlay.yui-force-redraw {
     margin-bottom: 1px;
 }
+
+/** Vertical Menu */
+
+.exanpe-vmenu {
+	
+}
+
+.exanpe-vmenu div.exanpe-vmenu-closed {
+	border: 0 none;
+    height: 0;
+    left: -999999px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+}
+
+.exanpe-vmenu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.exanpe-vmenu ul li {
+	display: block;
+}
+
+.exanpe-vmenu .vmenu-title {
+	display: block;
+	background: #757575;
+	color: #FFFFFF;	
+}
+
+.exanpe-vmenu .vmenu-content {
+	background: #D5D5D4;	
+}
+
+.exanpe-vmenu  ul li .vmenu-title a {
+	display: block;
+}
+
