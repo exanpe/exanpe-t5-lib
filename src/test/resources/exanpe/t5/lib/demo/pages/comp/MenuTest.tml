@@ -3,7 +3,8 @@
 
 	Menubar test, with disabled elements and cat 4 not rendered :<br/>
 	<ex:menubar t:id="menubar">
-		<ex:menuitem label="literal:cat1">
+		<ex:menuitem>
+			<t:pagelink page="comp/menutest">Menu Test</t:pagelink>
 			<ex:submenu>
 				<ex:menuitem t:id="sub1key">
 					<ex:submenu>
@@ -18,7 +19,7 @@
 					</ex:submenu>
 				</ex:menuitem>
 				<ex:menuitem label="literal:sub2">
-			
+					
 				</ex:menuitem>
 			</ex:submenu>
 		</ex:menuitem>
@@ -72,5 +73,4 @@
 	</ex:menu>
 	
 	<button id="target" onclick="menu.show()">Open !</button>
-	
 </t:layout>

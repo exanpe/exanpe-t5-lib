@@ -5,7 +5,7 @@
 
 	<div class="yuimenu">
         <div class="bd">
-           <ul>
+           <ul class="exanpe-submenu">
 				<t:body/>
 			</ul>
 		</div>
