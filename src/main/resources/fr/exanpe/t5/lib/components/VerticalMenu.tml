@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<t:container
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+	xmlns:p="tapestry:parameter">
+
+	<div style="display:none">
+		<t:body />
+	</div>
+	
+	<ul>
+		<t:loop source="model.menuItems" value="current">			
+		  	<li id="${current.id}">
+		  		<span class="vmenu-title">
+			  		<a href="#" t:id="eventLink" target="${current?.target}" class="${cssTitleClassName}">
+			  			<t:if test="current.icon">
+							<img src="${current.icon}" class="vmenu-title-icon" border="0"/>
+						</t:if>
+						${current.title}
+					</a>
+				</span>
+				<div id="exanpe-vmenu-content-${current.id}" class="vmenu-content ${cssContentClassName}">
+				</div>
+			</li>
+		</t:loop>
+	</ul>
+    
+</t:container>
