@@ -3,7 +3,7 @@
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
 	xmlns:p="tapestry:parameter">
 
-	<div id="${clientId}" class="yuimenu exanpe-menu">
+	<div id="${clientId}" class="yuimenu">
         <div class="bd">
            <ul>
 				<t:body/>

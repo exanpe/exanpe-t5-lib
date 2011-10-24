@@ -547,6 +547,62 @@ table.hidden {
     margin-bottom: 1px;
 }
 
+.exanpe-menu .yuimenubar ul {
+	*zoom:1;
+}
+
+.exanpe-menu .yuimenubar .yuimenu ul {
+	*zoom:normal;
+}
+
+.exanpe-menu .yuimenubaritem {
+	float: left;
+}
+
+.exanpe-menu .yuimenubaritemlabel, .exanpe-menu  .yuimenuitemlabel {
+	display: block;
+}
+
+.exanpe-menu .hide-scrollbars * {
+	overflow:hidden;
+}
+
+.exanpe-menu .hide-scrollbars select {
+	display: none;
+}
+
+.exanpe-menu  .yuimenu.show-scrollbars, .exanpe-menu .yuimenubar.show-scrollbars {
+	overflow:visible;
+}
+
+.exanpe-menu .yuimenu.hide-scrollbars .yui-menu-shadow, .yuimenubar.hide-scrollbars .yui-menu-shadow {
+	overflow: hidden;
+}
+
+.exanpe-menu .yuimenu.show-scrollbars .yui-menu-shadow, .yuimenubar.show-scrollbars .yui-menu-shadow {
+	overflow:auto;
+}
+
+.exanpe-menu .yuimenuitem-hassubmenu .first-of-type {
+	border-width: 0;
+	border-top: none;
+}
+
+
+.exanpe-menu .yuimenubaritemlabel {
+	*position: relative;
+	margin: 0;	
+}
+
+.exanpe-menu .yuimenu .bd {
+	*zoom: 1;
+	_zoom: normal;
+}
+
+.exanpe-menu .yuimenu .yuimenu .bd {
+	*zoom:normal;
+}
+
 /** Vertical Menu */
 
 .exanpe-vmenu {
@@ -588,3 +644,27 @@ table.hidden {
 	display: block;
 }
 
+/** Password Strength Checker */
+
+.exanpe-psc {
+	position: relative;
+}
+
+.exanpe-psc .wrapper {
+	position: absolute;
+	padding-left: 5px;	
+}
+
+.exanpe-psc div {
+	float: left;
+	overflow: hidden;
+}
+
+.exanpe-psc p {
+	padding: 0;
+	margin: 0;
+}
+
+.exanpe-psc-tag {
+    margin: 0 2px 0 0;
+}
