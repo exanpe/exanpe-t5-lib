@@ -770,9 +770,10 @@
 }
 
 /** Style for submenu items, when disabled */
-.exanpe-menu .exanpe-menuitem .yuimenuitem-disabled {
+.exanpe-menu .exanpe-menuitem .yuimenuitem-disabled, .exanpe-menu .yuimenuitem-disabled {
 	cursor: default;
 	color: #CCCCCC;
+	background: #F6F6F6;
 }
 
 /**
