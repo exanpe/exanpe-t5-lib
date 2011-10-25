@@ -17,7 +17,200 @@
 /**
  * 	Modifiy this file to customize the components' rendering
  */
+
+
+/********* Exanpe Tapestry Skin **********/
+
+/** GridPager **/
+
+/** Style for pager wrapper **/
+.exanpe-skin div.t-data-grid-pager {
+	background: #E2E2E2 url("../img/t5/gridpager-bg.png") repeat-x;
+	margin: 0;
+	text-align: right;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+/** Style for pager links **/
+.exanpe-skin div.t-data-grid-pager a, .exanpe-skin div.t-data-grid-pager span.current {
+	cursor: pointer;
+	padding: 0px 4px;
+	margin: 0;
+	line-height: 25px;	
+	border: 1px solid #CCCCCC;
+	color: #555555;
+}
+
+/** Style for current page grid, when selected  **/
+.exanpe-skin div.t-data-grid-pager span.current {
+	background : #CCCCCC;
+	color: white;
+}
+
+/** Style for page grid, when non selected **/
+.exanpe-skin div.t-data-grid-pager a {
+	background : #F6F6F6;
+}
+
+/** Grid **/
+
+/** Style for grid wrapper **/
+.exanpe-skin div.t-data-grid {
+	font-family: inherit;
+}
+
+/** Style for grid table **/
+.exanpe-skin table.t-data-grid {
+	background: url("../img/t5/grid-bg.png") repeat-x;
+	border: 1px solid #CCCCCC;
+}
+
+/** Style for grid header line **/
+.exanpe-skin table.t-data-grid thead tr {
+	height: 25px;
+	background-color: transparent;
+}
+
+/** Style for grid header line cell **/
+.exanpe-skin table.t-data-grid thead tr th {
+	padding: 0 5px 0 5px;
+    margin: 0;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: none;
+	text-align: center;
+	color: #555555;
+	font-size: 93%;
+    font-weight: bold;
+}
+
+/** Style for grid header line cell link, default sort **/
+.exanpe-skin table.t-data-grid tr th a {
+    background: url("../img/t5/sortable.png") no-repeat scroll right center;
+    color: #555555;
+    text-decoration: none;
+    display: block;
+    padding-right: 20px;
+}
+
+/** Style for grid header line cell link, descending sort **/
+.exanpe-skin table.t-data-grid tr th.t-sort-column-descending a {
+    background: url("../img/t5/sort-desc.png") no-repeat scroll right center;
+}
+
+/** Style for grid header line cell link, ascending sort **/
+.exanpe-skin table.t-data-grid tr th.t-sort-column-ascending a {
+    background: url("../img/t5/sort-asc.png") no-repeat scroll right center;
+}
+
+/** Style for grid body odd line **/
+.exanpe-skin table.t-data-grid tbody tr.odd {
+    background-color: #F6F6F6;
+}
+
+/** Style for grid body line cell **/
+.exanpe-skin table.t-data-grid tbody tr td {
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    padding-left: 5px;
+}
+
+/** Hide native t5 Grid icons **/
+.exanpe-skin img.t-sort-icon {    
+    display: none;
+}
+
+/** Auto complete **/
+
+/** Style for autocomplete menu **/
+.exanpe-skin div.t-autocomplete-menu ul {
+	background-color: #F6F6F6;
+    border: 1px solid #CCCCCC;
+    margin-top: 0;
+}
+
+/** Style for autocomplete menu item **/
+.exanpe-skin div.t-autocomplete-menu li {
+    border-bottom: 1px solid #CCCCCC;
+    color: #555555;
+}
+
+/** Style for autocomplete ajax loader icon **/
+.exanpe-skin img.t-autoloader-icon {
+	background: url("../img/t5/ajax-loader.gif") no-repeat;
+}
+
+/** Palette **/
+
+/** Style for palette title **/
+.exanpe-skin div.t-palette-title {
+	background: #FDFDFD url("../img/common/exanpe-sprite.png") repeat-x 0 0;
+	border: 1px solid #CCCCCC;
+    color: #555555;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/** Style for palette controls buttons **/
+.exanpe-skin .t-palette-controls {
+	padding-top: 60px;	
+}
+
+/** Style for palette controls button **/
+.exanpe-skin .t-palette-controls button {
+	background: none;
+	border: none;	
+	cursor: pointer;
+}
+
+/** Style for palette controls button, when disable **/
+.exanpe-skin div.t-palette-controls button[disabled] img {
+	opacity: 0.55;
+	filter: alpha(opacity = 55);
+}
+
+/** Style for palette select elements, left and right **/
+.exanpe-skin .t-palette select {
+	border: 1px solid #CCCCCC;
+	cursor: pointer;		
+}
  
+/** BeanEditor **/
+
+/** Style for beaneditor wrapper **/
+.exanpe-skin div.t-beaneditor {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border: 1px solid #CCCCCC;
+    font-family: inherit;
+}
+
+/** Style for beaneditor submit button **/
+.exanpe-skin div.t-beaneditor .t-beaneditor-submit, .exanpe-skin input.t-beaneditor-submit {
+    background: #E2E2E2;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+    font-family: inherit;
+    margin-left: 5px;
+    height: 25px;	
+    color: #555555;
+}
+
+/** Style for beaneditor submit button, on mouse hover **/
+.exanpe-skin div.t-beaneditor  input.t-beaneditor-submit:hover, .exanpe-skin input.t-beaneditor-submit:hover {
+	background: #CCCCCC;
+}
+
+/** Style for beaneditor label element, left part **/
+.exanpe-skin div.t-beaneditor-row label {
+	width: 40%;
+	padding-right: 10px;
+}
+
+/** Style for beaneditor row, containing label and input field **/
+.exanpe-skin div.t-beaneditor-row {
+	clear: left;
+}
+
 /********* Accordion **********/
 
 /** Root class **/
@@ -494,198 +687,6 @@
 /** Style for exanpe buttons, on mouse hover **/
 .exanpe-dialog .button-group button:HOVER, .exanpe-button button:HOVER {
 	background: #cccccc;
-}
-
-/********* Exanpe Tapestry Skin **********/
-
-/** GridPager **/
-
-/** Style for pager wrapper **/
-.exanpe-skin div.t-data-grid-pager {
-	background: #E2E2E2 url("../img/t5/gridpager-bg.png") repeat-x;
-	margin: 0;
-	text-align: right;
-	padding-top: 2px;
-	padding-bottom: 2px;
-}
-
-/** Style for pager links **/
-.exanpe-skin div.t-data-grid-pager a, .exanpe-skin div.t-data-grid-pager span.current {
-	cursor: pointer;
-	padding: 0px 4px;
-	margin: 0;
-	line-height: 25px;	
-	border: 1px solid #CCCCCC;
-	color: #555555;
-}
-
-/** Style for current page grid, when selected  **/
-.exanpe-skin div.t-data-grid-pager span.current {
-	background : #CCCCCC;
-	color: white;
-}
-
-/** Style for page grid, when non selected **/
-.exanpe-skin div.t-data-grid-pager a {
-	background : #F6F6F6;
-}
-
-/** Grid **/
-
-/** Style for grid wrapper **/
-.exanpe-skin div.t-data-grid {
-	font-family: inherit;
-}
-
-/** Style for grid table **/
-.exanpe-skin table.t-data-grid {
-	background: url("../img/t5/grid-bg.png") repeat-x;
-	border: 1px solid #CCCCCC;
-}
-
-/** Style for grid header line **/
-.exanpe-skin table.t-data-grid thead tr {
-	height: 25px;
-	background-color: transparent;
-}
-
-/** Style for grid header line cell **/
-.exanpe-skin table.t-data-grid thead tr th {
-	padding: 0 5px 0 5px;
-    margin: 0;
-	border-right: 1px solid #CCCCCC;
-	border-bottom: none;
-	text-align: center;
-	color: #555555;
-	font-size: 93%;
-    font-weight: bold;
-}
-
-/** Style for grid header line cell link, default sort **/
-.exanpe-skin table.t-data-grid tr th a {
-    background: url("../img/t5/sortable.png") no-repeat scroll right center;
-    color: #555555;
-    text-decoration: none;
-    display: block;
-    padding-right: 20px;
-}
-
-/** Style for grid header line cell link, descending sort **/
-.exanpe-skin table.t-data-grid tr th.t-sort-column-descending a {
-    background: url("../img/t5/sort-desc.png") no-repeat scroll right center;
-}
-
-/** Style for grid header line cell link, ascending sort **/
-.exanpe-skin table.t-data-grid tr th.t-sort-column-ascending a {
-    background: url("../img/t5/sort-asc.png") no-repeat scroll right center;
-}
-
-/** Style for grid body odd line **/
-.exanpe-skin table.t-data-grid tbody tr.odd {
-    background-color: #F6F6F6;
-}
-
-/** Style for grid body line cell **/
-.exanpe-skin table.t-data-grid tbody tr td {
-    border-bottom: 1px solid #CCCCCC;
-    border-right: 1px solid #CCCCCC;
-    padding-left: 5px;
-}
-
-/** Hide native t5 Grid icons **/
-.exanpe-skin img.t-sort-icon {    
-    display: none;
-}
-
-/** Auto complete **/
-
-/** Style for autocomplete menu **/
-.exanpe-skin div.t-autocomplete-menu ul {
-	background-color: #F6F6F6;
-    border: 1px solid #CCCCCC;
-    margin-top: 0;
-}
-
-/** Style for autocomplete menu item **/
-.exanpe-skin div.t-autocomplete-menu li {
-    border-bottom: 1px solid #CCCCCC;
-    color: #555555;
-}
-
-/** Style for autocomplete ajax loader icon **/
-.exanpe-skin img.t-autoloader-icon {
-	background: url("../img/t5/ajax-loader.gif") no-repeat;
-}
-
-/** Palette **/
-
-/** Style for palette title **/
-.exanpe-skin div.t-palette-title {
-	background: #FDFDFD url("../img/common/exanpe-sprite.png") repeat-x 0 0;
-	border: 1px solid #CCCCCC;
-    color: #555555;
-    font-size: 93%;
-    font-weight: bold;
-}
-
-/** Style for palette controls buttons **/
-.exanpe-skin .t-palette-controls {
-	padding-top: 60px;	
-}
-
-/** Style for palette controls button **/
-.exanpe-skin .t-palette-controls button {
-	background: none;
-	border: none;	
-	cursor: pointer;
-}
-
-/** Style for palette controls button, when disable **/
-.exanpe-skin div.t-palette-controls button[disabled] img {
-	opacity: 0.55;
-	filter: alpha(opacity = 55);
-}
-
-/** Style for palette select elements, left and right **/
-.exanpe-skin .t-palette select {
-	border: 1px solid #CCCCCC;
-	cursor: pointer;		
-}
- 
-/** BeanEditor **/
-
-/** Style for beaneditor wrapper **/
-.exanpe-skin div.t-beaneditor {
-    background: none repeat scroll 0 0 #F6F6F6;
-    border: 1px solid #CCCCCC;
-    font-family: inherit;
-}
-
-/** Style for beaneditor submit button **/
-.exanpe-skin div.t-beaneditor .t-beaneditor-submit, .exanpe-skin input.t-beaneditor-submit {
-    background: #E2E2E2;
-    border: 1px solid #CCCCCC;
-    cursor: pointer;
-    font-family: inherit;
-    margin-left: 5px;
-    height: 25px;	
-    color: #555555;
-}
-
-/** Style for beaneditor submit button, on mouse hover **/
-.exanpe-skin div.t-beaneditor  input.t-beaneditor-submit:hover, .exanpe-skin input.t-beaneditor-submit:hover {
-	background: #CCCCCC;
-}
-
-/** Style for beaneditor label element, left part **/
-.exanpe-skin div.t-beaneditor-row label {
-	width: 40%;
-	padding-right: 10px;
-}
-
-/** Style for beaneditor row, containing label and input field **/
-.exanpe-skin div.t-beaneditor-row {
-	clear: left;
 }
 
 /**
