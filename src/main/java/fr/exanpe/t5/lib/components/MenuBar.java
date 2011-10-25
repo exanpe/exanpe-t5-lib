@@ -3,12 +3,15 @@ package fr.exanpe.t5.lib.components;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.annotations.AfterRender;
+import org.apache.tapestry5.annotations.BeginRender;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
+import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.Environment;
@@ -17,6 +20,7 @@ import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
 import fr.exanpe.t5.lib.model.MenuInternalModel;
 import fr.exanpe.t5.lib.model.MenuInternalModel.MenuRenderElement;
+import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
 /**
  * MenuBar component.<br/>
@@ -45,6 +49,8 @@ public class MenuBar implements ClientElement
     @Parameter(defaultPrefix = BindingConstants.LITERAL, required = true, allowNull = false, value = "hover")
     private MenuEventTypeEnum eventType;
 
+    private static final String ROOT_CSS_CLASS = "exanpe-menu";
+
     @Inject
     private ComponentResources resources;
 
@@ -53,6 +59,9 @@ public class MenuBar implements ClientElement
 
     @Inject
     private JavaScriptSupport javaScriptSupport;
+
+    @Inject
+    private ExanpeComponentService ecservice;
 
     @SetupRender
     void init()
@@ -63,11 +72,20 @@ public class MenuBar implements ClientElement
         if (environment.push(MenuInternalModel.class, model) != null) { throw new IllegalStateException("Nested MenuBar are not supported"); }
     }
 
+    @BeginRender
+    void begin(MarkupWriter writer)
+    {
+        Element e = writer.element("span");
+        resources.renderInformalParameters(writer);
+
+        ecservice.reorderCSSClassDeclaration(e, ROOT_CSS_CLASS);
+    }
+
     @AfterRender
-    void end()
+    void end(MarkupWriter writer)
     {
         environment.pop(MenuInternalModel.class);
-
+        writer.end();
         javaScriptSupport.addInitializerCall("menuBarBuilder", buildJSONData());
     }
 

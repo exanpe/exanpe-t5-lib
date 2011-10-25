@@ -98,7 +98,7 @@
 				</dependencies>
 			</plugin>
 			-->
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
@@ -135,7 +135,7 @@
 					<jswarn>false</jswarn>
 					<nosuffix>true</nosuffix>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

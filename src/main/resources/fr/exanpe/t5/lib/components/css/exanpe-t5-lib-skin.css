@@ -682,93 +682,205 @@
 /**
  * MenuBar
  */
-/** Style for the main **/
-.exanpe-menu{
-	background : yellow;
-	border: 1px solid black;
-	line-height: 2;
-} 
 
+/** Style for main menu bar, with image in background */
+.exanpe-menu .yuimenubar {
+	line-height: 30px;
+	border: 1px solid #CCCCCC;
+	background: #E2E2E2 url("../img/menu/menu-title.png") repeat-x;
+}
+
+/** Style for menubar items */
 .exanpe-menu .exanpe-menubaritem {
-    border-right: 1px solid blue;
+    border-right: 1px solid #CCCCCC;
     padding-left: 20px;
     padding-right: 20px;
+    color: #555555;	
 }
 
-.exanpe-menu .yuimenubaritem-hassubmenu{
-	/* TODO background url center right arrow*/	
+/** Style for menubar item link label */
+.exanpe-menu .yuimenubaritemlabel {
+	color: #555555;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: bold;
 }
 
-.exanpe-menu .yuimenubaritem-selected{
-	background:red;	
+/** Style for color font of submenu bar items */
+.exanpe-menu .yuimenubaritem {
+	color: #555555;		
 }
 
-.exanpe-menu .yuimenubaritem-disabled{
-	color: white;	
+/** Style for menubar item link label, when visited */
+.exanpe-menu .yuimenubaritemlabel:visited {
+	color: #555555;
+	font-weight: bold;
 }
 
+/** Indicates the presence of submenu for the menubar. */
+.exanpe-menu .yuimenubaritemlabel-hassubmenu {
+	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat;
+	padding-right: 20px;
+	cursor: pointer;
+}
+
+/** Style for menubar item, on mouse hover */
+.exanpe-menu .yuimenubaritem-selected {
+	background: #E2E2E2;
+	cursor: pointer;	
+}
+
+/** Styles for submenus */
+.exanpe-menu .yuimenu {
+	line-height: 25px;
+}
+.exanpe-menu .yuimenu .bd {
+	border: solid 1px #CCCCCC;
+	background-color: #E2E2E2;
+}
 .exanpe-menu .exanpe-menuitem {
-    background:green;
+    background: #F6F6F6;
     padding-left: 20px;
     padding-right: 20px;
+    border-top: 1px solid #CCCCCC;
 }
 
-.exanpe-menu .yuimenuitem-hassubmenu{
-	/* TODO background url center right arrow*/	
-}
-
-.exanpe-menu .yuimenuitem-selected{
-	background:blue;	
-}
-
-.exanpe-menu .yuimenuitem-disabled{
+/** Style for menubar item, when disabled */
+.exanpe-menu .yuimenubaritem-disabled {
 	color: white;	
+	font-weight: bold;
+}
+
+/** Style for Sub submenu labels  */
+.exanpe-menu .yuimenuitemlabel {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/** Indicates the presence of submenu for the submenu items */
+.exanpe-menu .yuimenuitem-hassubmenu {
+	background: url("../img/menu/menuitem-hassubmenu.png") 95% 50% no-repeat;
+	background-color: #F6F6F6;
+	border-top: 1px solid #CCCCCC;
+}
+
+/** Style for submenu, on mouse hover */ 
+.exanpe-menu .yuimenuitem-selected {
+	background-color: #E2E2E2;
+}
+
+/** Style for submenu items, when disabled */
+.exanpe-menu .exanpe-menuitem .yuimenuitem-disabled, .exanpe-menu .yuimenuitem-disabled {
+	cursor: default;
+	color: #CCCCCC;
+	background: #F6F6F6;
 }
 
 /**
- * PasswordStrengthChecker
+ * Password Strength Checker
  */
+
+/** Root container class */
 .exanpe-psc {
-	position: relative;
 	width: 150px;
 }
 
-.exanpe-psc .wrapper {
-	position: absolute;
-	padding-left: 5px;	
-}
-
+/** Size of the box tag */
 .exanpe-psc div {
-	display: inline-block;
+ 	height: 6px;
+	width: 12px;
 }
 
+/** Style for disclaimer message */
 .exanpe-psc p {
-	padding: 0;
-	margin: 0;
 	font-size: 11px;	
 	color: #555555;
 }
 
+/** Style for meter tag */
 .exanpe-psc-tag {
 	border: 1px solid #CCCCCC;
-    height: 6px;
-    width: 12px;
-    margin: 0 2px 0 0;
 }
 
+/** Style for the strongest password */
 .exanpe-psc-tag-meter-strongest {
-	background-color: #6EC02A;		
+	background-color: #6ec02a;		
 }
 
+/** Style for the strong password */
 .exanpe-psc-tag-meter-strong {
-	background-color: yellow;		
+	background-color: yellow;
 }
 
+/** Style for the weak password */
 .exanpe-psc-tag-meter-weak {
-	background-color: orange;		
+	background-color: orange;	
 }
 
+/** Style for the veryweak password */
 .exanpe-psc-tag-meter-veryweak {
 	background-color: red;		
 }
 
+/**
+ * Vertical Menu
+ */
+
+/** Root class **/
+.exanpe-vmenu {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+}
+
+/** Vertical Menu item title **/
+.exanpe-vmenu .vmenu-title {
+	background: #E2E2E2 url("../img/vmenu/vmenu-title.png") repeat-x;
+    font-weight: normal;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    font-weight: bold;
+    color : #909090;
+    font-size: 1em;
+}
+
+/** Vertical Menu item icon **/
+.exanpe-vmenu .vmenu-title img.vmenu-title-icon {
+    vertical-align: middle;
+}
+
+/** Vertical Menu item content **/
+.exanpe-vmenu .vmenu-content {
+	background: #F6F6F6;
+    border-bottom: 1px solid #CCCCCC;
+    color: #555555;
+    line-height: 25px;
+    font-size: 0.8em;
+}
+
+/** Vertical Menu item title link **/
+.exanpe-vmenu ul li .vmenu-title a {
+	color: #909090;
+	text-decoration: none;
+}
+
+/** Vertical Menu item title link when selected **/
+.exanpe-vmenu ul li .vmenu-title .exanpe-vmenu-selected {
+	color: #333333;
+}
+
+/** Vertical Menu item title and content presentation **/
+.exanpe-vmenu ul li .vmenu-title a span, .exanpe-vmenu .vmenu-content {
+	padding-left: 25px;	
+}
+
+/** Vertical Menu item link **/
+.exanpe-vmenu .vmenu-content ul li a {
+	background: url('../img/vmenu/vmenuitem-link.png') no-repeat 0px 0px;
+	padding-left: 10px;
+	color: #909090;
+	text-decoration: none;
+	line-height: 20px;
+	display: inline-block;
+}

@@ -1,0 +1,18 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+
+	<ex:verticalMenu t:id="verticalmenu" defaultActiveItem="menu1">
+		<ex:verticalMenuItem t:id="menu1" t:title="literal:Menu 1">
+  			<ul>
+  				<li><t:pagelink page="comp/verticalmenutest">VerticalMenu Test</t:pagelink></li>
+  				<li><t:pagelink page="index">Retour index</t:pagelink></li>
+  			</ul>
+  		</ex:verticalMenuItem>
+		<ex:verticalMenuItem t:id="comments">
+  			This is the second menu item
+  			<br /> with long content
+  		</ex:verticalMenuItem>
+  		<ex:verticalMenuItem t:id="external" t:title="literal:Google" t:target="_blank" />
+	</ex:verticalMenu>
+	
+</t:layout>

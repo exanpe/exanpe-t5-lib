@@ -503,13 +503,13 @@ table.hidden {
     display: block;
     height: 0;
     line-height: 0;
-    visibility: hidden;
+    visibility: hidden;    
 }
 .yuimenubaritem {
-    float: left;
+    float: left;    
 }
 .yuimenubaritemlabel, .yuimenuitemlabel {
-    display: block;
+    display: block;    
 }
 .yuimenuitemlabel .helptext {
     display: block;
@@ -526,7 +526,7 @@ table.hidden {
     left: -3px;
     right: -3px;
     top: 2px;
-    visibility: visible;
+    visibility: hidden;
 }
 .hide-scrollbars * {
     overflow: hidden;
@@ -545,4 +545,126 @@ table.hidden {
 }
 .yui-overlay.yui-force-redraw {
     margin-bottom: 1px;
+}
+
+.exanpe-menu .yuimenubar ul {
+	*zoom:1;
+}
+
+.exanpe-menu .yuimenubar .yuimenu ul {
+	*zoom:normal;
+}
+
+.exanpe-menu .yuimenubaritem {
+	float: left;
+}
+
+.exanpe-menu .yuimenubaritemlabel, .exanpe-menu  .yuimenuitemlabel {
+	display: block;
+}
+
+.exanpe-menu .hide-scrollbars * {
+	overflow:hidden;
+}
+
+.exanpe-menu .hide-scrollbars select {
+	display: none;
+}
+
+.exanpe-menu  .yuimenu.show-scrollbars, .exanpe-menu .yuimenubar.show-scrollbars {
+	overflow:visible;
+}
+
+.exanpe-menu .yuimenu.hide-scrollbars .yui-menu-shadow, .yuimenubar.hide-scrollbars .yui-menu-shadow {
+	overflow: hidden;
+}
+
+.exanpe-menu .yuimenu.show-scrollbars .yui-menu-shadow, .yuimenubar.show-scrollbars .yui-menu-shadow {
+	overflow:auto;
+}
+
+.exanpe-menu .yuimenuitem-hassubmenu .first-of-type {
+	border-width: 0;
+	border-top: none;
+}
+
+
+.exanpe-menu .yuimenubaritemlabel {
+	*position: relative;
+	margin: 0;	
+}
+
+.exanpe-menu .yuimenu .bd {
+	*zoom: 1;
+	_zoom: normal;
+}
+
+.exanpe-menu .yuimenu .yuimenu .bd {
+	*zoom:normal;
+}
+
+/** Vertical Menu */
+
+.exanpe-vmenu {
+	
+}
+
+.exanpe-vmenu div.exanpe-vmenu-closed {
+	border: 0 none;
+    height: 0;
+    left: -999999px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+}
+
+.exanpe-vmenu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.exanpe-vmenu ul li {
+	display: block;
+}
+
+.exanpe-vmenu .vmenu-title {
+	display: block;
+	background: #757575;
+	color: #FFFFFF;	
+}
+
+.exanpe-vmenu .vmenu-content {
+	background: #D5D5D4;	
+}
+
+.exanpe-vmenu  ul li .vmenu-title a {
+	display: block;
+}
+
+/** Password Strength Checker */
+
+.exanpe-psc {
+	position: relative;
+}
+
+.exanpe-psc .wrapper {
+	position: absolute;
+	padding-left: 5px;	
+}
+
+.exanpe-psc div {
+	float: left;
+	overflow: hidden;
+}
+
+.exanpe-psc p {
+	padding: 0;
+	margin: 0;
+}
+
+.exanpe-psc-tag {
+    margin: 0 2px 0 0;
 }
