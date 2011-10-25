@@ -54,6 +54,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * This component fully rely on Tapestry core to manage error messages.
  * JavaScript : This component is bound to a class Exanpe.AjaxValidation.<br/>
  * 
+ * @since 1.1
  * @author jmaupoux
  */
 @Import(library =
@@ -88,9 +89,7 @@ public class AjaxValidation
     private static final String PARAM_NAME = "value";
 
     /**
-     * Specify the message displayed for the validation.
-     * 
-     * @see AjaxValidationEventTypeEnum
+     * Specify the message displayed on validation error.
      */
     @Property
     @Parameter(defaultPrefix = BindingConstants.MESSAGE, required = false)
