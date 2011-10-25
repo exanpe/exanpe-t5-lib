@@ -267,6 +267,22 @@
 				<td></td>
 			</tr>
 		</table>
+    
+        <h3>ajaxvalidation</h3>
+        <table width="100" border="1">
+          <tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
+          <tr class="b">
+            <td>
+              <b>message</b>
+            </td>
+            <td>Specify the message displayed on validation error<br/>
+              <br/> Default prefix : message
+            </td>
+            <td>java.lang.String</td>
+            <td>false</td>
+            <td></td>
+          </tr>
+        </table>
      </section>
      
   </body>
