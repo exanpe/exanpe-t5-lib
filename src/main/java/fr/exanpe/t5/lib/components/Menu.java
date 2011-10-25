@@ -28,6 +28,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * This component wraps a YUI Menu component.<br/>
  * This component must be opened and closed through its JavaScript API.
  * 
+ * @since 1.1
  * @see MenuItem
  * @see SubMenu
  * @author jmaupoux

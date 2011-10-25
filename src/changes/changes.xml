@@ -1,0 +1,35 @@
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+  <properties>
+    <title>Changes - Exanpe T5 Lib</title>
+  </properties>
+  <body>
+    <release version="1.1.0" date="2011-TODO" description="Second release">
+      <action dev="jmaupoux" type="add">
+        Added the AjaxValidation mixin
+      </action>
+      <action dev="lguerin" type="update">
+        Updated the Dialog mixin with rich render
+      </action>
+      <action dev="jmaupoux" type="add">
+        Added MenuBar and Menu components
+      </action>
+      <action dev="lguerin" type="add">
+        Added VerticalMenu component
+      </action>
+      <action dev="lguerin" type="add">
+        Added PasswordStrengthChecker mixin
+      </action>
+    </release>
+
+    <release version="1.0.0" date="2011-09-04" description="First release">
+      <action dev="jmaupoux" type="add">
+        Initialization of the first version of the library
+      </action>
+      <action dev="lguerin" type="add">
+        Initialization of the first version of the library
+      </action>
+    </release>
+  </body>
+</document>

@@ -29,6 +29,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * CSS : This component is bound to a class exanpe-menu.<br/>
  * This component wraps a YUI MenuBar component.
  * 
+ * @since 1.1
  * @see MenuItem
  * @see SubMenu
  * @author jmaupoux

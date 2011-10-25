@@ -30,6 +30,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * <li>a property file with key named "${id}-label"</li>
  * </ul>
  * 
+ * @since 1.1
  * @see MenuBar
  * @see SubMenu
  * @author jmaupoux

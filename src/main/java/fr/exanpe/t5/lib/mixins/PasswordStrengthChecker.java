@@ -48,6 +48,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * CSS : This component is bound to a class exanpe-psc<br/>
  * </p>
  * 
+ * @since 1.1
  * @see PasswordStrengthCheckerTypeEnum
  * @author lguerin
  */

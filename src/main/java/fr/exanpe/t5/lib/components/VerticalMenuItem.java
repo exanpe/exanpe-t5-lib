@@ -22,6 +22,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * This component represents an item displayed into {@link VerticalMenu}.<br/>
  * The content of the VerticalMenuItem will be filled by the body tag of the component.
  * 
+ * @since 1.1
  * @see VerticalMenu
  * @author lguerin
  */

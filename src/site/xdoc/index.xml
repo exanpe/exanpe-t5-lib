@@ -54,16 +54,20 @@
             	<li><b>Border :</b> A simple skinned border</li>
             	<li><b>ColorPicker :</b> Choose a Color and get it easily on the server side</li>
             	<li><b>HideablePanel :</b> Show/Hide a left side Panel</li>
+                <li><b>MenuBar :</b> Display a menu with a multi level roll down menu bar</li>
             	<li><b>SecurePassword :</b> Enter a Password without typing characters</li>
             	<li><b>Slider :</b> Select a value on a range using a Slider</li>
             	<li><b>SlideShow :</b> Display a list of items into a SlideShow</li>
             	<li><b>TabView :</b> Organize your layout into a tab view</li>
             	<li><b>Tooltip :</b> Display all kind of tooltips in your page</li>
+                <li><b>VerticalMenu :</b> Display your left side vertical menu</li>
             </ul>
          <h3>Mixins</h3>
             Some mixins provide additional features to existing components:<br/>
             <ul>
-            	<li><b>Dialog :</b> Display a dialog to print information or confirmation on user action.</li>
+                <li><b>AjaxValidation :</b> Enable an Ajax Validation on any textfield component.</li>
+            	<li><b>Dialog :</b> Display a dialog to print any information or confirmation on user action.</li>
+                <li><b>PasswordStrengthChecker :</b> Display to the user its password strength.</li>
             	<li><b>SelectLoader :</b> Load <i>select</i> content options according to a first <i>select</i> component selection.</li>
             </ul>
          <h3>Skin</h3>

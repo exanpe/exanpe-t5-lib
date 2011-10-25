@@ -188,6 +188,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-site-plugin</artifactId>
+              <version>2.3</version>
+            </plugin>
 		</plugins>
 		<extensions>
 			<extension>
@@ -227,6 +232,18 @@
 					</reportSet>
 				</reportSets>
 			</plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-changes-plugin</artifactId>
+              <version>2.6</version>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>changes-report</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>

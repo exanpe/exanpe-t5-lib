@@ -35,6 +35,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * JavaScript : This component is bound to a class Exanpe.VerticalMenu.<br/>
  * CSS : This component is bound to a class exanpe-vmenu.<br/>
  * 
+ * @since 1.1
  * @see VerticalMenuItem
  * @author lguerin
  */
