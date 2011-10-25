@@ -1,3 +1,15 @@
+/**
+ * On submit handler
+ * @private
+ */
+Tapestry.Validator.ajaxValidator = function(field, message, value){
+	field.addValidator(function(){
+		if(field.isInError){
+			throw message;
+		}
+	});
+};
+
 /*
  * Copyright 2011 EXANPE <exanpe@gmail.com>
  *
@@ -2390,4 +2402,140 @@ Tapestry.Initializer.passwordStrengthCheckerBuilder = function(data){
 	var psc = new Exanpe.PasswordStrengthChecker(data.id, data.ajax, data.javascriptChecker, data.min, data.url, YAHOO.lang.JSON.parse(data.messages));
 	psc._init();
 	window[data.id] = psc;
+};
+
+
+/** Ajax Validation **/
+
+/** 
+ * Constructor
+ * @class Represents an AjaxValidation.
+ * @param {String} id the id of the textfield to bind on
+ * @param {String} url the url to submit the selected value
+ * @param {String} event the event to trigger the validation
+ * @param {String} message the message to display on error
+ */
+Exanpe.AjaxValidation = function(id, url, event, message){
+	this.id = id;
+	this.url = url;
+	this.event = event;
+	this.message = message;
+};
+
+/**
+ * Constant for param name sent
+ * @static
+ * @constant
+ */
+Exanpe.AjaxValidation.PARAM_NAME = "value";
+
+
+
+/**
+ * Initialize the component.
+ * @private
+ */
+Exanpe.AjaxValidation.prototype._init = function(){
+	var el = YAHOO.util.Dom.get(this.id);
+	var av = this;
+	
+	YAHOO.util.Event.addListener(el, this.event, Exanpe.AjaxValidation.prototype.validate, this, true);
+	
+	el = null;
+};
+
+/**
+ * Called when unable to process the ajax validation.
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.AjaxValidation.prototype.afterValidationError = function(){
+	
+};
+
+/**
+ * Called after a successful validation
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.AjaxValidation.prototype.onValidationCorrect = function(){
+	
+};
+
+/**
+ * Called after an unsuccessful validation
+ * Does nothing by default, override to define your own action.
+ * @event
+ */
+Exanpe.AjaxValidation.prototype.onValidationIncorrect = function(){
+	
+};
+
+/**
+ * Validate the textfield content.
+ */
+Exanpe.AjaxValidation.prototype.validate = function(){
+	var av = this;
+	// Ajax Failure handler
+	var failureHandler = function(o){
+		av.request = null;
+		Exanpe.Log.error("Could not process ajax validation");
+		av.afterValidationError();
+	};
+	
+	// Ajax Success handler
+	var successHandler = function(o){
+		if(!o.responseText){
+			this.onValidationIncorrect();
+			return;
+		}
+		
+		var json = YAHOO.lang.JSON.parse(o.responseText);
+		
+		if(json.result == true){
+			if(YAHOO.util.Dom.get(av.id).isInError == true){
+				YAHOO.util.Dom.get(av.id).removeDecorations();
+			}
+			document.getElementById(av.id).isInError = false;
+			av.onValidationCorrect();
+		}else{
+			document.getElementById(av.id).isInError = true;
+			YAHOO.util.Dom.get(av.id).showValidationMessage(av.message);
+			av.onValidationIncorrect();
+		}
+	};
+
+	// Callback objects
+	var callback = 
+	{
+		success: successHandler,
+		failure: failureHandler
+	};
+
+	var request = YAHOO.util.Connect.asyncRequest(
+			"GET",
+			this.url + "?" + Exanpe.AjaxValidation.PARAM_NAME + "=" + YAHOO.util.Dom.get(this.id).value, 
+			callback, 
+			null
+	);
+	
+	// Ajax protection
+	if(YAHOO.util.Connect.isCallInProgress(this.request)){
+	    YAHOO.util.Connect.abort(request);
+	}
+	else {
+		this.request = request;
+	}
+};
+
+/**
+ * Initialize the ajax validation mixin
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.ajaxValidationBuilder = function(data){
+	var av = new Exanpe.AjaxValidation(data.id, data.url, data.event, data.message);
+	av._init();
+	window[av.id] = av;
 };

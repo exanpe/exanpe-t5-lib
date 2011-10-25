@@ -165,7 +165,7 @@ public class MenuItem implements ClientElement
             String labelKey = id + LABEL_SUFFIX;
             String label = exanpeService.getEscaladeMessage(resources, labelKey);
 
-            log.debug("Checking label into resources file with key:" + labelKey);
+            log.debug("Checking label into resources file with key: {}", labelKey);
 
             if (StringUtils.isNotEmpty(label))
                 this.label = label;

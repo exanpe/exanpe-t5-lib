@@ -167,7 +167,7 @@ public class Dialog
         String titleKey = id + TITLE_SUFFIX;
         String title = exanpeService.getEscaladeMessage(resources, titleKey);
 
-        log.debug("Checking title into resources file with key:" + titleKey);
+        log.debug("Checking title into resources file with key: {}", titleKey);
 
         if (StringUtils.isNotEmpty(title)) { return title; }
         return null;
@@ -184,7 +184,7 @@ public class Dialog
         String messageKey = id + MESSAGE_SUFFIX;
         String message = exanpeService.getEscaladeMessage(resources, messageKey);
 
-        log.debug("Checking title into resources file with key:" + messageKey);
+        log.debug("Checking title into resources file with key: {}", messageKey);
         if (StringUtils.isNotEmpty(message)) { return message; }
         return null;
 
