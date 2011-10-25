@@ -377,6 +377,15 @@
     text-align: right;
 }
 
+/** Style for error message into Dialog box */
+.exanpe-dialog .exanpe-dialog-error {
+	border: 1px solid red;
+	color: red;
+	display: none;
+	padding-left: 5px;
+	margin-right: 10px;
+}
+
 /** Style for the modal mask, displayed in background of a panel window **/
 .mask {
     background-color: #000000;
@@ -653,7 +662,7 @@
 }
 
 /** Style for beaneditor submit button **/
-.exanpe-skin div.t-beaneditor .t-beaneditor-submit {
+.exanpe-skin div.t-beaneditor .t-beaneditor-submit, .exanpe-skin input.t-beaneditor-submit {
     background: #E2E2E2;
     border: 1px solid #CCCCCC;
     cursor: pointer;
@@ -664,7 +673,7 @@
 }
 
 /** Style for beaneditor submit button, on mouse hover **/
-.exanpe-skin div.t-beaneditor  input.t-beaneditor-submit:hover {
+.exanpe-skin div.t-beaneditor  input.t-beaneditor-submit:hover, .exanpe-skin input.t-beaneditor-submit:hover {
 	background: #CCCCCC;
 }
 

@@ -2,16 +2,44 @@
 	xmlns:ex="tapestry-library:exanpe">
 <body>
 
-	<span t:type="any" t:id="link1" t:mixins="exanpe/dialog" t:renderMode="info" t:message="literal:This is a the INFO render mode !" t:okLabelButton="literal:Continuer" t:width="500">link1</span>
+	<t:form t:id="form">
+		<span t:type="any" t:id="link1" t:mixins="exanpe/dialog" t:renderMode="info" t:message="literal:This is a the INFO render mode !" t:okLabelButton="literal:Continuer" t:width="500">link1</span>
+	
+		<br />
+		<t:actionlink t:id="link2" context="6" t:mixins="exanpe/dialog">link2</t:actionlink>
+	
+		<br />
+		<t:actionlink t:id="linkDisable" t:mixins="exanpe/dialog" class="${disableClass}">Dialog disable</t:actionlink>
+	
+		<br />
+		<t:actionlink t:id="link3" t:mixins="exanpe/dialog">Dialog from properties</t:actionlink>
+	
+		<br />
 
-	<br />
-	<t:actionlink t:id="link2" context="6" t:mixins="exanpe/dialog">link2</t:actionlink>
-
-	<br />
-	<t:actionlink t:id="linkDisable" t:mixins="exanpe/dialog" class="${disableClass}">Dialog disable</t:actionlink>
-
-	<br />
-	<t:actionlink t:id="link3" t:mixins="exanpe/dialog">Dialog from properties</t:actionlink>
+		<t:submit t:id="free" value="Form Submit" t:mixins="exanpe/dialog" t:targetHtmlId="freeDialog" />			
+		<br />
+		Thanks : ${field1}
+				
+		<div id="freeDialog">
+				This is a <b>RICH</b> dialog ! <br />
+				Nom: <t:textfield t:id="field1" value="field1"></t:textfield>
+		</div>
+	</t:form>
+	
+    <script type="text/javascript">
+		YAHOO.util.Event.onDOMReady(function(){
+			
+			// before validation
+			free.beforeDialogValidation = function(){
+				var error = "";
+				if(YAHOO.util.Dom.get("field1").value == "") { 
+					error = "Name is required";
+				}
+				return error;
+			};
+			
+		});
+    </script>
 
 </body>
 </t:layout>
