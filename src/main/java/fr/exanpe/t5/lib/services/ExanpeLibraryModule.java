@@ -32,7 +32,6 @@ import org.apache.tapestry5.util.StringToEnumCoercion;
 import org.slf4j.Logger;
 
 import fr.exanpe.t5.lib.constants.AccordionEventTypeEnum;
-import fr.exanpe.t5.lib.constants.AjaxValidationEventTypeEnum;
 import fr.exanpe.t5.lib.constants.DialogRenderModeEnum;
 import fr.exanpe.t5.lib.constants.ExanpeSymbols;
 import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
@@ -63,8 +62,6 @@ public class ExanpeLibraryModule
         configuration.add(CoercionTuple.create(String.class, DialogRenderModeEnum.class, StringToEnumCoercion.create(DialogRenderModeEnum.class)));
         configuration.add(CoercionTuple.create(String.class, SliderOrientationTypeEnum.class, StringToEnumCoercion.create(SliderOrientationTypeEnum.class)));
         configuration.add(CoercionTuple.create(String.class, MenuEventTypeEnum.class, StringToEnumCoercion.create(MenuEventTypeEnum.class)));
-        configuration
-                .add(CoercionTuple.create(String.class, AjaxValidationEventTypeEnum.class, StringToEnumCoercion.create(AjaxValidationEventTypeEnum.class)));
         configuration.add(CoercionTuple.create(
                 String.class,
                 PasswordStrengthCheckerTypeEnum.class,

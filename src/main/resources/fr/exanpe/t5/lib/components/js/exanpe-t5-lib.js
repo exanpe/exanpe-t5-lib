@@ -2411,13 +2411,11 @@ Tapestry.Initializer.passwordStrengthCheckerBuilder = function(data){
  * @class Represents an AjaxValidation.
  * @param {String} id the id of the textfield to bind on
  * @param {String} url the url to submit the selected value
- * @param {String} event the event to trigger the validation
  * @param {String} message the message to display on error
  */
-Exanpe.AjaxValidation = function(id, url, event, message){
+Exanpe.AjaxValidation = function(id, url, message){
 	this.id = id;
 	this.url = url;
-	this.event = event;
 	this.message = message;
 };
 
@@ -2438,7 +2436,7 @@ Exanpe.AjaxValidation.prototype._init = function(){
 	var el = YAHOO.util.Dom.get(this.id);
 	var av = this;
 	
-	YAHOO.util.Event.addListener(el, this.event, Exanpe.AjaxValidation.prototype.validate, this, true);
+	YAHOO.util.Event.addListener(el, "blur", Exanpe.AjaxValidation.prototype.validate, this, true);
 	
 	el = null;
 };
@@ -2534,7 +2532,7 @@ Exanpe.AjaxValidation.prototype.validate = function(){
  * @static
  */
 Tapestry.Initializer.ajaxValidationBuilder = function(data){
-	var av = new Exanpe.AjaxValidation(data.id, data.url, data.event, data.message);
+	var av = new Exanpe.AjaxValidation(data.id, data.url, data.message);
 	av._init();
 	window[av.id] = av;
 };

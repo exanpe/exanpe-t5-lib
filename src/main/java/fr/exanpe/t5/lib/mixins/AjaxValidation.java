@@ -38,7 +38,6 @@ import org.apache.tapestry5.services.FormSupport;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.slf4j.Logger;
 
-import fr.exanpe.t5.lib.constants.AjaxValidationEventTypeEnum;
 import fr.exanpe.t5.lib.constants.AjaxValidationResult;
 import fr.exanpe.t5.lib.constants.ExanpeEventConstants;
 import fr.exanpe.t5.lib.services.ExanpeComponentService;
@@ -87,15 +86,6 @@ public class AjaxValidation
      * Param containing the value sent by the client
      */
     private static final String PARAM_NAME = "value";
-
-    /**
-     * Specify the event to trigger the validation.
-     * 
-     * @see AjaxValidationEventTypeEnum
-     */
-    @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL, allowNull = false, required = true, value = "blur")
-    private AjaxValidationEventTypeEnum eventType;
 
     /**
      * Specify the message displayed for the validation.
@@ -200,7 +190,6 @@ public class AjaxValidation
 
         data.accumulate("id", id);
         data.accumulate("url", link.toURI());
-        data.accumulate("event", eventType.toString().toLowerCase());
         data.accumulate("message", finalMessage);
 
         return data;
