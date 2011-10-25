@@ -29,6 +29,7 @@ import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectContainer;
 import org.apache.tapestry5.annotations.Parameter;
+import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
@@ -73,16 +74,22 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
 public class Dialog
 {
     /**
+     * The title of the Dialog box.
+     */
+    @Parameter(value = "exanpe-dialog-default-title", defaultPrefix = BindingConstants.MESSAGE)
+    private String title;
+
+    /**
      * The message of the Dialog box.
      */
     @Parameter(value = "exanpe-dialog-default-message", defaultPrefix = BindingConstants.MESSAGE)
     private String message;
 
     /**
-     * The title of the Dialog box.
+     * An Html id used to display the content of the Dialog instead of message parameter.
      */
-    @Parameter(value = "exanpe-dialog-default-title", defaultPrefix = BindingConstants.MESSAGE)
-    private String title;
+    @Parameter(required = false, defaultPrefix = BindingConstants.LITERAL, allowNull = false)
+    private String targetHtmlId;
 
     /**
      * The label of the yes button
@@ -156,6 +163,13 @@ public class Dialog
     @Inject
     private ComponentResources resources;
 
+    @SetupRender
+    void init()
+    {
+        if ((message == null) && (targetHtmlId == null)) { throw new IllegalArgumentException(
+                "You must set at least the message parameter or the targetHtmlId parameter."); }
+    }
+
     /**
      * Must be called @AfterRender
      */
@@ -212,6 +226,7 @@ public class Dialog
         data.accumulate("message", messageFromId == null ? message : messageFromId);
         data.accumulate("title", titleFromId == null ? title : titleFromId);
         data.accumulate("renderMode", renderMode.toString());
+        data.accumulate("targetHtmlId", targetHtmlId);
         data.accumulate("width", width);
         data.accumulate("yesLabelButton", yesLabelButton);
         data.accumulate("noLabelButton", noLabelButton);

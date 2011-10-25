@@ -1147,12 +1147,13 @@ Tapestry.Initializer.tooltipBuilder = function(data){
  * @class Represents a Dialog component
  * @param {String} id the id of the Dialog Mixin container element
  * @param {String} message the message of the dialog box
+ * @param {String} targetHtmlId the HTML id used to display the content of the Dialog box instead of message parameter
  * @param {String} title the title of the dialog box
  * @param {String} renderMode the render mode to used for displaying Dialog (RENDER_MODE_INFO or RENDER_MODE_CONFIRM)
  * @param {int} width the with of the dialog box, in pixel
  * @param {YUI}    yui the YUI Dialog object wrapped
  */
-Exanpe.Dialog = function(id, message, title, renderMode, width, yui) {
+Exanpe.Dialog = function(id, message, targetHtmlId, title, renderMode, width, yui) {
 	/**
 	 * The id of the instance
 	 */
@@ -1162,6 +1163,11 @@ Exanpe.Dialog = function(id, message, title, renderMode, width, yui) {
 	 * The Dialog message
 	 */
 	this.message = message;
+	
+	/**
+	 * Html id used to display Dialog content, instead of message
+	 */
+	this.targetHtmlId = targetHtmlId;
 	
 	/**
 	 * The Dialog title
@@ -1193,7 +1199,7 @@ Exanpe.Dialog = function(id, message, title, renderMode, width, yui) {
 Exanpe.Dialog.DISABLE_CLASS = "exanpe-dialog-disable";
 
 /**
- * Confirm mode constant
+ * CONFIRM mode constant
  * @constant
  * @private
  * @static
@@ -1201,7 +1207,7 @@ Exanpe.Dialog.DISABLE_CLASS = "exanpe-dialog-disable";
 Exanpe.Dialog.RENDER_MODE_CONFIRM = "confirm";
 
 /**
- * Info mode constant
+ * INFO mode constant
  * @constant
  * @private
  * @static
@@ -1230,6 +1236,7 @@ Exanpe.Dialog.YUI_ID_PREFIX = "exanpe-dialog-yui-";
  * @param {Event} e the triggered event
  */
 Exanpe.Dialog.prototype.show = function(e) {
+	this._hideDialogErrorEl();
 	this.yui.show();
 };
 
@@ -1262,15 +1269,78 @@ Exanpe.Dialog.prototype.setMessage = function(message) {
  */
 Exanpe.Dialog.prototype._doAction = function() {
 	var el = YAHOO.util.Dom.get(this.id);
+	
+	// Submit button
+	if (el.click) {
+		el.click();
+		return;
+	}
+	// Link
 	if (el.href)
 	{
 		window.location = el.href;
 	}
 	else 
 	{
-		Exanpe.Log.error("Dialog CONFIRM mode must be applied on element with href attribute");
+		Exanpe.Log.error("Dialog CONFIRM mode must only be applied on link or submit elements");
 		this.hide();
 	}
+};
+
+/**
+ * Generate the message displayed into Dialog.
+ * @param {String} message the message to display
+ * @private
+ */
+Exanpe.Dialog.prototype._generateDialogMessage = function(message) {
+	// Placeholder for error message
+	var dialogMessage = "<div id='dialogError-" + this.id + "' class='exanpe-dialog-error'></div>";
+	
+	dialogMessage += message;
+	this.setMessage(dialogMessage);
+}
+
+/**
+ * Dom method utility
+ * @private
+ */
+Exanpe.Dialog.prototype.getDialogErrorEl = function(){
+	return YAHOO.util.Dom.get("dialogError-" + this.id);
+};
+
+/**
+ * Hide the Dialog error message
+ * @private
+ */
+Exanpe.Dialog.prototype._hideDialogErrorEl = function(){
+	YAHOO.util.Dom.setStyle(this.getDialogErrorEl(), "display", "none");
+};
+
+/**
+ * Called before process the Dialog validation
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.Dialog.prototype.beforeDialogValidation = function() {
+	
+};
+
+/**
+ * Called after process the Dialog validation
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.Dialog.prototype.afterDialogValidation = function() {
+	
+};
+
+/**
+ * Display an error message into the Dialog box
+ * @param {String} errorMsg the errorMsg to display 
+ * @private
+ */
+Exanpe.Dialog.prototype._displayDialogErrorMessage =  function(errorMsg) {
+	var dialogErrorEl = this.getDialogErrorEl();
+	dialogErrorEl.innerHTML = errorMsg;
+	YAHOO.util.Dom.setStyle(dialogErrorEl, "display", "block");
 };
 
 /**
@@ -1282,8 +1352,20 @@ Exanpe.Dialog.prototype._init = function() {
 	// Define event handlers for Dialog
 	this.yui.wrapper = this;
 	var handleYes = function() {
-		this.wrapper.hide();
-		this.wrapper._doAction();
+		// Before validation
+		var errorMsg = this.wrapper.beforeDialogValidation();
+		
+		if (!errorMsg) {
+			this.wrapper.hide();
+			this.wrapper._doAction();
+			
+			// After validation
+			this.wrapper.afterDialogValidation();
+		}
+		else {
+			// The error is displayed into Dialog and the event is stoped
+			this.wrapper._displayDialogErrorMessage(errorMsg);
+		}
 	};
 	var handleNoOrOk = function() {
 		this.wrapper.hide();
@@ -1304,7 +1386,16 @@ Exanpe.Dialog.prototype._init = function() {
 	// Configuration
 	this.yui.cfg.queueProperty("buttons", buttons);
 	this.setWidth(this.width);
-	this.setMessage(this.message);
+
+	// The content of the Dialog
+	if (this.targetHtmlId) {		
+		var target = YAHOO.util.Dom.get(this.targetHtmlId);	
+		YAHOO.util.Dom.setStyle(this.targetHtmlId, "display", "none");
+		this._generateDialogMessage(target.innerHTML);
+	}
+	else {
+		this._generateDialogMessage(this.message)
+	}
 	
 	// Render the Dialog
 	this.yui.setHeader(this.title);
@@ -1314,7 +1405,7 @@ Exanpe.Dialog.prototype._init = function() {
 	{
 		YAHOO.util.Event.addListener(this.id, "mousedown", Exanpe.Dialog.prototype.show, this, true);
 		YAHOO.util.Event.on(this.id, "click", function(e) {
-			YAHOO.util.Event.preventDefault(e);
+			YAHOO.util.Event.stopPropagation(e);
 		});		
 	}
 };
@@ -1327,17 +1418,18 @@ Exanpe.Dialog.prototype._init = function() {
  */
 Tapestry.Initializer.dialogBuilder = function(data){
 	var yuiDialog =  new YAHOO.widget.SimpleDialog(Exanpe.Dialog.YUI_ID_PREFIX + data.id, 
-			 { fixedcenter: true,
-			   visible: false,
-			   draggable: true,
-			   close: true,
-			   constraintoviewport: true,
-			   modal: true
-			 } );
-	yuiDialog.yesLabelButton = data.yesLabelButton;
-	yuiDialog.noLabelButton = data.noLabelButton;
-	yuiDialog.okLabelButton = data.okLabelButton;
-	var dialog = new Exanpe.Dialog(data.id, data.message, data.title, data.renderMode, data.width, yuiDialog);
+				 { fixedcenter: true,
+				   visible: false,
+				   draggable: true,
+				   close: true,
+				   constraintoviewport: true,
+				   modal: true
+				 } );
+		yuiDialog.yesLabelButton = data.yesLabelButton;
+		yuiDialog.noLabelButton = data.noLabelButton;
+		yuiDialog.okLabelButton = data.okLabelButton;
+	
+	var dialog = new Exanpe.Dialog(data.id, data.message, data.targetHtmlId, data.title, data.renderMode, data.width, yuiDialog);
 	window[data.id] = dialog;
 	dialog._init();
 };

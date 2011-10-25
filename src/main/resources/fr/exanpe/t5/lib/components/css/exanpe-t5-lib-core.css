@@ -657,7 +657,7 @@ table.hidden {
 
 .exanpe-psc div {
 	float: left;
-	overflow: hidden;
+	font-size: 0;
 }
 
 .exanpe-psc p {

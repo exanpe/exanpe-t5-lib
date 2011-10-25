@@ -16,7 +16,9 @@
 
 package exanpe.t5.lib.demo.pages.comp;
 
-import org.apache.tapestry5.annotations.Import;
+import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry5.annotations.Persist;
+import org.apache.tapestry5.annotations.Property;
 
 import fr.exanpe.t5.lib.mixins.Dialog;
 
@@ -25,10 +27,11 @@ import fr.exanpe.t5.lib.mixins.Dialog;
  * 
  * @author lguerin
  */
-@Import(stylesheet =
-{ "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 public class DialogTest
 {
+    @Persist(PersistenceConstants.FLASH)
+    @Property
+    private String field1;
 
     public String getDisableClass()
     {
@@ -37,6 +40,11 @@ public class DialogTest
 
     void onAction()
     {
-        System.out.println("ActionLink clicked !");
+        System.out.println("Dialog validation ok");
+    }
+
+    void onSubmit()
+    {
+        System.out.println(">>> Thanks " + field1);
     }
 }
