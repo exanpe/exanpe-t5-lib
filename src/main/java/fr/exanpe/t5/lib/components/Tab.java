@@ -149,7 +149,7 @@ public class Tab implements ClientElement
 
         viewModel.addTab(model);
 
-        log.debug("Registering tab id:" + getClientId());
+        log.debug("Registering tab id: {}", getClientId());
 
         updateRenderValues();
     }
@@ -162,7 +162,7 @@ public class Tab implements ClientElement
             String titleKey = getClientId() + TITLE_SUFFIX;
             String message = exanpeService.getEscaladeMessage(resources, titleKey);
 
-            log.debug("Checking title into resources file with key:" + titleKey);
+            log.debug("Checking title into resources file with key: {}", titleKey);
 
             if (StringUtils.isNotEmpty(message))
             {
@@ -179,16 +179,16 @@ public class Tab implements ClientElement
             String iconKey = getClientId() + ICON_SUFFIX;
             String icon = exanpeService.getEscaladeMessage(resources, iconKey);
 
-            log.debug("Checking icon into resources file with key:" + iconKey);
+            log.debug("Checking icon into resources file with key: {}", iconKey);
 
             if (StringUtils.isNotEmpty(icon))
             {
-                log.debug("Icon key found:" + iconKey);
+                log.debug("Icon key found: {}", iconKey);
                 this.icon = assetSource.getAsset(null, icon, null);
             }
             else
             {
-                log.debug("Icon key not found:" + iconKey);
+                log.debug("Icon key not found: {}", iconKey);
             }
         }
     }

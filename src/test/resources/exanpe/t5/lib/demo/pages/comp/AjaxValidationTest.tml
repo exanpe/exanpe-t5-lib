@@ -1,0 +1,12 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  	<t:form t:validate="true" t:clientValidation="true">
+	  	<t:errors/>
+	  	Admin validate on blur !<br/>
+	  	<t:textfield t:id="admin" t:mixins="exanpe/ajaxvalidation" t:message="literal:Vous devez entrer admin" t:validate="minlength=7" t:eventType="blur" t:value="value"/>
+	  	<t:textfield t:id="props" t:value="value" t:mixins="exanpe/ajaxvalidation"/>
+	  	<t:submit/>
+  	</t:form>
+  	    
+</t:layout>

@@ -19,9 +19,12 @@
  */
 package fr.exanpe.t5.lib.constants;
 
+import org.apache.tapestry5.SelectModel;
+
 import fr.exanpe.t5.lib.components.AjaxLoader;
 import fr.exanpe.t5.lib.components.Slider;
 import fr.exanpe.t5.lib.components.VerticalMenu;
+import fr.exanpe.t5.lib.mixins.AjaxValidation;
 import fr.exanpe.t5.lib.mixins.PasswordStrengthChecker;
 import fr.exanpe.t5.lib.mixins.SelectLoader;
 
@@ -43,17 +46,27 @@ public class ExanpeEventConstants
     public static final String AJAXLOADER_EVENT = "ajaxLoaderAction";
 
     /**
-     * Event triggered when load a {@link SelectLoader} content.
+     * Event triggered when load a {@link SelectLoader} content.<br/>
+     * A method handling this event have to return a class of type {@link SelectModel}
      */
     public static final String SELECTLOADER_EVENT = "selectLoaderAction";
 
     /**
-     * Event triggered when {@link PasswordStrengthChecker} validate a password.
+     * Event triggered when {@link PasswordStrengthChecker} validate a password.<br/>
+     * A method handling this event have to return a class of type
+     * {@link PasswordStrengthCheckerTypeEnum}
      */
     public static final String PASSWORDSTRENGTHCHECKER_EVENT = "passwordStrengthCheckerAction";
+
+    /**
+     * Event triggered when validating from a {@link AjaxValidation} mixin.<br/>
+     * A method handling this event have to return a class of type {@link AjaxValidationResult}
+     */
+    public static final String AJAXVALIDATION_EVENT = "ajaxValidationAction";
 
     /**
      * Event triggered when a {@link VerticalMenu} item is selected.
      */
     public static final String VERTICALMENU_EVENT = "selectVerticalMenuItem";
+
 }

@@ -139,7 +139,7 @@ public class AccordionItem implements ClientElement
             String titleKey = id + TITLE_SUFFIX;
             String title = exanpeService.getEscaladeMessage(resources, titleKey);
 
-            log.debug("Checking title into resources file with key:" + titleKey);
+            log.debug("Checking title into resources file with key: {}", titleKey);
 
             if (StringUtils.isNotEmpty(title))
                 this.title = title;
@@ -150,7 +150,7 @@ public class AccordionItem implements ClientElement
         String contentKey = id + CONTENT_SUFFIX;
         String content = exanpeService.getEscaladeMessage(resources, contentKey);
 
-        log.debug("Checking content into resources file with key:" + contentKey);
+        log.debug("Checking content into resources file with key: {}", contentKey);
 
         if (StringUtils.isNotEmpty(content))
             this.content = content;
@@ -159,7 +159,7 @@ public class AccordionItem implements ClientElement
     @AfterRender
     void record()
     {
-        log.debug("Recording item id :" + getClientId() + " to Accordion");
+        log.debug("Recording item id : {} to Accordion", getClientId());
         environment.peek(AccordionInternalModel.class).getItemsId().add(getClientId());
     }
 

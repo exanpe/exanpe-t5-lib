@@ -145,7 +145,7 @@ public class AjaxLoader
     @OnEvent(value = ExanpeEventConstants.AJAXLOADER_EVENT)
     Block asyncLoading()
     {
-        log.debug("Returning body of component :" + getClientId());
+        log.debug("Returning body of component : {}", getClientId());
         return resources.getBody();
     }
 

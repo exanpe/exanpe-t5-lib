@@ -192,7 +192,7 @@ public class Slider
     Object onSlideEnd(@RequestParameter(PARAM_NAME)
     Object newValue)
     {
-        log.debug("Ajax value received: " + value);
+        log.debug("Ajax value received: {}", value);
         value = newValue;
         final Holder<Object> holder = Holder.create();
         final ComponentEventCallback<Object> callback = new ComponentEventCallback<Object>()

@@ -51,9 +51,9 @@ import fr.exanpe.t5.lib.constants.ExanpeEventConstants;
  * As an example, a first select displays country, while a second one will automatically populate
  * its cities regarding the country selected. <br/>
  * The container is responsible for providing an event handler for event
- * ExanpeEventConstants.SELECTLOADER_EVENT (or "selectLoaderAction"). The context will be the
- * value of the select sent from the client. The return value should be a {@link SelectModel} object
- * holding the data to display, null is nothing to populate.<br/>
+ * {@link ExanpeEventConstants#SELECTLOADER_EVENT} (or "selectLoaderAction"). The context will be
+ * the value of the select sent from the client. The return value should be a {@link SelectModel}
+ * object holding the data to display, null is nothing to populate.<br/>
  * JavaScript : This component is bound to a class Exanpe.SelectLoader.<br/>
  * 
  * @author jmaupoux
@@ -137,7 +137,7 @@ public class SelectLoader
     public Object populateSelect(@RequestParameter(value = PARAM_NAME, allowBlank = true)
     String value)
     {
-        log.debug("Ajax value received :" + value);
+        log.debug("Ajax value received : {}", value);
         final Holder<SelectModel> holder = Holder.create();
 
         ComponentEventCallback<SelectModel> callback = new ComponentEventCallback<SelectModel>()
@@ -173,7 +173,7 @@ public class SelectLoader
         String reponse = writer.toString();
         if (log.isDebugEnabled())
         {
-            log.debug("Sending options to client :" + reponse);
+            log.debug("Sending options to client : {}", reponse);
         }
         // substract the prefix <root> and suffix </root>
         return new TextStreamResponse(contentType.toString(), reponse);

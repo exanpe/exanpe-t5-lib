@@ -122,7 +122,7 @@ public class PasswordStrengthChecker
     Object onPasswordSelect(@RequestParameter(PARAM_NAME)
     String pwd)
     {
-        log.debug("Ajax value received: " + pwd);
+        log.debug("Ajax value received: {}", pwd);
         final Holder<PasswordStrengthCheckerTypeEnum> holder = Holder.create();
         final ComponentEventCallback<PasswordStrengthCheckerTypeEnum> callback = new ComponentEventCallback<PasswordStrengthCheckerTypeEnum>()
         {
@@ -180,7 +180,7 @@ public class PasswordStrengthChecker
         String labelKey = LABEL_PREFIX + type + LABEL_SUFFIX;
         String label = exanpeService.getEscaladeMessage(resources, labelKey);
 
-        log.debug("Checking label into resources file with key:" + labelKey);
+        log.debug("Checking label into resources file with key: {}", labelKey);
 
         if (StringUtils.isNotEmpty(label)) { return label; }
         return null;
