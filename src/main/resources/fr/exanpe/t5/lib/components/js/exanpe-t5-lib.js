@@ -2534,6 +2534,15 @@ Exanpe.AjaxValidation.prototype._init = function(){
 };
 
 /**
+ * Called before triggering an ajax validation
+ * Does nothing by default except returing true, override to define your own behavior.
+ * @returns {boolean} false to cancel validation
+ */
+Exanpe.AjaxValidation.prototype.beforeValidation = function(){
+	return true;
+};
+
+/**
  * Called when unable to process the ajax validation.
  * Does nothing by default, override to define your own action.
  * @event
@@ -2564,6 +2573,14 @@ Exanpe.AjaxValidation.prototype.onValidationIncorrect = function(){
  * Validate the textfield content.
  */
 Exanpe.AjaxValidation.prototype.validate = function(){
+	var value = YAHOO.util.Dom.get(this.id).value;
+	if(!value || value ==""){
+		return;
+	}
+	
+	if(this.beforeValidation() == false){
+		return;
+	}
 	var av = this;
 	// Ajax Failure handler
 	var failureHandler = function(o){
