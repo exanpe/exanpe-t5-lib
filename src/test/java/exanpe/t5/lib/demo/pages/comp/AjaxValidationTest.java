@@ -45,4 +45,11 @@ public class AjaxValidationTest
             return AjaxValidationResult.FALSE;
     }
 
+    @OnEvent(value = ExanpeEventConstants.AJAXVALIDATION_EVENT, component = "multi")
+    public AjaxValidationResult ajaxValidateMulti(String value)
+    {
+        if (value != null && value.length() < 7)
+            return AjaxValidationResult.TRUE;
+        return AjaxValidationResult.FALSE;
+    }
 }
