@@ -10,6 +10,10 @@
   </bannerRight>
   <publishDate position="right" format="MM-dd-yyyy"/>
   <version position="navigation-bottom"/>
+  
+  <head>
+    <meta name="description" content="Exanpe Tapestry 5 Component Library"/>
+  </head>
   <body>
 
     <menu name="Exanpe T5 Lib">
