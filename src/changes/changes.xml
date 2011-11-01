@@ -21,6 +21,9 @@
       <action dev="lguerin" type="add">
         Added PasswordStrengthChecker mixin
       </action>
+      <action dev="jmaupoux" type="add">
+        Added JavaScript events handler
+      </action>
     </release>
 
     <release version="1.0.0" date="2011-09-04" description="First release">

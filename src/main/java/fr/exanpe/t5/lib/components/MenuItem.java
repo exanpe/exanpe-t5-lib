@@ -49,14 +49,14 @@ public class MenuItem implements ClientElement
      * Specify the disabled state of the item.
      */
     @Property
-    @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.LITERAL, value = "false")
+    @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.PROP, value = "false")
     private Boolean disabled;
 
     /**
      * Specify the rendered state of the item.
      */
     @Property
-    @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.LITERAL, value = "true")
+    @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.PROP, value = "true")
     private Boolean visible;
 
     /**

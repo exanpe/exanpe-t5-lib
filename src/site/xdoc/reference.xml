@@ -15,7 +15,7 @@
 	<section name="Components">
 		This page displays the component reference of the library.<br/><br/>
 		
-<a href="#accordion">accordion</a><br/><a href="#accordionitem">accordionitem</a><br/><a href="#ajaxloader">ajaxloader</a><br/><a href="#border">border</a><br/><a href="#colorpicker">colorpicker</a><br/><a href="#hideablepanel">hideablepanel</a><br/><a href="#securepassword">securepassword</a><br/><a href="#slider">slider</a><br/><a href="#slideshow">slideshow</a><br/><a href="#slideshowitem">slideshowitem</a><br/><a href="#tab">tab</a><br/><a href="#tabview">tabview</a><br/><a href="#tooltip">tooltip</a><br/><br/><br/><a name="accordion"> </a><h3>accordion</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Specify the event to use for switching an item from a step to an other. <br/> Allow null : false
+<a href="#accordion">accordion</a><br/><a href="#accordionitem">accordionitem</a><br/><a href="#ajaxloader">ajaxloader</a><br/><a href="#border">border</a><br/><a href="#colorpicker">colorpicker</a><br/><a href="#hideablepanel">hideablepanel</a><br/><a href="#menu">menu</a><br/><a href="#menubar">menubar</a><br/><a href="#menuitem">menuitem</a><br/><a href="#securepassword">securepassword</a><br/><a href="#slider">slider</a><br/><a href="#slideshow">slideshow</a><br/><a href="#slideshowitem">slideshowitem</a><br/><a href="#submenu">submenu</a><br/><a href="#tab">tab</a><br/><a href="#tabview">tabview</a><br/><a href="#tooltip">tooltip</a><br/><a href="#verticalmenu">verticalmenu</a><br/><a href="#verticalmenuitem">verticalmenuitem</a><br/><br/><br/><a name="accordion"> </a><h3>accordion</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Specify the event to use for switching an item from a step to an other. <br/> Allow null : false
  <br/> Default prefix : literal
 </td><td>fr.exanpe.t5.lib.constants.AccordionEventTypeEnum</td><td>true</td><td>click</td></tr><tr class="a"><td><b>duration</b></td><td>The duration in seconds of the animation during the accordion opening/closing <br/> Allow null : true
  <br/> Default prefix : literal
@@ -31,13 +31,15 @@
  <br/> Default prefix : message
 </td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="ajaxloader"> </a><h3>ajaxloader</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>width*</b></td><td>The width of the panel, in pixel. <br/> Allow null : true
  <br/> Default prefix : literal
-</td><td>int</td><td>true</td><td>300</td></tr><tr class="a"><td><b>autoLoad</b></td><td>Decide if auto load the content on dom ready. <br/> Allow null : true
+</td><td>int</td><td>true</td><td>150</td></tr><tr class="a"><td><b>autoLoad</b></td><td>Decide if auto load the content on dom ready. <br/> Allow null : true
  <br/> Default prefix : literal
-</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr><tr class="b"><td><b>image</b></td><td>Image displayed during loading. <br/> Allow null : true
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr><tr class="b"><td><b>highlight</b></td><td>Decide to highlight the result at the end of the loading, or not. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="a"><td><b>image</b></td><td>Image displayed during loading. <br/> Allow null : true
  <br/> Default prefix : asset
-</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/ajaxloader/ajax-loader.gif</td></tr><tr class="a"><td><b>message</b></td><td>Message displayed to the user during asynchronous loading. <br/> Allow null : true
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/ajaxloader/ajax-loader.gif</td></tr><tr class="b"><td><b>message</b></td><td>Message displayed to the user during asynchronous loading. <br/> Allow null : true
  <br/> Default prefix : message
-</td><td>java.lang.String</td><td>false</td><td>exanpe-ajaxloader-default-message</td></tr><tr class="b"><td><b>showPanel</b></td><td>Decide to show the panel during the ajax load, or not. <br/> Allow null : true
+</td><td>java.lang.String</td><td>false</td><td>exanpe-ajaxloader-default-message</td></tr><tr class="a"><td><b>showPanel</b></td><td>Decide to show the panel during the ajax load, or not. <br/> Allow null : true
  <br/> Default prefix : literal
 </td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr></table><a name="border"> </a><h3>border</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr></table><a name="colorpicker"> </a><h3>colorpicker</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>closeText*</b></td><td>Define the text to close the component. <br/> Allow null : false
  <br/> Default prefix : message
@@ -57,7 +59,18 @@
  <br/> Default prefix : asset
 </td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/hide.png</td></tr><tr class="a"><td><b>showImg</b></td><td>Image displayed to show the panel <br/> Allow null : true
  <br/> Default prefix : asset
-</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/show.png</td></tr></table><a name="securepassword"> </a><h3>securepassword</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>characters*</b></td><td>Defines the set of characters to display in the password grid. <br/> Allow null : false
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/show.png</td></tr></table><a name="menu"> </a><h3>menu</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>targetHtmlId</b></td><td>Defines an HTML id where the menu should be opened next to.
+ The top left corner of the menu will be bound to the bottom right html element provided. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="menubar"> </a><h3>menubar</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Defines the event triggering the menu. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>fr.exanpe.t5.lib.constants.MenuEventTypeEnum</td><td>true</td><td>hover</td></tr></table><a name="menuitem"> </a><h3>menuitem</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>disabled</b></td><td>Specify the disabled state of the item. <br/> Allow null : false
+ <br/> Default prefix : prop
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="a"><td><b>label</b></td><td>Specify the label of the item. <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="b"><td><b>visible</b></td><td>Specify the rendered state of the item. <br/> Allow null : false
+ <br/> Default prefix : prop
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr></table><a name="securepassword"> </a><h3>securepassword</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>characters*</b></td><td>Defines the set of characters to display in the password grid. <br/> Allow null : false
  <br/> Default prefix : literal
 </td><td>java.lang.String</td><td>true</td><td>0123456789</td></tr><tr class="a"><td><b>eventType*</b></td><td>Defines the event triggering the number. <br/> Allow null : false
  <br/> Default prefix : literal
@@ -79,19 +92,23 @@
  <br/> Default prefix : literal
 </td><td>fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum</td><td>true</td><td>horizontal</td></tr><tr class="a"><td><b>value*</b></td><td>Value to read or update <br/> Allow null : true
  <br/> Default prefix : prop
-</td><td>java.lang.Object</td><td>true</td><td></td></tr><tr class="b"><td><b>displayCurrentValue</b></td><td>Display the current value or not <br/> Allow null : true
+</td><td>java.lang.Object</td><td>true</td><td></td></tr><tr class="b"><td><b>ajax</b></td><td>Decide if the update is made in Ajax mode, or not <br/> Allow null : true
  <br/> Default prefix : literal
-</td><td>boolean</td><td>false</td><td>true</td></tr><tr class="a"><td><b>displayId</b></td><td>If displayCurrentValue=true, specify a default html element id to display the value into.
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="a"><td><b>displayCurrentValue</b></td><td>Display the current value or not <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr><tr class="b"><td><b>displayId</b></td><td>If displayCurrentValue=true, specify a default html element id to display the value into.
  By default, display into a span just upside of the slider. <br/> Allow null : false
  <br/> Default prefix : literal
-</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="b"><td><b>horizontalCursor</b></td><td>Image used for horizontal cursor <br/> Allow null : true
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="a"><td><b>horizontalCursor</b></td><td>Image used for horizontal cursor <br/> Allow null : true
  <br/> Default prefix : asset
-</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/slider/thumb-n.gif</td></tr><tr class="a"><td><b>interval</b></td><td>Optional parameter for the interval : used to set the unit on the slider move.
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/slider/thumb-n.gif</td></tr><tr class="b"><td><b>interval</b></td><td>Optional parameter for the interval : used to set the unit on the slider move.
  For example, an interval of 10 force the selection value from ten to ten. <br/> Allow null : true
  <br/> Default prefix : literal
-</td><td>java.lang.Float</td><td>false</td><td>1</td></tr><tr class="b"><td><b>verticalCursor</b></td><td>Image used for vertical cursor <br/> Allow null : true
+</td><td>java.lang.Float</td><td>false</td><td>1</td></tr><tr class="a"><td><b>verticalCursor</b></td><td>Image used for vertical cursor <br/> Allow null : true
  <br/> Default prefix : asset
-</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/slider/thumb-e.gif</td></tr></table><a name="slideshow"> </a><h3>slideshow</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>autoPlayMillis*</b></td><td>Defines the auto play behavior of the component by setting a milliseconds interval. 0 means
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/slider/thumb-e.gif</td></tr><tr class="b"><td><b>zone</b></td><td>Use with ajax parameter to allow update a zone element <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="slideshow"> </a><h3>slideshow</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>autoPlayMillis*</b></td><td>Defines the auto play behavior of the component by setting a milliseconds interval. 0 means
  no autoplay. <br/> Allow null : true
  <br/> Default prefix : prop
 </td><td>int</td><td>true</td><td>0</td></tr><tr class="a"><td><b>itemHeight*</b></td><td>Defines the height, in pixels, of items in the slideShow <br/> Allow null : true
@@ -105,7 +122,7 @@
  <br/> Default prefix : asset
 </td><td>org.apache.tapestry5.Asset</td><td>false</td><td></td></tr><tr class="a"><td><b>title</b></td><td>Title of the image displayed as part of the item <br/> Allow null : true
  <br/> Default prefix : message
-</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="tab"> </a><h3>tab</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>icon</b></td><td>Specify the icon of the tab <br/> Allow null : true
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="submenu"> </a><h3>submenu</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr></table><a name="tab"> </a><h3>tab</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>icon</b></td><td>Specify the icon of the tab <br/> Allow null : true
  <br/> Default prefix : asset
 </td><td>org.apache.tapestry5.Asset</td><td>false</td><td></td></tr><tr class="a"><td><b>title</b></td><td>Specify the title of the tab <br/> Allow null : true
  <br/> Default prefix : message
@@ -116,6 +133,14 @@
 </td><td>boolean</td><td>false</td><td>false</td></tr></table><a name="tooltip"> </a><h3>tooltip</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>blockId</b></td><td>The id of the org.apache.tapestry5.Block used for displaying Tooltip content <br/> Allow null : false
  <br/> Default prefix : literal
 </td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="a"><td><b>message</b></td><td>Message used for displaying Tooltip content <br/> Allow null : false
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="verticalmenu"> </a><h3>verticalmenu</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>defaultActiveItem*</b></td><td>Defines the default active Menu item <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr></table><a name="verticalmenuitem"> </a><h3>verticalmenuitem</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>icon</b></td><td>Icon of the menu <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td></td></tr><tr class="a"><td><b>target</b></td><td>Target of the menu link (_blank for example) <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="b"><td><b>title</b></td><td>Title of the menu <br/> Allow null : true
  <br/> Default prefix : message
 </td><td>java.lang.String</td><td>false</td><td></td></tr></table>
      </section>

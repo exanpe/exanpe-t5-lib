@@ -6,6 +6,7 @@
 	  	Admin validate on blur !<br/>
 	  	<t:textfield t:id="admin" t:mixins="exanpe/ajaxvalidation" t:message="literal:Vous devez entrer admin" t:validate="minlength=7" t:eventType="blur" t:value="value"/>
 	  	<t:textfield t:id="props" t:value="value" t:mixins="exanpe/ajaxvalidation"/>
+	  	<t:textfield t:id="multi" t:value="value" t:mixins="exanpe/ajaxvalidation" t:validate="minlength=5"/>
 	  	<t:submit/>
   	</t:form>
   	    
