@@ -11,8 +11,8 @@ import org.apache.tapestry5.annotations.Events;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionAttribute;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.corelib.components.EventLink;
@@ -68,7 +68,7 @@ public class VerticalMenu implements ClientElement
     /**
      * The selected menu item id
      */
-    @Persist
+    @SessionAttribute
     private String selectedMenuItemId;
 
     /**
@@ -209,5 +209,23 @@ public class VerticalMenu implements ClientElement
     public String getCssTitleClassName()
     {
         return isMenuItemSelected() ? CSS_VMENU_CONTENT_SELECTED : "";
+    }
+
+    /**
+     * Set the selected menu item manually
+     * 
+     * @param menuItemId the menu item to select
+     */
+    public void setSelectedMenuItem(String menuItemId)
+    {
+        this.selectedMenuItemId = menuItemId;
+    }
+
+    /**
+     * Reset the selected menu item
+     */
+    public void resetSelectedMenuItem()
+    {
+        selectedMenuItemId = null;
     }
 }
