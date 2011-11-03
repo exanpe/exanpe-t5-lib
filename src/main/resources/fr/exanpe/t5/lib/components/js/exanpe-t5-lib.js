@@ -2219,6 +2219,7 @@ Exanpe.PasswordStrengthChecker = function(id, ajax, javascriptChecker, min, url,
 	
 	/**
 	 * The function used client-side for checking the user password.
+	 * MUST return an element of Exanpe.PasswordStrengthChecker.Complexity enum
 	 */
 	this.javascriptChecker = javascriptChecker;
 	

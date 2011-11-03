@@ -67,6 +67,7 @@ public class PasswordStrengthChecker
 
     /**
      * The javascript function used client-side to check the password complexity.
+     * This JS function MUST return an element of Exanpe.PasswordStrengthChecker.Complexity enum.
      */
     @Parameter(required = false, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private String javascriptChecker;
