@@ -55,6 +55,8 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * <li>${id}-message</li>
  * </ul>
  * <br/>
+ * An HTML element can be used too (set with targetHtmlId parameter) in order to display rich
+ * content instead of the message parameter.<br />
  * <p>
  * The Dialog box could be disabled if the CSS class "exanpe-dialog-disable" is present on the
  * container element. In a such case, the container action (from link or submit) is executed without

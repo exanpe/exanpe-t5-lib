@@ -151,6 +151,17 @@
 			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
 			<tr class="b">
 				<td>
+					<b>title</b>
+				</td>
+				<td>The title of the Dialog box<br/> Allow null : true
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td>exanpe-dialog-default-title</td>
+			</tr>			
+			<tr class="a">
+				<td>
 					<b>message</b>
 				</td>
 				<td>The message of the Dialog box<br/> Allow null : true
@@ -162,14 +173,15 @@
 			</tr>
 			<tr class="b">
 				<td>
-					<b>title</b>
+					<b>targetHtmlId</b>
 				</td>
-				<td>The title of the Dialog box<br/> Allow null : true
- 					<br/> Default prefix : message
+				<td>An Html id used to display the content of the Dialog instead of message parameter
+					<br/> Allow null : false
+ 					<br/> Default prefix : literal
 				</td>
 				<td>java.lang.String</td>
 				<td>false</td>
-				<td>exanpe-dialog-default-title</td>
+				<td></td>
 			</tr>
 			<tr class="a">
 				<td>
