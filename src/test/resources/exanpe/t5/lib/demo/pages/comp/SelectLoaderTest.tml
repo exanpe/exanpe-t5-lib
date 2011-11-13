@@ -2,9 +2,8 @@
 	xmlns:ex="tapestry-library:exanpe">
   
   <t:form>
-  	<t:select t:mixins="exanpe/selectLoader" t:targetId="city" t:id="country" model="country" value="countryValue" encoder="countryEncoder"/>
-  	
-  	<t:select t:id="city" model="city" value="cityValue"/>
+  	<t:select t:mixins="exanpe/selectLoader" t:targetId="city" t:id="country" model="countryModel" value="countryValue" encoder="countryEncoder"/>
+  	<t:select t:id="city" model="cityModel" value="cityValue"/>
   </t:form>
   
   <script type="text/javascript">

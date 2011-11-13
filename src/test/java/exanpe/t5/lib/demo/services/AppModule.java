@@ -17,15 +17,16 @@
 package exanpe.t5.lib.demo.services;
 
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.ioc.Configuration;
+import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
+import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.SubModule;
-import org.apache.tapestry5.ioc.services.Coercion;
-import org.apache.tapestry5.ioc.services.CoercionTuple;
-import org.apache.tapestry5.util.StringToEnumCoercion;
+import org.apache.tapestry5.services.ValueEncoderFactory;
+import org.apache.tapestry5.services.ValueEncoderSource;
 
-import exanpe.t5.lib.demo.bean.CountryEnum;
+import exanpe.t5.lib.demo.bean.Country;
+import exanpe.t5.lib.demo.encoders.CountryEncoder;
 import fr.exanpe.t5.lib.services.ExanpeLibraryModule;
 
 @SubModule(ExanpeLibraryModule.class)
@@ -36,19 +37,17 @@ public class AppModule
         configuration.add(SymbolConstants.PRODUCTION_MODE, "false");
     }
 
-    public static void contributeTypeCoercer(@SuppressWarnings("rawtypes")
-    Configuration<CoercionTuple> configuration)
+    @Contribute(ValueEncoderSource.class)
+    public static void provideCountryEncoder(MappedConfiguration<Class, ValueEncoderFactory> configuration, final DataService dataService)
     {
-        configuration.add(CoercionTuple.create(String.class, CountryEnum.class, StringToEnumCoercion.create(CountryEnum.class)));
-
-        // ColorPicker
-        Coercion<CountryEnum, String> coercionStringColor = new Coercion<CountryEnum, String>()
+        ValueEncoderFactory<Country> factory = new ValueEncoderFactory<Country>()
         {
-            public String coerce(CountryEnum input)
+            public ValueEncoder<Country> create(Class<Country> clazz)
             {
-                return input.toString();
+                return new CountryEncoder(dataService);
             }
         };
+        configuration.add(Country.class, factory);
     }
 
     public static void bind(ServiceBinder binder)

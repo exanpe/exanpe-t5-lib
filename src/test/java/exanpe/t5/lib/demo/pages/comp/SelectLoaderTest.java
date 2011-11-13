@@ -16,6 +16,8 @@
 
 package exanpe.t5.lib.demo.pages.comp;
 
+import java.util.List;
+
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -24,35 +26,31 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.internal.OptionModelImpl;
 import org.apache.tapestry5.internal.SelectModelImpl;
-import org.apache.tapestry5.internal.services.EnumValueEncoderFactory;
-import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.util.EnumSelectModel;
+import org.apache.tapestry5.services.SelectModelFactory;
 
-import exanpe.t5.lib.demo.bean.CountryEnum;
+import exanpe.t5.lib.demo.bean.Country;
+import exanpe.t5.lib.demo.encoders.CountryEncoder;
 import exanpe.t5.lib.demo.services.DataService;
 import fr.exanpe.t5.lib.constants.ExanpeEventConstants;
 
 public class SelectLoaderTest
 {
-    @Property
-    private ValueEncoder<CountryEnum> countryEncoder = new EnumValueEncoderFactory().create(CountryEnum.class);
+    @Inject
+    private SelectModelFactory selectModelFactory;
 
     @Property
-    private SelectModel country;
+    private SelectModel countryModel;
 
     @Property
     private String countryValue;
 
     @Property
     @Persist
-    private SelectModel city;
+    private SelectModel cityModel;
 
     @Property
     private String cityValue;
-
-    @Inject
-    private Messages messages;
 
     @Inject
     private DataService dataService;
@@ -60,15 +58,25 @@ public class SelectLoaderTest
     @SetupRender
     public void ini()
     {
-        country = new EnumSelectModel(CountryEnum.class, messages);
-        city = new SelectModelImpl(new OptionModelImpl[0]);
+        // invoke my service to find all countries, e.g. in the database
+        List<Country> countries = dataService.getCountryList();
+
+        // create a SelectModel from my list of countries
+        countryModel = selectModelFactory.create(countries, "name");
+
+        // init cityModel
+        cityModel = new SelectModelImpl(new OptionModelImpl[0]);
     }
 
     @OnEvent(value = ExanpeEventConstants.SELECTLOADER_EVENT)
     public SelectModel populateSelect(String value)
     {
-        city = new EnumSelectModel(dataService.getCityFromCountry(CountryEnum.valueOf(value)), messages);
+        cityModel = selectModelFactory.create(dataService.getCitiesFromCountry(value), "name");
+        return cityModel;
+    }
 
-        return city;
+    public ValueEncoder<Country> getCountryEncoder()
+    {
+        return new CountryEncoder(dataService);
     }
 }

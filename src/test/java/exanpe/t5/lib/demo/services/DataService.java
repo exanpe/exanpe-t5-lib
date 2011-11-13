@@ -19,7 +19,8 @@ package exanpe.t5.lib.demo.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import exanpe.t5.lib.demo.bean.CountryEnum;
+import exanpe.t5.lib.demo.bean.City;
+import exanpe.t5.lib.demo.bean.Country;
 import exanpe.t5.lib.demo.bean.User;
 
 public class DataService
@@ -66,8 +67,66 @@ public class DataService
         return list;
     }
 
-    public Class<? extends Enum<?>> getCityFromCountry(CountryEnum e)
+    public List<Country> getCountryList()
     {
-        return e.getRelatedEnum();
+        List<Country> countries = new ArrayList<Country>();
+        Country france = new Country("FRANCE", "France");
+        Country uk = new Country("UK", "United Kingdom");
+        Country usa = new Country("USA", "U.S.A");
+        countries.add(france);
+        countries.add(uk);
+        countries.add(usa);
+        return countries;
+    }
+
+    public List<City> getCitiesFromCountry(String countryId)
+    {
+        List<City> cities = new ArrayList<City>();
+        if ("FRANCE".equals(countryId))
+        {
+            City paris = new City("paris", "Paris");
+            City lyon = new City("lyon", "Lyon");
+            City nantes = new City("nantes", "Nantes");
+            cities.add(paris);
+            cities.add(lyon);
+            cities.add(nantes);
+        }
+        if ("UK".equals(countryId))
+        {
+            City london = new City("london", "London");
+            City manchester = new City("manchester", "Manchester");
+            City liverpool = new City("liverpool", "Liverpool");
+            cities.add(london);
+            cities.add(manchester);
+            cities.add(liverpool);
+        }
+        if ("USA".equals(countryId))
+        {
+            City newyork = new City("newyork", "New York");
+            City washington = new City("washington", "Washington");
+            City losangeles = new City("losangeles", "Los Angeles");
+            City sanfrancisco = new City("sanfrancisco", "San Francisco");
+            City miami = new City("miami", "Miami");
+            cities.add(newyork);
+            cities.add(washington);
+            cities.add(losangeles);
+            cities.add(sanfrancisco);
+            cities.add(miami);
+        }
+        return cities;
+    }
+
+    public Country findCountryById(String countryId)
+    {
+        Country country = null;
+        for (Country c : this.getCountryList())
+        {
+            if (countryId.equals(c.getId()))
+            {
+                country = c;
+                break;
+            }
+        }
+        return country;
     }
 }

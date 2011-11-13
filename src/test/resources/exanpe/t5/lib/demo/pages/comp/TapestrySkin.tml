@@ -33,7 +33,7 @@
 
 		<div><b>Palette :</b></div><br />
 		<t:form>
-			<t:palette t:id="handling" encoder="encoder" model="model"
+			<t:palette t:id="handling" encoder="countryEncoder" model="countryModel"
 				selected="selected" select="selectImg" deselect="deselectImg" />
 		</t:form>
 

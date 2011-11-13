@@ -27,13 +27,13 @@ import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Grid;
-import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.AssetSource;
-import org.apache.tapestry5.util.EnumSelectModel;
-import org.apache.tapestry5.util.EnumValueEncoder;
+import org.apache.tapestry5.services.SelectModelFactory;
 
+import exanpe.t5.lib.demo.bean.Country;
 import exanpe.t5.lib.demo.bean.User;
+import exanpe.t5.lib.demo.encoders.CountryEncoder;
 import exanpe.t5.lib.demo.services.DataService;
 
 @Import(stylesheet = "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css")
@@ -41,9 +41,6 @@ public class TapestrySkin
 {
     @Inject
     private DataService dataService;
-
-    @Inject
-    private Messages messages;
 
     @Property
     private User userRow;
@@ -76,6 +73,36 @@ public class TapestrySkin
     @Property
     private EvenOdd evenOdd;
 
+    /** Palette **/
+
+    @Inject
+    private SelectModelFactory selectModelFactory;
+
+    @Property
+    private SelectModel countryModel;
+
+    public ValueEncoder<Country> getCountryEncoder()
+    {
+        return new CountryEncoder(dataService);
+    }
+
+    @Property
+    private List<Country> selected;
+
+    /** BeanEditor */
+
+    @Property
+    private User userEdit;
+
+    /** Auto Complete **/
+    @Property
+    private String country;
+
+    public List<String> onProvideCompletionsFromCountryName(String partial)
+    {
+        return dataService.getListString();
+    }
+
     @SetupRender
     public void init()
     {
@@ -85,36 +112,13 @@ public class TapestrySkin
             current = 1;
         }
         grid1.setCurrentPage(current);
+
+        // invoke my service to find all countries, e.g. in the database
+        List<Country> countries = dataService.getCountryList();
+
+        // create a SelectModel from my list of countries
+        countryModel = selectModelFactory.create(countries, "name");
     }
-
-    /** Auto COmplete **/
-    @Property
-    private String country;
-
-    public List<String> onProvideCompletionsFromCountryName(String partial)
-    {
-        return dataService.getListString();
-    }
-
-    /** Palette **/
-
-    @Property
-    private final ValueEncoder<PaletteEnum> encoder = new EnumValueEncoder(PaletteEnum.class);
-
-    @Property
-    private final SelectModel model = new EnumSelectModel(PaletteEnum.class, messages);
-
-    @Property
-    private List<PaletteEnum> selected;
-
-    public enum PaletteEnum
-    {
-        TEST, TEST2, TEST3, TEST4;
-    }
-
-    /** BeanEditor */
-    @Property
-    private User userEdit;
 
     /**
      * @see http://jumpstart.doublenegative.com.au/jumpstart/examples/tables/alternatinggrid

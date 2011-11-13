@@ -98,7 +98,7 @@
 				</dependencies>
 			</plugin>
 			-->
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
@@ -135,7 +135,7 @@
 					<jswarn>false</jswarn>
 					<nosuffix>true</nosuffix>
 				</configuration>
-			</plugin> -->
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -266,6 +266,14 @@
 		</site>
 	</distributionManagement>
 
+	<repositories>
+		<!-- Tapestry staging releases -->
+		<repository>
+			<id>apache-staging</id>
+			<url>https://repository.apache.org/content/groups/staging/</url>
+		</repository>
+	</repositories>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tapestry-release-version>5.2.6</tapestry-release-version>
