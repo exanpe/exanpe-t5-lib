@@ -14,7 +14,7 @@
        Use of the library requires nothing more than a standard Tapestry 5 application :
         <ul>
             <li>Java 1.5 (as Tapestry 5 do)</li>
-            <li>Tapestry 5.2.6</li>
+            <li>Tapestry 5.2.6 +</li>
             <li>Maven 2+</li>
             <li>Internet Explorer 7+ / Firefox 3.5+ / Chrome 13+ / Safari 5+</li>
         </ul> 

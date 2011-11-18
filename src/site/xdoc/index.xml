@@ -20,8 +20,10 @@
             taking a real care of possible application conflicts as well as depending on a minimal number of third party library !<br/>
         <br/><br/>
             The library is fully integrated with Maven 2 and validated with Tapestry 5.2.6 and Tapestry 5.3.0.<br/><br/>
+            <b>It is currently in version 1.1.0.</b>. Have a look to <a href="changes-report.html">Changes</a> section to see what's new.<br/><br/>
             Please have a look at the <a href="getting_started.html">Getting Started</a> documentation to learn how to setup and use our components in 2 minutes !
       </p>
+      
     </section>
     
      <section name="Pros/cons">
