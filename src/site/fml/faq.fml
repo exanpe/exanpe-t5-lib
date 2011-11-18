@@ -102,5 +102,14 @@
         </p>
       </answer>
     </faq>
+    <faq id="tld">
+      <question>Do you offer the TLD related to the library?</question>
+      <answer>
+        <p>
+         	Yes, the TLD that might help you to develop in Eclipse is available <a href="exanpe-t5-lib-1.1.0.tld">here</a>.<br/>
+         	Check <a href="http://wiki.apache.org/tapestry/Tapestry5JSPEditorEclipse" target="_blank">this link</a> for explanation on how to use it.
+        </p>
+      </answer>
+    </faq>
   </part>
 </faqs>
