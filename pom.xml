@@ -83,9 +83,10 @@
 						</goals>
 						<phase>process-classes</phase>
 						<configuration>
-							<uri>fr.exanpe.t5</uri>
+							<uri>http://exanpe.github.com/exanpe-t5-lib/</uri>
 							<rootPackage>fr.exanpe.t5.lib</rootPackage>
 							<encoding>UTF-8</encoding>
+                            <namespace>ex</namespace>
 						</configuration>
 					</execution>
 				</executions>
