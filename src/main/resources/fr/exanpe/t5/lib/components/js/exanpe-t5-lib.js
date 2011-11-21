@@ -1,15 +1,3 @@
-/**
- * On submit handler
- * @private
- */
-Tapestry.Validator.ajaxValidator = function(field, message, value){
-	field.addValidator(function(){
-		if(field.isInError){
-			throw message;
-		}
-	});
-};
-
 /*
  * Copyright 2011 EXANPE <exanpe@gmail.com>
  *
@@ -2756,4 +2744,16 @@ Tapestry.Initializer.verticalMenuBuilder = function(data){
 		verticalMenu._initMenu(data.items[i].id);
 	}	
 	window[data.id] = verticalMenu;
+};
+
+/**
+ * On submit handler
+ * @private
+ */
+Tapestry.Validator.ajaxValidator = function(field, message, value){
+	field.addValidator(function(){
+		if(field.isInError){
+			throw message;
+		}
+	});
 };
