@@ -12,7 +12,7 @@ Easy to use and to integrate, this library target the real needs of any web appl
 The library is fully :
 
   - Integrated with Maven 2
-  - Validated with Tapestry version 5.2.6
+  - Fully compatible with Tapestry 5.2.6 and 5.3+
 
 The following components are currently available in the library :
 
@@ -21,15 +21,19 @@ The following components are currently available in the library :
   - Border : A simple skinned border
   - ColorPicker : Choose a Color and get it easily on the server side
   - HideablePanel : Show/Hide a left side Panel
+  - MenuBar and Menu components : Add one basic Menu bar or one multi level Horizontal Menu to you website
   - SecurePassword : Enter a Password without typing characters
   - Slider : Select a value on a range using a Slider
   - TabView : Organize your layout into a tab view
   - Tooltip : Display all kind of tooltips in your page
+  - VerticalMenu : Add a sidebar menu on your website
 
 Some mixins provide additional features to existing components:
 
-  - Dialog : Display a dialog to print information or confirmation on user action.
-  - SelectLoader : Load select content options according to a first select component selection.
+  - AjaxValidation : Validate a textfield component with an Ajax request
+  - Dialog : Display a dialog to print information or confirmation on user action
+  - PasswordStrengthChecker : Let your users valuate the strength of their passwords with a visual feedback
+  - SelectLoader : Load select content options according to a first select component selection
 
 Finally, the core Tapestry components have been re skinned to fit better in any application.
 
