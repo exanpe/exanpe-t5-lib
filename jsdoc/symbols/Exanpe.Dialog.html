@@ -196,6 +196,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/Exanpe.AjaxLoader.html">Exanpe.AjaxLoader</a></li>
 	
+	<li><a href="../symbols/Exanpe.AjaxValidation.html">Exanpe.AjaxValidation</a></li>
+	
 	<li><a href="../symbols/Exanpe.ColorPicker.html">Exanpe.ColorPicker</a></li>
 	
 	<li><a href="../symbols/Exanpe.Dialog.html">Exanpe.Dialog</a></li>
@@ -203,6 +205,12 @@ ul.inheritsList
 	<li><a href="../symbols/Exanpe.HideablePanel.html">Exanpe.HideablePanel</a></li>
 	
 	<li><a href="../symbols/Exanpe.Log.html">Exanpe.Log</a></li>
+	
+	<li><a href="../symbols/Exanpe.Menu.html">Exanpe.Menu</a></li>
+	
+	<li><a href="../symbols/Exanpe.MenuBar.html">Exanpe.MenuBar</a></li>
+	
+	<li><a href="../symbols/Exanpe.PasswordStrengthChecker.html">Exanpe.PasswordStrengthChecker</a></li>
 	
 	<li><a href="../symbols/Exanpe.SecurePassword.html">Exanpe.SecurePassword</a></li>
 	
@@ -215,6 +223,8 @@ ul.inheritsList
 	<li><a href="../symbols/Exanpe.TabView.html">Exanpe.TabView</a></li>
 	
 	<li><a href="../symbols/Exanpe.Tooltip.html">Exanpe.Tooltip</a></li>
+	
+	<li><a href="../symbols/Exanpe.VerticalMenu.html">Exanpe.VerticalMenu</a></li>
 	
 </ul>
 <hr />
@@ -235,7 +245,7 @@ ul.inheritsList
 				Represents a Dialog component
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/D__tmp_exanpe-exanpe-t5-lib-1166703_src_main_resources_fr_exanpe_t5_lib_components_js_exanpe-t5-lib.js.html">exanpe-t5-lib.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/D__projects_perso_workspace_exanpe-t5-lib_target_checkout_src_main_resources_fr_exanpe_t5_lib_components_js_exanpe-t5-lib.js.html">exanpe-t5-lib.js</a>.
 				
 			</p>
 
@@ -254,7 +264,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Exanpe.Dialog.html#constructor">Exanpe.Dialog</a></b>(id, message, title, renderMode, width, yui)
+								<b><a href="../symbols/Exanpe.Dialog.html#constructor">Exanpe.Dialog</a></b>(id, message, targetHtmlId, title, renderMode, width, yui)
 							</div>
 							<div class="description">Constructor</div>
 						</td>
@@ -304,6 +314,16 @@ ul.inheritsList
 								<b><a href="../symbols/Exanpe.Dialog.html#renderMode">renderMode</a></b>
 								</div>
 								<div class="description">The Dialog render mode</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/Exanpe.Dialog.html#targetHtmlId">targetHtmlId</a></b>
+								</div>
+								<div class="description">Html id used to display Dialog content, instead of message</div>
 							</td>
 						</tr>
 					
@@ -361,6 +381,24 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Exanpe.Dialog.html#afterDialogValidation">afterDialogValidation</a></b>()
+								</div>
+								<div class="description">Called after process the Dialog validationDoes nothing by default, override to define your own action.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Exanpe.Dialog.html#beforeDialogValidation">beforeDialogValidation</a></b>()
+								</div>
+								<div class="description">Called before process the Dialog validationDoes nothing by default, override to define your own action.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/Exanpe.Dialog.html#hide">hide</a></b>()
 								</div>
 								<div class="description">Hide the dialog box</div>
@@ -409,7 +447,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Exanpe.Dialog</b>(id, message, title, renderMode, width, yui)
+						<b>Exanpe.Dialog</b>(id, message, targetHtmlId, title, renderMode, width, yui)
 				</div>
 				
 				<div class="description">
@@ -435,6 +473,12 @@ ul.inheritsList
 								
 							</dt>
 								<dd>the message of the dialog box</dd>
+						
+							<dt>
+								<span class="light fixedFont">{String}</span>  <b>targetHtmlId</b>
+								
+							</dt>
+								<dd>the HTML id used to display the content of the Dialog box instead of message parameter</dd>
 						
 							<dt>
 								<span class="light fixedFont">{String}</span>  <b>title</b>
@@ -547,6 +591,29 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name="targetHtmlId"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>targetHtmlId</b>
+					
+					</div>
+					<div class="description">
+						Html id used to display Dialog content, instead of message
+						
+						
+					</div>
+					
+					
+				
+					
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name="title"> </a>
 					<div class="fixedFont">
 					
@@ -623,6 +690,58 @@ ul.inheritsList
 				<div class="sectionTitle">
 					Method Detail
 				</div>
+				
+					<a name="afterDialogValidation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>afterDialogValidation</b>()
+					
+					</div>
+					<div class="description">
+						Called after process the Dialog validationDoes nothing by default, override to define your own action.
+						
+						
+					</div>
+					
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="beforeDialogValidation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>beforeDialogValidation</b>()
+					
+					</div>
+					<div class="description">
+						Called before process the Dialog validationDoes nothing by default, override to define your own action.
+						
+						
+					</div>
+					
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
 				
 					<a name="hide"> </a>
 					<div class="fixedFont">
@@ -769,7 +888,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Mon Sep 05 2011 23:24:56 GMT+0200 (CEST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Mon Nov 21 2011 21:00:26 GMT+0100 (CET)
 		</div>
 	</body>
 </html>
