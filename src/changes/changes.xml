@@ -5,7 +5,7 @@
     <title>Changes - Exanpe T5 Lib</title>
   </properties>
   <body>
-    <release version="1.1.0" date="2011-10-21" description="Second release">
+    <release version="1.1.0" date="2011-11-21" description="Second release">
       <action dev="jmaupoux" type="add">
         TLD available for Eclipse development (see FAQ)
       </action>
