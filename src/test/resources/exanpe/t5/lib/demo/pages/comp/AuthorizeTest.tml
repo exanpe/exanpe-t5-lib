@@ -1,0 +1,63 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  <t:actionlink t:id="user">Switch to ROLE_USER only</t:actionlink><br/><br/>
+  <t:actionlink t:id="admin">Switch to ROLE_ADMIN only</t:actionlink><br/><br/>
+  <t:actionlink t:id="none">Switch to ROLE_NONE</t:actionlink><br/><br/>
+  
+  <fieldset>
+  	<legend>
+  		Displayed for ROLE_USER only :
+  	</legend>
+  <ex:authorize any="ROLE_USER">
+  	user only
+  </ex:authorize>
+  </fieldset>
+  
+  <br/><br/>
+  
+  <fieldset>
+  	<legend>
+  		Displayed for ROLE_USER or ADMIN :
+  	</legend>
+  <ex:authorize any="ROLE_USER, ROLE_ADMIN">
+  	user or admin hello
+  </ex:authorize>
+  </fieldset>
+  
+  <br/><br/>
+  
+  <fieldset>
+  	<legend>
+  		Displayed for ROLE_USER and ADMIN :
+  	</legend>
+  <ex:authorize all="ROLE_USER, ROLE_ADMIN">
+  	user and admin hello
+  </ex:authorize>
+  </fieldset>
+  
+  <br/><br/>
+  
+  <fieldset>
+  	<legend>
+  		Not displayed for ROLE_USER : 
+  	</legend>
+  <ex:authorize not="ROLE_USER">
+  	NOT USER
+  </ex:authorize>
+  </fieldset>  
+  
+  <br/><br/>
+  
+  <fieldset>
+  	<legend>
+ 	 External block (not body) displayed for ROLE_USER : 
+  	</legend>
+  	<ex:authorize all="ROLE_USER" t:block="externalblock"/>
+  </fieldset>  
+  
+  <t:block id="externalblock">
+  	This is an external block
+  </t:block>
+  
+</t:layout>
