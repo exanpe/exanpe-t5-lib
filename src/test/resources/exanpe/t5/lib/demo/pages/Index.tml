@@ -18,5 +18,6 @@
     <li><t:pagelink page="comp/AjaxValidationTest">AjaxValidation</t:pagelink></li>
     <li><t:pagelink page="comp/VerticalMenuTest">VerticalMenu</t:pagelink></li>
     <li><t:pagelink page="comp/AuthorizeTest">Authorize</t:pagelink></li>
+    <li><t:pagelink page="comp/AuthorizeMixinTest">AuthorizeMixin</t:pagelink></li>
   </ul>
 </t:layout>
