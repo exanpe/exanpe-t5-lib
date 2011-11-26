@@ -9,12 +9,13 @@ import java.lang.annotation.Target;
 
 /**
  * Interface used to restrict a page's method invocation.<br/>
- * Simply annotate your method with \@Authorize and the restriction will be applied from the user
- * authorities.
+ * Simply annotate your method or class with \@Authorize and the restriction will be applied
+ * depending on the current user authorities.
  * 
  * @author jmaupoux
  */
-@Target(ElementType.METHOD)
+@Target(
+{ ElementType.METHOD, ElementType.TYPE })
 @Retention(RUNTIME)
 @Documented
 public @interface Authorize

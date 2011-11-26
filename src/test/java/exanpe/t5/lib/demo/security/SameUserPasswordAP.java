@@ -17,7 +17,6 @@ public class SameUserPasswordAP implements AuthenticationProvider
     public Authentication authenticate(Authentication authentication) throws AuthenticationException
     {
         String username = authentication.getName();
-        System.out.println(username);
         GrantedAuthorityImpl ga = new GrantedAuthorityImpl("ROLE_" + username);
         List<GrantedAuthority> l = new ArrayList<GrantedAuthority>();
         l.add(ga);

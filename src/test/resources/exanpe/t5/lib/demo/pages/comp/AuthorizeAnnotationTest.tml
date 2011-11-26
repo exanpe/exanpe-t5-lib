@@ -8,4 +8,10 @@
   <t:actionlink t:id="act">Click this link to trigger a server action according to your role</t:actionlink><br/>
   Last triggered : ${roleInvoked }
   
+  <br/><br/>
+  <t:pagelink page="security/adminonly">This page can only be accessed by admin</t:pagelink>
+  
+  <br/><br/>
+  <t:pagelink page="security/useronly">This page can only be accessed by user</t:pagelink>
+  
 </t:layout>
