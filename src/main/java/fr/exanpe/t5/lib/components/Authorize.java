@@ -15,6 +15,7 @@ import org.apache.tapestry5.services.RequestGlobals;
  * any/all/not must be filled with comma separated roles, as set into your session principal.<br/>
  * For easier maintenance, we advise you to fill only one of any/all/not parameter.
  * 
+ * @since 1.2
  * @author jmaupoux
  */
 public class Authorize
@@ -63,7 +64,6 @@ public class Authorize
     @SetupRender
     boolean init()
     {
-        System.out.println(requestGlobals.getHTTPServletRequest().isUserInRole("ROLE_USER"));
         return applyAny() && applyAll() && applyNot();
     }
 
