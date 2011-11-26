@@ -24,9 +24,14 @@ import java.awt.Color;
 import org.apache.commons.lang.StringUtils;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.ObjectLocator;
+import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.services.Coercion;
 import org.apache.tapestry5.ioc.services.CoercionTuple;
+import org.apache.tapestry5.services.ComponentClassResolver;
+import org.apache.tapestry5.services.ComponentClassTransformWorker;
+import org.apache.tapestry5.services.InjectionProvider;
 import org.apache.tapestry5.services.LibraryMapping;
 import org.apache.tapestry5.util.StringToEnumCoercion;
 import org.slf4j.Logger;
@@ -38,6 +43,8 @@ import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
 import fr.exanpe.t5.lib.constants.PasswordStrengthCheckerTypeEnum;
 import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
+import fr.exanpe.t5.lib.internal.AuthorizeWorker;
+import fr.exanpe.t5.lib.services.impl.AuthorizeBusinessServiceImpl;
 
 /**
  * The Tapestry Module for Exanpe Library.
@@ -102,8 +109,15 @@ public class ExanpeLibraryModule
         configuration.add(ExanpeSymbols.YUI2_BASE, "classpath:fr/exanpe/t5/lib/external/js/yui/2.9.0/");
     }
 
+    public static void contributeComponentClassTransformWorker(OrderedConfiguration<ComponentClassTransformWorker> configuration, ObjectLocator locator,
+            InjectionProvider injectionProvider, ComponentClassResolver resolver)
+    {
+        configuration.addInstance("AuthorizeWorker", AuthorizeWorker.class, "before:OnEvent");
+    }
+
     public static void bind(ServiceBinder binder)
     {
         binder.bind(ExanpeComponentService.class, ExanpeComponentService.class);
+        binder.bind(AuthorizeBusinessService.class, AuthorizeBusinessServiceImpl.class);
     }
 }

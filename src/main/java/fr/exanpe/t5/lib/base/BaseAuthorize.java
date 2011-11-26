@@ -9,6 +9,7 @@ import org.apache.tapestry5.services.RequestGlobals;
 
 import fr.exanpe.t5.lib.components.Authorize;
 import fr.exanpe.t5.lib.mixins.AuthorizeMixin;
+import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
 
 /**
  * This class is the base one controlling authorization.<br/>
@@ -48,6 +49,12 @@ public abstract class BaseAuthorize
     private RequestGlobals requestGlobals;
 
     /**
+     * Class computing the authorization access
+     */
+    @Inject
+    private AuthorizeBusinessService authorizeBusinessService;
+
+    /**
      * Returns true if content to evaluate
      * 
      * @return true if content to evaluate
@@ -67,13 +74,7 @@ public abstract class BaseAuthorize
     {
         if (StringUtils.isEmpty(any)) { return true; }
 
-        String[] roles = any.split(",");
-        for (String r : roles)
-        {
-            if (requestGlobals.getHTTPServletRequest().isUserInRole(r.trim())) { return true; }
-        }
-
-        return false;
+        return authorizeBusinessService.applyAny(any.split(","), requestGlobals);
     }
 
     /**
@@ -85,13 +86,7 @@ public abstract class BaseAuthorize
     {
         if (StringUtils.isEmpty(all)) { return true; }
 
-        String[] roles = all.split(",");
-        for (String r : roles)
-        {
-            if (!requestGlobals.getHTTPServletRequest().isUserInRole(r.trim())) { return false; }
-        }
-
-        return true;
+        return authorizeBusinessService.applyAll(all.split(","), requestGlobals);
     }
 
     /**
@@ -103,13 +98,7 @@ public abstract class BaseAuthorize
     {
         if (StringUtils.isEmpty(not)) { return true; }
 
-        String[] roles = not.split(",");
-        for (String r : roles)
-        {
-            if (requestGlobals.getHTTPServletRequest().isUserInRole(r.trim())) { return false; }
-        }
-
-        return true;
+        return authorizeBusinessService.applyNot(not.split(","), requestGlobals);
     }
 
 }
