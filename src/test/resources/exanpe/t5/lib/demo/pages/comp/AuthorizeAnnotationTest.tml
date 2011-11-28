@@ -1,0 +1,17 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  <t:actionlink t:id="user">Switch to ROLE_USER only</t:actionlink><br/><br/>
+  
+  <t:actionlink t:id="admin">Switch to ROLE_ADMIN only</t:actionlink><br/><br/>
+  
+  <t:actionlink t:id="act">Click this link to trigger a server action according to your role</t:actionlink><br/>
+  Last triggered : ${roleInvoked }
+  
+  <br/><br/>
+  <t:pagelink page="security/adminonly">This page can only be accessed by admin</t:pagelink>
+  
+  <br/><br/>
+  <t:pagelink page="security/useronly">This page can only be accessed by user</t:pagelink>
+  
+</t:layout>

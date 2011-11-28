@@ -35,6 +35,31 @@
 			<version>${tapestry-release-version}</version>
 			<scope>test</scope>
 		</dependency>
+    
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring-version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+        <version>${spring-version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-config</artifactId>
+        <version>${spring-version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tapestry</groupId>
+        <artifactId>tapestry-spring</artifactId>
+        <version>${tapestry-release-version}</version>
+        <scope>test</scope>
+      </dependency> 
 
 		<!-- Provided by the servlet container, but sometimes referenced in the 
 			application code. -->
@@ -295,5 +320,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tapestry-release-version>5.2.6</tapestry-release-version>
 		<compileSource>1.5</compileSource>
+        <spring-version>3.0.6.RELEASE</spring-version>
 	</properties>
 </project>
