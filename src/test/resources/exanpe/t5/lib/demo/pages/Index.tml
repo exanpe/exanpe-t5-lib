@@ -17,5 +17,6 @@
     <li><t:pagelink page="comp/PasswordStrengthCheckerTest">PasswordStrengthChecker</t:pagelink></li>
     <li><t:pagelink page="comp/AjaxValidationTest">AjaxValidation</t:pagelink></li>
     <li><t:pagelink page="comp/VerticalMenuTest">VerticalMenu</t:pagelink></li>
+    <li><t:pagelink page="comp/GoogleMapTest">GoogleMap</t:pagelink></li>
   </ul>
 </t:layout>
