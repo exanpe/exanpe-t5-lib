@@ -44,6 +44,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * JavaScript : This component is bound to a class Exanpe.GoogleMap.<br/>
  * CSS : This component is bound to a class exanpe-gmap.<br/>
  * 
+ * @since 1.2
  * @see GoogleMapItem
  * @author lguerin
  */

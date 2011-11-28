@@ -40,6 +40,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * The title and icons can be gathered from a resource file. The keys have to be named :
  * The content of the item will be the description of the element.
  * 
+ * @since 1.2
  * @see GoogleMap
  * @author lguerin
  */
