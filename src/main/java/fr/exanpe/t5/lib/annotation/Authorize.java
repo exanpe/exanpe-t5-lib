@@ -13,6 +13,7 @@ import java.lang.annotation.Target;
  * depending on the current user authorities.
  * 
  * @author jmaupoux
+ * @since 1.2
  */
 @Target(
 { ElementType.METHOD, ElementType.TYPE })
