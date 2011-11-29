@@ -2652,7 +2652,7 @@ Exanpe.VerticalMenu = function(id, selectedId){
 	 * id of the selected menu item
 	 */
 	this.selectedId = selectedId;
-} ;
+};
 
 /**
  * CSS class for closed menu item
@@ -2756,4 +2756,197 @@ Tapestry.Validator.ajaxValidator = function(field, message, value){
 			throw message;
 		}
 	});
+};
+
+/** Google Map **/
+
+/** 
+ * Constructor
+ * @class Represents a GoogleMap component. Can be accessed through JavaScript by its id.
+ * @param {String} id the id of the component
+ * @param {String} position the initial position used to center the map
+ * @param {Object[]} items the items to display into the map
+ */
+Exanpe.GoogleMap = function(id, position, items){
+	
+	/**
+	 * Id of the instance
+	 */
+	this.id = id;
+	
+	/**
+	 * Initial position in Latitude/Longitude format (Ex. "48.869722,2.3075")
+	 */
+	this.position = position;
+	
+	/**
+	 * Google Map object
+	 */
+	this.map = null;
+	
+	/**
+	 * Google Map options
+	 */
+	this.options = null;
+	
+	/**
+	 * Google Map info window object
+	 */
+	this.infoWindow = null;
+	
+	/**
+	 * Google Map items to display
+	 */
+	this.items = items;
+};
+
+/**
+ * GoogleMap prefix
+ * @constant
+ * @static
+ * @private
+ */
+Exanpe.GoogleMap.GOOGLE_MAP_PREFIX = "exanpe-gmap-";
+
+/**
+ * Dom method utility
+ * @private
+ */
+Exanpe.GoogleMap.prototype.getMapContainerEl = function() {
+	return YAHOO.util.Dom.get(Exanpe.GoogleMap.GOOGLE_MAP_PREFIX + this.id);
+};
+
+/**
+ * Called before initialization of the Google Map
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.GoogleMap.prototype.beforeGoogleMapInit = function() {
+
+};
+
+/**
+ * Called after Google Map component initialization
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.GoogleMap.prototype.afterGoogleMapInit = function() {
+	
+};
+
+/** 
+ * Return latitude from the position
+ * @param {String} position the position attribute
+ * @private
+ */
+Exanpe.GoogleMap.prototype.getLatitude = function(position){
+	return position.split(',')[0];
+};
+
+/** 
+ * Return longitude from the position
+ * @param {String} position the position attribute
+ * @private
+ */
+Exanpe.GoogleMap.prototype.getLongitude = function(position){
+	return position.split(',')[1];
+};
+
+/** 
+ * Initializes the Map object
+ * @private
+ */
+Exanpe.GoogleMap.prototype._initMap = function(){
+	// Init windows
+	this.infoWindow = new google.maps.InfoWindow();
+	
+	// Options
+	var position = new google.maps.LatLng(this.getLatitude(this.position), this.getLongitude(this.position));
+	this.options = {
+			center: position,
+			zoom: 15,					
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControl: true,
+			mapTypeControlOptions: {
+			  style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+			},					
+			navigationControl: true,
+			navigationControlOptions: {
+			  style: google.maps.NavigationControlStyle.SMALL
+			}
+		};	
+	
+	// Javascript handler before map initialization
+	this.beforeGoogleMapInit();
+	
+	// Init map
+	this.map = new google.maps.Map(this.getMapContainerEl(), this.options);
+}
+
+/** 
+ * Initializes the Map items objects
+ * @private
+ */
+Exanpe.GoogleMap.prototype._initMapItem = function(item) {
+	// Add Marker
+	var markerPosition = new google.maps.LatLng(this.getLatitude(item.position), this.getLongitude(item.position));
+	var marker = new google.maps.Marker({
+			position: markerPosition,
+			map: this.map,
+			icon : item.icon
+		}
+	);	
+	
+	// Add Marker event
+	var info = null
+	var map = this.map;
+	var iw = this.infoWindow;
+	if (item.info) {
+		info = item.info;
+	}
+	
+	// Marker listener
+	google.maps.event.addListener(marker, 'click', function() {
+			iw.setContent(info);
+			iw.open(map, this);
+			map.panTo(markerPosition);
+		}
+	);
+	
+	// Item link event
+	var mapItem = YAHOO.util.Dom.get(item.id);
+	YAHOO.util.Event.addListener(mapItem, "click", function() {
+		map.panTo(markerPosition);
+		iw.setContent(info);
+		iw.open(map, marker);
+	});
+	
+};
+
+/** 
+ * Prepare map and items to display
+ * @private
+ */
+Exanpe.GoogleMap.prototype._init = function(){
+	// Init map
+	this._initMap();
+	
+	// Init items
+	for (var i = 0; i < this.items.length; i++) {
+		var item = this.items[i];
+		this._initMapItem(item);
+	}
+	
+	// Javascript handler after component initialization
+	this.afterGoogleMapInit();
+};
+
+/**
+ * Initializes the GoogleMap component on DOM load
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.googleMapBuilder = function(data){
+	var googleMap = new Exanpe.GoogleMap(data.id, data.position, YAHOO.lang.JSON.parse(data.items));
+	googleMap._init();
+	window[data.id] = googleMap;
 };

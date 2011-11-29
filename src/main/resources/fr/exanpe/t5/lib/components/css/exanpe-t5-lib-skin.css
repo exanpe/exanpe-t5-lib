@@ -894,3 +894,18 @@
 	line-height: 20px;
 	display: inline-block;
 }
+
+/**
+ * Google Map
+ */
+.exanpe-gmap .exanpe-gmap-map {
+	float: left;
+	height: 500px;
+	width: 500px;	
+}
+
+.exanpe-gmap .exanpe-gmap-infos {
+	float: left;
+	width: 300px;
+	margin-left: 20px;
+}
