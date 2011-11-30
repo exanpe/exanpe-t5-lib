@@ -1173,7 +1173,7 @@ Exanpe.Dialog = function(id, message, targetHtmlId, title, renderMode, width, yu
 	this.width = width;
 	
 	/**
-	 * this wrapped yui dialog instance
+	 * The wrapped yui dialog instance
 	 */
 	this.yui = yui;
 };
@@ -2950,3 +2950,213 @@ Tapestry.Initializer.googleMapBuilder = function(data){
 	googleMap._init();
 	window[data.id] = googleMap;
 };
+
+/** Rich Text Editor **/
+
+/** 
+ * Constructor
+ * @class Represents a RichTextEditor object
+ * @param {String} id the id of the RichTextEditor Mixin container element
+ * @param {String} title the title of the dialog box
+ * @param {boolean} collapse if the Editor toolbar can be collapsed or not  
+ */
+Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse) {
+	/**
+	 * The id of the instance
+	 */
+	this.id = id;
+		
+	/**
+	 * Editor title
+	 */
+	this.title = title;
+	
+	/**
+	 * Editor textarea width
+	 */
+	this.width = width;
+	
+	/**
+	 * Editor textarea height
+	 */
+	this.height = height;
+	
+	/**
+	 * Autofocus the textarea on display or not
+	 */
+	this.autofocus = autofocus;
+	
+	/**
+	 * Collapse/Expand Toolbar
+	 */
+	this.collapse = collapse;
+	
+	/**
+	 * YUI Editor toolbar
+	 */
+	this.toolbar = null
+	
+	/**
+	 * The wrapped YUI Editor widget
+	 */
+	this.yui = null;
+};
+
+/**
+ * Get the toolbar object of the RichTextEditor
+ * @returns {Object} the json object used to configure the toolbar
+ */
+Exanpe.RichTextEditor.prototype.getToolbar = function() {
+	return this.toolbar;
+};
+
+/**
+ * Set the toolbar object of the RichTextEditor
+ * @param {Object} the json object used to configure the toolbar
+ */
+Exanpe.RichTextEditor.prototype.setToolbar = function(toolbar) {
+	this.toolbar = toolbar;
+};
+
+/**
+ * Configure the default toolbar of the YUI Editor
+ * @private
+ */
+Exanpe.RichTextEditor.prototype._configToolbar = function() {
+	this.toolbar = {
+            height: this.height + 'px',
+            width: this.width + 'px',
+            dompath: false,            
+            collapse: this.collapse,
+            focusAtStart: this.autofocus,
+            toolbar: {
+            	titlebar: this.title,
+                buttons: [
+                    { group: 'parastyle',
+                              buttons: [
+                              { type: 'select', label: 'Normal', value: 'heading', disabled: true,
+                                  menu: [
+                                      { text: 'Normal', value: 'none', checked: true },
+                                      { text: 'Header 1', value: 'h1' },
+                                      { text: 'Header 2', value: 'h2' },
+                                      { text: 'Header 3', value: 'h3' },
+                                      { text: 'Header 4', value: 'h4' },
+                                      { text: 'Header 5', value: 'h5' },
+                                      { text: 'Header 6', value: 'h6' }
+                                  ]
+                              }
+                              ]
+                    },                           
+                    { group: 'textstyle',
+                        buttons: [
+                            { type: 'select', label: 'Arial', value: 'fontname', disabled: true,
+                                menu: [
+                                    { text: 'Arial', checked: true },
+                                    { text: 'Arial Black' },
+                                    { text: 'Comic Sans MS' },
+                                    { text: 'Courier New' },
+                                    { text: 'Lucida Console' },
+                                    { text: 'Tahoma' },
+                                    { text: 'Times New Roman' },
+                                    { text: 'Trebuchet MS' },
+                                    { text: 'Verdana' }
+                                ]
+                            },
+                            { type: 'separator' },
+                            { type: 'spin', label: '13', value: 'fontsize', range: [ 8, 72 ], disabled: true },
+                            { type: 'separator' },
+                            { type: 'color', label: 'Font Color', value: 'forecolor', disabled: true },
+                            { type: 'color', label: 'Background Color', value: 'backcolor', disabled: true }
+                        ]
+                    },
+                    { type: 'separator' },
+                    { group: 'alignment',
+                        buttons: [
+                            { type: 'push', label: 'Bold', value: 'bold' },
+                            { type: 'push', label: 'Italic', value: 'italic' },
+                            { type: 'push', label: 'Underline', value: 'underline' },
+                            { type: 'separator' },                                  
+                            { type: 'push', label: 'Align Left CTRL + SHIFT + [', value: 'justifyleft' },
+                            { type: 'push', label: 'Align Center CTRL + SHIFT + |', value: 'justifycenter' },
+                            { type: 'push', label: 'Align Right CTRL + SHIFT + ]', value: 'justifyright' },
+                            { type: 'push', label: 'Justify', value: 'justifyfull' },
+                            { type: 'separator' },                                  
+                            { type: 'push', label: 'HTML Link CTRL + SHIFT + L', value: 'createlink', disabled: true }
+                        ]
+                    },
+                ]
+            }            
+    };
+};
+
+/**
+ * Get the parent form of the current textarea.
+ * @return {HTMLElement} the DOM element corresponding to the parent form
+ * @private
+ */
+Exanpe.RichTextEditor.prototype.getParentForm = function() {
+	var currentEl = YAHOO.util.Dom.get(this.id);
+	return currentEl.form;
+};
+
+/**
+ * This will trigger the editors save handler and place the new content back into the textarea 
+ * before the form is submitted.
+ * A listener is attached on the native Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT event to the 
+ * textarea parent form.
+ */
+Exanpe.RichTextEditor.prototype.save = function() {
+	var yui = this.yui;
+	Event.on(this.getParentForm(), Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT, function() {yui.saveHTML();});
+};
+
+/**
+ * Called before rendering RichTextEditor component
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.RichTextEditor.prototype.beforeRenderRichTextEditor = function() {
+
+};
+
+/**
+ * Called after rendering RichTextEditor component
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.RichTextEditor.prototype.afterRenderRichTextEditor = function() {
+	
+};
+
+/**
+ * Load the mixin
+ * @private
+ */
+Exanpe.RichTextEditor.prototype._init = function() {
+	// Toolbar config
+	this._configToolbar();
+	
+	// JS Handler
+	this.beforeRenderRichTextEditor();
+
+	// Init editor and replace the HTML textarea
+	this.yui = new YAHOO.widget.Editor(this.id, this.toolbar);
+	this.yui.render();
+	
+	// Save html content on submit event
+	this.save();
+	
+	// JS Handler
+	this.afterRenderRichTextEditor();
+};
+
+/**
+ * Initializes the RichTextEditor mixin on DOM load
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.richTextEditorBuilder = function(data){
+	var rte = new Exanpe.RichTextEditor(data.id, data.title, data.width, data.height, data.autofocus, data.collapse);
+	rte._init();
+	window[data.id] = rte;
+};
+
