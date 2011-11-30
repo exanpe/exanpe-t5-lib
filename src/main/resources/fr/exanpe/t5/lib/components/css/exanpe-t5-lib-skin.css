@@ -956,7 +956,7 @@
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button span.yui-toolbar-icon,
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button span.yui-toolbar-icon,
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button span.yui-toolbar-icon {
-    background-image: url('../img/rte/editor-sprite.gif') no-repeat 30px 30px;
+    background-image: url('../img/rte/editor-sprite.gif');
 }
 
 
