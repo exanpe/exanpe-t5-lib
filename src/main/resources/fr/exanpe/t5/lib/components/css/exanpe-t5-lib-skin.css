@@ -934,3 +934,88 @@
 	list-style: none outside none;
 	cursor:pointer;
 }
+
+/**
+ * Rich Text Editor
+ */
+ 
+/* Load the background image on the Toolbars titlebar */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar {
+    background: #fdfdfd; /* TODO */
+    position: relative;
+}
+
+/* Set the image for the collapse button on the toolbar */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .collapse {
+    background: red; /* TODO */
+}
+/* Set the image for the collapse button on the toolbar */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .collapsed {
+    background: black; /* TODO */
+}
+
+/* Set the default styles for the buttons */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button {
+    background: white; /* TODO */
+}
+
+/* Handle the hover state of the buttons */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-hover {
+    background: #CCCCCC;
+    border-color: #808080;
+}
+
+/* Handle the selected state of the buttons */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-selected {
+    background: #CCCCCC;
+    border-color: #808080;
+}
+
+/* Handle the icon placeholder for the buttons
+    This is very important - position of this must be absolute.
+    If it is not positioned absolute, IE will place it over the a in the Toolbar
+    Doing this will cause the editor to loose focus and loose the selection.
+*/
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button span.yui-toolbar-icon,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button span.yui-toolbar-icon,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button span.yui-toolbar-icon {
+    background-image: url('../img/rte/editor-sprite.gif');
+}
+
+
+/* Swap out the image to an active image */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-selected span.yui-toolbar-icon, 
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-hover span.yui-toolbar-icon {
+    background-image: url('../img/rte/editor-sprite-active.gif');
+}
+
+/* Spin Buttons - Prep the arrows */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.up,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.down {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1222px;
+}
+
+/* Set the icon of the select menu for the drop down arrow */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-select span.yui-toolbar-icon {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1144px;
+}
+
+/* Setup the background image on the title bar
+    We are styling the h3 instead if the div so we can make room
+    for the "knob" that floats on the top of the window.
+*/
+.exanpe-rte .yui-skin-sam .yui-editor-panel .hd h3 {
+    background: #FDFDFD;
+}
+
+/* Style the close button in the Property Editor */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .hd span.close {
+    background: red;
+}
+
+/* Setup the icon for a tip */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .ft span.tip span.icon {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1260px;
+}

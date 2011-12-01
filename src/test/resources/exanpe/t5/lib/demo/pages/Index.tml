@@ -22,5 +22,6 @@
     <li><t:pagelink page="comp/AuthorizeAnnotationTest">AuthorizeAnnotationTest</t:pagelink></li>
     <li><t:pagelink page="comp/GoogleMapTest">GoogleMap</t:pagelink></li>
     <li><t:pagelink page="comp/ListSorterTest">ListSorter</t:pagelink></li>
+    <li><t:pagelink page="comp/RichTextEditorTest">RichTextEditor</t:pagelink></li>
   </ul>
 </t:layout>
