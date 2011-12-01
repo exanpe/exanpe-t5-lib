@@ -54,6 +54,7 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         }
         else
         {
+            // TODO exception throwing + test catch in handler
             requestGlobals.getResponse().sendError(302, "Not authorized");
         }
     }
