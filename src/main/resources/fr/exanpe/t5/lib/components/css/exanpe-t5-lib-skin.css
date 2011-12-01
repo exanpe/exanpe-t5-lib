@@ -909,3 +909,28 @@
 	width: 300px;
 	margin-left: 20px;
 }
+
+/**
+ * List Sorter
+ * ul / li contains free user content. Cannot target global ul and li tags for classes
+ */
+.exanpe-lst {
+	
+}
+
+/**
+ * global container class
+ */
+.exanpe-lst-ul {
+	list-style: none outside none;
+	margin: 0;
+    padding: 0;
+}
+
+/**
+ * each element class
+ */
+.exanpe-lst-li {
+	list-style: none outside none;
+	cursor:pointer;
+}

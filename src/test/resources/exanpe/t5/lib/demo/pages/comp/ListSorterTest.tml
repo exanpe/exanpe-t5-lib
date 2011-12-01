@@ -1,0 +1,15 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  <t:form>
+  <u>List :</u>
+  <ex:listSorter t:id="ls" source="list" value="element">
+  	${element}
+  </ex:listSorter>
+
+  
+  <input type="button" onclick="ls.save()" value="Save"/>
+  <t:submit/>
+  </t:form>
+  
+</t:layout>
