@@ -45,8 +45,8 @@ import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
 import fr.exanpe.t5.lib.constants.PasswordStrengthCheckerTypeEnum;
 import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
-import fr.exanpe.t5.lib.internal.AuthorizePageFilter;
-import fr.exanpe.t5.lib.internal.AuthorizeWorker;
+import fr.exanpe.t5.lib.internal.authorize.AuthorizePageFilter;
+import fr.exanpe.t5.lib.internal.authorize.AuthorizeWorker;
 import fr.exanpe.t5.lib.services.impl.AuthorizeBusinessServiceImpl;
 
 /**

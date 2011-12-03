@@ -1,4 +1,4 @@
-package fr.exanpe.t5.lib.internal;
+package fr.exanpe.t5.lib.internal.authorize;
 
 import org.apache.tapestry5.services.ComponentMethodAdvice;
 import org.apache.tapestry5.services.ComponentMethodInvocation;
