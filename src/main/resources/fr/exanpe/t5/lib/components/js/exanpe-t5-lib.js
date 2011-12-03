@@ -3383,8 +3383,7 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
  * @private
  */
 Exanpe.RichTextEditor.prototype.getParentForm = function() {
-	var currentEl = YAHOO.util.Dom.get(this.id);
-	return currentEl.form;
+	return YAHOO.util.Dom.getAncestorByTagName(this.id, "form");
 };
 
 /**
@@ -3395,7 +3394,7 @@ Exanpe.RichTextEditor.prototype.getParentForm = function() {
  */
 Exanpe.RichTextEditor.prototype.save = function() {
 	var yui = this.yui;
-	Event.on(this.getParentForm(), Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT, function() {yui.saveHTML();});
+	this.getParentForm().on(Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT, function() {yui.saveHTML();});
 };
 
 /**
