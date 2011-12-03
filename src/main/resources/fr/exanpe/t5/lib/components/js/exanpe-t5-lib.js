@@ -3088,6 +3088,7 @@ Exanpe.ListSorter.prototype.initiateOrder = function(){
 /**
  * Return the elements of this list
  * @return {Array} the elements of this list, as HTMLElement array
+ * @private
  */
 Exanpe.ListSorter.prototype.getListElements = function(){
 	var id = this.id;
@@ -3098,6 +3099,10 @@ Exanpe.ListSorter.prototype.getListElements = function(){
 	return result;
 };
 
+/**
+ * Class applied to all elements draggable
+ * @private
+ */
 Exanpe.ListSorter.Draggable =  function(id, sGroup, containerId) {
 
 	Exanpe.ListSorter.Draggable.superclass.constructor.call(this, id, sGroup);
