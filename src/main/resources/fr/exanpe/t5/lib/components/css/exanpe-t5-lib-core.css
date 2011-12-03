@@ -668,3 +668,19 @@ table.hidden {
 .exanpe-psc-tag {
     margin: 0 2px 0 0;
 }
+
+/**
+ * List Sorter
+ */
+.exanpe-lst {
+	
+}
+
+/**
+ * global container class
+ */
+.exanpe-lst-ul {
+	list-style: none outside none;
+	margin: 0;
+    padding: 0;
+}

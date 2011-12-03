@@ -5,19 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentAction;
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.Link;
+import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.annotations.AfterRender;
+import org.apache.tapestry5.annotations.BeginRender;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.RequestParameter;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.internal.InternalMessages;
+import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONArray;
 import org.apache.tapestry5.json.JSONObject;
@@ -25,6 +30,8 @@ import org.apache.tapestry5.services.FormSupport;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.slf4j.Logger;
+
+import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
 /**
  * The list sorter allow you to sort some elements displayed into a vertical list.<br/>
@@ -41,6 +48,7 @@ import org.slf4j.Logger;
 { "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/animation/animation-min.js", "${exanpe.yui2-base}/dragdrop/dragdrop-min.js",
         "${exanpe.yui2-base}/json/json-min.js", "${exanpe.yui2-base}/connection/connection-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
+@SupportsInformalParameters
 public class ListSorter<T> implements ClientElement, Serializable
 {
     /**
@@ -64,6 +72,14 @@ public class ListSorter<T> implements ClientElement, Serializable
     private T value;
 
     /**
+     * Whether to use a default skin for the list sorter. True by default. Turn to false to design
+     * each element your own way.
+     */
+    @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL, value = "true")
+    @Property
+    private boolean useDefaultSkin;
+
+    /**
      * Index of the iteration
      */
     @Property
@@ -77,7 +93,14 @@ public class ListSorter<T> implements ClientElement, Serializable
     /**
      * Save param
      */
-    private static final String PARAM_NEW_ORDER = "order";
+    private static final String PARAM_PERMUTATIONS = "permutations";
+
+    /**
+     * Save param
+     */
+    private static final String ROOT_CSS_CLASS = "exanpe-lst";
+
+    private static final String DEFAULT_SKIN_CLASS = "exanpe-lst-skin";
 
     @Inject
     private ComponentResources resources;
@@ -93,6 +116,9 @@ public class ListSorter<T> implements ClientElement, Serializable
 
     @Inject
     private FormSupport formSupport;
+
+    @Inject
+    private ExanpeComponentService ecservice;
 
     // unique id generated
     private String uniqueId;
@@ -144,6 +170,22 @@ public class ListSorter<T> implements ClientElement, Serializable
         formSupport.store(this, new ListSorterProcessSubmission(getInputElementName()));
     }
 
+    @BeginRender
+    void begin(MarkupWriter writer)
+    {
+        Element e = writer.element("div");
+
+        e.attribute("id", getClientId());
+        resources.renderInformalParameters(writer);
+
+        ecservice.reorderCSSClassDeclaration(e, ROOT_CSS_CLASS);
+
+        if (useDefaultSkin)
+        {
+            e.addClassName(DEFAULT_SKIN_CLASS);
+        }
+    }
+
     /**
      * Submission processing. Compute the new list order.
      * 
@@ -159,8 +201,10 @@ public class ListSorter<T> implements ClientElement, Serializable
     }
 
     @AfterRender
-    void end()
+    void end(MarkupWriter writer)
     {
+        writer.end();
+
         JSONObject data = buildJSONData();
 
         javaScriptSupport.addInitializerCall("listSorterBuilder", data);
@@ -179,7 +223,7 @@ public class ListSorter<T> implements ClientElement, Serializable
     }
 
     @OnEvent(value = EVENT_NAME)
-    public void save(@RequestParameter(value = PARAM_NEW_ORDER)
+    public void save(@RequestParameter(value = PARAM_PERMUTATIONS)
     String newOrder)
     {
         if (log.isDebugEnabled())

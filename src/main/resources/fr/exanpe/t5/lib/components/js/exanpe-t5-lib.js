@@ -2970,7 +2970,7 @@ Exanpe.ListSorter = function(id, urlSave){
  * @static
  * @private
  */
-Exanpe.ListSorter.PARAM_NEW_ORDER = "order";
+Exanpe.ListSorter.PARAM_NEW_ORDER = "permutations";
 
 /**
  * Init the markup of the component
