@@ -2983,7 +2983,7 @@ Exanpe.ListSorter.prototype._init = function(){
 	new YAHOO.util.DDTarget(ul.id);
 	
     for (var i=0; i<lis.length ;i++) {
-        new Exanpe.ListSorter.Draggable(lis[i].id, this.id, this.id);
+        new Exanpe.ListSorter.Draggable(lis[i].id, this.id, this.getListRoot().id);
     }
     
     var lst = this;
