@@ -1,6 +1,7 @@
-package fr.exanpe.t5.lib.internal;
+package fr.exanpe.t5.lib.internal.authorize;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 import org.apache.commons.lang.ClassUtils;
@@ -11,8 +12,10 @@ import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.services.ComponentSource;
 import org.apache.tapestry5.services.PageRenderRequestParameters;
 import org.apache.tapestry5.services.RequestGlobals;
+import org.slf4j.Logger;
 
 import fr.exanpe.t5.lib.annotation.Authorize;
+import fr.exanpe.t5.lib.exception.AuthorizeException;
 import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
 
 /**
@@ -27,12 +30,14 @@ public class AuthorizePageFilter implements ComponentRequestFilter
     private AuthorizeBusinessService authorizeBusinessService;
     private RequestGlobals requestGlobals;
     private ComponentSource componentSource;
+    private Logger logger;
 
-    public AuthorizePageFilter(AuthorizeBusinessService abs, RequestGlobals request, ComponentSource componentSource)
+    public AuthorizePageFilter(AuthorizeBusinessService abs, RequestGlobals request, ComponentSource componentSource, Logger logger)
     {
         this.authorizeBusinessService = abs;
         this.requestGlobals = request;
         this.componentSource = componentSource;
+        this.logger = logger;
     }
 
     /*
@@ -54,8 +59,8 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         }
         else
         {
-            // TODO exception throwing + test catch in handler
-            requestGlobals.getResponse().sendError(302, "Not authorized");
+            logger.debug("Illegal access to page {} for user {}", parameters.getActivePageName(), getUsername());
+            throw new AuthorizeException("Illegal access to page " + parameters.getActivePageName() + " for user " + getUsername());
         }
     }
 
@@ -77,8 +82,16 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         }
         else
         {
-            requestGlobals.getResponse().sendError(302, "Not authorized");
+            logger.debug("Illegal access to page {} for user {}", parameters.getLogicalPageName(), getUsername());
+            throw new AuthorizeException("Illegal access to page " + parameters.getLogicalPageName() + " for user " + getUsername());
         }
+    }
+
+    private String getUsername()
+    {
+        Principal p = requestGlobals.getHTTPServletRequest().getUserPrincipal();
+        if (p == null) { return "-"; }
+        return p.getName();
     }
 
     /**

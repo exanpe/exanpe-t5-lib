@@ -2970,7 +2970,7 @@ Exanpe.ListSorter = function(id, urlSave){
  * @static
  * @private
  */
-Exanpe.ListSorter.PARAM_NEW_ORDER = "order";
+Exanpe.ListSorter.PARAM_NEW_ORDER = "permutations";
 
 /**
  * Init the markup of the component
@@ -2983,7 +2983,7 @@ Exanpe.ListSorter.prototype._init = function(){
 	new YAHOO.util.DDTarget(ul.id);
 	
     for (var i=0; i<lis.length ;i++) {
-        new Exanpe.ListSorter.Draggable(lis[i].id, this.id, this.id);
+        new Exanpe.ListSorter.Draggable(lis[i].id, this.id, this.getListRoot().id);
     }
     
     var lst = this;
@@ -2993,6 +2993,8 @@ Exanpe.ListSorter.prototype._init = function(){
     form.observe(Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT, function(){
     	YAHOO.util.Dom.get(lst.id+"_input").value = YAHOO.lang.JSON.stringify(lst.getListOrder());
     });
+    
+    this.initiateOrder();
 };
 
 /**
@@ -3035,8 +3037,8 @@ Exanpe.ListSorter.prototype.save = function(){
 	else {
 		this.request = request;
 	}
-
-	//TODO bug fix with id... need to be recomputed somehow
+	
+	this.initiateOrder();
 };
 
 /**
@@ -3065,16 +3067,28 @@ Exanpe.ListSorter.prototype.getListOrder = function(){
 	var list = [];
 
 	for(var i=0;i<lis.length;i++){
-		var idprocess = lis[i].id;
-		list.push(idprocess.substring(idprocess.lastIndexOf('_')+1, idprocess.length));
+		list.push(lis[i].initialPosition);
 	}
 	
 	return list;
 };
 
 /**
+ * Initiate the list positions
+ * @private
+ */
+Exanpe.ListSorter.prototype.initiateOrder = function(){
+	var lis = this.getListElements();
+
+	for(var i=0;i<lis.length;i++){
+		lis[i].initialPosition = i;
+	}
+};
+
+/**
  * Return the elements of this list
  * @return {Array} the elements of this list, as HTMLElement array
+ * @private
  */
 Exanpe.ListSorter.prototype.getListElements = function(){
 	var id = this.id;
@@ -3085,6 +3099,10 @@ Exanpe.ListSorter.prototype.getListElements = function(){
 	return result;
 };
 
+/**
+ * Class applied to all elements draggable
+ * @private
+ */
 Exanpe.ListSorter.Draggable =  function(id, sGroup, containerId) {
 
 	Exanpe.ListSorter.Draggable.superclass.constructor.call(this, id, sGroup);
@@ -3100,132 +3118,133 @@ Exanpe.ListSorter.Draggable =  function(id, sGroup, containerId) {
     this.initConstraints();
 };
 
-YAHOO.extend(Exanpe.ListSorter.Draggable, YAHOO.util.DDProxy, {
-
-	initConstraints: function() {
-        var region = YAHOO.util.Dom.getRegion(this.containerId);
-
-        var el = this.getEl();
-
-        var xy = YAHOO.util.Dom.getXY(el);
-
-        var width = parseInt(YAHOO.util.Dom.getStyle(el, 'width'), 10);
-        var height = parseInt(YAHOO.util.Dom.getStyle(el, 'height'), 10);
-
-        var left = xy[0] - region.left;
-
-        var right = region.right - xy[0] - width;
-
-        var top = xy[1] - region.top;
-
-        var bottom = region.bottom - xy[1] - height;
-
-        this.setXConstraint(left, right);
-        this.setYConstraint(top, bottom);
-    },
+if(YAHOO && YAHOO.util && YAHOO.util.DDProxy){
+	YAHOO.extend(Exanpe.ListSorter.Draggable, YAHOO.util.DDProxy, {
 	
-    startDrag: function(x, y) {
-        // make the proxy look like the source element
-        var dragEl = this.getDragEl();
-        var clickEl = this.getEl();
-        YAHOO.util.Dom.setStyle(clickEl, "visibility", "hidden");
-
-        dragEl.innerHTML = clickEl.innerHTML;
-
-        YAHOO.util.Dom.setStyle(dragEl, "color", YAHOO.util.Dom.getStyle(clickEl, "color"));
-        YAHOO.util.Dom.setStyle(dragEl, "backgroundColor", YAHOO.util.Dom.getStyle(clickEl, "backgroundColor"));
-        YAHOO.util.Dom.setStyle(dragEl, "border", "2px solid gray");
-    },
-
-    endDrag: function(e) {
-
-        var srcEl = this.getEl();
-        var proxy = this.getDragEl();
-
-        // Show the proxy element and animate it to the src element's location
-        YAHOO.util.Dom.setStyle(proxy, "visibility", "");
-        var a = new YAHOO.util.Motion( 
-            proxy, { 
-                points: { 
-                    to: YAHOO.util.Dom.getXY(srcEl)
-                }
-            }, 
-            0.2, 
-            YAHOO.util.Easing.easeOut 
-        );
-        var proxyid = proxy.id;
-        var thisid = this.id;
-
-        // Hide the proxy and show the source element when finished with the animation
-        a.onComplete.subscribe(function() {
-                YAHOO.util.Dom.setStyle(proxyid, "visibility", "hidden");
-                YAHOO.util.Dom.setStyle(thisid, "visibility", "");
-            });
-        a.animate();
-    },
-
-    onDragDrop: function(e, id) {
-
-        // If there is one drop interaction, the li was dropped either on the list,
-        // or it was dropped on the current location of the source element.
-        if (YAHOO.util.DragDropMgr.interactionInfo.drop.length === 1) {
-
-            // The position of the cursor at the time of the drop (YAHOO.util.Point)
-            var pt = YAHOO.util.DragDropMgr.interactionInfo.point; 
-
-            // The region occupied by the source element at the time of the drop
-            var region = YAHOO.util.DragDropMgr.interactionInfo.sourceRegion; 
-
-            // Check to see if we are over the source element's location.  We will
-            // append to the bottom of the list once we are sure it was a drop in
-            // the negative space (the area of the list without any list items)
-            if (!region.intersect(pt)) {
-                var destEl = YAHOO.util.Dom.get(id);
-                var destDD = YAHOO.util.DragDropMgr.getDDById(id);
-                destEl.appendChild(this.getEl());
-                destDD.isEmpty = false;
-                YAHOO.util.DragDropMgr.refreshCache();
-            }
-
-        }
-    },
-
-    onDrag: function(e) {
-
-        // Keep track of the direction of the drag for use during onDragOver
-        var y = YAHOO.util.Event.getPageY(e);
-
-        if (y < this.lastY) {
-            this.goingUp = true;
-        } else if (y > this.lastY) {
-            this.goingUp = false;
-        }
-
-        this.lastY = y;
-    },
-
-    onDragOver: function(e, id) {
-    
-        var srcEl = this.getEl();
-        var destEl = YAHOO.util.Dom.get(id);
-
-        // We are only concerned with list items, we ignore the dragover
-        // notifications for the list.
-        if (destEl.nodeName.toLowerCase() == "li") {
-            var orig_p = srcEl.parentNode;
-            var p = destEl.parentNode;
-
-            if (this.goingUp) {
-                p.insertBefore(srcEl, destEl); // insert above
-            } else {
-                p.insertBefore(srcEl, destEl.nextSibling); // insert below
-            }
-
-            YAHOO.util.DragDropMgr.refreshCache();
-        }
-    }
-});
-
+		initConstraints: function() {
+	        var region = YAHOO.util.Dom.getRegion(this.containerId);
+	
+	        var el = this.getEl();
+	
+	        var xy = YAHOO.util.Dom.getXY(el);
+	
+	        var width = parseInt(YAHOO.util.Dom.getStyle(el, 'width'), 10);
+	        var height = parseInt(YAHOO.util.Dom.getStyle(el, 'height'), 10);
+	
+	        var left = xy[0] - region.left;
+	
+	        var right = region.right - xy[0] - width;
+	
+	        var top = xy[1] - region.top;
+	
+	        var bottom = region.bottom - xy[1] - height;
+	
+	        this.setXConstraint(left, right);
+	        this.setYConstraint(top, bottom);
+	    },
+		
+	    startDrag: function(x, y) {
+	        // make the proxy look like the source element
+	        var dragEl = this.getDragEl();
+	        var clickEl = this.getEl();
+	        YAHOO.util.Dom.setStyle(clickEl, "visibility", "hidden");
+	
+	        dragEl.innerHTML = clickEl.innerHTML;
+	
+	        YAHOO.util.Dom.setStyle(dragEl, "color", YAHOO.util.Dom.getStyle(clickEl, "color"));
+	        YAHOO.util.Dom.setStyle(dragEl, "backgroundColor", YAHOO.util.Dom.getStyle(clickEl, "backgroundColor"));
+	        YAHOO.util.Dom.setStyle(dragEl, "border", "2px solid gray");
+	    },
+	
+	    endDrag: function(e) {
+	
+	        var srcEl = this.getEl();
+	        var proxy = this.getDragEl();
+	
+	        // Show the proxy element and animate it to the src element's location
+	        YAHOO.util.Dom.setStyle(proxy, "visibility", "");
+	        var a = new YAHOO.util.Motion( 
+	            proxy, { 
+	                points: { 
+	                    to: YAHOO.util.Dom.getXY(srcEl)
+	                }
+	            }, 
+	            0.2, 
+	            YAHOO.util.Easing.easeOut 
+	        );
+	        var proxyid = proxy.id;
+	        var thisid = this.id;
+	
+	        // Hide the proxy and show the source element when finished with the animation
+	        a.onComplete.subscribe(function() {
+	                YAHOO.util.Dom.setStyle(proxyid, "visibility", "hidden");
+	                YAHOO.util.Dom.setStyle(thisid, "visibility", "");
+	            });
+	        a.animate();
+	    },
+	
+	    onDragDrop: function(e, id) {
+	
+	        // If there is one drop interaction, the li was dropped either on the list,
+	        // or it was dropped on the current location of the source element.
+	        if (YAHOO.util.DragDropMgr.interactionInfo.drop.length === 1) {
+	
+	            // The position of the cursor at the time of the drop (YAHOO.util.Point)
+	            var pt = YAHOO.util.DragDropMgr.interactionInfo.point; 
+	
+	            // The region occupied by the source element at the time of the drop
+	            var region = YAHOO.util.DragDropMgr.interactionInfo.sourceRegion; 
+	
+	            // Check to see if we are over the source element's location.  We will
+	            // append to the bottom of the list once we are sure it was a drop in
+	            // the negative space (the area of the list without any list items)
+	            if (!region.intersect(pt)) {
+	                var destEl = YAHOO.util.Dom.get(id);
+	                var destDD = YAHOO.util.DragDropMgr.getDDById(id);
+	                destEl.appendChild(this.getEl());
+	                destDD.isEmpty = false;
+	                YAHOO.util.DragDropMgr.refreshCache();
+	            }
+	
+	        }
+	    },
+	
+	    onDrag: function(e) {
+	
+	        // Keep track of the direction of the drag for use during onDragOver
+	        var y = YAHOO.util.Event.getPageY(e);
+	
+	        if (y < this.lastY) {
+	            this.goingUp = true;
+	        } else if (y > this.lastY) {
+	            this.goingUp = false;
+	        }
+	
+	        this.lastY = y;
+	    },
+	
+	    onDragOver: function(e, id) {
+	    
+	        var srcEl = this.getEl();
+	        var destEl = YAHOO.util.Dom.get(id);
+	
+	        // We are only concerned with list items, we ignore the dragover
+	        // notifications for the list.
+	        if (destEl.nodeName.toLowerCase() == "li") {
+	            var orig_p = srcEl.parentNode;
+	            var p = destEl.parentNode;
+	
+	            if (this.goingUp) {
+	                p.insertBefore(srcEl, destEl); // insert above
+	            } else {
+	                p.insertBefore(srcEl, destEl.nextSibling); // insert below
+	            }
+	
+	            YAHOO.util.DragDropMgr.refreshCache();
+	        }
+	    }
+	});
+}
 /**
  * Initializes the ListSorter component on DOM load
  * @param {Object} data the json data coming from Java class initialization

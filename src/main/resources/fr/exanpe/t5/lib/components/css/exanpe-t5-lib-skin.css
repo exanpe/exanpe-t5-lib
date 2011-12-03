@@ -935,6 +935,23 @@
 	cursor:pointer;
 }
 
+.exanpe-lst-skin{
+	
+}
+
+.exanpe-lst-skin .exanpe-lst-ul{
+	border:1px solid black;
+	padding-left : 5px;
+	padding-right : 5px;
+	padding-top : 5px;
+}
+
+.exanpe-lst-skin .exanpe-lst-li{
+	border:1px dotted #808080;
+	margin-bottom : 5px;
+	padding:3px;
+}
+
 /**
  * Rich Text Editor
  */

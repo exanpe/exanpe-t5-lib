@@ -16,17 +16,24 @@
 
 package exanpe.t5.lib.demo.services;
 
+import java.io.IOException;
+
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.SubModule;
+import org.apache.tapestry5.services.ComponentSource;
+import org.apache.tapestry5.services.RequestExceptionHandler;
+import org.apache.tapestry5.services.ResponseRenderer;
 import org.apache.tapestry5.services.ValueEncoderFactory;
 import org.apache.tapestry5.services.ValueEncoderSource;
+import org.slf4j.Logger;
 
 import exanpe.t5.lib.demo.bean.Country;
 import exanpe.t5.lib.demo.encoders.CountryEncoder;
+import fr.exanpe.t5.lib.exception.AuthorizeException;
 import fr.exanpe.t5.lib.services.ExanpeLibraryModule;
 
 @SubModule(ExanpeLibraryModule.class)
@@ -53,5 +60,20 @@ public class AppModule
     public static void bind(ServiceBinder binder)
     {
         binder.bind(DataService.class, DataService.class);
+    }
+
+    public RequestExceptionHandler decorateRequestExceptionHandler(final Logger logger, final ResponseRenderer renderer, final ComponentSource componentSource,
+            Object service)
+    {
+        return new RequestExceptionHandler()
+        {
+            public void handleRequestException(Throwable exception) throws IOException
+            {
+                if (exception instanceof AuthorizeException)
+                {
+                    renderer.renderPageMarkupResponse("Index");
+                }
+            }
+        };
     }
 }

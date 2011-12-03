@@ -4,19 +4,16 @@
 	xmlns:p="tapestry:parameter"
 	xmlns:ex="tapestry-library:exanpe">
 	
-	<div class="exanpe-lst">
+	<ul id="${clientId}_ul" class="exanpe-lst-ul">
+		<t:loop source="source" value="value" index="index">
+		  
+   			<li id="${clientId}_${index}" class="exanpe-lst-li">
+   				<t:body/>
+   			</li>
+   			
+		</t:loop>
 	
-		<ul id="${clientId}_ul" class="exanpe-lst-ul">
-			<t:loop source="source" value="value" index="index">
-			  
-    			<li id="${clientId}_${index}" class="exanpe-lst-li">
-    				<t:body/>
-    			</li>
-    			
-			</t:loop>
-		
-		</ul>
-		<input type="hidden" id="${inputElementName }" name="${inputElementName }" value=""/>
-	</div>
+	</ul>
+	<input type="hidden" id="${inputElementName }" name="${inputElementName }" value=""/>
 
 </t:container>
