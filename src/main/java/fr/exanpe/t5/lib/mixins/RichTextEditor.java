@@ -5,8 +5,10 @@ package fr.exanpe.t5.lib.mixins;
 
 import java.awt.TextArea;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.MarkupWriter;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.BeginRender;
@@ -32,7 +34,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
 @Import(library =
 { "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/element/element-min.js",
         "${exanpe.yui2-base}/container/container_core-min.js", "${exanpe.yui2-base}/menu/menu-min.js", "${exanpe.yui2-base}/button/button-min.js",
-        "${exanpe.yui2-base}/editor/editor-min.js", "${exanpe.asset-base}/js/exanpe-t5-lib.js" }, stylesheet =
+        "${exanpe.yui2-base}/editor/editor-min.js", "${exanpe.yui2-base}/json/json-min.js", "${exanpe.asset-base}/js/exanpe-t5-lib.js" }, stylesheet =
 { "${exanpe.asset-base}/css/exanpe-t5-lib-core.css", "${exanpe.asset-base}/css/editor.css", "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 public class RichTextEditor
 {
@@ -68,13 +70,16 @@ public class RichTextEditor
     private JavaScriptSupport javascriptSupport;
 
     @Inject
-    private ExanpeComponentService ecservice;
+    private ExanpeComponentService exanpeService;
+
+    @Inject
+    private ComponentResources resources;
 
     @BeginRender
     void begin(MarkupWriter writer)
     {
         Element e = writer.element("class");
-        ecservice.reorderCSSClassDeclaration(e, ROOT_CSS_CLASS);
+        exanpeService.reorderCSSClassDeclaration(e, ROOT_CSS_CLASS);
         Element e2 = writer.element("class");
         e2.addClassName(YUI_CSS_CLASS);
     }
@@ -97,6 +102,22 @@ public class RichTextEditor
         data.accumulate("height", height);
         data.accumulate("autofocus", autofocus);
         data.accumulate("collape", collapse);
+
+        // messages used by mixin
+        JSONObject messages = new JSONObject();
+        String rteButtons = exanpeService.getEscaladeMessage(resources, "exanpe-rte-toolbar-buttons");
+        String[] buttons = rteButtons.split(",");
+        for (int i = 0; i < buttons.length; i++)
+        {
+            String label = exanpeService.getEscaladeMessage(resources, buttons[i]);
+            if (StringUtils.isEmpty(label))
+            {
+                label = "";
+            }
+            messages.accumulate(buttons[i], label);
+        }
+        data.accumulate("messages", messages.toString());
+
         return data;
     }
 }

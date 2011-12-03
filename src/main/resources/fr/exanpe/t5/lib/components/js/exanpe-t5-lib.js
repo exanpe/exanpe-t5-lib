@@ -3266,8 +3266,9 @@ Tapestry.Initializer.listSorterBuilder = function(data){
  * @param {String} id the id of the RichTextEditor Mixin container element
  * @param {String} title the title of the dialog box
  * @param {boolean} collapse if the Editor toolbar can be collapsed or not  
+ * @param {Object.<string, string>} messages the messages used to display Toolbar buttons labels 
  */
-Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse) {
+Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse, messages) {
 	/**
 	 * The id of the instance
 	 */
@@ -3307,6 +3308,11 @@ Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse) 
 	 * The wrapped YUI Editor widget
 	 */
 	this.yui = null;
+	
+	/**
+	 * Messages for Toolbar buttons labels
+	 */
+	this.messages = messages;
 };
 
 /**
@@ -3339,56 +3345,54 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
             toolbar: {
             	titlebar: this.title,
                 buttons: [
+	                { group: 'alignment',
+		                      buttons: [
+		                          { type: 'push', label: this.messages.bold, value: 'bold' },
+		                          { type: 'push', label: this.messages.italic, value: 'italic' },
+		                          { type: 'push', label: this.messages.underline, value: 'underline' },
+		                          { type: 'separator' },                                  
+		                          { type: 'push', label: this.messages.justifyleft, value: 'justifyleft' },
+		                          { type: 'push', label: this.messages.justifycenter, value: 'justifycenter' },
+		                          { type: 'push', label: this.messages.justifyright, value: 'justifyright' },
+		                          { type: 'separator' },                                  
+		                          { type: 'push', label: this.messages.createlink, value: 'createlink', disabled: true },
+		                      ]
+	                },                          
+	                { group: 'indentlist',
+	                    buttons: [
+	                        { type: 'push', label: this.messages.insertunorderedlist, value: 'insertunorderedlist' },
+	                        { type: 'push', label: this.messages.insertorderedlist, value: 'insertorderedlist' }
+	                    ]
+	                },               
+                    { group: 'undoredo',
+                    		buttons: [
+			                          { type: 'push', label: this.messages.undo, value: 'undo', disabled: true },
+			                          { type: 'push', label: this.messages.redo, value: 'redo', disabled: true },
+			                ]
+                    },
+                    { type: 'separator' },
                     { group: 'parastyle',
-                              buttons: [
-                              { type: 'select', label: 'Normal', value: 'heading', disabled: true,
-                                  menu: [
-                                      { text: 'Normal', value: 'none', checked: true },
-                                      { text: 'Header 1', value: 'h1' },
-                                      { text: 'Header 2', value: 'h2' },
-                                      { text: 'Header 3', value: 'h3' },
-                                      { text: 'Header 4', value: 'h4' },
-                                      { text: 'Header 5', value: 'h5' },
-                                      { text: 'Header 6', value: 'h6' }
-                                  ]
-                              }
-                              ]
-                    },                           
-                    { group: 'textstyle',
                         buttons: [
-                            { type: 'select', label: 'Arial', value: 'fontname', disabled: true,
-                                menu: [
-                                    { text: 'Arial', checked: true },
-                                    { text: 'Arial Black' },
-                                    { text: 'Comic Sans MS' },
-                                    { text: 'Courier New' },
-                                    { text: 'Lucida Console' },
-                                    { text: 'Tahoma' },
-                                    { text: 'Times New Roman' },
-                                    { text: 'Trebuchet MS' },
-                                    { text: 'Verdana' }
-                                ]
-                            },
-                            { type: 'separator' },
-                            { type: 'spin', label: '13', value: 'fontsize', range: [ 8, 72 ], disabled: true },
-                            { type: 'separator' },
-                            { type: 'color', label: 'Font Color', value: 'forecolor', disabled: true },
-                            { type: 'color', label: 'Background Color', value: 'backcolor', disabled: true }
+                        { type: 'select', label: this.messages.heading, value: 'heading', disabled: true,
+                            menu: [
+                                { text: this.messages.none, value: 'none', checked: true },
+                                { text: this.messages.h1, value: 'h1' },
+                                { text: this.messages.h2, value: 'h2' },
+                                { text: this.messages.h3, value: 'h3' },
+                                { text: this.messages.h4, value: 'h4' },
+                                { text: this.messages.h5, value: 'h5' },
+                                { text: this.messages.h6, value: 'h6' }
+                            ]
+                        }
                         ]
                     },
                     { type: 'separator' },
-                    { group: 'alignment',
+                    { group: 'textstyle',
                         buttons: [
-                            { type: 'push', label: 'Bold', value: 'bold' },
-                            { type: 'push', label: 'Italic', value: 'italic' },
-                            { type: 'push', label: 'Underline', value: 'underline' },
-                            { type: 'separator' },                                  
-                            { type: 'push', label: 'Align Left CTRL + SHIFT + [', value: 'justifyleft' },
-                            { type: 'push', label: 'Align Center CTRL + SHIFT + |', value: 'justifycenter' },
-                            { type: 'push', label: 'Align Right CTRL + SHIFT + ]', value: 'justifyright' },
-                            { type: 'push', label: 'Justify', value: 'justifyfull' },
-                            { type: 'separator' },                                  
-                            { type: 'push', label: 'HTML Link CTRL + SHIFT + L', value: 'createlink', disabled: true }
+                            { type: 'spin', label: '13', value: 'fontsize', range: [ 8, 72 ], disabled: true },
+                            { type: 'separator' },
+                            { type: 'color', label: this.messages.forecolor, value: 'forecolor', disabled: true },
+                            { type: 'color', label: this.messages.backcolor, value: 'backcolor', disabled: true }
                         ]
                     },
                 ]
@@ -3461,7 +3465,7 @@ Exanpe.RichTextEditor.prototype._init = function() {
  * @static
  */
 Tapestry.Initializer.richTextEditorBuilder = function(data){
-	var rte = new Exanpe.RichTextEditor(data.id, data.title, data.width, data.height, data.autofocus, data.collapse);
+	var rte = new Exanpe.RichTextEditor(data.id, data.title, data.width, data.height, data.autofocus, data.collapse, YAHOO.lang.JSON.parse(data.messages));
 	rte._init();
 	window[data.id] = rte;
 };

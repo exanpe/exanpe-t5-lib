@@ -955,11 +955,36 @@
 /**
  * Rich Text Editor
  */
+/* RTE container */
+.exanpe-rte .yui-skin-sam .yui-editor-container {
+    border: 1px solid #CCCCCC;
+} 
  
 /* Load the background image on the Toolbars titlebar */
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar {
-    background: #fdfdfd; /* TODO */
-    position: relative;
+    background: url("../img/rte/editor-bg.png") repeat-x;
+    height: 25px;
+    line-height: 25px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 {
+	padding: 0;
+	padding-left: 15px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 a {
+	color: #555555;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/* Rich Text Editor Toolbar content */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-subcont {
+    border-bottom: 1px solid #CCCCCC;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container {
+    background-color: #F6F6F6;
 }
 
 /* Set the image for the collapse button on the toolbar */
@@ -975,7 +1000,18 @@
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button,
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button,
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button {
-    background: white; /* TODO */
+    background: #E2E2E2;
+    border: 1px solid #CCCCCC;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button .first-child, 
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button .first-child, 
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button .first-child {
+	border: 0;
+}	
+
+/* Toolbar buttons group */
+.exanpe-rte .yui-toolbar-container .yui-toolbar-group:after {
+	padding-bottom: 3px;
 }
 
 /* Handle the hover state of the buttons */
@@ -1009,8 +1045,10 @@
 }
 
 /* Spin Buttons - Prep the arrows */
-.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.up,
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.down {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1188px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.up {
     background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1222px;
 }
 
@@ -1035,4 +1073,31 @@
 /* Setup the icon for a tip */
 .exanpe-rte .yui-skin-sam .yui-editor-panel .ft span.tip span.icon {
     background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1260px;
+}
+
+/* Toolbar submenus */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-menu {
+    background-color: #F6F6F6;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    width: 93px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .visible .yuimenuitemlabel {
+	text-decoration: none;
+	padding-left: 5px;
+	font-size: 12px;	
+}
+.exanpe-rte .yui-skin-sam .yuimenuitemlabel-selected {
+	background-color: #E2E2E2;
+}
+
+/* This image is the one used to place the blankimage placeholder into the editor when you click on Insert an Image */
+.yui-editor-blankimage {
+    background-image: url('../img/rte/blankimage.png');
+}
+
+/* Handle the knob that floats on top of the panel */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .hd span.knob {
+	background: url('../img/rte/editor-knob.gif') no-repeat 0 0;
 }
