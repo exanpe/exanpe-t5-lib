@@ -1,0 +1,21 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+ 	
+ 	<t:form>
+	 	Enter a value : <t:textfield t:value="value"/>
+		<t:submit />
+	</t:form>
+
+	Result :<br />
+	${value}
+	<br /><br />
+	Real context :<br />
+	${realContext}
+	
+	<ul>
+		<li><t:pagelink page="comp/ContextPageResetTest">Refresh page</t:pagelink></li>
+		<li><t:pagelink page="comp/ContextPageResetTest" context="2">Refresh page with a real context</t:pagelink></li>
+		<li><t:pagelink page="comp/ContextPageResetTest" context="literal:init">Refresh page and reset</t:pagelink></li>
+		<li><t:pagelink page="comp/ContextPageResetTest" context="['init',2]">Refresh page and reset with a real context</t:pagelink></li>
+	</ul>
+</t:layout>

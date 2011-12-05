@@ -47,6 +47,7 @@ import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
 import fr.exanpe.t5.lib.internal.authorize.AuthorizePageFilter;
 import fr.exanpe.t5.lib.internal.authorize.AuthorizeWorker;
+import fr.exanpe.t5.lib.internal.contextpagereset.ContextPageResetWorker;
 import fr.exanpe.t5.lib.services.impl.AuthorizeBusinessServiceImpl;
 
 /**
@@ -110,6 +111,7 @@ public class ExanpeLibraryModule
     {
         configuration.add(ExanpeSymbols.ASSET_BASE, "classpath:fr/exanpe/t5/lib/components");
         configuration.add(ExanpeSymbols.YUI2_BASE, "classpath:fr/exanpe/t5/lib/external/js/yui/2.9.0/");
+        configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "init");
     }
 
     /**
@@ -124,6 +126,7 @@ public class ExanpeLibraryModule
             InjectionProvider injectionProvider, ComponentClassResolver resolver)
     {
         configuration.addInstance("AuthorizeWorker", AuthorizeWorker.class, "before:OnEvent");
+        configuration.addInstance("ContextPageResetWorker", ContextPageResetWorker.class, "before:OnEvent");
     }
 
     /**
