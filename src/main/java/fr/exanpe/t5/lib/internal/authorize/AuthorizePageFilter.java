@@ -19,14 +19,14 @@ import fr.exanpe.t5.lib.exception.AuthorizeException;
 import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
 
 /**
- * This class handles the security defined on pages through a {@link Authorize} annotation.<br/>
- * Display "Not Authorized" message on error with a 302 error code.
+ * This class handles the security for {@link Authorize} annotation declared at class level.<br/>
+ * {@link AuthorizeException} is thrown on access denied.
  * 
+ * @see AuthorizeException
  * @author jmaupoux
  */
 public class AuthorizePageFilter implements ComponentRequestFilter
 {
-
     private AuthorizeBusinessService authorizeBusinessService;
     private RequestGlobals requestGlobals;
     private ComponentSource componentSource;
@@ -59,8 +59,7 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         }
         else
         {
-            logger.debug("Illegal access to page {} for user {}", parameters.getActivePageName(), getUsername());
-            throw new AuthorizeException("Illegal access to page " + parameters.getActivePageName() + " for user " + getUsername());
+            throwAuthorizeException(parameters.getActivePageName());
         }
     }
 
@@ -82,9 +81,14 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         }
         else
         {
-            logger.debug("Illegal access to page {} for user {}", parameters.getLogicalPageName(), getUsername());
-            throw new AuthorizeException("Illegal access to page " + parameters.getLogicalPageName() + " for user " + getUsername());
+            throwAuthorizeException(parameters.getLogicalPageName());
         }
+    }
+
+    private void throwAuthorizeException(String page)
+    {
+        logger.debug("Illegal access to page {} for user {}", page, getUsername());
+        throw new AuthorizeException(page, getUsername());
     }
 
     private String getUsername()
