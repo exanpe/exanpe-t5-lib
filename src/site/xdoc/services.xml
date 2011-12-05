@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>Services Reference - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+     
+	<section name="Services">
+        Our component library provides some extended services to help easing developement.
+        From our experience, these features really help completing Tapestry 5 base services on diverses themes.
+        <br/><br/>
+		<h2>Security : Authorize</h2>
+        
+        Exanpe-t5-lib provides a full set of services to apply some fine-grained role based security in your application.<br/>
+        With the annotation <b>@Authorize</b> and the component <b>Authorize</b>, you can apply security on :
+        <ul>
+          <li>The whole page, setting the <b>@Authorize annotation</b> on your page class.</li>
+          <li>A method, setting the @Authorize annotation on your page class method.</li>
+          <li>A chunk of rendering, using the <b><source><![CDATA[<t:authorize>]]></source> component</b>.</li>
+          <li>Anything, using the <b>Authorize mixin</b>.</li>
+        </ul>
+        <br/>
+        Everything is base on the roles declared in the current user java.security.Principal, no matter how nor with which framework you initialize them.<br/>
+        All 4 authorization level are based on a unique way for defining the authorized roles : 
+        <ul>
+          <li><b>any</b> : Any role required to grant access</li>
+          <li><b>all</b> : All role required to grant access</li>
+          <li><b>not</b> : Any role deny access</li>
+        </ul>
+        
+      <h2>Session Management : ContextPageReset</h2>
+        <h3>Presentation</h3>
+        Session management can be a pain, in any application. Tapestry 5 provides @Persist and @SessionAttribute to store, 
+        @PageReset and @DiscardAfter to clean, but that was not enough for our applications.<br/><br/>
+        We needed a way to clean up a page's information on specific case, which has to "reboot" the page, and moreover, a whole "navigation context".<br/>
+        This is the goal of the <b>@ContextPageReset</b> annotation.<br/><br/>
+        
+        <b>Any method annotated with @ContextPageReset will be triggered upon a specific context value present in the URL.<br/>
+        Note that this feature have to be activated (it is deactivated by default to avoid regression as the context value becomes unusable)</b><br/><br/>
+        
+        <h3>The context</h3>
+        By default, the context triggering the method call is "init", meaning that everytime you call an URL with /init inside, the clean up will be done.<br/>
+        This means that you will no longer be able to call a URL containing "/init".<br/>
+        This value can be modified by contributing a Symbol in your Module class :
+      <source><![CDATA[
+    public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)
+    {
+        ...
+        configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "new_context");
+        ...
+    }
+      ]]>
+      </source>
+        
+        <h3>Feature activation</h3>
+        To activate the feature, you have to explicitly add in your Module class :
+  
+    <source>
+    <![CDATA[
+    public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration)
+    {
+        ...
+        configuration.addInstance("ContextPageResetFilter", ContextPageResetFilter.class);
+        ...
+    }
+    ]]>
+    </source> 
+    
+    Please have a look at the demo for a concrete usage.
+    </section>
+  </body>
+  
+</document>
