@@ -71,6 +71,10 @@
     ]]>
     </source> 
     
+    Also, as the whole Tapestry page transformation have been modified in Tapestry 5.3, 
+    <b>a package protected method "void onActivate()" have to be present in any Tapestry 5.3 page's class 
+    containing a @ContextPageReset</b>.
+    
     Please have a look at the demo for a concrete usage.
     </section>
   </body>

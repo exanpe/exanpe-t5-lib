@@ -54,11 +54,6 @@ public class AuthorizeAnnotationTest
         authenticate("ADMIN");
     }
 
-    public void onActionFromNone()
-    {
-        authenticate("NONE");
-    }
-
     private void authenticate(String role)
     {
         Authentication request = new UsernamePasswordAuthenticationToken(role, role);
