@@ -21,9 +21,11 @@ import java.io.IOException;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.SubModule;
+import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentSource;
 import org.apache.tapestry5.services.RequestExceptionHandler;
 import org.apache.tapestry5.services.ResponseRenderer;
@@ -34,6 +36,7 @@ import org.slf4j.Logger;
 import exanpe.t5.lib.demo.bean.Country;
 import exanpe.t5.lib.demo.encoders.CountryEncoder;
 import fr.exanpe.t5.lib.exception.AuthorizeException;
+import fr.exanpe.t5.lib.internal.contextpagereset.ContextPageResetFilter;
 import fr.exanpe.t5.lib.services.ExanpeLibraryModule;
 
 @SubModule(ExanpeLibraryModule.class)
@@ -75,5 +78,10 @@ public class AppModule
                 }
             }
         };
+    }
+
+    public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration)
+    {
+        configuration.addInstance("ContextPageResetFilter", ContextPageResetFilter.class);
     }
 }

@@ -7,11 +7,16 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import fr.exanpe.t5.lib.exception.AuthorizeException;
+
 /**
  * Interface used to restrict a page's method invocation.<br/>
  * Simply annotate your method or class with \@Authorize and the restriction will be applied
- * depending on the current user authorities.
+ * depending on the current user authorities.<br/>
+ * Note that on authorization failure, an {@link AuthorizeException} will be thrown. Catch it to
+ * display a custom error page.
  * 
+ * @see AuthorizeException
  * @author jmaupoux
  * @since 1.2
  */

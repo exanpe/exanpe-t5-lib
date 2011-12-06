@@ -21,7 +21,6 @@ import org.apache.tapestry5.annotations.RequestParameter;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.corelib.internal.InternalMessages;
 import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONArray;
@@ -164,7 +163,7 @@ public class ListSorter<T> implements ClientElement, Serializable
         uniqueId = javaScriptSupport.allocateClientId(resources);
 
         if (formSupport == null)
-            throw new RuntimeException(InternalMessages.formFieldOutsideForm(resources.getCompleteId()));
+            throw new RuntimeException(String.format("Component %s must be enclosed by a Form component.", resources.getCompleteId()));
 
         // add the list processor
         formSupport.store(this, new ListSorterProcessSubmission(getInputElementName()));

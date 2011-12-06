@@ -20,7 +20,7 @@
             taking a real care of possible application conflicts as well as depending on a minimal number of third party library !<br/>
         <br/><br/>
             The library is fully integrated with Maven 2 and validated with Tapestry 5.2.6 and Tapestry 5.3.0.<br/><br/>
-            <b>It is currently in version 1.1.0.</b>. Have a look to <a href="changes-report.html">Changes</a> section to see what's new.<br/><br/>
+            <b>It is currently in version 1.2.0.</b>. Have a look to <a href="changes-report.html">Changes</a> section to see what's new.<br/><br/>
             Please have a look at the <a href="getting_started.html">Getting Started</a> documentation to learn how to setup and use our components in 2 minutes !
       </p>
       
@@ -53,13 +53,15 @@
             <ul>
             	<li><b>Accordion :</b> Show/Hide some content with animation</li>
             	<li><b>AjaxLoader :</b> Load a content with Ajax, displaying a loader icon</li>
+                <li><b>Authorize :</b> Manage authorizations based on user's roles </li>
             	<li><b>Border :</b> A simple skinned border</li>
             	<li><b>ColorPicker :</b> Choose a Color and get it easily on the server side</li>
             	<li><b>HideablePanel :</b> Show/Hide a left side Panel</li>
+                <li><b>ListSorter :</b> Sort items using drag and drop</li>
                 <li><b>MenuBar :</b> Display a menu with a multi level roll down menu bar</li>
             	<li><b>SecurePassword :</b> Enter a Password without typing characters</li>
             	<li><b>Slider :</b> Select a value on a range using a Slider</li>
-            	<li><b>SlideShow :</b> Display a list of items into a SlideShow</li>
+            	<!-- <li><b>SlideShow :</b> Display a list of items into a SlideShow</li> -->
             	<li><b>TabView :</b> Organize your layout into a tab view</li>
             	<li><b>Tooltip :</b> Display all kind of tooltips in your page</li>
                 <li><b>VerticalMenu :</b> Display your left side vertical menu</li>
@@ -68,9 +70,16 @@
             Some mixins provide additional features to existing components:<br/>
             <ul>
                 <li><b>AjaxValidation :</b> Enable an Ajax Validation on any textfield component.</li>
+                <li><b>Authorize :</b> Manage authorizations based on user's roles </li>
             	<li><b>Dialog :</b> Display a dialog to print any information or confirmation on user action.</li>
                 <li><b>PasswordStrengthChecker :</b> Display to the user its password strength.</li>
             	<li><b>SelectLoader :</b> Load <i>select</i> content options according to a first <i>select</i> component selection.</li>
+            </ul>
+         <h3>Features</h3>
+            Some features increase productivity and provide services:<br/>
+            <ul>
+                <li>Security - <b>Authorize :</b> Full set of Authorization feature according to user roles.</li>
+                <li>Session Management - <b>ContextPageReset :</b> Reset some page information according to a specific context.</li>
             </ul>
          <h3>Skin</h3>
             The core Tapestry components have been re skinned to fit better in any application.   

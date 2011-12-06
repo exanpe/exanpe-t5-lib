@@ -21,6 +21,8 @@ package fr.exanpe.t5.lib.constants;
 
 import org.apache.tapestry5.ioc.annotations.Symbol;
 
+import fr.exanpe.t5.lib.annotation.ContextPageReset;
+
 /**
  * Exanpe custom {@link Symbol} elements.
  * 
@@ -41,4 +43,15 @@ public class ExanpeSymbols
      * HAS to exists.
      */
     public static final String YUI2_BASE = "exanpe.yui2-base";
+
+    /**
+     * Context page reset marker in URL.<br/>
+     * Default is init.
+     * When CONTEXT_PAGE_RESET_MARKER will be found in the URL, it will be removed from context and
+     * will trigger the methods annotated with {@link ContextPageReset} or with signature
+     * "void contextPageReset()"
+     * 
+     * @see ContextPageReset
+     */
+    public static final String CONTEXT_PAGE_RESET_MARKER = "exanpe.context-page-reset-marker";
 }

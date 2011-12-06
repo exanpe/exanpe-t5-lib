@@ -32,7 +32,6 @@ import org.apache.tapestry5.ioc.services.CoercionTuple;
 import org.apache.tapestry5.services.ComponentClassResolver;
 import org.apache.tapestry5.services.ComponentClassTransformWorker;
 import org.apache.tapestry5.services.ComponentRequestFilter;
-import org.apache.tapestry5.services.InjectionProvider;
 import org.apache.tapestry5.services.LibraryMapping;
 import org.apache.tapestry5.util.StringToEnumCoercion;
 import org.slf4j.Logger;
@@ -47,6 +46,7 @@ import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
 import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
 import fr.exanpe.t5.lib.internal.authorize.AuthorizePageFilter;
 import fr.exanpe.t5.lib.internal.authorize.AuthorizeWorker;
+import fr.exanpe.t5.lib.internal.contextpagereset.ContextPageResetWorker;
 import fr.exanpe.t5.lib.services.impl.AuthorizeBusinessServiceImpl;
 
 /**
@@ -110,6 +110,7 @@ public class ExanpeLibraryModule
     {
         configuration.add(ExanpeSymbols.ASSET_BASE, "classpath:fr/exanpe/t5/lib/components");
         configuration.add(ExanpeSymbols.YUI2_BASE, "classpath:fr/exanpe/t5/lib/external/js/yui/2.9.0/");
+        configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "init");
     }
 
     /**
@@ -121,9 +122,10 @@ public class ExanpeLibraryModule
      * @param resolver
      */
     public static void contributeComponentClassTransformWorker(OrderedConfiguration<ComponentClassTransformWorker> configuration, ObjectLocator locator,
-            InjectionProvider injectionProvider, ComponentClassResolver resolver)
+            ComponentClassResolver resolver)
     {
         configuration.addInstance("AuthorizeWorker", AuthorizeWorker.class, "before:OnEvent");
+        configuration.addInstance("ContextPageResetWorker", ContextPageResetWorker.class, "before:OnEvent");
     }
 
     /**
