@@ -5,7 +5,6 @@ package fr.exanpe.t5.lib.mixins;
 
 import java.awt.TextArea;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentResources;
@@ -17,6 +16,7 @@ import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectContainer;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.dom.Element;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
@@ -24,7 +24,10 @@ import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
 /**
- * A mixin use to give {@link TextArea} rich text editing features.
+ * A mixin used to give {@link TextArea} rich text editing features.
+ * Replaces the standard HTML textarea and it allows for the rich formatting of text content,
+ * including common structural treatments like lists, formatting treatments like bold and italic
+ * text, ...
  * JavaScript : This component is bound to a class Exanpe.RichTextEditor.<br/>
  * CSS : This component is bound to a class exanpe-rte.<br/>
  * 
@@ -38,20 +41,41 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
 { "${exanpe.asset-base}/css/exanpe-t5-lib-core.css", "${exanpe.asset-base}/css/editor.css", "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 public class RichTextEditor
 {
+    /**
+     * Rich Text Editor title
+     */
     @Parameter(defaultPrefix = BindingConstants.MESSAGE)
     private String title;
 
+    /**
+     * Indicating if the the toolbar should have a collapse button or not.
+     */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "true")
     private Boolean collapse;
 
+    /**
+     * Width of the textarea
+     */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "500")
     private String width;
 
+    /**
+     * Height of the textarea
+     */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "300")
     private String height;
 
+    /**
+     * Should we focus the textarea when the content is ready
+     */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "true")
     private Boolean autofocus;
+
+    /**
+     * Used to override the component's message catalog.
+     */
+    @Parameter("componentResources.messages")
+    private Messages messages;
 
     /**
      * Root CSS class of the mixin
@@ -101,22 +125,19 @@ public class RichTextEditor
         data.accumulate("width", width);
         data.accumulate("height", height);
         data.accumulate("autofocus", autofocus);
-        data.accumulate("collape", collapse);
+        data.accumulate("collapse", collapse);
 
         // messages used by mixin
-        JSONObject messages = new JSONObject();
+        JSONObject rteMessages = new JSONObject();
         String rteButtons = exanpeService.getEscaladeMessage(resources, "exanpe-rte-toolbar-buttons");
         String[] buttons = rteButtons.split(",");
         for (int i = 0; i < buttons.length; i++)
         {
-            String label = exanpeService.getEscaladeMessage(resources, buttons[i]);
-            if (StringUtils.isEmpty(label))
-            {
-                label = "";
-            }
-            messages.accumulate(buttons[i], label);
+            String key = buttons[i];
+            String label = messages.contains(key) ? messages.get(key) : exanpeService.getEscaladeMessage(resources, key);
+            rteMessages.accumulate(key, label);
         }
-        data.accumulate("messages", messages.toString());
+        data.accumulate("messages", rteMessages.toString());
 
         return data;
     }
