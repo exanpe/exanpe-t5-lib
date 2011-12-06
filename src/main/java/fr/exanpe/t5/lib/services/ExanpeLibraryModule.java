@@ -32,7 +32,6 @@ import org.apache.tapestry5.ioc.services.CoercionTuple;
 import org.apache.tapestry5.services.ComponentClassResolver;
 import org.apache.tapestry5.services.ComponentClassTransformWorker;
 import org.apache.tapestry5.services.ComponentRequestFilter;
-import org.apache.tapestry5.services.InjectionProvider;
 import org.apache.tapestry5.services.LibraryMapping;
 import org.apache.tapestry5.util.StringToEnumCoercion;
 import org.slf4j.Logger;
@@ -123,7 +122,7 @@ public class ExanpeLibraryModule
      * @param resolver
      */
     public static void contributeComponentClassTransformWorker(OrderedConfiguration<ComponentClassTransformWorker> configuration, ObjectLocator locator,
-            InjectionProvider injectionProvider, ComponentClassResolver resolver)
+            ComponentClassResolver resolver)
     {
         configuration.addInstance("AuthorizeWorker", AuthorizeWorker.class, "before:OnEvent");
         configuration.addInstance("ContextPageResetWorker", ContextPageResetWorker.class, "before:OnEvent");
