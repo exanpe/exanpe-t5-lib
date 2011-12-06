@@ -2,7 +2,9 @@ package fr.exanpe.t5.lib.internal.contextpagereset;
 
 import java.util.List;
 
+import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.func.Predicate;
+import org.apache.tapestry5.internal.InternalConstants;
 import org.apache.tapestry5.internal.transform.PageResetAnnotationWorker;
 import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
@@ -37,13 +39,19 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
 
     private final RequestGlobals requestGlobals;
     private final String contextMarker;
+    private final String version;
 
     public ContextPageResetWorker(RequestGlobals requestGlobals, @Symbol(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER)
-    String contextMarker)
+    String contextMarker, @Symbol(SymbolConstants.TAPESTRY_VERSION)
+    String version)
     {
         this.requestGlobals = requestGlobals;
         this.contextMarker = contextMarker;
+        this.version = version;
     }
+
+    private static final TransformMethodSignature ON_ACTIVATE_SIGNATURE = new TransformMethodSignature(0x00000000, "void", "onActivate",
+            InternalConstants.EMPTY_STRING_ARRAY, InternalConstants.EMPTY_STRING_ARRAY);
 
     public void transform(final ClassTransformation transformation, MutableComponentModel model)
     {
@@ -52,7 +60,7 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
         if (methods.isEmpty())
             return;
 
-        // add the cleanup on attach phase
+        // add the cleanup on attach phase or on onActivate
         addContextPageResetToContainingPageDidAttachMethod(transformation, methods);
     }
 
@@ -62,7 +70,21 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
 
         ComponentInstanceOperation advice = createMethodAccessAdvice(methodAccess);
 
-        transformation.getOrCreateMethod(TransformConstants.CONTAINING_PAGE_DID_ATTACH_SIGNATURE).addOperationAfter(advice);
+        if (isv52x())
+        {
+            // after attach
+            transformation.getOrCreateMethod(TransformConstants.CONTAINING_PAGE_DID_ATTACH_SIGNATURE).addOperationAfter(advice);
+        }
+        else
+        {
+            // or before onActivate
+            transformation.getOrCreateMethod(ON_ACTIVATE_SIGNATURE).addOperationBefore(advice);
+        }
+    }
+
+    private final boolean isv52x()
+    {
+        return version.startsWith("5.2");
     }
 
     private ComponentInstanceOperation createMethodAccessAdvice(final List<MethodAccess> methodAccess)
@@ -72,7 +94,7 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
 
             private boolean matchContext()
             {
-                return requestGlobals.getRequest().getPath().matches(".+/" + contextMarker + "($|[ ?].*)");
+                return requestGlobals.getRequest().getPath().matches(".+/" + contextMarker + "($|[?/].*)");
             }
 
             public void invoke(Component instance)
