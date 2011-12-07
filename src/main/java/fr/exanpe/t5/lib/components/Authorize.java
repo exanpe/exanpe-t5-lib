@@ -26,7 +26,7 @@ public class Authorize extends BaseAuthorize
      */
     @SuppressWarnings("unused")
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(defaultPrefix = BindingConstants.PROP)
     private Block block;
 
 }
