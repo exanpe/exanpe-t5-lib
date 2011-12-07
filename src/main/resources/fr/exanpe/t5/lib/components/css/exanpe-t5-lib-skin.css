@@ -989,11 +989,16 @@
 
 /* Set the image for the collapse button on the toolbar */
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .collapse {
-    background: red; /* TODO */
+    background: url('../img/rte/open.png') no-repeat 0px 0px;
 }
 /* Set the image for the collapse button on the toolbar */
 .exanpe-rte .yui-skin-sam .yui-toolbar-container .collapsed {
-    background: black; /* TODO */
+    background: url('../img/rte/closed.png') no-repeat 0px 0px;
+}
+
+/* Position the image for the collapse button */
+.yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar span.collapse {
+	right: 5px;
 }
 
 /* Set the default styles for the buttons */
@@ -1062,12 +1067,21 @@
     for the "knob" that floats on the top of the window.
 */
 .exanpe-rte .yui-skin-sam .yui-editor-panel .hd h3 {
-    background: #FDFDFD;
+    background: url("../img/rte/editor-bg.png") repeat-x;
+    color: #555555;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/* Form styling */
+.yui-skin-sam .yui-editor-panel label strong {
+	text-align: left;
+	padding-left: 5px;	
 }
 
 /* Style the close button in the Property Editor */
 .exanpe-rte .yui-skin-sam .yui-editor-panel .hd span.close {
-    background: red;
+    background: url("../img/common/exanpe-sprite.png") no-repeat scroll 0 -35px;
 }
 
 /* Setup the icon for a tip */

@@ -3265,7 +3265,7 @@ Tapestry.Initializer.listSorterBuilder = function(data){
  * @class Represents a RichTextEditor object
  * @param {String} id the id of the RichTextEditor Mixin container element
  * @param {String} title the title of the dialog box
- * @param {boolean} collapse if the Editor toolbar can be collapsed or not  
+ * @param {boolean} collapse indicating if the the toolbar should have a collapse button or not
  * @param {Object.<string, string>} messages the messages used to display Toolbar buttons labels 
  */
 Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse, messages) {
@@ -3295,7 +3295,7 @@ Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse, 
 	this.autofocus = autofocus;
 	
 	/**
-	 * Collapse/Expand Toolbar
+	 * Collapse/Expand the toolbar
 	 */
 	this.collapse = collapse;
 	
@@ -3340,10 +3340,10 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
             height: this.height + 'px',
             width: this.width + 'px',
             dompath: false,            
-            collapse: this.collapse,
             focusAtStart: this.autofocus,
             toolbar: {
             	titlebar: this.title,
+            	collapse: this.collapse,
                 buttons: [
 	                { group: 'alignment',
 		                      buttons: [
@@ -3465,7 +3465,7 @@ Exanpe.RichTextEditor.prototype._init = function() {
  * @static
  */
 Tapestry.Initializer.richTextEditorBuilder = function(data){
-	var rte = new Exanpe.RichTextEditor(data.id, data.title, data.width, data.height, data.autofocus, data.collapse, YAHOO.lang.JSON.parse(data.messages));
+	var rte = new Exanpe.RichTextEditor(data.id, data.title, data.width, data.height, data.autofocus, data.collapse===true, YAHOO.lang.JSON.parse(data.messages));
 	rte._init();
 	window[data.id] = rte;
 };
