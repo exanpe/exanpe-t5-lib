@@ -13,7 +13,7 @@ public class AuthorizeException extends RuntimeException
     /**
      * serial uid
      */
-    private static final long serialVersionUID = -6093448612925417357L;
+    private static final long serialVersionUID = -6093448612924317357L;
 
     private String page;
     private String username;
@@ -25,11 +25,21 @@ public class AuthorizeException extends RuntimeException
         this.username = username;
     }
 
+    /**
+     * The page which access has been denied
+     * 
+     * @return the page which access has been denied
+     */
     public String getPage()
     {
         return page;
     }
 
+    /**
+     * The username that initiated the exception
+     * 
+     * @return the username that initiated the exception
+     */
     public String getUsername()
     {
         return username;

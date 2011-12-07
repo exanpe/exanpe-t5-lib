@@ -118,7 +118,6 @@ public class ExanpeLibraryModule
      * 
      * @param configuration
      * @param locator
-     * @param injectionProvider
      * @param resolver
      */
     public static void contributeComponentClassTransformWorker(OrderedConfiguration<ComponentClassTransformWorker> configuration, ObjectLocator locator,
@@ -132,9 +131,6 @@ public class ExanpeLibraryModule
      * Contribution for page {@link Authorize} annotation
      * 
      * @param configuration
-     * @param locator
-     * @param injectionProvider
-     * @param resolver
      */
     public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration)
     {
