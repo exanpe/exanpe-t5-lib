@@ -16,6 +16,8 @@
 
 package exanpe.t5.lib.demo.pages.comp;
 
+import org.apache.tapestry5.Block;
+import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,6 +32,10 @@ public class AuthorizeTest
     private ApplicationContext applicationContext;
 
     private AuthenticationManager authenticationManager;
+
+    @Inject
+    @Property
+    private Block externalblock;
 
     void onActivate()
     {
