@@ -48,6 +48,10 @@ public class ListSorterTest
             list = new ArrayList<String>();
             list.add("String1");
             list.add("String2");
+            list.add("String2S");
+            list.add("String2SF");
+            list.add("String2FDF");
+
         }
     }
 

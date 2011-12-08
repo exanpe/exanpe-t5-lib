@@ -5,7 +5,7 @@
 	xmlns:ex="tapestry-library:exanpe">
 	
 	<ul id="${clientId}_ul" class="exanpe-lst-ul">
-		<t:loop source="source" value="value" index="index">
+		<t:loop source="source" value="value" index="index" formState="none">
 		  
    			<li id="${clientId}_${index}" class="exanpe-lst-li">
    				<t:body/>

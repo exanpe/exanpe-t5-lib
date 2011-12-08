@@ -2997,10 +2997,32 @@ Exanpe.ListSorter.prototype._init = function(){
     this.initiateOrder();
 };
 
+
+/**
+ * Called before triggering an ajax save
+ * Does nothing by default except returing true, override to define your own behavior.
+ * @returns {boolean} false to cancel validation
+ */
+Exanpe.ListSorter.prototype.beforeSave = function(){
+	return true;
+};
+
+/**
+ * Called after triggering an ajax save
+ * Does nothing by default, override to define your own behavior.
+ */
+Exanpe.ListSorter.prototype.afterSave = function(){
+	return true;
+};
+
 /**
  * Save the order on server side, using an Ajax request
  */
 Exanpe.ListSorter.prototype.save = function(){
+	if(this.beforeSave() == false){
+		return;
+	}
+	
 	var order = this.getListOrder();
 	
 	var sorter = this;
@@ -3039,6 +3061,8 @@ Exanpe.ListSorter.prototype.save = function(){
 	}
 	
 	this.initiateOrder();
+	
+	this.afterSave();
 };
 
 /**
