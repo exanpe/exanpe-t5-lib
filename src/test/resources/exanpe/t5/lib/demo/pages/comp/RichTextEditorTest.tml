@@ -1,5 +1,7 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
 	xmlns:ex="tapestry-library:exanpe">
+ 	
+ 	
  	<t:form>
 	 	<t:textarea t:id="richContent" value="richContent" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor" t:messages="messages">
 		 		

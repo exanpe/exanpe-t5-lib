@@ -44,8 +44,8 @@
         Note that this feature have to be activated (it is deactivated by default to avoid regression as the context value becomes unusable)</b><br/><br/>
         
         <h3>The context</h3>
-        By default, the context triggering the method call is "init", meaning that everytime you call an URL with /init inside, the clean up will be done.<br/>
-        This means that you will no longer be able to call a URL containing "/init".<br/>
+        By default, the context triggering the method call is "reset", meaning that everytime you call an URL with /reset inside, the clean up will be done.<br/>
+        This means that you will no longer be able to call a URL containing "/reset".<br/>
         This value can be modified by contributing a Symbol in your Module class :
       <source><![CDATA[
     public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)

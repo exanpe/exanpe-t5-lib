@@ -110,7 +110,7 @@ public class ExanpeLibraryModule
     {
         configuration.add(ExanpeSymbols.ASSET_BASE, "classpath:fr/exanpe/t5/lib/components");
         configuration.add(ExanpeSymbols.YUI2_BASE, "classpath:fr/exanpe/t5/lib/external/js/yui/2.9.0/");
-        configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "init");
+        configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "reset");
     }
 
     /**
