@@ -1224,8 +1224,12 @@ Exanpe.Dialog.YUI_ID_PREFIX = "exanpe-dialog-yui-";
  * @param {Event} e the triggered event
  */
 Exanpe.Dialog.prototype.show = function(e) {
-	this._hideDialogErrorEl();
-	this.yui.show();
+	this.beforeDialogShow();
+	if (!YAHOO.util.Dom.hasClass(this.id, Exanpe.Dialog.DISABLE_CLASS))
+	{
+		this._hideDialogErrorEl();
+		this.yui.show();
+	}
 };
 
 /**
@@ -1302,6 +1306,14 @@ Exanpe.Dialog.prototype.getDialogErrorEl = function(){
  */
 Exanpe.Dialog.prototype._hideDialogErrorEl = function(){
 	YAHOO.util.Dom.setStyle(this.getDialogErrorEl(), "display", "none");
+};
+
+/**
+ * Called before showing Dialog box
+ * Does nothing by default, override to define your own action.
+ */
+Exanpe.Dialog.prototype.beforeDialogShow = function() {
+
 };
 
 /**
@@ -1389,13 +1401,11 @@ Exanpe.Dialog.prototype._init = function() {
 	this.yui.setHeader(this.title);
 	this.yui.render(Exanpe.Dialog.ID_PREFIX + this.id);
 
-	if (!YAHOO.util.Dom.hasClass(this.id, Exanpe.Dialog.DISABLE_CLASS))
-	{
-		YAHOO.util.Event.addListener(this.id, "mousedown", Exanpe.Dialog.prototype.show, this, true);
-		YAHOO.util.Event.on(this.id, "click", function(e) {
-			YAHOO.util.Event.stopPropagation(e);
-		});		
-	}
+	YAHOO.util.Event.addListener(this.id, "mousedown", Exanpe.Dialog.prototype.show, this, true);
+	YAHOO.util.Event.on(this.id, "click", function(e) {
+		YAHOO.util.Event.stopPropagation(e);
+	});		
+	
 };
 
 /**
@@ -3379,7 +3389,7 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
 		                          { type: 'push', label: this.messages.justifycenter, value: 'justifycenter' },
 		                          { type: 'push', label: this.messages.justifyright, value: 'justifyright' },
 		                          { type: 'separator' },                                  
-		                          { type: 'push', label: this.messages.createlink, value: 'createlink', disabled: true },
+		                          { type: 'push', label: this.messages.createlink, value: 'createlink', disabled: true }
 		                      ]
 	                },                          
 	                { group: 'indentlist',
@@ -3391,7 +3401,7 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
                     { group: 'undoredo',
                     		buttons: [
 			                          { type: 'push', label: this.messages.undo, value: 'undo', disabled: true },
-			                          { type: 'push', label: this.messages.redo, value: 'redo', disabled: true },
+			                          { type: 'push', label: this.messages.redo, value: 'redo', disabled: true }
 			                ]
                     },
                     { type: 'separator' },
@@ -3418,7 +3428,7 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
                             { type: 'color', label: this.messages.forecolor, value: 'forecolor', disabled: true },
                             { type: 'color', label: this.messages.backcolor, value: 'backcolor', disabled: true }
                         ]
-                    },
+                    }
                 ]
             }            
     };
