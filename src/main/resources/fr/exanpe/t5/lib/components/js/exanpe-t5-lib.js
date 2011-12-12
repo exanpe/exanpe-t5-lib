@@ -3404,7 +3404,6 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
 			                          { type: 'push', label: this.messages.redo, value: 'redo', disabled: true }
 			                ]
                     },
-                    { type: 'separator' },
                     { group: 'parastyle',
                         buttons: [
                         { type: 'select', label: this.messages.heading, value: 'heading', disabled: true,
@@ -3420,7 +3419,6 @@ Exanpe.RichTextEditor.prototype._configToolbar = function() {
                         }
                         ]
                     },
-                    { type: 'separator' },
                     { group: 'textstyle',
                         buttons: [
                             { type: 'spin', label: '13', value: 'fontsize', range: [ 8, 72 ], disabled: true },
