@@ -1120,3 +1120,14 @@
 .exanpe-rte .yui-skin-sam .yui-editor-panel .hd span.knob {
 	background: url('../img/rte/editor-knob.gif') no-repeat 0 0;
 }
+
+/* Header Drop Down */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-heading {
+	width: 94px!important;
+	width: 102px;
+}
+
+/* The remove link in the Link Property Editor */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .removelink {
+	clear: both;
+}	
