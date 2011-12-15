@@ -1,0 +1,100 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  	<style type="text/css">
+.exanpe-acc {
+    border-left: 0 none #D2DEED !important;
+    border-right: 0 none !important;
+    /*border-top: 1px solid #D2DEED !important;*/
+}
+
+.exanpe-acc .acc-header {
+    color: #3F6EB5 !important;
+    background: url('../img/bg_boxheader.gif') repeat-x scroll 0 0 #fff !important;
+    /*border-bottom: 1px solid #D2DEED !important;*/
+    height: 27px !important;
+    line-height: 27px !important;
+}
+
+.exanpe-acc .acc-content {
+    background: none repeat scroll 0 0 #fff !important;
+    border-bottom: 1px solid #D2DEED !important;
+}
+
+.exanpe-acc ul li.opened .acc-title a {
+    background-color: #E9EEF2 !important;
+}
+
+.exanpe-acc .acc-title {
+    background: none !important;
+    background-color: #E9EEF2 !important;
+    border-bottom: 1px solid #D2DEED !important;
+}
+
+.exanpe-acc ul li .acc-title a {
+    color: #333 !important;
+    font-weight: normal !important;
+}
+
+.ex-accordion .acc-content {
+    padding: 20px 20px 20px 20px !important;
+}
+  	</style>
+  
+  	<ex:accordion t:id="accordion" t:title="literal:Title" class="ex-accordion" duration="0.2">
+        <ex:accordionItem title="literal:title1" content="literal:content1" opened="true"/>
+        <ex:accordionItem title="literal:title2">
+
+            <form>
+                <table class="styled full">
+                    <thead>
+                    <tr class="not-shown">
+                        <th>Bla</th>
+                        <th>Fasel</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <td class="lbl">&#160;</td>
+                        <td class="frm"><input type="submit"/>&#160;<input type="reset"/></td>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        <td class="lbl"><label for="ff-1">label 1</label></td>
+                        <td class="frm"><input name="ff-1" id="ff-1" type="text" value="field 1"/></td>
+                    </tr>
+                    <tr>
+                        <td class="lbl"><label for="ff-2">label 2</label></td>
+                        <td class="frm">
+                            <select name="ff-2" id="ff-2">
+                                <option>field-2 option 1</option>
+                                <option>field-2 option 2</option>
+                                <option>field-2 option 3</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lbl"><label for="ff-3">label 3</label></td>
+                        <td class="frm">
+                            <input type="checkbox" name="ff-3" id="ff-3" value="ff-3-val-1"/>
+                            &#160;
+                            <input type="checkbox" name="ff-3" id="ff-3" value="ff-3-val-2"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lbl"><label for="ff-4">label 4</label></td>
+                        <td class="frm">
+                            <input type="radio" name="ff-4" id="ff-4" value="ff-4-val-1"/>
+                            &#160;
+                            <input type="radio" name="ff-4" id="ff-4" value="ff-4-val-2"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+
+        </ex:accordionItem>
+    </ex:accordion>
+  	    
+</t:layout>
