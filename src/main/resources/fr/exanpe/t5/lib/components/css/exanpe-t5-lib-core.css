@@ -58,12 +58,12 @@
 	display: block;
 }
 
-.exanpe-acc ul li.opened div.acc-content{
+.exanpe-acc ul li.opened div.acc-item-controller{
 	overflow: hidden;
 	display: block;
 }
 
-.exanpe-acc ul li.closed div.acc-content{
+.exanpe-acc ul li.closed div.acc-item-controller{
 	overflow: hidden;
 	display: none;
 }

@@ -215,9 +215,9 @@
 
 /** Root class **/
 .exanpe-acc {
-	border-top: 1px solid #CCCCCC;
 	border-left: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
 }
 
 /** Accordion header containing title **/
@@ -229,6 +229,7 @@
     padding-left: 10px;
     font-weight: bold;
     color : #909090;
+    border-top: 1px solid #CCCCCC;
 }
 
 /** Accordion item title **/
@@ -236,13 +237,12 @@
 	background: #E2E2E2 url("../img/acc/accordion-title.png") repeat-x;
     font-size: 85%;
     font-weight: bold;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 /** Accordion item content **/
 .exanpe-acc .acc-content {
 	background: #F6F6F6;
-    border-bottom: 1px solid #CCCCCC;
     color: #555555;
     line-height: 25px;
     font-size: 12px;
@@ -252,6 +252,11 @@
 .exanpe-acc ul li .acc-title a {
 	color: #909090;
 	text-decoration: none;
+	border-top: 1px solid #CCCCCC;
+}
+
+.exanpe-acc ul li.opened .acc-title{
+	border-bottom: 1px solid #CCCCCC;
 }
 
 /** Accordion item title link, when opened **/

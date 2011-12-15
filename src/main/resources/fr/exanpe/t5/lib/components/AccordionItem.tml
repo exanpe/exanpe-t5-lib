@@ -6,16 +6,17 @@
 				<span>${title}</span>
 			</a>
 		</span>
-		
-		<div class="acc-content">
-			<t:if test="content">
-  	  		${content}
-  	  	
-	  	  	<p:else>
-	  	  		<t:body/>	
-	  	  	</p:else>
+		<div class="acc-item-controller">
+			<div class="acc-content">
+				<t:if test="content">
+	  	  		${content}
 	  	  	
-	  	  	</t:if>
+		  	  	<p:else>
+		  	  		<t:body/>	
+		  	  	</p:else>
+		  	  	
+		  	  	</t:if>
+			</div>
 		</div>
 	</li>
   

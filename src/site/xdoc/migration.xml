@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+  <properties>
+    <title>About us - Exanpe T5 Lib</title>
+    <author email="exanpe@gmail.com">Exanpe</author>
+  </properties>
+
+  <body>
+
+    <section name="1.1.0 to 1.2.0">
+      <h1>Accordion</h1>
+      A migration have to be performed on this component <b>if you customized its look and feed</b>.<br/> 
+      Borders have been redefined to fix a bug under Firefox.
+      The component CSS styles have been slightly modified :<br/>
+      <ul>
+        <li>.exanpe-acc : Removed  "border-top: 1px solid #CCCCCC;" and add "border-bottom: 1px solid #CCCCCC;" instead</li>
+        <li>.exanpe-acc .acc-title : line-height changed from 25px to 23px</li>
+        <li>.exanpe-acc .acc-header : Add "border-top: 1px solid #CCCCCC;"</li>
+        <li>.exanpe-acc .acc-content : Removed border-bottom, cause of a bug</li>
+        <li>.exanpe-acc ul li .acc-title a : Add "border-top: 1px solid #CCCCCC;"</li>
+        <li>Customize the class : .exanpe-acc ul li.opened .acc-title{  border-bottom: 1px solid #CCCCCC; }</li>
+      </ul>
+    </section>
+
+    <section name="1.0.0 to 1.1.0">
+      <p>No migration</p>
+    </section>
+
+  </body>
+
+</document>
