@@ -1,6 +1,5 @@
 package fr.exanpe.t5.lib.services;
 
-import org.apache.tapestry5.services.RequestGlobals;
 
 /**
  * This interface defines the services offered to all the library authorization elements
@@ -14,26 +13,23 @@ public interface AuthorizeBusinessService
      * Apply the "any" rule
      * 
      * @param any the roles to restrict on
-     * @param request the request service
      * @return true to grant access, false otherwise
      */
-    public boolean applyAny(String[] any, RequestGlobals request);
+    public boolean applyAny(String[] any);
 
     /**
      * Apply the "all" rule
      * 
      * @param any the roles to restrict on
-     * @param request the request service
      * @return true to grant access, false otherwise
      */
-    public boolean applyAll(String[] all, RequestGlobals request);
+    public boolean applyAll(String[] all);
 
     /**
      * Apply the "any" rule
      * 
      * @param any the roles to restrict on
-     * @param request the request service
      * @return true to grant access, false otherwise
      */
-    public boolean applyNot(String[] not, RequestGlobals request);
+    public boolean applyNot(String[] not);
 }

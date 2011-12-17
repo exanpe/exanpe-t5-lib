@@ -52,8 +52,8 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         Authorize auth = process(parameters.getActivePageName());
 
         if (auth == null
-                || (authorizeBusinessService.applyAll(auth.all(), requestGlobals) && authorizeBusinessService.applyAny(auth.any(), requestGlobals) && authorizeBusinessService
-                        .applyNot(auth.not(), requestGlobals)))
+                || (authorizeBusinessService.applyAll(auth.all()) && authorizeBusinessService.applyAny(auth.any()) && authorizeBusinessService.applyNot(auth
+                        .not())))
         {
             handler.handleComponentEvent(parameters);
         }
@@ -74,8 +74,8 @@ public class AuthorizePageFilter implements ComponentRequestFilter
         Authorize auth = process(parameters.getLogicalPageName());
 
         if (auth == null
-                || (authorizeBusinessService.applyAll(auth.all(), requestGlobals) && authorizeBusinessService.applyAny(auth.any(), requestGlobals) && authorizeBusinessService
-                        .applyNot(auth.not(), requestGlobals)))
+                || (authorizeBusinessService.applyAll(auth.all()) && authorizeBusinessService.applyAny(auth.any()) && authorizeBusinessService.applyNot(auth
+                        .not())))
         {
             handler.handlePageRender(parameters);
         }

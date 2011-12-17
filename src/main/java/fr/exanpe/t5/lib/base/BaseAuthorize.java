@@ -5,7 +5,6 @@ import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.services.RequestGlobals;
 
 import fr.exanpe.t5.lib.components.Authorize;
 import fr.exanpe.t5.lib.mixins.AuthorizeMixin;
@@ -43,12 +42,6 @@ public abstract class BaseAuthorize
     private String not;
 
     /**
-     * requestGlobals
-     */
-    @Inject
-    private RequestGlobals requestGlobals;
-
-    /**
      * Class computing the authorization access
      */
     @Inject
@@ -74,7 +67,7 @@ public abstract class BaseAuthorize
     {
         if (StringUtils.isEmpty(any)) { return true; }
 
-        return authorizeBusinessService.applyAny(any.split(","), requestGlobals);
+        return authorizeBusinessService.applyAny(any.split(","));
     }
 
     /**
@@ -86,7 +79,7 @@ public abstract class BaseAuthorize
     {
         if (StringUtils.isEmpty(all)) { return true; }
 
-        return authorizeBusinessService.applyAll(all.split(","), requestGlobals);
+        return authorizeBusinessService.applyAll(all.split(","));
     }
 
     /**
@@ -98,7 +91,7 @@ public abstract class BaseAuthorize
     {
         if (StringUtils.isEmpty(not)) { return true; }
 
-        return authorizeBusinessService.applyNot(not.split(","), requestGlobals);
+        return authorizeBusinessService.applyNot(not.split(","));
     }
 
 }

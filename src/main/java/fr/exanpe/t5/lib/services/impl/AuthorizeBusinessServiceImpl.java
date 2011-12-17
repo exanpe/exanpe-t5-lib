@@ -1,6 +1,7 @@
 package fr.exanpe.t5.lib.services.impl;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.RequestGlobals;
 
 import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
@@ -12,12 +13,14 @@ import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
  */
 public class AuthorizeBusinessServiceImpl implements AuthorizeBusinessService
 {
+    @Inject
+    private RequestGlobals request;
+
     /*
      * (non-Javadoc)
-     * @see fr.exanpe.t5.lib.services.AuthorizeBusinessService#applyAny(java.lang.String[],
-     * org.apache.tapestry5.services.RequestGlobals)
+     * @see fr.exanpe.t5.lib.services.AuthorizeBusinessService#applyAny(java.lang.String[])
      */
-    public boolean applyAny(String[] any, RequestGlobals request)
+    public boolean applyAny(String[] any)
     {
         if (ArrayUtils.isEmpty(any)) { return true; }
 
@@ -32,10 +35,9 @@ public class AuthorizeBusinessServiceImpl implements AuthorizeBusinessService
 
     /*
      * (non-Javadoc)
-     * @see fr.exanpe.t5.lib.services.AuthorizeBusinessService#applyAll(java.lang.String[],
-     * org.apache.tapestry5.services.RequestGlobals)
+     * @see fr.exanpe.t5.lib.services.AuthorizeBusinessService#applyAll(java.lang.String[])
      */
-    public boolean applyAll(String[] all, RequestGlobals request)
+    public boolean applyAll(String[] all)
     {
         if (ArrayUtils.isEmpty(all)) { return true; }
 
@@ -50,10 +52,9 @@ public class AuthorizeBusinessServiceImpl implements AuthorizeBusinessService
 
     /*
      * (non-Javadoc)
-     * @see fr.exanpe.t5.lib.services.AuthorizeBusinessService#applyNot(java.lang.String[],
-     * org.apache.tapestry5.services.RequestGlobals)
+     * @see fr.exanpe.t5.lib.services.AuthorizeBusinessService#applyNot(java.lang.String[])
      */
-    public boolean applyNot(String[] not, RequestGlobals request)
+    public boolean applyNot(String[] not)
     {
         if (ArrayUtils.isEmpty(not)) { return true; }
 

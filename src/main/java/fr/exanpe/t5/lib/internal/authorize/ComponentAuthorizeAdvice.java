@@ -2,7 +2,6 @@ package fr.exanpe.t5.lib.internal.authorize;
 
 import org.apache.tapestry5.services.ComponentMethodAdvice;
 import org.apache.tapestry5.services.ComponentMethodInvocation;
-import org.apache.tapestry5.services.RequestGlobals;
 
 import fr.exanpe.t5.lib.annotation.Authorize;
 import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
@@ -16,15 +15,13 @@ import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
 public class ComponentAuthorizeAdvice implements ComponentMethodAdvice
 {
     private AuthorizeBusinessService authorizeBusinessService;
-    private RequestGlobals requestGlobals;
     private String[] any;
     private String[] all;
     private String[] not;
 
-    public ComponentAuthorizeAdvice(AuthorizeBusinessService abs, RequestGlobals requestGlobals, String[] any, String[] all, String[] not)
+    public ComponentAuthorizeAdvice(AuthorizeBusinessService abs, String[] any, String[] all, String[] not)
     {
         this.authorizeBusinessService = abs;
-        this.requestGlobals = requestGlobals;
         this.any = any;
         this.all = all;
         this.not = not;
@@ -51,7 +48,7 @@ public class ComponentAuthorizeAdvice implements ComponentMethodAdvice
      */
     private boolean applyAny()
     {
-        return authorizeBusinessService.applyAny(any, requestGlobals);
+        return authorizeBusinessService.applyAny(any);
     }
 
     /**
@@ -61,7 +58,7 @@ public class ComponentAuthorizeAdvice implements ComponentMethodAdvice
      */
     private boolean applyAll()
     {
-        return authorizeBusinessService.applyAll(all, requestGlobals);
+        return authorizeBusinessService.applyAll(all);
     }
 
     /**
@@ -71,6 +68,6 @@ public class ComponentAuthorizeAdvice implements ComponentMethodAdvice
      */
     private boolean applyNot()
     {
-        return authorizeBusinessService.applyNot(not, requestGlobals);
+        return authorizeBusinessService.applyNot(not);
     }
 }

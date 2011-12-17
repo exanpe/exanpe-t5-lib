@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.tapestry5.model.MutableComponentModel;
 import org.apache.tapestry5.services.ClassTransformation;
 import org.apache.tapestry5.services.ComponentClassTransformWorker;
-import org.apache.tapestry5.services.RequestGlobals;
 import org.apache.tapestry5.services.TransformMethod;
 
 import fr.exanpe.t5.lib.annotation.Authorize;
@@ -20,12 +19,10 @@ import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
 public class AuthorizeWorker implements ComponentClassTransformWorker
 {
     private final AuthorizeBusinessService authorizeBusinessService;
-    private final RequestGlobals requestGlobals;
 
-    public AuthorizeWorker(AuthorizeBusinessService abs, RequestGlobals requestGlobals)
+    public AuthorizeWorker(AuthorizeBusinessService abs)
     {
         this.authorizeBusinessService = abs;
-        this.requestGlobals = requestGlobals;
     }
 
     public void transform(ClassTransformation transformation, MutableComponentModel model)
@@ -39,7 +36,7 @@ public class AuthorizeWorker implements ComponentClassTransformWorker
         {
             Authorize annot = method.getAnnotation(Authorize.class);
 
-            method.addAdvice(new ComponentAuthorizeAdvice(authorizeBusinessService, requestGlobals, annot.any(), annot.all(), annot.not()));
+            method.addAdvice(new ComponentAuthorizeAdvice(authorizeBusinessService, annot.any(), annot.all(), annot.not()));
         }
     }
 }
