@@ -3334,9 +3334,9 @@ Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse, 
 	this.collapse = collapse;
 	
 	/**
-	 * YUI Editor toolbar
+	 * YUI Editor config object
 	 */
-	this.toolbar = null
+	this.config = null
 	
 	/**
 	 * The wrapped YUI Editor widget
@@ -3354,15 +3354,23 @@ Exanpe.RichTextEditor = function(id, title, width, height, autofocus, collapse, 
  * @returns {Object} the json object used to configure the toolbar
  */
 Exanpe.RichTextEditor.prototype.getToolbar = function() {
-	return this.toolbar;
+	return this.yui.toolbar;
 };
 
 /**
- * Set the toolbar object of the RichTextEditor
- * @param {Object} the json object used to configure the toolbar
+ * Get the configuration object of the RichTextEditor
+ * @returns {Object} the json object used to configure the RTE
  */
-Exanpe.RichTextEditor.prototype.setToolbar = function(toolbar) {
-	this.toolbar = toolbar;
+Exanpe.RichTextEditor.prototype.getConfig = function() {
+	return this.config;
+};
+
+/**
+ * Return the container of the editor
+ * @return {HTMLElement} the DOM element corresponding to the editor container
+ */
+Exanpe.RichTextEditor.prototype.getContainer = function() {
+	return YAHOO.util.Dom.get(this.id + "_container");
 };
 
 /**
@@ -3370,7 +3378,7 @@ Exanpe.RichTextEditor.prototype.setToolbar = function(toolbar) {
  * @private
  */
 Exanpe.RichTextEditor.prototype._configToolbar = function() {
-	this.toolbar = {
+	this.config = {
             height: this.height + 'px',
             width: this.width + 'px',
             dompath: false,            
@@ -3457,14 +3465,6 @@ Exanpe.RichTextEditor.prototype.save = function() {
  * Does nothing by default, override to define your own action.
  */
 Exanpe.RichTextEditor.prototype.beforeRenderRichTextEditor = function() {
-
-};
-
-/**
- * Called after rendering RichTextEditor component
- * Does nothing by default, override to define your own action.
- */
-Exanpe.RichTextEditor.prototype.afterRenderRichTextEditor = function() {
 	
 };
 
@@ -3472,22 +3472,24 @@ Exanpe.RichTextEditor.prototype.afterRenderRichTextEditor = function() {
  * Load the mixin
  * @private
  */
-Exanpe.RichTextEditor.prototype._init = function() {
+Exanpe.RichTextEditor.prototype._init = function(){
 	// Toolbar config
 	this._configToolbar();
 	
-	// JS Handler
-	this.beforeRenderRichTextEditor();
-
 	// Init editor and replace the HTML textarea
-	this.yui = new YAHOO.widget.Editor(this.id, this.toolbar);
+	this.yui = new YAHOO.widget.Editor(this.id, this.config);
+	this.yui.wrapper = this;
+
+	// JS Handler
+	this.yui.on('toolbarLoaded', function() {
+		this.wrapper.beforeRenderRichTextEditor();
+	}, this.yui, true);
+
+	// Render editor
 	this.yui.render();
 	
 	// Save html content on submit event
 	this.save();
-	
-	// JS Handler
-	this.afterRenderRichTextEditor();
 };
 
 /**

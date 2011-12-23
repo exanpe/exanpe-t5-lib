@@ -1,6 +1,14 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
 	xmlns:ex="tapestry-library:exanpe">
- 	
+
+	<style type="text/css">
+		.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-newbutton span.yui-toolbar-icon {
+    		background-image: url("/img/rte/help.gif");
+    		background-position: 1px 0;
+    	    left: 7px;
+    	    top: 4px;
+		}
+	</style> 	
  	
  	<t:form>
 	 	<t:textarea t:id="richContent" value="richContent" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor" t:messages="messages">
@@ -11,5 +19,16 @@
 
 	Result :<br />
 	<t:outputraw value="richContent" />
+	
+   <script type="text/javascript">
+		YAHOO.util.Event.onDOMReady(function(){
+			richContent.beforeRenderRichTextEditor = function() {
+ 		        var newButton = {
+		                type: 'push', label: 'New Button', value: 'newbutton'
+		        };
+		        richContent.getToolbar().addButtonToGroup(newButton, 'undoredo');
+			};
+		});
+    </script>	
 	
 </t:layout>
