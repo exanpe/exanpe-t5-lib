@@ -684,3 +684,14 @@ table.hidden {
 	margin: 0;
     padding: 0;
 }
+
+/**
+ * Google Map
+ */
+.exanpe-gmap .exanpe-gmap-map {
+	float: left;
+}
+
+.exanpe-gmap .exanpe-gmap-sidebar {
+	float: left;
+}

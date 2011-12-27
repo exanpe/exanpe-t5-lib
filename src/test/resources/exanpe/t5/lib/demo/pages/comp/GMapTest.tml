@@ -1,0 +1,31 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+
+    <ex:gmap t:id="map1" latitude="48.869722" longitude="2.3075" mapType="hybrid" draggable="false" sidebar="true">
+    	Cliquez sur les liens suivants :
+    	<ex:gmapMarker title="literal:Metro Champs-Élysées" icon="context:img/gmap/metro.png" latitude="48.867781" longitude="2.313982" info="Metro Champs-Élysées" />
+    	<ex:gmapMarker title="la-duree-title" latitude="48.870812" longitude="2.303081" info="Les meilleurs macarons de Paris" />
+    	<ex:gmapMarker title="literal:Tour Eiffel" icon="context:img/gmap/tour-eiffel.png" latitude="48.8577" longitude="2.295" info="message:tour-eiffel-info" />
+    </ex:gmap>
+
+    <br />
+    <hr />
+    <br />
+    
+    <ex:gmap t:id="map2" latitude="48.869722" longitude="2.3075" mapType="roadmap" zoom="14">
+    	<ex:gmapPolyPoint latitude="48.867781" longitude="2.313982" />
+    	<ex:gmapPolyPoint latitude="48.870812" longitude="2.303081" />
+    	<ex:gmapPolyPoint latitude="48.8577" longitude="2.295" />
+    </ex:gmap>
+    
+    <br />
+    <hr />
+    <br />
+    
+    <ex:gmap t:id="map3" latitude="48.869722" longitude="2.3075" mapType="terrain" zoom="13" polyStrokeColor="#ff0000" polygon="true">
+    	<ex:gmapPolyPoint latitude="48.867781" longitude="2.313982" />
+    	<ex:gmapPolyPoint latitude="48.870812" longitude="2.303081" />
+    	<ex:gmapPolyPoint latitude="48.8577" longitude="2.295" />
+    </ex:gmap>    
+    
+</t:layout>

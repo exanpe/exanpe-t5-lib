@@ -16,14 +16,14 @@
 
 package exanpe.t5.lib.demo.pages.comp;
 
-import fr.exanpe.t5.lib.components.GoogleMap;
+import fr.exanpe.t5.lib.components.GMap;
 
 /**
- * The demo page for {@link GoogleMap} component
+ * The demo page for {@link GMap} component
  * 
  * @author lguerin
  */
-public class GoogleMapTest
+public class GMapTest
 {
 
 }

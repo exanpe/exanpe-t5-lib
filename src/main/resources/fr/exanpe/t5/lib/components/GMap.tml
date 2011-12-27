@@ -1,0 +1,21 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" 
+			 xmlns:p="tapestry:parameter">
+	
+	<div id="exanpe-gmap-${clientId}" class="exanpe-gmap-map"></div>
+	<div class="exanpe-gmap-sidebar">
+		<t:body/>
+		<t:if test="sidebar">
+			<ul>
+				<!-- Markers -->
+				<t:loop source="model.markers" value="current">
+				  	<li id="${current.id}">
+				  		<a href="#">
+							${current.title}
+						</a>
+					</li>
+				</t:loop>
+			</ul>
+		</t:if>
+	</div>
+	<div class="cleared" />
+</t:container>

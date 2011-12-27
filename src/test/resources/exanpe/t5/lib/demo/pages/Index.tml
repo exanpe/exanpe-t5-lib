@@ -20,7 +20,7 @@
     <li><t:pagelink page="comp/AuthorizeTest">Authorize</t:pagelink></li>
     <li><t:pagelink page="comp/AuthorizeMixinTest">AuthorizeMixin</t:pagelink></li>
     <li><t:pagelink page="comp/AuthorizeAnnotationTest">AuthorizeAnnotationTest</t:pagelink></li>
-    <li><t:pagelink page="comp/GoogleMapTest">GoogleMap</t:pagelink></li>
+    <li><t:pagelink page="comp/GMapTest">GoogleMap</t:pagelink></li>
     <li><t:pagelink page="comp/ListSorterTest">ListSorter</t:pagelink></li>
     <li><t:pagelink page="comp/RichTextEditorTest">RichTextEditor</t:pagelink></li>
     <li><t:pagelink page="comp/ContextPageResetTest">ContextPageReset</t:pagelink></li>

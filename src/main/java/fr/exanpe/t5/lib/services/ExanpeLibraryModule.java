@@ -40,6 +40,7 @@ import fr.exanpe.t5.lib.annotation.Authorize;
 import fr.exanpe.t5.lib.constants.AccordionEventTypeEnum;
 import fr.exanpe.t5.lib.constants.DialogRenderModeEnum;
 import fr.exanpe.t5.lib.constants.ExanpeSymbols;
+import fr.exanpe.t5.lib.constants.GMapTypeEnum;
 import fr.exanpe.t5.lib.constants.MenuEventTypeEnum;
 import fr.exanpe.t5.lib.constants.PasswordStrengthCheckerTypeEnum;
 import fr.exanpe.t5.lib.constants.SecurePasswordEventTypeEnum;
@@ -76,6 +77,7 @@ public class ExanpeLibraryModule
                 String.class,
                 PasswordStrengthCheckerTypeEnum.class,
                 StringToEnumCoercion.create(PasswordStrengthCheckerTypeEnum.class)));
+        configuration.add(CoercionTuple.create(String.class, GMapTypeEnum.class, StringToEnumCoercion.create(GMapTypeEnum.class)));
 
         // ColorPicker
         Coercion<String, Color> coercionStringColor = new Coercion<String, Color>()

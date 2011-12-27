@@ -2774,10 +2774,19 @@ Tapestry.Validator.ajaxValidator = function(field, message, value){
  * Constructor
  * @class Represents a GoogleMap component. Can be accessed through JavaScript by its id.
  * @param {String} id the id of the component
- * @param {String} position the initial position used to center the map
- * @param {Object[]} items the items to display into the map
+ * @param {String} latitude the latitude position used to center the map
+ * @param {String} longitude the longitude position used to center the map 
+ * @param {String} mapType the type of map to display
+ * @param {int} zoom the initial Map zoom level
+ * @param {boolean} draggable indicating if the map is draggable or not
+ * @param {Object[]} markers the markers to display into the map
+ * @param {Object[]} polyPoints the points used to display polyline into the map
+ * @param {String} polyStrokeColor the color of Polyline/Polygon lines
+ * @param {String} polyStrokeOpacity the opacity Polyline/Polygon line's color
+ * @param {String} polyStrokeWeight the weight of Polyline/Polygo line's in pixels.
+ * @param {boolean} polygon draw a Polygon instead of Polyline (default) if set to true
  */
-Exanpe.GoogleMap = function(id, position, items){
+Exanpe.GMap = function(id, latitude, longitude, mapType, zoom, draggable, markers, polyPoints, polyStrokeColor, polyStrokeOpacity, polyStrokeWeight, polygon){
 	
 	/**
 	 * Id of the instance
@@ -2785,14 +2794,29 @@ Exanpe.GoogleMap = function(id, position, items){
 	this.id = id;
 	
 	/**
-	 * Initial position in Latitude/Longitude format (Ex. "48.869722,2.3075")
+	 * Initial Latitude used to center the map
 	 */
-	this.position = position;
+	this.latitude = latitude;
 	
 	/**
-	 * Google Map object
+	 * Initial Longitude used to center the map
 	 */
-	this.map = null;
+	this.longitude = longitude;
+	
+	/**
+	 * The type of map to display (ROADMAP, HYBRID, ...)
+	 */
+	this.mapType = mapType;
+	
+	/**
+	 * Initial Map zoom level
+	 */
+	this.zoom = zoom;
+	
+	/**
+	 * If the map is draggable or not
+	 */
+	this.draggable = draggable;
 	
 	/**
 	 * Google Map options
@@ -2805,9 +2829,44 @@ Exanpe.GoogleMap = function(id, position, items){
 	this.infoWindow = null;
 	
 	/**
-	 * Google Map items to display
+	 * Google Map markers to display
 	 */
-	this.items = items;
+	this.markers = markers;
+	
+	/**
+	 * Google Map points used by Polyline
+	 */
+	this.polyPoints = polyPoints;
+	
+	/**
+	 * Color of Polyline/Polygon lines
+	 */
+	this.polyStrokeColor = polyStrokeColor;
+	
+	/**
+	 * Opacity of Polyline/Polygon line's color
+	 */
+	this.polyStrokeOpacity = polyStrokeOpacity;
+	
+	/**
+	 * Weight of Polyline/Polygo line's in pixels.
+	 */
+	this.polyStrokeWeight = polyStrokeWeight;
+	
+	/**
+	 * Draw a Polygon instead of Polyline (default) if set to true
+	 */
+	this.polygon = polygon;
+	
+	/**
+	 * Google Map object
+	 */
+	this.map = null;
+	
+	/**
+	 * Google Map Poly object
+	 */
+	this.poly = null;
 };
 
 /**
@@ -2816,64 +2875,31 @@ Exanpe.GoogleMap = function(id, position, items){
  * @static
  * @private
  */
-Exanpe.GoogleMap.GOOGLE_MAP_PREFIX = "exanpe-gmap-";
+Exanpe.GMap.GOOGLE_MAP_PREFIX = "exanpe-gmap-";
 
 /**
  * Dom method utility
  * @private
  */
-Exanpe.GoogleMap.prototype.getMapContainerEl = function() {
-	return YAHOO.util.Dom.get(Exanpe.GoogleMap.GOOGLE_MAP_PREFIX + this.id);
-};
-
-/**
- * Called before initialization of the Google Map
- * Does nothing by default, override to define your own action.
- */
-Exanpe.GoogleMap.prototype.beforeGoogleMapInit = function() {
-
-};
-
-/**
- * Called after Google Map component initialization
- * Does nothing by default, override to define your own action.
- */
-Exanpe.GoogleMap.prototype.afterGoogleMapInit = function() {
-	
-};
-
-/** 
- * Return latitude from the position
- * @param {String} position the position attribute
- * @private
- */
-Exanpe.GoogleMap.prototype.getLatitude = function(position){
-	return position.split(',')[0];
-};
-
-/** 
- * Return longitude from the position
- * @param {String} position the position attribute
- * @private
- */
-Exanpe.GoogleMap.prototype.getLongitude = function(position){
-	return position.split(',')[1];
+Exanpe.GMap.prototype.getMapContainerEl = function() {
+	return YAHOO.util.Dom.get(Exanpe.GMap.GOOGLE_MAP_PREFIX + this.id);
 };
 
 /** 
  * Initializes the Map object
  * @private
  */
-Exanpe.GoogleMap.prototype._initMap = function(){
+Exanpe.GMap.prototype._initMap = function(){
 	// Init windows
 	this.infoWindow = new google.maps.InfoWindow();
 	
 	// Options
-	var position = new google.maps.LatLng(this.getLatitude(this.position), this.getLongitude(this.position));
+	var position = new google.maps.LatLng(this.latitude, this.longitude);
 	this.options = {
 			center: position,
-			zoom: 15,					
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			zoom: this.zoom,					
+			draggable: this.draggable,
+			mapTypeId: eval("google.maps.MapTypeId." + this.mapType),
 			mapTypeControl: true,
 			mapTypeControlOptions: {
 			  style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
@@ -2882,26 +2908,44 @@ Exanpe.GoogleMap.prototype._initMap = function(){
 			navigationControlOptions: {
 			  style: google.maps.NavigationControlStyle.SMALL
 			}
-		};	
-	
-	// Javascript handler before map initialization
-	this.beforeGoogleMapInit();
+		};		
 	
 	// Init map
 	this.map = new google.maps.Map(this.getMapContainerEl(), this.options);
 }
 
 /** 
- * Initializes the Map items objects
+ * Initializes the Poly object
  * @private
  */
-Exanpe.GoogleMap.prototype._initMapItem = function(item) {
+Exanpe.GMap.prototype._initPoly = function(){
+	  var polyOptions = {
+			    strokeColor: this.polyStrokeColor,
+			    strokeOpacity: this.polyStrokeOpacity,
+			    strokeWeight: this.polyStrokeWeight
+	  }
+	  
+	  if (this.polygon) {
+		  this.poly = new google.maps.Polygon(polyOptions);
+	  }
+	  else {
+		  this.poly = new google.maps.Polyline(polyOptions);  
+	  }
+	  
+	  this.poly.setMap(this.map);
+};
+
+/** 
+ * Initializes the GMap Markers
+ * @private
+ */
+Exanpe.GMap.prototype._initMarker = function(marker) {
 	// Add Marker
-	var markerPosition = new google.maps.LatLng(this.getLatitude(item.position), this.getLongitude(item.position));
-	var marker = new google.maps.Marker({
+	var markerPosition = new google.maps.LatLng(marker.latitude, marker.longitude);
+	var gmarker = new google.maps.Marker({
 			position: markerPosition,
 			map: this.map,
-			icon : item.icon
+			icon : marker.icon
 		}
 	);	
 	
@@ -2909,44 +2953,61 @@ Exanpe.GoogleMap.prototype._initMapItem = function(item) {
 	var info = null
 	var map = this.map;
 	var iw = this.infoWindow;
-	if (item.info) {
-		info = item.info;
+	if (marker.info) {
+		info = marker.info;
 	}
 	
 	// Marker listener
-	google.maps.event.addListener(marker, 'click', function() {
+	google.maps.event.addListener(gmarker, 'click', function() {
 			iw.setContent(info);
 			iw.open(map, this);
 			map.panTo(markerPosition);
 		}
 	);
 	
-	// Item link event
-	var mapItem = YAHOO.util.Dom.get(item.id);
+	// Marker link event
+	var mapItem = YAHOO.util.Dom.get(marker.id);
 	YAHOO.util.Event.addListener(mapItem, "click", function() {
 		map.panTo(markerPosition);
 		iw.setContent(info);
-		iw.open(map, marker);
+		iw.open(map, gmarker);
 	});
 	
+};
+
+/** 
+ * Initializes the Poly object
+ * @private
+ */
+Exanpe.GMap.prototype._initPolyPoint = function(point) {
+	// Add new Point to the poly path
+	var pointPosition = new google.maps.LatLng(point.latitude, point.longitude);
+	var path = this.poly.getPath();
+	path.push(pointPosition);
 };
 
 /** 
  * Prepare map and items to display
  * @private
  */
-Exanpe.GoogleMap.prototype._init = function(){
+Exanpe.GMap.prototype._init = function(){
 	// Init map
 	this._initMap();
-	
-	// Init items
-	for (var i = 0; i < this.items.length; i++) {
-		var item = this.items[i];
-		this._initMapItem(item);
+
+	// Init markers
+	for (var i = 0; i < this.markers.length; i++) {
+		var marker = this.markers[i];
+		this._initMarker(marker);
 	}
 	
-	// Javascript handler after component initialization
-	this.afterGoogleMapInit();
+	// Init Polyline / Polygon
+	if (this.polyPoints.length > 0) {
+		this._initPoly();
+	}
+	for (var i = 0; i < this.polyPoints.length; i++) {
+		var point = this.polyPoints[i];
+		this._initPolyPoint(point);
+	}
 };
 
 /**
@@ -2955,10 +3016,10 @@ Exanpe.GoogleMap.prototype._init = function(){
  * @private
  * @static
  */
-Tapestry.Initializer.googleMapBuilder = function(data){
-	var googleMap = new Exanpe.GoogleMap(data.id, data.position, YAHOO.lang.JSON.parse(data.items));
-	googleMap._init();
-	window[data.id] = googleMap;
+Tapestry.Initializer.gMapBuilder = function(data){
+	var gMap = new Exanpe.GMap(data.id, data.latitude, data.longitude, data.mapType, data.zoom, data.draggable===true, YAHOO.lang.JSON.parse(data.markers), YAHOO.lang.JSON.parse(data.polyPoints), data.polyStrokeColor, data.polyStrokeOpacity, data.polyStrokeWeight, data.polygon===true);
+	gMap._init();
+	window[data.id] = gMap;
 };
 
 /** List Sorter **/

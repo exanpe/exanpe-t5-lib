@@ -30,21 +30,21 @@ import org.apache.tapestry5.services.Environment;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.slf4j.Logger;
 
-import fr.exanpe.t5.lib.model.GoogleMapInternalModel;
-import fr.exanpe.t5.lib.model.GoogleMapInternalModel.GoogleMapItemModel;
+import fr.exanpe.t5.lib.model.GMapInternalModel;
+import fr.exanpe.t5.lib.model.gmap.GMapMarkerModel;
 import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
 /**
- * This component represents an item displayed into {@link GoogleMap} component.<br/>
- * It must be nested inside a {@link GoogleMap} component.<br/>
+ * This component represents a Marker displayed into {@link GMap} component.<br/>
+ * It must be nested inside a {@link GMap} component.<br/>
  * The title and icons can be gathered from a resource file. The keys have to be named :
  * The content of the item will be the description of the element.
  * 
  * @since 1.2
- * @see GoogleMap
+ * @see GMap
  * @author lguerin
  */
-public class GoogleMapItem implements ClientElement
+public class GMapMarker implements ClientElement
 {
     /**
      * Specify the title of the item
@@ -61,11 +61,18 @@ public class GoogleMapItem implements ClientElement
     private Asset icon;
 
     /**
-     * The position of the element, in Latitude and Longitude format (Ex. "")
+     * The latitude position of the marker
      */
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String position;
+    private String latitude;
+
+    /**
+     * The longitude position of the marker
+     */
+    @Property
+    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    private String longitude;
 
     /**
      * Info text of the item
@@ -85,7 +92,7 @@ public class GoogleMapItem implements ClientElement
     private static final String ICON_SUFFIX = "-icon";
 
     @Property
-    private GoogleMapInternalModel viewModel;
+    private GMapInternalModel gmapModel;
 
     @Property
     private String uniqueId;
@@ -119,20 +126,21 @@ public class GoogleMapItem implements ClientElement
 
         consolidateFromId();
 
-        viewModel = environment.peek(GoogleMapInternalModel.class);
-        if (viewModel == null)
-            throw new IllegalStateException("GoogleMapItem component must be nested in a GoogleMap");
+        gmapModel = environment.peek(GMapInternalModel.class);
+        if (gmapModel == null)
+            throw new IllegalStateException("GMapMarker component must be nested in a GMap");
 
         // fill in the model
-        GoogleMapItemModel model = new GoogleMapItemModel();
+        GMapMarkerModel model = new GMapMarkerModel();
         model.setId(getClientId());
         model.setTitle(title);
         model.setIcon(icon);
-        model.setPosition(position);
+        model.setLatitude(latitude);
+        model.setLongitude(longitude);
         model.setInfo(info);
 
-        viewModel.addItem(model);
-        log.debug("Registering Google map item id: {}", getClientId());
+        gmapModel.addMarker(model);
+        log.debug("Registering Google map marker id: {}", getClientId());
     }
 
     private void consolidateFromId()
