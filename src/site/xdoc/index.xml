@@ -26,26 +26,6 @@
       
     </section>
     
-     <section name="Pros/cons">
-     	Pros :
-     	<ul>
-     		<li><b>Easy</b> to use</li>
-     		<li><b>Fast</b> integration</li>
-     		<li>Focuses on the <b>real needs</b> of web applications, based on our experience</li>
-     		<li><b>Fully skinned</b>, along with a new skin for core Tapestry 5 components</li>
-     		<li>Only <b>2 dependencies</b> : commons-lang and commons-collection</li>
-     		<li><b>Avoid conflicts</b> with other libraries by full prefixing (JavaScript/CSS)</li>
-     		<li><b>Minified</b> static resources</li>
-     		<li><b>Fully documented</b>. See Javadoc and JsDoc in Projects Reports.</li>
-     	</ul>
-     	<br/>
-     	Cons :
-     	<ul>
-     		<li>No Internet Explorer 6 support</li>
-     		<li>Tell us !</li>
-     	</ul>
-     </section>
-    
     <section name="Overview">
       <p>
       	<h3>Components</h3>
@@ -56,9 +36,11 @@
                 <li><b>Authorize :</b> Manage authorizations based on user's roles </li>
             	<li><b>Border :</b> A simple skinned border</li>
             	<li><b>ColorPicker :</b> Choose a Color and get it easily on the server side</li>
+                <li><b>GoogleMap :</b> TODO</li>
             	<li><b>HideablePanel :</b> Show/Hide a left side Panel</li>
                 <li><b>ListSorter :</b> Sort items using drag and drop</li>
                 <li><b>MenuBar :</b> Display a menu with a multi level roll down menu bar</li>
+                <li><b>RichTextEditor :</b> TODO</li>
             	<li><b>SecurePassword :</b> Enter a Password without typing characters</li>
             	<li><b>Slider :</b> Select a value on a range using a Slider</li>
             	<!-- <li><b>SlideShow :</b> Display a list of items into a SlideShow</li> -->
@@ -78,7 +60,7 @@
          <h3>Features</h3>
             Some features increase productivity and provide services:<br/>
             <ul>
-                <li>Security - <b>Authorize :</b> Full set of Authorization feature according to user roles.</li>
+                <li>Security - <b>Authorize :</b> Full set of Authorization feature according to user roles, with annotations.</li>
                 <li>Session Management - <b>ContextPageReset :</b> Reset some page information according to a specific context.</li>
             </ul>
          <h3>Skin</h3>
@@ -86,6 +68,25 @@
       </p>
     </section>
 
+     <section name="Pros/cons">
+      Pros :
+      <ul>
+        <li><b>Easy</b> to use</li>
+        <li><b>Fast</b> integration</li>
+        <li>Focuses on the <b>real needs</b> of web applications, based on our experience</li>
+        <li><b>Fully skinned</b>, along with a new skin for core Tapestry 5 components</li>
+        <li>Only <b>2 dependencies</b> : commons-lang and commons-collection</li>
+        <li><b>Avoid conflicts</b> with other libraries by full prefixing (JavaScript/CSS)</li>
+        <li><b>Minified</b> static resources</li>
+        <li><b>Fully documented</b>. See Javadoc and JsDoc in Projects Reports.</li>
+      </ul>
+      <br/>
+      Cons :
+      <ul>
+        <li>No Internet Explorer 6 support</li>
+        <li>Tell us !</li>
+      </ul>
+     </section>
   </body>
 
 </document>
