@@ -2959,7 +2959,13 @@ Exanpe.GMap.prototype._initMarker = function(marker) {
 	
 	// Marker listener
 	google.maps.event.addListener(gmarker, 'click', function() {
-			iw.setContent(info);
+			if (info) {
+				iw.setContent(info);
+			}
+			else {
+				iw.close();
+				iw.setContent("");
+			}
 			iw.open(map, this);
 			map.panTo(markerPosition);
 		}
@@ -2968,9 +2974,15 @@ Exanpe.GMap.prototype._initMarker = function(marker) {
 	// Marker link event
 	var mapItem = YAHOO.util.Dom.get(marker.id);
 	YAHOO.util.Event.addListener(mapItem, "click", function() {
-		map.panTo(markerPosition);
-		iw.setContent(info);
+		if (info) {
+			iw.setContent(info);
+		}
+		else {
+			iw.close();
+			iw.setContent("");
+		}
 		iw.open(map, gmarker);
+		map.panTo(markerPosition);
 	});
 	
 };

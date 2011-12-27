@@ -18,9 +18,10 @@ import fr.exanpe.t5.lib.model.GMapInternalModel;
 import fr.exanpe.t5.lib.model.gmap.GMapPolyPointModel;
 
 /**
- * This component represents a Polyline Point displayed into {@link GMap} component.<br/>
+ * This component represents a point used to draw Polylines or Polygons into a Google Map.<br/>
  * It must be nested inside a {@link GMap} component.<br/>
  * 
+ * @see GMap
  * @author lguerin
  * @since 1.2
  */
@@ -30,14 +31,14 @@ public class GMapPolyPoint implements ClientElement
      * The latitude position of the point
      */
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(required = true, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private String latitude;
 
     /**
      * The longitude position of the point
      */
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(required = true, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private String longitude;
 
     @Property

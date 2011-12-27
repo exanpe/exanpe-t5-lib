@@ -41,12 +41,14 @@ import fr.exanpe.t5.lib.model.gmap.GMapPolyPointModel;
 import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
 /**
- * GoogleMap component.
- * Displays a Google Map centered with latitude and longitude positions provided by user.
+ * GoogleMap component.<br />
+ * Displays a Google Map centered with latitude and longitude positions provided by user.<br />
  * {@link GMapMarker} and/or {@link GMapPolyPoint} components can be nested in its body in order to
- * display custom markers or draw polylines or polygons.
+ * display custom markers or draw polylines or polygons.<br />
+ * <p>
  * JavaScript : This component is bound to a class Exanpe.GMap.<br/>
  * CSS : This component is bound to a class exanpe-gmap.<br/>
+ * </p>
  * 
  * @since 1.2
  * @see GMapMarker

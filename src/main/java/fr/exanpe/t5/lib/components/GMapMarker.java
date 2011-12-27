@@ -35,14 +35,20 @@ import fr.exanpe.t5.lib.model.gmap.GMapMarkerModel;
 import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
 /**
- * This component represents a Marker displayed into {@link GMap} component.<br/>
+ * This component represents a Marker displayed into a Google Map.<br/>
  * It must be nested inside a {@link GMap} component.<br/>
- * The title and icons can be gathered from a resource file. The keys have to be named :
- * The content of the item will be the description of the element.
+ * The title and icons can be gathered from a resource file.<br />
+ * The keys have to be named :
+ * <ul>
+ * <li>${id}-title</li>
+ * <li>${id}-info</li>
+ * <li>${id}-icon</li>
+ * </ul>
+ * <br/>
  * 
- * @since 1.2
  * @see GMap
  * @author lguerin
+ * @since 1.2
  */
 public class GMapMarker implements ClientElement
 {
@@ -64,14 +70,14 @@ public class GMapMarker implements ClientElement
      * The latitude position of the marker
      */
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(required = true, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private String latitude;
 
     /**
      * The longitude position of the marker
      */
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
+    @Parameter(required = true, allowNull = false, defaultPrefix = BindingConstants.LITERAL)
     private String longitude;
 
     /**
@@ -85,6 +91,11 @@ public class GMapMarker implements ClientElement
      * title suffix
      */
     private static final String TITLE_SUFFIX = "-title";
+
+    /**
+     * info suffix
+     */
+    private static final String INFO_SUFFIX = "-info";
 
     /**
      * icon suffix
@@ -147,7 +158,6 @@ public class GMapMarker implements ClientElement
     {
         if (StringUtils.isEmpty(title))
         {
-
             String titleKey = getClientId() + TITLE_SUFFIX;
             String message = exanpeService.getEscaladeMessage(resources, titleKey);
 
@@ -160,6 +170,23 @@ public class GMapMarker implements ClientElement
             else
             {
                 throw new IllegalArgumentException("The resource key " + titleKey + " could not be found in order to process the item title " + getClientId());
+            }
+        }
+
+        if (StringUtils.isEmpty(info))
+        {
+            String infoKey = getClientId() + INFO_SUFFIX;
+            String message = exanpeService.getEscaladeMessage(resources, infoKey);
+
+            log.debug("Checking info into resources file with key: {}", infoKey);
+
+            if (StringUtils.isNotEmpty(message))
+            {
+                this.info = message;
+            }
+            else
+            {
+                log.debug("Info key not found: {}", infoKey);
             }
         }
 
