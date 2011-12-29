@@ -18,10 +18,14 @@ The following components are currently available in the library :
 
   - Accordion : Show/Hide some content with animation
   - AjaxLoader : Load a content with Ajax, displaying a loader icon
+  - Authorize : Manage authorizations based on user's roles
   - Border : A simple skinned border
   - ColorPicker : Choose a Color and get it easily on the server side
+  - GoogleMap : Show a GoogleMap and some points of interest
   - HideablePanel : Show/Hide a left side Panel
+  - ListSorter : Sort a list of data using drag and drop
   - MenuBar and Menu components : Add one basic Menu bar or one multi level Horizontal Menu to you website
+  - RichTextEditor : Display a textarea allowing rich HTML text content to be written
   - SecurePassword : Enter a Password without typing characters
   - Slider : Select a value on a range using a Slider
   - TabView : Organize your layout into a tab view
@@ -31,9 +35,15 @@ The following components are currently available in the library :
 Some mixins provide additional features to existing components:
 
   - AjaxValidation : Validate a textfield component with an Ajax request
+  - Authorize : Manage authorizations based on user's roles
   - Dialog : Display a dialog to print information or confirmation on user action
   - PasswordStrengthChecker : Let your users valuate the strength of their passwords with a visual feedback
   - SelectLoader : Load select content options according to a first select component selection
+
+Some features provide services on page classes:
+
+  - Security : Use @Authorize annotation to restrict page/method access
+  - Session : Use @ContextPageReset to reset some page information according to a specific context
 
 Finally, the core Tapestry components have been re skinned to fit better in any application.
 

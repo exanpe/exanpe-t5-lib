@@ -36,11 +36,11 @@
                 <li><b>Authorize :</b> Manage authorizations based on user's roles </li>
             	<li><b>Border :</b> A simple skinned border</li>
             	<li><b>ColorPicker :</b> Choose a Color and get it easily on the server side</li>
-                <li><b>GoogleMap :</b> TODO</li>
+                <li><b>GoogleMap :</b> Show a GoogleMap and some points of interest</li>
             	<li><b>HideablePanel :</b> Show/Hide a left side Panel</li>
                 <li><b>ListSorter :</b> Sort items using drag and drop</li>
                 <li><b>MenuBar :</b> Display a menu with a multi level roll down menu bar</li>
-                <li><b>RichTextEditor :</b> TODO</li>
+                <li><b>RichTextEditor :</b> Display a textarea allowing rich HTML text content to be written</li>
             	<li><b>SecurePassword :</b> Enter a Password without typing characters</li>
             	<li><b>Slider :</b> Select a value on a range using a Slider</li>
             	<!-- <li><b>SlideShow :</b> Display a list of items into a SlideShow</li> -->
