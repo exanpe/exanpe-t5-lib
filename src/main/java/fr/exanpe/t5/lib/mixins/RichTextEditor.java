@@ -72,21 +72,20 @@ public class RichTextEditor
      * The names are case-insensitive.
      * <p>
      * Available names are : <br />
-     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, insertimage,
-     * undo, redo, insertunorderedlist, insertorderedlist, heading, forecolor, backcolor and
-     * separator.
+     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     * insertunorderedlist, insertorderedlist, heading, forecolor, backcolor and separator.
      * </p>
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, allowNull = false)
     private String include;
 
     /**
-     * A comma-separated list of button names to be removed from the default editor.<br />
+     * A comma-separated list of button names to be removed from the default editor toolbar.<br />
      * The names are case-insensitive.
      * <p>
      * Available names are : <br />
-     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, insertimage,
-     * undo, redo, insertunorderedlist, insertorderedlist, heading, forecolor, backcolor.
+     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     * insertunorderedlist, insertorderedlist, heading, forecolor, backcolor.
      * </p>
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, allowNull = false)
@@ -99,7 +98,13 @@ public class RichTextEditor
     private Boolean autofocus;
 
     /**
-     * Used to override the component's message catalog.
+     * Used to override the default message catalog.<br />
+     * <p>
+     * Available label keys are : <br />
+     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     * insertunorderedlist, insertorderedlist, heading, none, h1, h2, h3, h4, h5, h6, forecolor,
+     * backcolor.<br />
+     * </p>
      */
     @Parameter("componentResources.messages")
     private Messages messages;
