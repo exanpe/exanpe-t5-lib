@@ -25,7 +25,6 @@ The following components are currently available in the library :
   - HideablePanel : Show/Hide a left side Panel
   - ListSorter : Sort a list of data using drag and drop
   - MenuBar and Menu components : Add one basic Menu bar or one multi level Horizontal Menu to you website
-  - RichTextEditor : Display a textarea allowing rich HTML text content to be written
   - SecurePassword : Enter a Password without typing characters
   - Slider : Select a value on a range using a Slider
   - TabView : Organize your layout into a tab view
@@ -38,6 +37,7 @@ Some mixins provide additional features to existing components:
   - Authorize : Manage authorizations based on user's roles
   - Dialog : Display a dialog to print information or confirmation on user action
   - PasswordStrengthChecker : Let your users valuate the strength of their passwords with a visual feedback
+  - RichTextEditor : Display a textarea allowing rich HTML text content to be written  
   - SelectLoader : Load select content options according to a first select component selection
 
 Some features provide services on page classes:
