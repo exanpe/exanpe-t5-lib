@@ -913,6 +913,10 @@
 	margin-left: 20px;
 }
 
+.exanpe-gmap .exanpe-gmap-sidebar span {
+	cursor: pointer;	
+}
+
 /**
  * List Sorter
  * ul / li contains free user content. Cannot target global ul and li tags for classes

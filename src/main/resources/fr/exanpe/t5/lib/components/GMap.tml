@@ -9,9 +9,7 @@
 				<!-- Markers -->
 				<t:loop source="model.markers" value="current">
 				  	<li id="${current.id}">
-				  		<a href="#">
-							${current.title}
-						</a>
+				  		<span>${current.title}</span>
 					</li>
 				</t:loop>
 			</ul>
