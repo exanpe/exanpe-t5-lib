@@ -5,6 +5,7 @@ package fr.exanpe.t5.lib.mixins;
 
 import java.awt.TextArea;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentResources;
@@ -18,6 +19,7 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.json.JSONArray;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
@@ -66,13 +68,43 @@ public class RichTextEditor
     private String height;
 
     /**
+     * A comma-separated list of button names to be retained.<br />
+     * The names are case-insensitive.
+     * <p>
+     * Available names are : <br />
+     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     * insertunorderedlist, insertorderedlist, heading, forecolor, backcolor and separator.
+     * </p>
+     */
+    @Parameter(defaultPrefix = BindingConstants.LITERAL, allowNull = false)
+    private String include;
+
+    /**
+     * A comma-separated list of button names to be removed from the default editor toolbar.<br />
+     * The names are case-insensitive.
+     * <p>
+     * Available names are : <br />
+     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     * insertunorderedlist, insertorderedlist, heading, forecolor, backcolor.
+     * </p>
+     */
+    @Parameter(defaultPrefix = BindingConstants.LITERAL, allowNull = false)
+    private String exclude;
+
+    /**
      * Should we focus the textarea when the content is ready
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "true")
     private Boolean autofocus;
 
     /**
-     * Used to override the component's message catalog.
+     * Used to override the default message catalog.<br />
+     * <p>
+     * Available label keys are : <br />
+     * bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     * insertunorderedlist, insertorderedlist, heading, none, h1, h2, h3, h4, h5, h6, forecolor,
+     * backcolor.<br />
+     * </p>
      */
     @Parameter("componentResources.messages")
     private Messages messages;
@@ -127,7 +159,7 @@ public class RichTextEditor
         data.accumulate("autofocus", autofocus);
         data.accumulate("collapse", collapse);
 
-        // messages used by mixin
+        // Messages used by mixin
         JSONObject rteMessages = new JSONObject();
         String rteButtons = exanpeService.getEscaladeMessage(resources, "exanpe-rte-toolbar-buttons");
         String[] buttons = rteButtons.split(",");
@@ -138,6 +170,30 @@ public class RichTextEditor
             rteMessages.accumulate(key, label);
         }
         data.accumulate("messages", rteMessages.toString());
+
+        // Buttons to be include only
+        JSONArray includeButtons = new JSONArray();
+        if (include != null)
+        {
+            String[] includeList = include.split(",");
+            for (int i = 0; i < includeList.length; i++)
+            {
+                includeButtons.put(StringUtils.strip(includeList[i]).toLowerCase());
+            }
+        }
+        data.accumulate("include", includeButtons.toString());
+
+        // Exlude following buttons
+        JSONArray excludeButtons = new JSONArray();
+        if (exclude != null)
+        {
+            String[] excludeList = exclude.split(",");
+            for (int i = 0; i < excludeList.length; i++)
+            {
+                excludeButtons.put(StringUtils.strip(excludeList[i]).toLowerCase());
+            }
+        }
+        data.accumulate("exclude", excludeButtons.toString());
 
         return data;
     }

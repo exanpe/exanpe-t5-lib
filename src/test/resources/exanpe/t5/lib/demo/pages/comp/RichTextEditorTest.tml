@@ -11,14 +11,19 @@
 	</style> 	
  	
  	<t:form>
-	 	<t:textarea t:id="richContent" value="richContent" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor" t:messages="messages">
-		 		
+	 	<t:textarea t:id="richContent" value="richContent" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor" t:messages="messages" t:exclude="insertorderedlist">
+	 	</t:textarea>
+
+	 	<br />
+	 	<br />
+
+	 	<t:textarea t:id="richContent2" value="richContent2" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor 2" t:include="bold, italic, underline, separator, justifyleft, justifycenter, justifyright">
 	 	</t:textarea>
 		<t:submit />
 	</t:form>
 
-	Result :<br />
-	<t:outputraw value="richContent" />
+	richContent : <t:outputraw value="richContent" /> <br /><br />
+	richContent2 : <t:outputraw value="richContent2" /> <br />
 	
    <script type="text/javascript">
 		YAHOO.util.Event.onDOMReady(function(){

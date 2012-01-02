@@ -35,6 +35,10 @@ public class RichTextEditorTest
     @Persist(PersistenceConstants.FLASH)
     private String richContent;
 
+    @Property
+    @Persist(PersistenceConstants.FLASH)
+    private String richContent2;
+
     @Inject
     @Property
     private Messages messages;
@@ -42,5 +46,6 @@ public class RichTextEditorTest
     void onSubmit()
     {
         System.out.println(">>> Rich content: " + richContent);
+        System.out.println(">>> Rich content2: " + richContent2);
     }
 }
