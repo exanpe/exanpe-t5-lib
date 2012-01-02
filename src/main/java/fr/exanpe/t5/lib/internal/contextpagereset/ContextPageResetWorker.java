@@ -1,9 +1,9 @@
 package fr.exanpe.t5.lib.internal.contextpagereset;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.func.Predicate;
 import org.apache.tapestry5.internal.InternalConstants;
 import org.apache.tapestry5.internal.transform.PageResetAnnotationWorker;
 import org.apache.tapestry5.ioc.annotations.Symbol;
@@ -51,6 +51,9 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
     }
 
     private static final TransformMethodSignature ON_ACTIVATE_SIGNATURE = new TransformMethodSignature(0x00000000, "void", "onActivate",
+            InternalConstants.EMPTY_STRING_ARRAY, InternalConstants.EMPTY_STRING_ARRAY);
+
+    private static final TransformMethodSignature ON_CONTEXT_PAGE_RESET_SIGNATURE = new TransformMethodSignature(0x00000000, "void", "contextReset",
             InternalConstants.EMPTY_STRING_ARRAY, InternalConstants.EMPTY_STRING_ARRAY);
 
     public void transform(final ClassTransformation transformation, MutableComponentModel model)
@@ -126,13 +129,18 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
 
     private List<TransformMethod> matchPageResetMethods(final ClassTransformation transformation)
     {
-        return transformation.matchMethods(new Predicate<TransformMethod>()
+        List<TransformMethod> result = new ArrayList<TransformMethod>(transformation.matchMethodsWithAnnotation(ContextPageReset.class));
+
+        if (transformation.isDeclaredMethod(ON_CONTEXT_PAGE_RESET_SIGNATURE))
         {
-            public boolean accept(TransformMethod method)
+            for (TransformMethod t : result)
             {
-                return method.getName().equalsIgnoreCase("contextPageReset") || method.getAnnotation(ContextPageReset.class) != null;
+                if (t.getSignature().equals(ON_CONTEXT_PAGE_RESET_SIGNATURE)) { return result; }
             }
-        });
+            result.add(transformation.getOrCreateMethod(ON_CONTEXT_PAGE_RESET_SIGNATURE));
+        }
+
+        return result;
     }
 
     private MethodAccess toMethodAccess(TransformMethod method)

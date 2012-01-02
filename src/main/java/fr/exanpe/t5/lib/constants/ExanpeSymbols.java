@@ -49,7 +49,7 @@ public class ExanpeSymbols
      * Default is reset.
      * When CONTEXT_PAGE_RESET_MARKER will be found in the URL, it will be removed from context and
      * will trigger the methods annotated with {@link ContextPageReset} or with signature
-     * "void contextPageReset()"
+     * "void contextReset()"
      * 
      * @see ContextPageReset
      */

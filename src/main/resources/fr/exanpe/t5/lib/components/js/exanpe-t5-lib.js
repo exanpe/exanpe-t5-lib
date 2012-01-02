@@ -3074,7 +3074,7 @@ Exanpe.ListSorter.prototype._init = function(){
     var form = this.getParentForm();
     
     form.observe(Tapestry.FORM_PREPARE_FOR_SUBMIT_EVENT, function(){
-    	YAHOO.util.Dom.get(lst.id+"_input").value = YAHOO.lang.JSON.stringify(lst.getListOrder());
+    	YAHOO.util.Dom.get(lst.id+"_input").value = lst.defaultStringify(lst.getListOrder());
     });
     
     this.initiateOrder();
@@ -3130,7 +3130,7 @@ Exanpe.ListSorter.prototype.save = function(){
 
 	var request = YAHOO.util.Connect.asyncRequest(
 			"GET",
-			this.urlSave + "?" + Exanpe.ListSorter.PARAM_NEW_ORDER + "=" + YAHOO.lang.JSON.stringify(order), 
+			this.urlSave + "?" + Exanpe.ListSorter.PARAM_NEW_ORDER + "=" + this.defaultStringify(order), 
 			callback, 
 			null
 	);
@@ -3179,6 +3179,26 @@ Exanpe.ListSorter.prototype.getListOrder = function(){
 	
 	return list;
 };
+
+/**
+ * Stringify an array, not using .toJSON object function
+ * @param {Object} o the object to stringify
+ * @return {String} the element stringified, without quotes
+ */
+Exanpe.ListSorter.prototype.defaultStringify = function(o){
+	var backupToJSON = o.toJSON; 
+	if(backupToJSON){
+		o.toJSON = null;
+	}
+	
+	var res = YAHOO.lang.JSON.stringify(o);
+	
+	if(backupToJSON){
+		o.toJSON = backupToJSON;
+	}
+	
+	return res;
+}
 
 /**
  * Initiate the list positions

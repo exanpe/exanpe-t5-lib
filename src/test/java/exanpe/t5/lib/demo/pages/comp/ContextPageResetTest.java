@@ -47,9 +47,16 @@ public class ContextPageResetTest
         this.realContext = context;
     }
 
+    void contextReset()
+    {
+        System.out.println("reset plz");
+        value = null;
+    }
+
     @ContextPageReset
     void onContextReset()
     {
+        System.out.println("reset annot plz");
         value = null;
     }
 }
