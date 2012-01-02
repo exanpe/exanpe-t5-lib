@@ -12,7 +12,7 @@ import fr.exanpe.t5.lib.constants.ExanpeSymbols;
 /**
  * Annotation to mark a method as reseting the page depending on a marker sent in the context.
  * If {@link ExanpeSymbols#CONTEXT_PAGE_RESET_MARKER} is found in the request, every method
- * containing this annotation, or named "void contextPageReset()", will be triggered.<br/>
+ * containing this annotation, or named "void contextReset()", will be triggered.<br/>
  * For Tapestry 5.3, a package protected method "void onActivate()" have to be defined in the class.
  * 
  * @author jmaupoux
