@@ -44,6 +44,7 @@ Some features provide services on page classes:
 
   - Security : Use @Authorize annotation to restrict page/method access
   - Session : Use @ContextPageReset to reset some page information according to a specific context
+  - Internationalization : Store your user Locale in session with LocaleSession
 
 Finally, the core Tapestry components have been re skinned to fit better in any application.
 

@@ -24,6 +24,7 @@
     <li><t:pagelink page="comp/ListSorterTest">ListSorter</t:pagelink></li>
     <li><t:pagelink page="comp/RichTextEditorTest">RichTextEditor</t:pagelink></li>
     <li><t:pagelink page="comp/ContextPageResetTest">ContextPageReset</t:pagelink></li>
+    <li><t:pagelink page="comp/LocaleSessionTest">LocaleSession</t:pagelink></li>
   </ul>
   <hr/>
   <ul>

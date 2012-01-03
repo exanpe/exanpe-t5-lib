@@ -62,6 +62,7 @@
             <ul>
                 <li>Security - <b>Authorize :</b> Full set of Authorization feature according to user roles, with annotations.</li>
                 <li>Session Management - <b>ContextPageReset :</b> Reset some page information according to a specific context.</li>
+                <li>Internationalization - <b>LocaleSession :</b> Manage the locale in session instead of in the URL.</li>
             </ul>
          <h3>Skin</h3>
             The core Tapestry components have been re skinned to fit better in any application.   
