@@ -1,0 +1,7 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+	<t:actionlink t:id="fr">fr</t:actionlink>
+	<br/>
+	<t:actionlink t:id="en">en</t:actionlink>
+	<br/>
+  ${message:test}
+</t:layout>

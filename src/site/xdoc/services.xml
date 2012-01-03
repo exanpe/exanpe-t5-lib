@@ -77,6 +77,51 @@
     
     Please have a look at the demo for a concrete usage.
     </section>
+    
+    <section>
+      <h2>Internationalization : LocaleSession</h2>
+        <h3>Presentation</h3>
+          This feature allow you to store a language (through Locale) choosen by the user in the user session.<br/>
+          This differ from the default implementation storing the locale directly in the page links.<br/>
+          In order to speed up filter processing, this feature is not activated by default, as it is a very specific feature. 
+        <h3>Store the locale</h3>
+          To store the locale depending on the user choice, you have to inject in your page the LocaleSessionService service, then set it.<br/>
+<source>
+    <![CDATA[  
+
+Page :        
+    @Inject
+    private LocaleSessionService localeSessionService;
+
+    void onActionFromFr()
+    {
+        localeSessionService.setLocale(Locale.FRANCE);
+    }
+}
+
+Module : 
+public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)
+    {
+        ...
+        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,fr");
+        ...
+    }
+]]>
+    </source>           
+        <h3>Feature activation</h3>
+         To activate the feature, you have to explicitly add in your Module class :
+  
+    <source>
+    <![CDATA[
+    public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration)
+    {
+        ...
+        configuration.addInstance("LocaleSessionFilter", LocaleSessionRequestFilter.class);
+        ...
+    }
+    ]]>
+    </source> 
+    </section>
   </body>
   
 </document>

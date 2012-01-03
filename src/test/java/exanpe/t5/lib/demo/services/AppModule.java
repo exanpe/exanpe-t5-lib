@@ -37,6 +37,7 @@ import exanpe.t5.lib.demo.bean.Country;
 import exanpe.t5.lib.demo.encoders.CountryEncoder;
 import fr.exanpe.t5.lib.exception.AuthorizeException;
 import fr.exanpe.t5.lib.internal.contextpagereset.ContextPageResetFilter;
+import fr.exanpe.t5.lib.internal.localesession.LocaleSessionRequestFilter;
 import fr.exanpe.t5.lib.services.ExanpeLibraryModule;
 
 @SubModule(ExanpeLibraryModule.class)
@@ -45,6 +46,7 @@ public class AppModule
     public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)
     {
         configuration.add(SymbolConstants.PRODUCTION_MODE, "false");
+        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,fr");
     }
 
     @Contribute(ValueEncoderSource.class)
@@ -83,5 +85,6 @@ public class AppModule
     public void contributeComponentRequestHandler(OrderedConfiguration<ComponentRequestFilter> configuration)
     {
         configuration.addInstance("ContextPageResetFilter", ContextPageResetFilter.class);
+        configuration.addInstance("LocaleSessionFilter", LocaleSessionRequestFilter.class);
     }
 }

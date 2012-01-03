@@ -49,6 +49,7 @@ import fr.exanpe.t5.lib.internal.authorize.AuthorizePageFilter;
 import fr.exanpe.t5.lib.internal.authorize.AuthorizeWorker;
 import fr.exanpe.t5.lib.internal.contextpagereset.ContextPageResetWorker;
 import fr.exanpe.t5.lib.services.impl.AuthorizeBusinessServiceImpl;
+import fr.exanpe.t5.lib.services.impl.LocaleSessionServiceImpl;
 
 /**
  * The Tapestry Module for Exanpe Library.
@@ -143,5 +144,6 @@ public class ExanpeLibraryModule
     {
         binder.bind(ExanpeComponentService.class, ExanpeComponentService.class);
         binder.bind(AuthorizeBusinessService.class, AuthorizeBusinessServiceImpl.class);
+        binder.bind(LocaleSessionService.class, LocaleSessionServiceImpl.class);
     }
 }
