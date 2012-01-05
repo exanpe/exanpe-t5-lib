@@ -6,6 +6,15 @@
   </properties>
   <body>
     <release version="1.2.0" date="2012-XX-XX" description="Third release">
+      <action dev="lguerin" type="add">
+        Added RichTextEditor mixin
+      </action>
+      <action dev="lguerin" type="add">
+        Added GoogleMap component and full set of markers
+      </action>
+      <action dev="jmaupoux" type="add">
+        Added LocaleSession service
+      </action>
       <action dev="jmaupoux" type="add">
         Added ListSorter component
       </action>
@@ -14,6 +23,12 @@
       </action>
       <action dev="jmaupoux" type="add">
         Added full set of Authorization services (@Authorize)
+      </action>
+      <action dev="jmaupoux" type="fix">
+        Fixing Accordion render bug
+      </action>
+      <action dev="jmaupoux" type="fix">
+        Fixing MenuBar render bug
       </action>
     </release>
     <release version="1.1.0" date="2011-11-21" description="Second release">
