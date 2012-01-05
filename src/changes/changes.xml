@@ -5,7 +5,7 @@
     <title>Changes - Exanpe T5 Lib</title>
   </properties>
   <body>
-    <release version="1.2.0" date="2012-XX-XX" description="Third release">
+    <release version="1.2.0" date="2012-01-09" description="Third release">
       <action dev="lguerin" type="add">
         Added RichTextEditor mixin
       </action>
