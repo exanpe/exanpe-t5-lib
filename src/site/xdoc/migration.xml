@@ -23,6 +23,15 @@
         <li>.exanpe-acc ul li .acc-title a : Add "border-top: 1px solid #CCCCCC;"</li>
         <li>Customize the class : .exanpe-acc ul li.opened .acc-title{  border-bottom: 1px solid #CCCCCC; }</li>
       </ul>
+      
+       <h1>Menu</h1>
+       A migration have to be performed on this component <b>if you customized its look and feed</b>.<br/>
+       Icon have been fixed on menubar item when submenu is present :
+       <ul>
+        <li>.exanpe-menu .yuimenubaritemlabel-hassubmenu : Renamed to .exanpe-menu .yuimenubaritem-hassubmenu </li>
+        <li>.exanpe-menu .yuimenubaritem-hassubmenu : Deleted padding-right: 20px;</li>
+        <li>.exanpe-menu .yuimenubaritem-selected : Updated  background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;</li>
+       </ul>
     </section>
 
     <section name="1.0.0 to 1.1.0">
