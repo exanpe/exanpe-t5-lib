@@ -745,8 +745,12 @@
 
 /** Style for menubar item, on mouse hover */
 .exanpe-menu .yuimenubaritem-selected {
-	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;
+	background: #E2E2E2;
 	cursor: pointer;	
+}
+
+.exanpe-menu .yuimenubaritem-selected.yuimenubaritem-hassubmenu-selected {
+	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;	
 }
 
 /** Styles for submenus */

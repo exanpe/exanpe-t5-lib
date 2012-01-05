@@ -30,7 +30,9 @@
        <ul>
         <li>.exanpe-menu .yuimenubaritemlabel-hassubmenu : Renamed to .exanpe-menu .yuimenubaritem-hassubmenu </li>
         <li>.exanpe-menu .yuimenubaritem-hassubmenu : Deleted padding-right: 20px;</li>
-        <li>.exanpe-menu .yuimenubaritem-selected : Updated  background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;</li>
+        <li>Added : .exanpe-menu .yuimenubaritem-selected.yuimenubaritem-hassubmenu-selected {
+	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;	
+}</li>
        </ul>
     </section>
 
