@@ -54,4 +54,14 @@ public class ExanpeSymbols
      * @see ContextPageReset
      */
     public static final String CONTEXT_PAGE_RESET_MARKER = "exanpe.context-page-reset-marker";
+
+    /**
+     * Google Maps API V3 - Business client ID
+     */
+    public static final String GMAP_V3_BUSINESS_CLIENT_ID = "exanpe.gmap-v3-client-id";
+
+    /**
+     * Google Maps API V3 - version
+     */
+    public static final String GMAP_V3_VERSION = "exanpe.gmap-v3-version";
 }

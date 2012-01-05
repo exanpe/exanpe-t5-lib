@@ -22,7 +22,7 @@
     <hr />
     <br />
     
-    <ex:gmap t:id="map3" latitude="48.869722" longitude="2.3075" mapType="terrain" zoom="13" polyStrokeColor="#ff0000" polygon="true">
+    <ex:gmap t:id="map3" latitude="48.869722" longitude="2.3075" mapType="terrain" zoom="13" polyStrokeColor="#ff0000" polygon="true" secure="true">
     	<ex:gmapPolyPoint latitude="48.867781" longitude="2.313982" />
     	<ex:gmapPolyPoint latitude="48.870812" longitude="2.303081" />
     	<ex:gmapPolyPoint latitude="48.8577" longitude="2.295" />

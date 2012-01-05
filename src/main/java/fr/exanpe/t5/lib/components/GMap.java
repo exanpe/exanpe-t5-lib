@@ -16,6 +16,7 @@
 
 package fr.exanpe.t5.lib.components;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentResources;
@@ -29,11 +30,14 @@ import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.apache.tapestry5.json.JSONArray;
 import org.apache.tapestry5.json.JSONObject;
 import org.apache.tapestry5.services.Environment;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
+import org.slf4j.Logger;
 
+import fr.exanpe.t5.lib.constants.ExanpeSymbols;
 import fr.exanpe.t5.lib.constants.GMapTypeEnum;
 import fr.exanpe.t5.lib.model.GMapInternalModel;
 import fr.exanpe.t5.lib.model.gmap.GMapMarkerModel;
@@ -134,6 +138,13 @@ public class GMap implements ClientElement
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "false")
     private Boolean polygon;
 
+    /**
+     * Loading Google Maps API over HTTPS or not.
+     * Default is false.
+     */
+    @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "false")
+    private Boolean secure;
+
     @Property
     private GMapInternalModel model;
 
@@ -152,9 +163,17 @@ public class GMap implements ClientElement
     private static final String ROOT_CSS_CLASS = "exanpe-gmap";
 
     /**
-     * Google Map API
+     * Google Maps API
      */
-    private static final String GOOGLE_MAP_API = "http://maps.googleapis.com/maps/api/js?sensor=true";
+    private static final String GOOGLE_MAP_API_BASE_URL = "http://maps.googleapis.com/maps/api/js?";
+
+    @Inject
+    @Symbol(ExanpeSymbols.GMAP_V3_BUSINESS_CLIENT_ID)
+    private String gmapClientId;
+
+    @Inject
+    @Symbol(ExanpeSymbols.GMAP_V3_VERSION)
+    private String gmapApiVersion;
 
     @Inject
     private ComponentResources resources;
@@ -167,6 +186,9 @@ public class GMap implements ClientElement
 
     @Inject
     private ExanpeComponentService ecservice;
+
+    @Inject
+    private Logger log;
 
     @SetupRender
     void init()
@@ -193,7 +215,7 @@ public class GMap implements ClientElement
         writer.end();
         environment.pop(GMapInternalModel.class);
         JSONObject data = buildJSONData(model);
-        javascriptSupport.importJavaScriptLibrary(GOOGLE_MAP_API);
+        javascriptSupport.importJavaScriptLibrary(this.buildGMapApiUrl());
         javascriptSupport.addInitializerCall("gMapBuilder", data);
     }
 
@@ -250,6 +272,37 @@ public class GMap implements ClientElement
             gMapPolyPoints.put(point);
         }
         return gMapPolyPoints;
+    }
+
+    private String buildGMapApiUrl()
+    {
+        String url = GOOGLE_MAP_API_BASE_URL;
+
+        // GMap version
+        if (!gmapApiVersion.matches("^3(\\.[0-9]{1})?$")) { throw new RuntimeException(
+                String.format("The GMap API version: %s is not correct.", gmapApiVersion)); }
+        url += "v=" + gmapApiVersion;
+
+        // GMap business client ID
+        if (!StringUtils.isEmpty(gmapClientId))
+        {
+            if (!StringUtils.startsWith(gmapClientId, "gme-")) { throw new RuntimeException(String.format(
+                    "Your GMap clientID: %s is not correct, it must start with 'gme-'.",
+                    gmapClientId)); }
+            url += "&client=" + gmapClientId;
+        }
+
+        // Sensor parameter
+        url += "&sensor=true";
+
+        // Secure access
+        if (secure)
+        {
+            url = url.replace("http", "https");
+        }
+
+        log.debug("Google Maps API URL: {}", url);
+        return url;
     }
 
     public String getClientId()
