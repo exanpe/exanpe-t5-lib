@@ -734,14 +734,18 @@
 
 /** Indicates the presence of submenu for the menubar. */
 .exanpe-menu .yuimenubaritemlabel-hassubmenu {
+
+}
+
+/** Indicates the presence of submenu for the menubar. */
+.exanpe-menu .yuimenubaritem-hassubmenu {
 	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat;
-	padding-right: 20px;
 	cursor: pointer;
 }
 
 /** Style for menubar item, on mouse hover */
 .exanpe-menu .yuimenubaritem-selected {
-	background: #E2E2E2;
+	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;
 	cursor: pointer;	
 }
 
