@@ -40,7 +40,6 @@
             	<li><b>HideablePanel :</b> Show/Hide a left side Panel</li>
                 <li><b>ListSorter :</b> Sort items using drag and drop</li>
                 <li><b>MenuBar :</b> Display a menu with a multi level roll down menu bar</li>
-                <li><b>RichTextEditor :</b> Display a textarea allowing rich HTML text content to be written</li>
             	<li><b>SecurePassword :</b> Enter a Password without typing characters</li>
             	<li><b>Slider :</b> Select a value on a range using a Slider</li>
             	<!-- <li><b>SlideShow :</b> Display a list of items into a SlideShow</li> -->
@@ -52,9 +51,10 @@
             Some mixins provide additional features to existing components:<br/>
             <ul>
                 <li><b>AjaxValidation :</b> Enable an Ajax Validation on any textfield component.</li>
-                <li><b>Authorize :</b> Manage authorizations based on user's roles </li>
+                <li><b>AuthorizeMixin :</b> Manage authorizations based on user's roles </li>
             	<li><b>Dialog :</b> Display a dialog to print any information or confirmation on user action.</li>
                 <li><b>PasswordStrengthChecker :</b> Display to the user its password strength.</li>
+                <li><b>RichTextEditor :</b> Display a textarea allowing rich HTML text content to be written</li>
             	<li><b>SelectLoader :</b> Load <i>select</i> content options according to a first <i>select</i> component selection.</li>
             </ul>
          <h3>Features</h3>
