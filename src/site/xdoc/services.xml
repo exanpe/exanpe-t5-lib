@@ -76,9 +76,7 @@
     containing a @ContextPageReset</b>.
     
     Please have a look at the demo for a concrete usage.
-    </section>
-    
-    <section>
+   
       <h2>Internationalization : LocaleSession</h2>
         <h3>Presentation</h3>
           This feature allow you to store a language (through Locale) choosen by the user in the user session.<br/>
