@@ -15,7 +15,7 @@
 	<section name="Components">
 		This page displays the component reference of the library.<br/><br/>
 		
-<a href="#accordion">accordion</a><br/><a href="#accordionitem">accordionitem</a><br/><a href="#ajaxloader">ajaxloader</a><br/><a href="#border">border</a><br/><a href="#colorpicker">colorpicker</a><br/><a href="#hideablepanel">hideablepanel</a><br/><a href="#menu">menu</a><br/><a href="#menubar">menubar</a><br/><a href="#menuitem">menuitem</a><br/><a href="#securepassword">securepassword</a><br/><a href="#slider">slider</a><br/><a href="#slideshow">slideshow</a><br/><a href="#slideshowitem">slideshowitem</a><br/><a href="#submenu">submenu</a><br/><a href="#tab">tab</a><br/><a href="#tabview">tabview</a><br/><a href="#tooltip">tooltip</a><br/><a href="#verticalmenu">verticalmenu</a><br/><a href="#verticalmenuitem">verticalmenuitem</a><br/><br/><br/><a name="accordion"> </a><h3>accordion</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Specify the event to use for switching an item from a step to an other. <br/> Allow null : false
+<a href="#accordion">accordion</a><br/><a href="#accordionitem">accordionitem</a><br/><a href="#ajaxloader">ajaxloader</a><br/><a href="#authorize">authorize</a><br/><a href="#border">border</a><br/><a href="#colorpicker">colorpicker</a><br/><a href="#gmap">gmap</a><br/><a href="#gmapmarker">gmapmarker</a><br/><a href="#gmappolypoint">gmappolypoint</a><br/><a href="#hideablepanel">hideablepanel</a><br/><a href="#listsorter">listsorter</a><br/><a href="#menu">menu</a><br/><a href="#menubar">menubar</a><br/><a href="#menuitem">menuitem</a><br/><a href="#securepassword">securepassword</a><br/><a href="#slider">slider</a><br/><a href="#slideshow">slideshow</a><br/><a href="#slideshowitem">slideshowitem</a><br/><a href="#submenu">submenu</a><br/><a href="#tab">tab</a><br/><a href="#tabview">tabview</a><br/><a href="#tooltip">tooltip</a><br/><a href="#verticalmenu">verticalmenu</a><br/><a href="#verticalmenuitem">verticalmenuitem</a><br/><br/><br/><a name="accordion"> </a><h3>accordion</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Specify the event to use for switching an item from a step to an other. <br/> Allow null : false
  <br/> Default prefix : literal
 </td><td>fr.exanpe.t5.lib.constants.AccordionEventTypeEnum</td><td>true</td><td>click</td></tr><tr class="a"><td><b>duration</b></td><td>The duration in seconds of the animation during the accordion opening/closing <br/> Allow null : true
  <br/> Default prefix : literal
@@ -41,13 +41,70 @@
  <br/> Default prefix : message
 </td><td>java.lang.String</td><td>false</td><td>exanpe-ajaxloader-default-message</td></tr><tr class="a"><td><b>showPanel</b></td><td>Decide to show the panel during the ajax load, or not. <br/> Allow null : true
  <br/> Default prefix : literal
-</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr></table><a name="border"> </a><h3>border</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr></table><a name="colorpicker"> </a><h3>colorpicker</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>closeText*</b></td><td>Define the text to close the component. <br/> Allow null : false
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr></table><a name="authorize"> </a><h3>authorize</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>all</b></td><td>Comma separated role values
+ All of these roles are required to allow rendering <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="a"><td><b>any</b></td><td>Comma separated role values
+ Any of these roles are required to allow rendering <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="b"><td><b>block</b></td><td>Block to render authorization. If not provided, the body of the component is rendered. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>org.apache.tapestry5.Block</td><td>false</td><td></td></tr><tr class="a"><td><b>not</b></td><td>Comma separated role values
+ None of these roles are required to allow rendering (if one is present in the session, no
+ rendering) <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="border"> </a><h3>border</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr></table><a name="colorpicker"> </a><h3>colorpicker</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>closeText*</b></td><td>Define the text to close the component. <br/> Allow null : false
  <br/> Default prefix : message
 </td><td>java.lang.String</td><td>true</td><td>literal:Close</td></tr><tr class="a"><td><b>icon</b></td><td>Define the icon to open the color picker. <br/> Allow null : true
  <br/> Default prefix : asset
 </td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/cpk/color_wheel.png</td></tr><tr class="b"><td><b>value</b></td><td>Define the name of the value to set the color in the container. <br/> Allow null : true
  <br/> Default prefix : prop
-</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="hideablepanel"> </a><h3>hideablepanel</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>duration*</b></td><td>Duration of show <br/> Allow null : true
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="gmap"> </a><h3>gmap</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>latitude*</b></td><td>Initial latitude used to center the map. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr><tr class="a"><td><b>longitude*</b></td><td>Initial longitude used to center the map. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr><tr class="b"><td><b>draggable</b></td><td>If false, prevents the map from being dragged. Default value is true. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>true</td></tr><tr class="a"><td><b>mapType</b></td><td>Specify the type of map you want to display. Default is ROADMAP. <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>fr.exanpe.t5.lib.constants.GMapTypeEnum</td><td>false</td><td>ROADMAP</td></tr><tr class="b"><td><b>polyStrokeColor</b></td><td>Used with fr.exanpe.t5.lib.components.GMapPolyPoint component in order to specify the hexadecimal HTML color of
+ a line.
+ Default is black (#000); <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td>#000</td></tr><tr class="a"><td><b>polyStrokeOpacity</b></td><td>Used with fr.exanpe.t5.lib.components.GMapPolyPoint component in order to specify numerical fractional value
+ between 0.0 and 1.0 of the opacity of the line's color.
+ Default is 1.0 <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>float</td><td>false</td><td>1.0</td></tr><tr class="b"><td><b>polyStrokeWeight</b></td><td>Used with fr.exanpe.t5.lib.components.GMapPolyPoint component in order to specify the weight of the line's
+ stroke in pixels.
+ Default is 3. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Integer</td><td>false</td><td>3</td></tr><tr class="a"><td><b>polygon</b></td><td>Used with fr.exanpe.t5.lib.components.GMapPolyPoint component in order to draw a Javascript GMap Polygon instead
+ of a Polyline.
+ Default is false. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="b"><td><b>secure</b></td><td>Loading Google Maps API over HTTPS or not.
+ Default is false. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="a"><td><b>sidebar</b></td><td>If true, displays a side bar with marker links. Default is false. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.Boolean</td><td>false</td><td>false</td></tr><tr class="b"><td><b>zoom</b></td><td>Initial Map zoom level <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.Integer</td><td>false</td><td>15</td></tr></table><a name="gmapmarker"> </a><h3>gmapmarker</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>latitude*</b></td><td>The latitude position of the marker <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr><tr class="a"><td><b>longitude*</b></td><td>The longitude position of the marker <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr><tr class="b"><td><b>icon</b></td><td>Specify the icon of the item <br/> Allow null : true
+ <br/> Default prefix : asset
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td></td></tr><tr class="a"><td><b>info</b></td><td>Info text of the item <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>false</td><td></td></tr><tr class="b"><td><b>title</b></td><td>Specify the title of the item <br/> Allow null : true
+ <br/> Default prefix : message
+</td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="gmappolypoint"> </a><h3>gmappolypoint</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>latitude*</b></td><td>The latitude position of the point <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr><tr class="a"><td><b>longitude*</b></td><td>The longitude position of the point <br/> Allow null : false
+ <br/> Default prefix : literal
+</td><td>java.lang.String</td><td>true</td><td></td></tr></table><a name="hideablepanel"> </a><h3>hideablepanel</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>duration*</b></td><td>Duration of show <br/> Allow null : true
  <br/> Default prefix : literal
 </td><td>float</td><td>true</td><td>1.0</td></tr><tr class="a"><td><b>hideWidth*</b></td><td>Width in pixel for the hideable panel <br/> Allow null : true
  <br/> Default prefix : literal
@@ -59,7 +116,15 @@
  <br/> Default prefix : asset
 </td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/hide.png</td></tr><tr class="a"><td><b>showImg</b></td><td>Image displayed to show the panel <br/> Allow null : true
  <br/> Default prefix : asset
-</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/show.png</td></tr></table><a name="menu"> </a><h3>menu</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>targetHtmlId</b></td><td>Defines an HTML id where the menu should be opened next to.
+</td><td>org.apache.tapestry5.Asset</td><td>false</td><td>img/hdp/show.png</td></tr></table><a name="listsorter"> </a><h3>listsorter</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>source*</b></td><td>Source list parameter. <br/> Allow null : false
+ <br/> Default prefix : prop
+</td><td>java.util.List</td><td>true</td><td></td></tr><tr class="a"><td><b>useDefaultSkin*</b></td><td>Whether to use a default skin for the list sorter. True by default. Turn to false to design
+ each element your own way. <br/> Allow null : true
+ <br/> Default prefix : literal
+</td><td>boolean</td><td>true</td><td>true</td></tr><tr class="b"><td><b>value*</b></td><td>Value to iterate over. Mainly used to bind to a property of the page, then design the list
+ content. <br/> Allow null : true
+ <br/> Default prefix : prop
+</td><td>java.lang.Object</td><td>true</td><td></td></tr></table><a name="menu"> </a><h3>menu</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>targetHtmlId</b></td><td>Defines an HTML id where the menu should be opened next to.
  The top left corner of the menu will be bound to the bottom right html element provided. <br/> Allow null : true
  <br/> Default prefix : literal
 </td><td>java.lang.String</td><td>false</td><td></td></tr></table><a name="menubar"> </a><h3>menubar</h3><table width="100" border="1"><tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr><tr class="b"><td><b>eventType*</b></td><td>Defines the event triggering the menu. <br/> Allow null : false
