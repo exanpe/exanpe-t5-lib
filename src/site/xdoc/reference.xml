@@ -385,6 +385,44 @@
             <td></td>
           </tr>
         </table>
+        
+        <h3>authorizemixin</h3>
+        <table width="100" border="1">
+          <tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
+          <tr class="b">
+            <td>
+              <b>any</b>
+            </td>
+            <td>Comma separated role values. Any of these roles are required to allow rendering<br/>
+              <br/> Default prefix : literal
+            </td>
+            <td>java.lang.String</td>
+            <td>false</td>
+            <td></td>
+          </tr>
+          <tr class="a">
+            <td>
+              <b>all</b>
+            </td>
+            <td>Comma separated role values. All of these roles are required to allow rendering<br/>
+              <br/> Default prefix : literal
+            </td>
+            <td>java.lang.String</td>
+            <td>false</td>
+            <td></td>
+          </tr>
+          <tr class="b">
+            <td>
+              <b>not</b>
+            </td>
+            <td>Comma separated role values. None of these roles are required to allow rendering (if one is present in the session, no rendering)<br/>
+              <br/> Default prefix : literal
+            </td>
+            <td>java.lang.String</td>
+            <td>false</td>
+            <td></td>
+          </tr>
+        </table>
      </section>
      
   </body>
