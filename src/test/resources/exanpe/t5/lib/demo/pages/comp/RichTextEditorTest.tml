@@ -11,7 +11,7 @@
 	</style> 	
  	
  	<t:form>
-	 	<t:textarea t:id="richContent" value="richContent" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor" t:messages="messages" t:exclude="insertorderedlist">
+	 	<t:textarea t:id="richContent" value="richContent" t:mixins="exanpe/RichTextEditor" t:title="literal:Rich Text Editor" t:messages="messages" t:exclude="insertorderedlist" t:height="150">
 	 	</t:textarea>
 
 	 	<br />

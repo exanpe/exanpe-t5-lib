@@ -343,6 +343,115 @@
 			</tr>			
 		</table>		
 		
+		<h3>richtexteditor</h3>
+		<table width="100" border="1">
+			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
+			<tr class="b">
+				<td>
+					<b>title</b>
+				</td>
+				<td>Rich Text Editor title
+ 					<br/> Default prefix : message
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td></td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>collapse</b>
+				</td>
+				<td>Indicating if the the toolbar should have a collapse button or not.
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Boolean</td>
+				<td>false</td>
+				<td>true</td>
+			</tr>
+			<tr class="b">
+				<td>
+					<b>width</b>
+				</td>
+				<td>Width of the textarea
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Integer</td>
+				<td>false</td>
+				<td>500</td>
+			</tr>	
+			<tr class="a">
+				<td>
+					<b>height</b>
+				</td>
+				<td>Height of the textarea
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Integer</td>
+				<td>false</td>
+				<td>300</td>
+			</tr>
+			<tr class="b">
+				<td>
+					<b>include</b>
+				</td>
+				<td>A comma-separated list of button names to be retained.<br />
+                    The names are case-insensitive.
+     				<p>Available names are : <br />
+                           bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+                           insertunorderedlist, insertorderedlist, heading, forecolor, backcolor and separator.</p>
+				    <br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td></td>
+			</tr>
+			<tr class="a">
+				<td>
+					<b>exclude</b>
+				</td>
+				<td>
+     				A comma-separated list of button names to be removed from the default editor toolbar.<br />
+     				The names are case-insensitive.
+     				<p>Available names are : <br />
+     					bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     					insertunorderedlist, insertorderedlist, heading, forecolor, backcolor.</p>
+				    <br/> Allow null : false
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.String</td>
+				<td>false</td>
+				<td></td>
+			</tr>	
+			<tr class="b">
+				<td>
+					<b>autofocus</b>
+				</td>
+				<td>Should we focus the textarea when the content is ready.
+ 					<br/> Default prefix : literal
+				</td>
+				<td>java.lang.Boolean</td>
+				<td>false</td>
+				<td>true</td>
+			</tr>			
+			<tr class="a">
+				<td>
+					<b>exclude</b>
+				</td>
+				<td>
+    				Used to override the default message catalog.<br />
+     				<p>Available label keys are : <br />
+     					bold, italic, underline, justifyleft, justifycenter, justifyright, createlink, undo, redo,
+     					insertunorderedlist, insertorderedlist, heading, none, h1, h2, h3, h4, h5, h6, forecolor,
+     					backcolor.<br /></p>
+ 					<br/> Default prefix : literal
+				</td>
+				<td>org.apache.tapestry5.ioc.Messages</td>
+				<td>false</td>
+				<td>componentResources.messages</td>
+			</tr>				
+		</table>		
+		
 		<h3>selectloader</h3>
 		<table width="100" border="1">
 			<tr class="a"><th>Name</th><th>Description</th><th>Type</th><th>Required</th><th>Default value</th></tr>
