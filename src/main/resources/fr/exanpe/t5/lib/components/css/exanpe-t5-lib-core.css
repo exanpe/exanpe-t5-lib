@@ -685,6 +685,14 @@ table.hidden {
     padding: 0;
 }
 
+.exanpe-lst-li {
+	list-style: none outside none;
+}
+
+.exanpe-lst-skin {
+	
+}
+
 /**
  * Google Map
  */
