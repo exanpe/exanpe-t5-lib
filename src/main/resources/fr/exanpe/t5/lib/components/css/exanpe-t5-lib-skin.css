@@ -911,60 +911,49 @@
 /**
  * Google Map
  */
+ 
+ /** Map container */
 .exanpe-gmap .exanpe-gmap-map {
 	height: 500px;
 	width: 500px;	
 }
 
+/** GMap sidebar */
 .exanpe-gmap .exanpe-gmap-sidebar {
 	width: 300px;
 	margin-left: 20px;
 }
-
 .exanpe-gmap .exanpe-gmap-sidebar span {
 	cursor: pointer;	
 }
 
 /**
  * List Sorter
- * ul / li contains free user content. Cannot target global ul and li tags for classes
+ * ul / li contains free user content. 
+ * Cannot target global ul and li tags for classes
  */
-.exanpe-lst {
-	
-}
 
-/**
- * global container class
- */
-.exanpe-lst-ul {
-	list-style: none outside none;
-	margin: 0;
-    padding: 0;
-}
-
-/**
- * each element class
- */
-.exanpe-lst-li {
-	list-style: none outside none;
-	cursor:pointer;
-}
-
-.exanpe-lst-skin{
-	
-}
-
-.exanpe-lst-skin .exanpe-lst-ul{
-	border:1px solid black;
+/** Container skin */ 
+.exanpe-lst-skin .exanpe-lst-ul {
+	border: 1px solid #cccccc;
 	padding-left : 5px;
 	padding-right : 5px;
 	padding-top : 5px;
 }
 
-.exanpe-lst-skin .exanpe-lst-li{
+/** Each list element */
+.exanpe-lst-skin .exanpe-lst-li {
 	border:1px dotted #808080;
 	margin-bottom : 5px;
 	padding:3px;
+	cursor:pointer;
+	background-color: #F6F6F6;
+	color: #555555;
+}
+
+/** List element, on mouse hover */
+.exanpe-lst-li:HOVER {
+	background-color: #E2E2E2;
 }
 
 /**

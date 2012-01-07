@@ -59,13 +59,13 @@ public class RichTextEditor
      * Width of the textarea
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "500")
-    private String width;
+    private Integer width;
 
     /**
      * Height of the textarea
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL, value = "300")
-    private String height;
+    private Integer height;
 
     /**
      * A comma-separated list of button names to be retained.<br />

@@ -3280,7 +3280,7 @@ if(YAHOO && YAHOO.util && YAHOO.util.DDProxy){
 	
 	        YAHOO.util.Dom.setStyle(dragEl, "color", YAHOO.util.Dom.getStyle(clickEl, "color"));
 	        YAHOO.util.Dom.setStyle(dragEl, "backgroundColor", YAHOO.util.Dom.getStyle(clickEl, "backgroundColor"));
-	        YAHOO.util.Dom.setStyle(dragEl, "border", "2px solid gray");
+	        YAHOO.util.Dom.setStyle(dragEl, "border", "2px solid #808080");
 	    },
 	
 	    endDrag: function(e) {
