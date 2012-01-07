@@ -594,6 +594,11 @@ table.hidden {
 	margin: 0;	
 }
 
+/** bug fix for context menu **/
+.exanpe-menu .yuimenu.yui-module.yui-overlay {
+	position : absolute;
+}
+
 .exanpe-menu .yuimenu .bd {
 	*zoom: 1;
 	_zoom: normal;

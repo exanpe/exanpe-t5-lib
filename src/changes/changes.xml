@@ -6,6 +6,9 @@
   </properties>
   <body>
     <release version="1.2.0" date="2012-01-09" description="Third release">
+      <action dev="jmaupoux" type="fix">
+        Fixed Contextual Menu position
+      </action>
       <action dev="lguerin" type="add">
         Added RichTextEditor mixin
       </action>
