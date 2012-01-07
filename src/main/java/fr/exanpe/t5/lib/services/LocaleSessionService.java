@@ -10,6 +10,7 @@ import fr.exanpe.t5.lib.internal.localesession.LocaleSessionRequestFilter;
  * Note that your Locale have to be defined as a contribution of SymbolConstants#SUPPORTED_LOCALES
  * 
  * @author jmaupoux
+ * @since 1.2
  */
 public interface LocaleSessionService
 {

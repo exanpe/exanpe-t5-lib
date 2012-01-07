@@ -19,6 +19,7 @@ import fr.exanpe.t5.lib.constants.ExanpeSymbols;
  * {@link ExanpeSymbols#CONTEXT_PAGE_RESET_MARKER} context.<br/>
  * 
  * @author jmaupoux
+ * @since 1.2
  */
 public class ContextPageResetFilter implements ComponentRequestFilter
 {

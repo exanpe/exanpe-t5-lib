@@ -1,11 +1,11 @@
 package fr.exanpe.t5.lib.services;
 
-
 /**
  * This interface defines the services offered to all the library authorization elements
  * (component/mixin/worker).
  * 
  * @author jmaupoux
+ * @since 1.2
  */
 public interface AuthorizeBusinessService
 {

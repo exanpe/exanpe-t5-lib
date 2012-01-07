@@ -8,7 +8,6 @@ import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.services.LocalizationSetter;
 import org.apache.tapestry5.services.PageRenderRequestParameters;
-import org.apache.tapestry5.services.RequestGlobals;
 
 import fr.exanpe.t5.lib.services.LocaleSessionService;
 
@@ -17,6 +16,7 @@ import fr.exanpe.t5.lib.services.LocaleSessionService;
  * 
  * @see LocaleSessionService to initialize your locale
  * @author jmaupoux
+ * @since 1.2
  */
 public class LocaleSessionRequestFilter implements ComponentRequestFilter
 {

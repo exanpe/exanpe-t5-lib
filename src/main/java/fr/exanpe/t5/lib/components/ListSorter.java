@@ -41,6 +41,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * as any form component.
  * 
  * @author jmaupoux
+ * @since 1.2
  * @param <T> the type of elements
  */
 @Import(library =
