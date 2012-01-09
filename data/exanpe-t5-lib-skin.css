@@ -215,9 +215,9 @@
 
 /** Root class **/
 .exanpe-acc {
-	border-top: 1px solid #CCCCCC;
 	border-left: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
 }
 
 /** Accordion header containing title **/
@@ -229,6 +229,7 @@
     padding-left: 10px;
     font-weight: bold;
     color : #909090;
+    border-top: 1px solid #CCCCCC;
 }
 
 /** Accordion item title **/
@@ -236,13 +237,12 @@
 	background: #E2E2E2 url("../img/acc/accordion-title.png") repeat-x;
     font-size: 85%;
     font-weight: bold;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 /** Accordion item content **/
 .exanpe-acc .acc-content {
 	background: #F6F6F6;
-    border-bottom: 1px solid #CCCCCC;
     color: #555555;
     line-height: 25px;
     font-size: 12px;
@@ -252,6 +252,11 @@
 .exanpe-acc ul li .acc-title a {
 	color: #909090;
 	text-decoration: none;
+	border-top: 1px solid #CCCCCC;
+}
+
+.exanpe-acc ul li.opened .acc-title{
+	border-bottom: 1px solid #CCCCCC;
 }
 
 /** Accordion item title link, when opened **/
@@ -729,8 +734,12 @@
 
 /** Indicates the presence of submenu for the menubar. */
 .exanpe-menu .yuimenubaritemlabel-hassubmenu {
+
+}
+
+/** Indicates the presence of submenu for the menubar. */
+.exanpe-menu .yuimenubaritem-hassubmenu {
 	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat;
-	padding-right: 20px;
 	cursor: pointer;
 }
 
@@ -738,6 +747,10 @@
 .exanpe-menu .yuimenubaritem-selected {
 	background: #E2E2E2;
 	cursor: pointer;	
+}
+
+.exanpe-menu .yuimenubaritem-selected.yuimenubaritem-hassubmenu-selected {
+	background: url("../img/menu/menubaritem-hassubmenu.png") 100% center no-repeat #E2E2E2;	
 }
 
 /** Styles for submenus */
@@ -894,3 +907,226 @@
 	line-height: 20px;
 	display: inline-block;
 }
+
+/**
+ * Google Map
+ */
+ 
+ /** Map container */
+.exanpe-gmap .exanpe-gmap-map {
+	height: 500px;
+	width: 500px;	
+}
+
+/** GMap sidebar */
+.exanpe-gmap .exanpe-gmap-sidebar {
+	width: 300px;
+	margin-left: 20px;
+}
+.exanpe-gmap .exanpe-gmap-sidebar span {
+	cursor: pointer;	
+}
+
+/**
+ * List Sorter
+ * ul / li contains free user content. 
+ * Cannot target global ul and li tags for classes
+ */
+
+/** Container skin */ 
+.exanpe-lst-skin .exanpe-lst-ul {
+	border: 1px solid #cccccc;
+	padding-left : 5px;
+	padding-right : 5px;
+	padding-top : 5px;
+}
+
+/** Each list element */
+.exanpe-lst-skin .exanpe-lst-li {
+	border:1px dotted #808080;
+	margin-bottom : 5px;
+	padding:3px;
+	cursor:pointer;
+	background-color: #F6F6F6;
+	color: #555555;
+}
+
+/** List element, on mouse hover */
+.exanpe-lst-li:HOVER {
+	background-color: #E2E2E2;
+}
+
+/**
+ * Rich Text Editor
+ */
+/* RTE container */
+.exanpe-rte .yui-skin-sam .yui-editor-container {
+    border: 1px solid #CCCCCC;
+} 
+ 
+/* Load the background image on the Toolbars titlebar */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar {
+    background: url("../img/rte/editor-bg.png") repeat-x;
+    height: 25px;
+    line-height: 25px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 {
+	padding: 0;
+	padding-left: 15px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar h2 a {
+	color: #555555;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/* Rich Text Editor Toolbar content */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-subcont {
+    border-bottom: 1px solid #CCCCCC;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container {
+    background-color: #F6F6F6;
+}
+
+/* Set the image for the collapse button on the toolbar */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .collapse {
+    background: url('../img/rte/open.png') no-repeat 0px 0px;
+}
+/* Set the image for the collapse button on the toolbar */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .collapsed {
+    background: url('../img/rte/closed.png') no-repeat 0px 0px;
+}
+
+/* Position the image for the collapse button */
+.yui-skin-sam .yui-toolbar-container .yui-toolbar-titlebar span.collapse {
+	right: 5px;
+}
+
+/* Set the default styles for the buttons */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button {
+    background: #E2E2E2;
+    border: 1px solid #CCCCCC;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button .first-child, 
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button .first-child, 
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button .first-child {
+	border: 0;
+}	
+
+/* Toolbar buttons group */
+.exanpe-rte .yui-toolbar-container .yui-toolbar-group:after {
+	padding-bottom: 3px;
+}
+
+/* Handle the hover state of the buttons */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-hover {
+    background: #CCCCCC;
+    border-color: #808080;
+}
+
+/* Handle the selected state of the buttons */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-selected {
+    background: #CCCCCC;
+    border-color: #808080;
+}
+
+/* Handle the icon placeholder for the buttons
+    This is very important - position of this must be absolute.
+    If it is not positioned absolute, IE will place it over the a in the Toolbar
+    Doing this will cause the editor to loose focus and loose the selection.
+*/
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-push-button span.yui-toolbar-icon,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-color-button span.yui-toolbar-icon,
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-menu-button span.yui-toolbar-icon {
+    background-image: url('../img/rte/editor-sprite.gif');
+}
+
+
+/* Swap out the image to an active image */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-selected span.yui-toolbar-icon, 
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-hover span.yui-toolbar-icon {
+    background-image: url('../img/rte/editor-sprite-active.gif');
+}
+
+/* Spin Buttons - Prep the arrows */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.down {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1188px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-spinbutton a.up {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1222px;
+}
+
+/* Set the icon of the select menu for the drop down arrow */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-select span.yui-toolbar-icon {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1144px;
+}
+
+/* Setup the background image on the title bar
+    We are styling the h3 instead if the div so we can make room
+    for the "knob" that floats on the top of the window.
+*/
+.exanpe-rte .yui-skin-sam .yui-editor-panel .hd h3 {
+    background: url("../img/rte/editor-bg.png") repeat-x;
+    color: #555555;
+    font-size: 93%;
+    font-weight: bold;
+}
+
+/* Form styling */
+.yui-skin-sam .yui-editor-panel label strong {
+	text-align: left;
+	padding-left: 5px;	
+}
+
+/* Style the close button in the Property Editor */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .hd span.close {
+    background: url("../img/common/exanpe-sprite.png") no-repeat scroll 0 -35px;
+}
+
+/* Setup the icon for a tip */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .ft span.tip span.icon {
+    background: url('../img/rte/editor-sprite.gif') no-repeat 0 -1260px;
+}
+
+/* Toolbar submenus */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-button-menu {
+    background-color: #F6F6F6;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    width: 93px;
+}
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .visible .yuimenuitemlabel {
+	text-decoration: none;
+	padding-left: 5px;
+	font-size: 12px;	
+}
+.exanpe-rte .yui-skin-sam .yuimenuitemlabel-selected {
+	background-color: #E2E2E2;
+}
+
+/* This image is the one used to place the blankimage placeholder into the editor when you click on Insert an Image */
+.yui-editor-blankimage {
+    background-image: url('../img/rte/blankimage.png');
+}
+
+/* Handle the knob that floats on top of the panel */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .hd span.knob {
+	background: url('../img/rte/editor-knob.gif') no-repeat 0 0;
+}
+
+/* Header Drop Down */
+.exanpe-rte .yui-skin-sam .yui-toolbar-container .yui-toolbar-heading {
+	width: 94px!important;
+	width: 102px;
+}
+
+/* The remove link in the Link Property Editor */
+.exanpe-rte .yui-skin-sam .yui-editor-panel .removelink {
+	clear: both;
+}	

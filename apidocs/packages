@@ -1,5 +1,13 @@
+fr.exanpe.t5.lib.annotation
+fr.exanpe.t5.lib.base
 fr.exanpe.t5.lib.components
 fr.exanpe.t5.lib.constants
+fr.exanpe.t5.lib.exception
+fr.exanpe.t5.lib.internal.authorize
+fr.exanpe.t5.lib.internal.contextpagereset
+fr.exanpe.t5.lib.internal.localesession
 fr.exanpe.t5.lib.mixins
 fr.exanpe.t5.lib.model
+fr.exanpe.t5.lib.model.gmap
 fr.exanpe.t5.lib.services
+fr.exanpe.t5.lib.services.impl
