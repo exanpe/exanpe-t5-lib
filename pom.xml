@@ -12,7 +12,7 @@
 	<description>Enhanced components, services and utilities for Tapestry 5</description>
 
 	<scm>
-		<connection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</connection>
+		<connection>scm:git:git@gitproxy:exanpe/exanpe-t5-lib.git</connection>
 		<developerConnection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</developerConnection>
 		<url>https://github.com/exanpe/exanpe-t5-lib</url>
 	</scm>
