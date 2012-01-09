@@ -12,7 +12,7 @@ Easy to use and to integrate, this library target the real needs of any web appl
 The library is fully :
 
   - Integrated with Maven 2
-  - Fully compatible with Tapestry 5.2.6 and 5.3+
+  - Fully compatible with Tapestry 5.2+ and 5.3+
 
 The following components are currently available in the library :
 
@@ -21,7 +21,7 @@ The following components are currently available in the library :
   - Authorize : Manage authorizations based on user's roles
   - Border : A simple skinned border
   - ColorPicker : Choose a Color and get it easily on the server side
-  - GoogleMap : Show a GoogleMap and some points of interest
+  - GoogleMap : Show a GoogleMap and some points of interest, polylines or polygons
   - HideablePanel : Show/Hide a left side Panel
   - ListSorter : Sort a list of data using drag and drop
   - MenuBar and Menu components : Add one basic Menu bar or one multi level Horizontal Menu to you website
