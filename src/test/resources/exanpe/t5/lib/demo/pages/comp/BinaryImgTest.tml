@@ -1,0 +1,8 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+  
+  	<ex:binaryImg inputStream="stream" contentType="image/jpeg" style="border:1px solid red"/>
+  
+    <br/><hr/><br/>
+  	    
+</t:layout>
