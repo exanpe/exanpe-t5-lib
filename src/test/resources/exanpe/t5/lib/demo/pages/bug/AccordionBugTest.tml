@@ -42,8 +42,8 @@
   	</style>
   
   	<ex:accordion t:id="accordion" t:title="literal:Title" class="ex-accordion" duration="0.2">
-        <ex:accordionItem title="literal:title1" content="literal:content1" opened="true"/>
-        <ex:accordionItem title="literal:title2">
+        <ex:accordionItem title="literal:title1" content="literal:content1"/>
+        <ex:accordionItem title="literal:title2" opened="true">
 
             <form>
                 <table class="styled full">
