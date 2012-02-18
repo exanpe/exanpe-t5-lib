@@ -10,5 +10,9 @@
   	<ex:binaryImg inputStream="bytestream" contentType="image/png" style="border:1px solid red"/>
   
     <br/><hr/><br/>
-  	    
+  	   
+  	Error : 
+  	<ex:binaryImg inputStream="errorstream" contentType="image/png" style="border:1px solid red"/>
+  
+    <br/><hr/><br/>
 </t:layout>

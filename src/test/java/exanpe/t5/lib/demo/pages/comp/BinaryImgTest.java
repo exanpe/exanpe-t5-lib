@@ -17,6 +17,7 @@
 package exanpe.t5.lib.demo.pages.comp;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.tapestry5.PersistenceConstants;
@@ -62,11 +63,18 @@ public class BinaryImgTest
     @Persist(PersistenceConstants.FLASH)
     private InputStream bytestream;
 
+    @Property
+    @Persist(PersistenceConstants.FLASH)
+    private InputStream errorstream;
+
     @SetupRender
-    void init()
+    void init() throws IOException
     {
         filestream = Thread.currentThread().getContextClassLoader().getResourceAsStream("exanpe/t5/lib/demo/img/images.jpg");
 
         bytestream = new ByteArrayInputStream(ICON);
+
+        errorstream = Thread.currentThread().getContextClassLoader().getResourceAsStream("exanpe/t5/lib/demo/img/images.jpg");
+        errorstream.close();
     }
 }
