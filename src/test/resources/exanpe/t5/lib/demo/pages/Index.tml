@@ -26,6 +26,7 @@
     <li><t:pagelink page="comp/ContextPageResetTest">ContextPageReset</t:pagelink></li>
     <li><t:pagelink page="comp/LocaleSessionTest">LocaleSession</t:pagelink></li>
     <li><t:pagelink page="comp/BinaryImgTest">BinaryImg</t:pagelink></li>
+    <li><t:pagelink page="comp/ResizableTest">Resizable</t:pagelink></li>
   </ul>
   <hr/>
   <ul>

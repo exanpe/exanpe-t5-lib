@@ -1,0 +1,27 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter"
+	xmlns:ex="tapestry-library:exanpe">
+	
+  <style type="text/css">
+  	.panel{
+	  	width:400px;
+	  	height:200px;
+	  	border:2px solid gray;
+  	}
+  </style>
+  
+	  <div t:type="any" t:mixins="exanpe/Resizable" class="panel">
+		HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO 
+		HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO vvvvHELLO HELLO 
+		HELLO     
+	  </div>
+	  
+	  <div t:id="runtime" t:type="any" t:mixins="exanpe/Resizable" t:alwaysVisible="false" class="panel">
+	  	HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO 
+		HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO HELLO vvvvHELLO HELLO 
+		HELLO
+	  </div>
+  		<button onclick="Exanpe.Resizable.runtime.destroy()">
+  			Destroy 2ns resizer
+  		</button>
+  
+</t:layout>

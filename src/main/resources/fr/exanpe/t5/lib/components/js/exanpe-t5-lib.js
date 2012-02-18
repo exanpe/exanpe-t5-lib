@@ -3692,3 +3692,26 @@ Tapestry.Initializer.richTextEditorBuilder = function(data){
 	rte._init();
 	window[data.id] = rte;
 };
+
+/**
+ * Registry containing all resizer for runtime manipulation.
+ * A YUI resizer instance can be accessed with its id using the code Exanpe.Resizable.${id}.<br/>
+ * Example : Exanpe.Resizable.myResizer.destroy().
+ * @see YUI 2.9 doc
+ * @static
+ */
+Exanpe.Resizable = {};
+
+/**
+ * Initializes the Resizeable mixin on DOM load
+ * @param {Object} data the json data coming from Java class initialization
+ * @private
+ * @static
+ */
+Tapestry.Initializer.resizableBuilder = function(data){
+	Exanpe.Resizable[data.id] = new YAHOO.util.Resize(data.id, {
+		handles : data.sides,
+		hover : !data.alwaysVisible
+	}); 
+	YAHOO.util.Dom.get(data.id).style.overflow = "hidden";
+};

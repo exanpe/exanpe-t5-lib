@@ -23,6 +23,7 @@ import fr.exanpe.t5.lib.internal.InputStreamResponse;
  * We strongly encourage a {@link ByteArrayInputStream} as parameter.
  * 
  * @author jmaupoux
+ * @since 1.3
  */
 @SupportsInformalParameters
 public class BinaryImg
