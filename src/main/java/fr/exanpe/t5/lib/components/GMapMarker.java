@@ -89,7 +89,7 @@ public class GMapMarker implements ClientElement
      */
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private RenderCommand info;
-    
+
     private String infoMarkup;
 
     /**
@@ -138,24 +138,27 @@ public class GMapMarker implements ClientElement
     @SetupRender
     Object setupRender(MarkupWriter writer)
     {
-    	if (info != null) {
-    		// create a wrapper div to render the info RenderCommand
-    		// this will be removed from the DOM after render and will
-    		// be used to initialise the gmap marker in javascript
-    		writer.element("div");
-    		return info;
-    	}
-    	return true;
+        if (info != null)
+        {
+            // create a wrapper div to render the info RenderCommand
+            // this will be removed from the DOM after render and will
+            // be used to initialise the gmap marker in javascript
+            writer.element("div");
+            return info;
+        }
+        return true;
     }
-    
+
     @AfterRender
-    void afterRender(MarkupWriter writer) {
-    	if (info != null) {
-    		Element wrapper = writer.getElement();
-    		writer.end();
-    		infoMarkup = wrapper.getChildMarkup();
-    		wrapper.remove();
-    	}
+    void afterRender(MarkupWriter writer)
+    {
+        if (info != null)
+        {
+            Element wrapper = writer.getElement();
+            writer.end();
+            infoMarkup = wrapper.getChildMarkup();
+            wrapper.remove();
+        }
         uniqueId = javaScriptSupport.allocateClientId(resources);
 
         consolidateFromId();
