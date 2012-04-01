@@ -5,7 +5,11 @@
     	Cliquez sur les liens suivants :
     	<ex:gmapMarker t:id="metro" latitude="48.867781" longitude="2.313982" />
     	<ex:gmapMarker title="la-duree-title" latitude="48.870812" longitude="2.303081" info="Les meilleurs macarons de Paris" />
-    	<ex:gmapMarker title="literal:Tour Eiffel" icon="context:img/gmap/tour-eiffel.png" latitude="48.8577" longitude="2.295" info="message:tour-eiffel-info" />
+    	<ex:gmapMarker title="literal:Tour Eiffel" icon="context:img/gmap/tour-eiffel.png" latitude="48.8577" longitude="2.295">
+	    	<p:info>
+	    		<t:outputraw value="message:tour-eiffel-info"/>
+	        </p:info>
+       	</ex:gmapMarker>
     </ex:gmap>
 
     <br />
