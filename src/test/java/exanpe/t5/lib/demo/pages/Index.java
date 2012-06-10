@@ -16,6 +16,13 @@
 
 package exanpe.t5.lib.demo.pages;
 
+import org.apache.tapestry5.Link;
+import org.apache.tapestry5.annotations.OnEvent;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.PageRenderLinkSource;
+
+import exanpe.t5.lib.demo.pages.comp.PasswordStrengthCheckerTest;
+
 /**
  * Default index page for all the tests.
  * 
@@ -23,5 +30,14 @@ package exanpe.t5.lib.demo.pages;
  */
 public class Index
 {
+    @Inject
+    private PageRenderLinkSource pageRender;
 
+    @OnEvent(value = "passwordStrengthCheckerTest")
+    Object goToPasswordStrengthCheckerTestPage()
+    {
+        Link link = pageRender.createPageRenderLink(PasswordStrengthCheckerTest.class);
+        link.addParameter("param1", "test");
+        return link;
+    }
 }
