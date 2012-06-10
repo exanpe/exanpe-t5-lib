@@ -19,6 +19,8 @@
  */
 package exanpe.t5.lib.demo.pages.comp;
 
+import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.annotations.ActivationRequestParameter;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
@@ -35,6 +37,9 @@ import fr.exanpe.t5.lib.mixins.PasswordStrengthChecker;
 @Import(library = "PasswordStrengthCheckerTest.js")
 public class PasswordStrengthCheckerTest
 {
+    @ActivationRequestParameter("param1")
+    private String param1;
+
     @Property
     private String pwd;
 
@@ -43,6 +48,12 @@ public class PasswordStrengthCheckerTest
 
     @Property
     private String password;
+
+    @OnEvent(value = EventConstants.ACTIVATE)
+    void init()
+    {
+        System.out.println("Activation request param: " + param1);
+    }
 
     @OnEvent(value = ExanpeEventConstants.PASSWORDSTRENGTHCHECKER_EVENT)
     PasswordStrengthCheckerTypeEnum checkPassword(String pwd)

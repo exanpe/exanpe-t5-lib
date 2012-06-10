@@ -38,6 +38,30 @@ Exanpe.Log.error = function(message){
 	}
 };
 
+/**
+ * Utility class.
+ * @class Allow the framework to factorize common functions.
+ * @static
+ */
+Exanpe.Utils = {};
+
+
+/**
+ * Add a Query parameter to a given url
+ * @param {String} url the url to handle
+ * @param {String} param the query param name to add
+ * @param {String} value the query param value
+ * @return {String} the url with the added query parameter.
+ * @static
+ */
+Exanpe.Utils.addQueryParam = function(url, param, value) {
+	var separator = "?";
+	if (url.indexOf(separator) > 0) {
+		separator = "&";
+	}
+	return (url + separator + param + "=" + value);
+};
+
 /** Accordion */
 
 /** 
@@ -814,7 +838,7 @@ Exanpe.Slider.prototype._ajaxSliderUpdate = function (){
 
 	var request = YAHOO.util.Connect.asyncRequest(
 			"GET",
-			this.url + "?" + Exanpe.Slider.PARAM_NAME + "=" + this.value, 
+			Exanpe.Utils.addQueryParam(this.url, Exanpe.Slider.PARAM_NAME, this.value),
 			callback, 
 			null
 	);
@@ -2015,7 +2039,7 @@ Exanpe.SelectLoader.prototype.executeRequest = function (value){
 	
 	this.request = YAHOO.util.Connect.asyncRequest(
 		"GET",
-		this.url+"?"+Exanpe.SelectLoader.PARAM_NAME+"="+value, 
+		Exanpe.Utils.addQueryParam(this.url, Exanpe.SelectLoader.PARAM_NAME, value),
 		callback, 
 		null
 	);
@@ -2427,7 +2451,7 @@ Exanpe.PasswordStrengthChecker.prototype._ajaxChecker = function (password){
 
 	var request = YAHOO.util.Connect.asyncRequest(
 			"GET",
-			this.url + "?" + Exanpe.PasswordStrengthChecker.PARAM_NAME + "=" + password, 
+			Exanpe.Utils.addQueryParam(this.url, Exanpe.PasswordStrengthChecker.PARAM_NAME, password),
 			callback, 
 			null
 	);
@@ -2619,7 +2643,7 @@ Exanpe.AjaxValidation.prototype.validate = function(){
 
 	var request = YAHOO.util.Connect.asyncRequest(
 			"GET",
-			this.url + "?" + Exanpe.AjaxValidation.PARAM_NAME + "=" + YAHOO.util.Dom.get(this.id).value, 
+			Exanpe.Utils.addQueryParam(this.url, Exanpe.AjaxValidation.PARAM_NAME, YAHOO.util.Dom.get(this.id).value),
 			callback, 
 			null
 	);
@@ -3130,7 +3154,7 @@ Exanpe.ListSorter.prototype.save = function(){
 
 	var request = YAHOO.util.Connect.asyncRequest(
 			"GET",
-			this.urlSave + "?" + Exanpe.ListSorter.PARAM_NEW_ORDER + "=" + this.defaultStringify(order), 
+			Exanpe.Utils.addQueryParam(this.urlSave, Exanpe.ListSorter.PARAM_NEW_ORDER, this.defaultStringify(order)),
 			callback, 
 			null
 	);
