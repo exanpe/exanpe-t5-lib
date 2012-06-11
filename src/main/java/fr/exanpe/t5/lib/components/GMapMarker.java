@@ -85,7 +85,9 @@ public class GMapMarker implements ClientElement
      */
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String info;
+    private RenderCommand info;
+
+    private String infoMarkup;
 
     /**
      * title suffix
@@ -133,6 +135,27 @@ public class GMapMarker implements ClientElement
     @SetupRender
     void init()
     {
+        if (info != null)
+        {
+            // create a wrapper div to render the info RenderCommand
+            // this will be removed from the DOM after render and will
+            // be used to initialise the gmap marker in javascript
+            writer.element("div");
+            return info;
+        }
+        return true;
+    }
+
+    @AfterRender
+    void afterRender(MarkupWriter writer)
+    {
+        if (info != null)
+        {
+            Element wrapper = writer.getElement();
+            writer.end();
+            infoMarkup = wrapper.getChildMarkup();
+            wrapper.remove();
+        }
         uniqueId = javaScriptSupport.allocateClientId(resources);
 
         consolidateFromId();
@@ -148,7 +171,7 @@ public class GMapMarker implements ClientElement
         model.setIcon(icon);
         model.setLatitude(latitude);
         model.setLongitude(longitude);
-        model.setInfo(info);
+        model.setInfo(infoMarkup);
 
         gmapModel.addMarker(model);
         log.debug("Registering Google map marker id: {}", getClientId());
@@ -173,7 +196,7 @@ public class GMapMarker implements ClientElement
             }
         }
 
-        if (StringUtils.isEmpty(info))
+        if (StringUtils.isEmpty(infoMarkup))
         {
             String infoKey = getClientId() + INFO_SUFFIX;
             String message = exanpeService.getEscaladeMessage(resources, infoKey);
@@ -182,7 +205,7 @@ public class GMapMarker implements ClientElement
 
             if (StringUtils.isNotEmpty(message))
             {
-                this.info = message;
+                this.infoMarkup = message;
             }
             else
             {
