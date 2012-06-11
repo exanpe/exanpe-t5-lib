@@ -21,16 +21,21 @@ import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.MarkupWriter;
+import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SetupRender;
+import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.runtime.RenderCommand;
 import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.services.Environment;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.slf4j.Logger;
 
 import fr.exanpe.t5.lib.model.GMapInternalModel;
+
 import fr.exanpe.t5.lib.model.gmap.GMapMarkerModel;
 import fr.exanpe.t5.lib.services.ExanpeComponentService;
 
@@ -133,7 +138,7 @@ public class GMapMarker implements ClientElement
     private ExanpeComponentService exanpeService;
 
     @SetupRender
-    void init()
+    Object setupRender(MarkupWriter writer)
     {
         if (info != null)
         {
