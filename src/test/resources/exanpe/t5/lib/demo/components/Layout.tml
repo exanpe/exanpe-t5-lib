@@ -1,8 +1,8 @@
 <html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
   <head>
-    <title>Exanpe T5 Library Test App: ${title}</title>
-    
+    <title>Exanpe T5 Library Test App: ${title}</title>	        
   </head>
+  <script type="text/javascript" src="${context:/js/yui/2.9.0/yahoo-dom-event.js}"></script>
   <body>
 
     <h1>${title}</h1>

@@ -85,7 +85,7 @@ public class LocaleSessionRequestFilter implements ComponentRequestFilter
 
         if (StringUtils.isNotEmpty(locale))
         {
-            localizationSetter.setNonPeristentLocaleFromLocaleName(locale);
+            localizationSetter.setNonPersistentLocaleFromLocaleName(locale);
         }
     }
 }

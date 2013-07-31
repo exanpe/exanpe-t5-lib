@@ -49,8 +49,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see AccordionItem
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/animation/animation-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class Accordion implements ClientElement
@@ -138,8 +137,7 @@ public class Accordion implements ClientElement
         AccordionInternalModel model = environment.pop(AccordionInternalModel.class);
 
         JSONObject data = buildJSONData(model);
-
-        javascriptSupport.addInitializerCall("accordionBuilder", data);
+        javascriptSupport.require("exanpe/accordion").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData(AccordionInternalModel model)

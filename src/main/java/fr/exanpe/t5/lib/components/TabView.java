@@ -50,8 +50,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see Tab
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class TabView implements ClientElement
@@ -140,12 +139,9 @@ public class TabView implements ClientElement
     void end(MarkupWriter writer)
     {
         writer.end();
-
         environment.pop(TabViewInternalModel.class);
-
         JSONObject data = buildJSONData(model);
-
-        javaScriptSupport.addInitializerCall("tabViewBuilder", data);
+        javaScriptSupport.require("exanpe/tabView").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData(TabViewInternalModel model)

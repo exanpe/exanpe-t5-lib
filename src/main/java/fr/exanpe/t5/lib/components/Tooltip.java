@@ -45,9 +45,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * 
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/animation/animation-min.js", "${exanpe.yui2-base}/container/container-min.js",
-        "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 public class Tooltip
 {
@@ -105,7 +103,7 @@ public class Tooltip
     void end()
     {
         JSONObject data = buildJSONData();
-        javascriptSupport.addInitializerCall("tooltipBuilder", data);
+        javascriptSupport.require("exanpe/tooltip").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

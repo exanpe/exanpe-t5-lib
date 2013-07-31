@@ -49,9 +49,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see SubMenu
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/container/container-min.js", "${exanpe.yui2-base}/menu/menu-min.js",
-        "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class Menu implements ClientElement
@@ -100,7 +98,8 @@ public class Menu implements ClientElement
     {
         writer.end();
         environment.pop(MenuInternalModel.class);
-        javaScriptSupport.addInitializerCall("menuBuilder", buildJSONData());
+        JSONObject data = buildJSONData();
+        javaScriptSupport.require("exanpe/menu").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

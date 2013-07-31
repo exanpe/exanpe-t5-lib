@@ -48,10 +48,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * 
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/element/element-min.js", "${exanpe.yui2-base}/container/container-min.js",
-        "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.yui2-base}/json/json-min.js", "${exanpe.yui2-base}/animation/animation-min.js",
-        "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class AjaxLoader
@@ -135,7 +132,7 @@ public class AjaxLoader
 
         link = resources.createEventLink(ExanpeEventConstants.AJAXLOADER_EVENT);
         JSONObject data = buildJSONData();
-        javascriptSupport.addInitializerCall("ajaxLoaderBuilder", data);
+        javascriptSupport.require("exanpe/ajaxLoader").invoke("init").with(data);
 
         writer.end();
         return loading;

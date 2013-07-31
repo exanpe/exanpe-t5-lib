@@ -19,9 +19,10 @@ package fr.exanpe.t5.lib.internal.authorize;
 import java.util.List;
 
 import org.apache.tapestry5.model.MutableComponentModel;
-import org.apache.tapestry5.services.ClassTransformation;
-import org.apache.tapestry5.services.ComponentClassTransformWorker;
-import org.apache.tapestry5.services.TransformMethod;
+import org.apache.tapestry5.plastic.PlasticClass;
+import org.apache.tapestry5.plastic.PlasticMethod;
+import org.apache.tapestry5.services.transform.ComponentClassTransformWorker2;
+import org.apache.tapestry5.services.transform.TransformationSupport;
 
 import fr.exanpe.t5.lib.annotation.Authorize;
 import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
@@ -32,7 +33,7 @@ import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
  * 
  * @author jmaupoux
  */
-public class AuthorizeWorker implements ComponentClassTransformWorker
+public class AuthorizeWorker implements ComponentClassTransformWorker2
 {
     private final AuthorizeBusinessService authorizeBusinessService;
 
@@ -41,17 +42,16 @@ public class AuthorizeWorker implements ComponentClassTransformWorker
         this.authorizeBusinessService = abs;
     }
 
-    public void transform(ClassTransformation transformation, MutableComponentModel model)
+    public void transform(final PlasticClass plasticClass, TransformationSupport transformation, MutableComponentModel model)
     {
-        final List<TransformMethod> methods = transformation.matchMethodsWithAnnotation(Authorize.class);
+        final List<PlasticMethod> methods = plasticClass.getMethodsWithAnnotation(Authorize.class);
 
         if (methods.isEmpty())
             return;
 
-        for (final TransformMethod method : methods)
+        for (final PlasticMethod method : methods)
         {
             Authorize annot = method.getAnnotation(Authorize.class);
-
             method.addAdvice(new ComponentAuthorizeAdvice(authorizeBusinessService, annot.any(), annot.all(), annot.not()));
         }
     }

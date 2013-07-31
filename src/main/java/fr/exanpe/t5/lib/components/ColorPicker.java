@@ -50,9 +50,7 @@ import fr.exanpe.t5.lib.services.ExanpeLibraryModule;
  * @see ExanpeLibraryModule#contributeTypeCoercer(org.apache.tapestry5.ioc.Configuration)
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/utilities/utilities.js", "${exanpe.yui2-base}/slider/slider-min.js", "${exanpe.yui2-base}/colorpicker/colorpicker-min.js",
-        "${exanpe.yui2-base}/container/container-min.js", "${exanpe.yui2-base}/button/button-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class ColorPicker implements ClientElement
@@ -109,8 +107,7 @@ public class ColorPicker implements ClientElement
         writer.end();
 
         JSONObject data = buildJSONData();
-
-        javaScriptSupport.addInitializerCall("colorPickerBuilder", data);
+        javaScriptSupport.require("exanpe/colorPicker").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

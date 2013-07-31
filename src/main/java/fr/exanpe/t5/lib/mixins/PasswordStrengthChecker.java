@@ -65,9 +65,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see PasswordStrengthCheckerTypeEnum
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.yui2-base}/json/json-min.js",
-        "${exanpe.yui2-base}/container/container-min.js", "${exanpe.asset-base}/js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "${exanpe.asset-base}/css/exanpe-t5-lib-core.css", "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 @Events(ExanpeEventConstants.PASSWORDSTRENGTHCHECKER_EVENT)
 public class PasswordStrengthChecker
@@ -130,7 +128,7 @@ public class PasswordStrengthChecker
     {
         JSONObject data = buildJSONData();
         generatePasswordStrengthMeterMarkup(writer);
-        javaScriptSupport.addInitializerCall("passwordStrengthCheckerBuilder", data);
+        javaScriptSupport.require("exanpe/passwordStrengthChecker").invoke("init").with(data);
     }
 
     @OnEvent(value = EVENT_NAME)

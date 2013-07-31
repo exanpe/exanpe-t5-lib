@@ -24,7 +24,6 @@ import org.apache.tapestry5.Link;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.BeginRender;
 import org.apache.tapestry5.annotations.Events;
-import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectContainer;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Parameter;
@@ -57,9 +56,6 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @since 1.1
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.yui2-base}/json/json-min.js",
-        "${exanpe.asset-base}/js/exanpe-t5-lib.js" })
 @Events(ExanpeEventConstants.AJAXVALIDATION_EVENT)
 public class AjaxValidation
 {
@@ -176,7 +172,7 @@ public class AjaxValidation
         JSONObject data = buildJSONData();
 
         formSupport.addValidation(textField, VALIDATOR_NAME, finalMessage, null);
-        javaScriptSupport.addInitializerCall("ajaxValidationBuilder", data);
+        javaScriptSupport.require("exanpe/ajaxValidation").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

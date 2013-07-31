@@ -52,10 +52,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @since 1.2
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/element/element-min.js",
-        "${exanpe.yui2-base}/container/container_core-min.js", "${exanpe.yui2-base}/menu/menu-min.js", "${exanpe.yui2-base}/button/button-min.js",
-        "${exanpe.yui2-base}/editor/editor-min.js", "${exanpe.yui2-base}/json/json-min.js", "${exanpe.asset-base}/js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "${exanpe.asset-base}/css/editor.css", "${exanpe.asset-base}/css/exanpe-t5-lib-core.css", "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 public class RichTextEditor
 {
@@ -153,14 +150,14 @@ public class RichTextEditor
         Element e = writer.element("span");
         exanpeService.reorderCSSClassDeclaration(e, ROOT_CSS_CLASS);
         Element e2 = writer.element("span");
-        e2.addClassName(YUI_CSS_CLASS);
+        e2.attribute("class", YUI_CSS_CLASS);
     }
 
     @AfterRender
     void end(MarkupWriter writer)
     {
         JSONObject data = buildJSONData();
-        javascriptSupport.addInitializerCall("richTextEditorBuilder", data);
+        javascriptSupport.require("exanpe/richTextEditor").invoke("init").with(data);
         writer.end();
         writer.end();
     }

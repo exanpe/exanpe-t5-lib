@@ -16,6 +16,7 @@
 
 package exanpe.t5.lib.demo.pages.comp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tapestry5.Asset;
@@ -106,6 +107,11 @@ public class TapestrySkin
     @SetupRender
     public void init()
     {
+        if (selected == null)
+        {
+            selected = new ArrayList<Country>();
+        }
+
         evenOdd = new EvenOdd();
         if (current == null)
         {

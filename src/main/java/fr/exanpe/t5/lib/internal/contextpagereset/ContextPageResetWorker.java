@@ -16,25 +16,24 @@
 
 package fr.exanpe.t5.lib.internal.contextpagereset;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.internal.InternalConstants;
+import org.apache.tapestry5.func.F;
+import org.apache.tapestry5.func.Flow;
+import org.apache.tapestry5.func.Mapper;
+import org.apache.tapestry5.func.Predicate;
+import org.apache.tapestry5.func.Worker;
 import org.apache.tapestry5.internal.transform.PageResetAnnotationWorker;
 import org.apache.tapestry5.ioc.annotations.Symbol;
-import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.apache.tapestry5.model.MutableComponentModel;
-import org.apache.tapestry5.runtime.Component;
-import org.apache.tapestry5.services.ClassTransformation;
-import org.apache.tapestry5.services.ComponentClassTransformWorker;
-import org.apache.tapestry5.services.ComponentInstanceOperation;
-import org.apache.tapestry5.services.MethodAccess;
-import org.apache.tapestry5.services.MethodInvocationResult;
+import org.apache.tapestry5.plastic.MethodAdvice;
+import org.apache.tapestry5.plastic.MethodHandle;
+import org.apache.tapestry5.plastic.MethodInvocation;
+import org.apache.tapestry5.plastic.PlasticClass;
+import org.apache.tapestry5.plastic.PlasticMethod;
 import org.apache.tapestry5.services.RequestGlobals;
 import org.apache.tapestry5.services.TransformConstants;
-import org.apache.tapestry5.services.TransformMethod;
-import org.apache.tapestry5.services.TransformMethodSignature;
+import org.apache.tapestry5.services.transform.ComponentClassTransformWorker2;
+import org.apache.tapestry5.services.transform.TransformationSupport;
 
 import fr.exanpe.t5.lib.annotation.ContextPageReset;
 import fr.exanpe.t5.lib.constants.ExanpeSymbols;
@@ -50,12 +49,11 @@ import fr.exanpe.t5.lib.constants.ExanpeSymbols;
  * @since 1.2
  * @author jmaupoux
  */
-public class ContextPageResetWorker implements ComponentClassTransformWorker
+public class ContextPageResetWorker implements ComponentClassTransformWorker2
 {
 
     private final RequestGlobals requestGlobals;
     private final String contextMarker;
-    private final String version;
 
     public ContextPageResetWorker(RequestGlobals requestGlobals, @Symbol(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER)
     String contextMarker, @Symbol(SymbolConstants.TAPESTRY_VERSION)
@@ -63,52 +61,40 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
     {
         this.requestGlobals = requestGlobals;
         this.contextMarker = contextMarker;
-        this.version = version;
     }
 
-    private static final TransformMethodSignature ON_ACTIVATE_SIGNATURE = new TransformMethodSignature(0x00000000, "void", "onActivate",
-            InternalConstants.EMPTY_STRING_ARRAY, InternalConstants.EMPTY_STRING_ARRAY);
-
-    private static final TransformMethodSignature ON_CONTEXT_PAGE_RESET_SIGNATURE = new TransformMethodSignature(0x00000000, "void", "contextReset",
-            InternalConstants.EMPTY_STRING_ARRAY, InternalConstants.EMPTY_STRING_ARRAY);
-
-    public void transform(final ClassTransformation transformation, MutableComponentModel model)
+    private final Mapper<PlasticMethod, MethodHandle> TO_HANDLE = new Mapper<PlasticMethod, MethodHandle>()
     {
-        List<TransformMethod> methods = matchPageResetMethods(transformation);
+        public MethodHandle map(PlasticMethod method)
+        {
+            return method.getHandle();
+        }
+    };
+
+    private final Predicate<PlasticMethod> METHOD_MATCHER = new Predicate<PlasticMethod>()
+    {
+        public boolean accept(PlasticMethod method)
+        {
+            return method.getDescription().methodName.equalsIgnoreCase("contextReset") || method.hasAnnotation(ContextPageReset.class);
+        }
+    };
+
+    public void transform(final PlasticClass plasticClass, TransformationSupport transformation, MutableComponentModel model)
+    {
+        Flow<PlasticMethod> methods = findResetMethods(plasticClass);
 
         if (methods.isEmpty())
             return;
 
         // add the cleanup on attach phase or on onActivate
-        addContextPageResetToContainingPageDidAttachMethod(transformation, methods);
+        invokeMethodsOnPageReset(plasticClass, methods);
     }
 
-    private void addContextPageResetToContainingPageDidAttachMethod(ClassTransformation transformation, List<TransformMethod> methods)
+    private void invokeMethodsOnPageReset(PlasticClass plasticClass, Flow<PlasticMethod> methods)
     {
-        List<MethodAccess> methodAccess = convertToMethodAccess(methods);
+        final MethodHandle[] handles = methods.map(TO_HANDLE).toArray(MethodHandle.class);
 
-        ComponentInstanceOperation advice = createMethodAccessAdvice(methodAccess);
-
-        if (isv52x())
-        {
-            // after attach
-            transformation.getOrCreateMethod(TransformConstants.CONTAINING_PAGE_DID_ATTACH_SIGNATURE).addOperationAfter(advice);
-        }
-        else
-        {
-            // or before onActivate
-            transformation.getOrCreateMethod(ON_ACTIVATE_SIGNATURE).addOperationBefore(advice);
-        }
-    }
-
-    private final boolean isv52x()
-    {
-        return version.startsWith("5.2");
-    }
-
-    private ComponentInstanceOperation createMethodAccessAdvice(final List<MethodAccess> methodAccess)
-    {
-        return new ComponentInstanceOperation()
+        plasticClass.introduceMethod(TransformConstants.CONTAINING_PAGE_DID_RESET_DESCRIPTION).addAdvice(new MethodAdvice()
         {
 
             private boolean matchContext()
@@ -116,60 +102,36 @@ public class ContextPageResetWorker implements ComponentClassTransformWorker
                 return requestGlobals.getRequest().getPath().matches(".+/" + contextMarker + "($|[?/].*)");
             }
 
-            public void invoke(Component instance)
+            public void advise(MethodInvocation invocation)
             {
+                invocation.proceed();
+
+                Object instance = invocation.getInstance();
                 if (matchContext())
                 {
-                    for (MethodAccess access : methodAccess)
+                    for (MethodHandle handle : handles)
                     {
-                        MethodInvocationResult result = access.invoke(instance);
-
-                        result.rethrow();
+                        handle.invoke(instance);
                     }
                 }
             }
-        };
+        });
     }
 
-    private List<MethodAccess> convertToMethodAccess(List<TransformMethod> methods)
+    private final Worker<PlasticMethod> METHOD_VALIDATOR = new Worker<PlasticMethod>()
     {
-        List<MethodAccess> result = CollectionFactory.newList();
-
-        for (TransformMethod method : methods)
+        public void work(PlasticMethod method)
         {
-            result.add(toMethodAccess(method));
-        }
+            boolean valid = method.isVoid() && method.getParameters().isEmpty();
 
-        return result;
-    }
-
-    private List<TransformMethod> matchPageResetMethods(final ClassTransformation transformation)
-    {
-        List<TransformMethod> result = new ArrayList<TransformMethod>(transformation.matchMethodsWithAnnotation(ContextPageReset.class));
-
-        if (transformation.isDeclaredMethod(ON_CONTEXT_PAGE_RESET_SIGNATURE))
-        {
-            for (TransformMethod t : result)
-            {
-                if (t.getSignature().equals(ON_CONTEXT_PAGE_RESET_SIGNATURE)) { return result; }
-            }
-            result.add(transformation.getOrCreateMethod(ON_CONTEXT_PAGE_RESET_SIGNATURE));
-        }
-
-        return result;
-    }
-
-    private MethodAccess toMethodAccess(TransformMethod method)
-    {
-        TransformMethodSignature sig = method.getSignature();
-
-        boolean valid = sig.getParameterTypes().length == 0 && sig.getReturnType().equals("void");
-
-        if (!valid)
-            throw new RuntimeException(String.format(
+            if (!valid) { throw new RuntimeException(String.format(
                     "Method %s is invalid: methods with the @ContextPageReset annotation must return void, and have no parameters.",
-                    method.getMethodIdentifier()));
+                    method.getMethodIdentifier())); }
+        }
+    };
 
-        return method.getAccess();
+    private Flow<PlasticMethod> findResetMethods(PlasticClass plasticClass)
+    {
+        return F.flow(plasticClass.getMethods()).filter(METHOD_MATCHER).each(METHOD_VALIDATOR);
     }
 }

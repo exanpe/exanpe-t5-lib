@@ -16,8 +16,8 @@
 
 package fr.exanpe.t5.lib.internal.authorize;
 
-import org.apache.tapestry5.services.ComponentMethodAdvice;
-import org.apache.tapestry5.services.ComponentMethodInvocation;
+import org.apache.tapestry5.plastic.MethodAdvice;
+import org.apache.tapestry5.plastic.MethodInvocation;
 
 import fr.exanpe.t5.lib.annotation.Authorize;
 import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
@@ -28,7 +28,7 @@ import fr.exanpe.t5.lib.services.AuthorizeBusinessService;
  * 
  * @author jmaupoux
  */
-public class ComponentAuthorizeAdvice implements ComponentMethodAdvice
+public class ComponentAuthorizeAdvice implements MethodAdvice
 {
     private AuthorizeBusinessService authorizeBusinessService;
     private String[] any;
@@ -46,10 +46,10 @@ public class ComponentAuthorizeAdvice implements ComponentMethodAdvice
     /*
      * (non-Javadoc)
      * @see
-     * org.apache.tapestry5.services.ComponentMethodAdvice#advise(org.apache.tapestry5.services.
-     * ComponentMethodInvocation)
+     * org.apache.tapestry5.plastic.MethodAdvice#advise(org.apache.tapestry5.plastic.MethodInvocation
+     * )
      */
-    public void advise(ComponentMethodInvocation invocation)
+    public void advise(MethodInvocation invocation)
     {
         if (applyAny() && applyAll() && applyNot())
         {

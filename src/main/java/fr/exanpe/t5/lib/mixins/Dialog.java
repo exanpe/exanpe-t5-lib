@@ -33,7 +33,6 @@ import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.dom.Element;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.json.JSONObject;
-import org.apache.tapestry5.services.javascript.InitializationPriority;
 import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 import org.slf4j.Logger;
 
@@ -68,10 +67,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see DialogRenderModeEnum
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/element/element-min.js", "${exanpe.yui2-base}/dragdrop/dragdrop-min.js",
-        "${exanpe.yui2-base}/container/container-min.js", "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.yui2-base}/button/button-min.js",
-        "${exanpe.asset-base}/js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "${exanpe.asset-base}/css/exanpe-t5-lib-core.css", "${exanpe.asset-base}/css/exanpe-t5-lib-skin.css" })
 public class Dialog
 {
@@ -211,10 +207,9 @@ public class Dialog
     {
         Element e = writer.element("span");
         e.attribute("id", DIALOG_ID_PREFIX + container.getClientId());
-        e.addClassName(ROOT_CSS_CLASS);
-
+        e.attribute("class", ROOT_CSS_CLASS);
         JSONObject data = buildJSONData();
-        javascriptSupport.addInitializerCall(InitializationPriority.NORMAL, "dialogBuilder", data);
+        javascriptSupport.require("exanpe/dialog").invoke("init").with(data);
         writer.end();
     }
 

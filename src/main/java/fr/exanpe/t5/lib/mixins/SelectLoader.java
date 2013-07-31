@@ -27,7 +27,6 @@ import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.AfterRender;
 import org.apache.tapestry5.annotations.Events;
-import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectContainer;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Parameter;
@@ -58,8 +57,6 @@ import fr.exanpe.t5.lib.constants.ExanpeEventConstants;
  * 
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.asset-base}/js/exanpe-t5-lib.js" })
 @Events(ExanpeEventConstants.SELECTLOADER_EVENT)
 public class SelectLoader
 {
@@ -114,8 +111,7 @@ public class SelectLoader
     void end()
     {
         JSONObject data = buildJSONData();
-
-        javaScriptSupport.addInitializerCall("selectLoaderBuilder", data);
+        javaScriptSupport.require("exanpe/selectLoader").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

@@ -30,9 +30,9 @@ import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.services.Coercion;
 import org.apache.tapestry5.ioc.services.CoercionTuple;
 import org.apache.tapestry5.services.ComponentClassResolver;
-import org.apache.tapestry5.services.ComponentClassTransformWorker;
 import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.LibraryMapping;
+import org.apache.tapestry5.services.transform.ComponentClassTransformWorker2;
 import org.apache.tapestry5.util.StringToEnumCoercion;
 import org.slf4j.Logger;
 
@@ -111,7 +111,7 @@ public class ExanpeLibraryModule
 
     public static void contributeFactoryDefaults(MappedConfiguration<String, String> configuration)
     {
-        configuration.add(ExanpeSymbols.ASSET_BASE, "classpath:fr/exanpe/t5/lib/components");
+        configuration.add(ExanpeSymbols.ASSET_BASE, "classpath:/fr/exanpe/t5/lib/components");
         configuration.add(ExanpeSymbols.YUI2_BASE, "classpath:fr/exanpe/t5/lib/external/js/yui/2.9.0/");
         configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "reset");
         configuration.add(ExanpeSymbols.GMAP_V3_BUSINESS_CLIENT_ID, "");
@@ -125,7 +125,7 @@ public class ExanpeLibraryModule
      * @param locator
      * @param resolver
      */
-    public static void contributeComponentClassTransformWorker(OrderedConfiguration<ComponentClassTransformWorker> configuration, ObjectLocator locator,
+    public static void contributeComponentClassTransformWorker(OrderedConfiguration<ComponentClassTransformWorker2> configuration, ObjectLocator locator,
             ComponentClassResolver resolver)
     {
         configuration.addInstance("AuthorizeWorker", AuthorizeWorker.class, "before:OnEvent");

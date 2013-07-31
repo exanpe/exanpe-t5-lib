@@ -43,9 +43,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see SlideShowItem
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/animation/animation-min.js", "${exanpe.yui2-base}/element/element-min.js",
-        "${exanpe.yui2-base}/carousel/carousel-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class SlideShow implements ClientElement
@@ -115,12 +113,9 @@ public class SlideShow implements ClientElement
     void end(MarkupWriter writer)
     {
         writer.end();
-
         environment.pop(SlideShowInternalModel.class);
-
         JSONObject data = buildJSONData();
-
-        javaScriptSupport.addInitializerCall("slideShowBuilder", data);
+        javaScriptSupport.require("exanpe/slideShow").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

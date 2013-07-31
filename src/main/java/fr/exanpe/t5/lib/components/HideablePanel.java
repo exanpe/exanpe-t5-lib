@@ -42,8 +42,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * 
  * @author Jul
  */
-@Import(library =
-{ "js/exanpe-t5-lib.js", "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/animation/animation-min.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class HideablePanel implements ClientElement
@@ -126,8 +125,7 @@ public class HideablePanel implements ClientElement
         writer.end();
 
         JSONObject data = buildJSONData();
-
-        javascriptSupport.addInitializerCall("hideablePanelBuilder", data);
+        javascriptSupport.require("exanpe/hideablePanel").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

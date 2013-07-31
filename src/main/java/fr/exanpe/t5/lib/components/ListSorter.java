@@ -60,9 +60,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @since 1.2
  * @param <T> the type of elements
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/animation/animation-min.js", "${exanpe.yui2-base}/dragdrop/dragdrop-min.js",
-        "${exanpe.yui2-base}/json/json-min.js", "${exanpe.yui2-base}/connection/connection-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class ListSorter<T> implements ClientElement, Serializable
@@ -198,7 +196,7 @@ public class ListSorter<T> implements ClientElement, Serializable
 
         if (useDefaultSkin)
         {
-            e.addClassName(DEFAULT_SKIN_CLASS);
+            e.attribute("class", DEFAULT_SKIN_CLASS);
         }
     }
 
@@ -222,8 +220,7 @@ public class ListSorter<T> implements ClientElement, Serializable
         writer.end();
 
         JSONObject data = buildJSONData();
-
-        javaScriptSupport.addInitializerCall("listSorterBuilder", data);
+        javaScriptSupport.require("exanpe/listSorter").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

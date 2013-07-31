@@ -54,8 +54,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * 
  * @author jmaupoux
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 public class SecurePassword implements ClientElement
@@ -208,10 +207,8 @@ public class SecurePassword implements ClientElement
     void end(MarkupWriter writer)
     {
         writer.end();
-
         JSONObject data = buildJSONData();
-
-        javaScriptSupport.addInitializerCall("securePasswordBuilder", data);
+        javaScriptSupport.require("exanpe/securePassword").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData()

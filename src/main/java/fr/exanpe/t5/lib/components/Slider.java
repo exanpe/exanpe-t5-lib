@@ -50,9 +50,7 @@ import fr.exanpe.t5.lib.constants.SliderOrientationTypeEnum;
  * 
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "${exanpe.yui2-base}/dragdrop/dragdrop-min.js", "${exanpe.yui2-base}/slider/slider-min.js",
-        "${exanpe.yui2-base}/connection/connection-min.js", "${exanpe.yui2-base}/json/json-min.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @Events(ExanpeEventConstants.SLIDER_EVENT)
 public class Slider
@@ -185,7 +183,7 @@ public class Slider
     {
         link = resources.createEventLink(EVENT_NAME);
         JSONObject data = buildJSONData();
-        javascriptSupport.addInitializerCall("sliderBuilder", data);
+        javascriptSupport.require("exanpe/slider").invoke("init").with(data);
     }
 
     @OnEvent(value = EVENT_NAME)

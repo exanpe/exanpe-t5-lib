@@ -55,8 +55,7 @@ import fr.exanpe.t5.lib.services.ExanpeComponentService;
  * @see VerticalMenuItem
  * @author lguerin
  */
-@Import(library =
-{ "${exanpe.yui2-base}/yahoo-dom-event/yahoo-dom-event.js", "js/exanpe-t5-lib.js" }, stylesheet =
+@Import(stylesheet =
 { "css/exanpe-t5-lib-core.css", "css/exanpe-t5-lib-skin.css" })
 @SupportsInformalParameters
 @Events(ExanpeEventConstants.VERTICALMENU_EVENT)
@@ -153,9 +152,8 @@ public class VerticalMenu implements ClientElement
     {
         writer.end();
         environment.pop(VerticalMenuInternalModel.class);
-
         JSONObject data = buildJSONData(model);
-        javaScriptSupport.addInitializerCall("verticalMenuBuilder", data);
+        javaScriptSupport.require("exanpe/verticalMenu").invoke("init").with(data);
     }
 
     private JSONObject buildJSONData(VerticalMenuInternalModel model)
