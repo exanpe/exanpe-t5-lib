@@ -165,6 +165,12 @@ public class GMap implements ClientElement
      * Google Maps API
      */
     private static final String GOOGLE_MAP_API_BASE_URL = "http://maps.googleapis.com/maps/api/js?";
+    
+    /**
+     * Google Maps API for https connections
+     * http://googlegeodevelopers.blogspot.com.au/2011/03/maps-apis-over-ssl-now-available-to-all.html
+     */
+    private static final String GOOGLE_MAP_API_BASE_URL_HTTPS = "https://maps-api-ssl.google.com/maps/api/js?";
 
     @Inject
     @Symbol(ExanpeSymbols.GMAP_V3_BUSINESS_CLIENT_ID)
@@ -173,6 +179,10 @@ public class GMap implements ClientElement
     @Inject
     @Symbol(ExanpeSymbols.GMAP_V3_VERSION)
     private String gmapApiVersion;
+
+    @Inject
+    @Symbol(ExanpeSymbols.GMAP_V3_API_KEY)
+    private String gmapApiKey;
 
     @Inject
     private ComponentResources resources;
@@ -275,13 +285,25 @@ public class GMap implements ClientElement
 
     private String buildGMapApiUrl()
     {
-        String url = GOOGLE_MAP_API_BASE_URL;
+        String url;
+        // Secure access
+        if ( secure ) {
+          url = GOOGLE_MAP_API_BASE_URL_HTTPS;
+        } else {
+          url = GOOGLE_MAP_API_BASE_URL;
+        }
 
         // GMap version
         if (!gmapApiVersion.matches("^3(\\.[0-9]{1})?$")) { throw new RuntimeException(
                 String.format("The GMap API version: %s is not correct.", gmapApiVersion)); }
         url += "v=" + gmapApiVersion;
 
+        // Google Console API Key
+        if (!StringUtils.isEmpty(gmapApiKey))
+        {
+            url += "&key=" + gmapApiKey;
+        }
+        
         // GMap business client ID
         if (!StringUtils.isEmpty(gmapClientId))
         {
@@ -293,12 +315,6 @@ public class GMap implements ClientElement
 
         // Sensor parameter
         url += "&sensor=true";
-
-        // Secure access
-        if (secure)
-        {
-            url = url.replace("http", "https");
-        }
 
         log.debug("Google Maps API URL: {}", url);
         return url;
