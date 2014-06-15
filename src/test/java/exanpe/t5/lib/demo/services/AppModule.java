@@ -24,7 +24,7 @@ import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
-import org.apache.tapestry5.ioc.annotations.SubModule;
+import org.apache.tapestry5.ioc.annotations.ImportModule;
 import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentSource;
 import org.apache.tapestry5.services.RequestExceptionHandler;
@@ -40,7 +40,7 @@ import fr.exanpe.t5.lib.internal.contextpagereset.ContextPageResetFilter;
 import fr.exanpe.t5.lib.internal.localesession.LocaleSessionRequestFilter;
 import fr.exanpe.t5.lib.services.ExanpeLibraryModule;
 
-@SubModule(ExanpeLibraryModule.class)
+@ImportModule(ExanpeLibraryModule.class)
 public class AppModule
 {
     public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration)
