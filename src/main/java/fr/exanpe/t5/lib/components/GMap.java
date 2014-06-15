@@ -224,8 +224,7 @@ public class GMap implements ClientElement
         writer.end();
         environment.pop(GMapInternalModel.class);
         JSONObject data = buildJSONData(model);
-        javascriptSupport.importJavaScriptLibrary(this.buildGMapApiUrl());
-        javascriptSupport.require("exanpe/gMap").invoke("init").with(data);
+        javascriptSupport.require("exanpe/gMap").with(this.buildGMapApiUrl(), data);
     }
 
     private JSONObject buildJSONData(GMapInternalModel model)

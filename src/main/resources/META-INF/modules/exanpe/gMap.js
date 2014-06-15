@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-define(["exanpe/common",
-		"yui/2.9.0/yahoo-dom-event", 
-		"yui/2.9.0/json-min"], function(gMap) {
-	
+define(["jquery"], function (jQuery) {
+
 	/** 
 	 * Constructor
 	 * @class Represents a GoogleMap component. Can be accessed through JavaScript by its id.
@@ -34,8 +32,8 @@ define(["exanpe/common",
 	 * @param {String} polyStrokeWeight the weight of Polyline/Polygo line's in pixels.
 	 * @param {boolean} polygon draw a Polygon instead of Polyline (default) if set to true
 	 */
-	Exanpe.GMap = function(id, latitude, longitude, mapType, zoom, draggable, markers, polyPoints, polyStrokeColor, polyStrokeOpacity, polyStrokeWeight, polygon){
-		
+	GMap = function(id, latitude, longitude, mapType, zoom, draggable, markers, polyPoints, polyStrokeColor, polyStrokeOpacity, polyStrokeWeight, polygon){
+	
 		/**
 		 * Id of the instance
 		 */
@@ -123,21 +121,21 @@ define(["exanpe/common",
 	 * @static
 	 * @private
 	 */
-	Exanpe.GMap.GOOGLE_MAP_PREFIX = "exanpe-gmap-";
+	GMap.GOOGLE_MAP_PREFIX = "exanpe-gmap-";
 
 	/**
 	 * Dom method utility
 	 * @private
 	 */
-	Exanpe.GMap.prototype.getMapContainerEl = function() {
-		return YAHOO.util.Dom.get(Exanpe.GMap.GOOGLE_MAP_PREFIX + this.id);
+	GMap.prototype.getMapContainerEl = function() {
+        return document.getElementById(GMap.GOOGLE_MAP_PREFIX + this.id);
 	};
 
 	/** 
 	 * Initializes the Map object
 	 * @private
 	 */
-	Exanpe.GMap.prototype._initMap = function(){
+	GMap.prototype._initMap = function(){
 		// Init windows
 		this.infoWindow = new google.maps.InfoWindow();
 		
@@ -160,19 +158,19 @@ define(["exanpe/common",
 		
 		// Init map
 		this.map = new google.maps.Map(this.getMapContainerEl(), this.options);
-	}
+	};
 
 	/** 
 	 * Initializes the Poly object
 	 * @private
 	 */
-	Exanpe.GMap.prototype._initPoly = function(){
+	GMap.prototype._initPoly = function(){
 		  var polyOptions = {
-				    strokeColor: this.polyStrokeColor,
-				    strokeOpacity: this.polyStrokeOpacity,
-				    strokeWeight: this.polyStrokeWeight
-		  }
-		  
+					strokeColor: this.polyStrokeColor,
+					strokeOpacity: this.polyStrokeOpacity,
+					strokeWeight: this.polyStrokeWeight
+		  };
+	  
 		  if (this.polygon) {
 			  this.poly = new google.maps.Polygon(polyOptions);
 		  }
@@ -187,7 +185,7 @@ define(["exanpe/common",
 	 * Initializes the GMap Markers
 	 * @private
 	 */
-	Exanpe.GMap.prototype._initMarker = function(marker) {
+	GMap.prototype._initMarker = function(marker) {
 		// Add Marker
 		var markerPosition = new google.maps.LatLng(marker.latitude, marker.longitude);
 		var gmarker = new google.maps.Marker({
@@ -207,25 +205,22 @@ define(["exanpe/common",
 		
 		// Marker listener
 		google.maps.event.addListener(gmarker, 'click', function() {
-				if (info) {
-					iw.setContent(info);
-				}
-				else {
-					iw.close();
-					iw.setContent("");
-				}
-				iw.open(map, this);
-				map.panTo(markerPosition);
-			}
-		);
-		
-		// Marker link event
-		var mapItem = YAHOO.util.Dom.get(marker.id);
-		YAHOO.util.Event.addListener(mapItem, "click", function() {
 			if (info) {
 				iw.setContent(info);
+			} else {
+				iw.close();
+				iw.setContent("");
 			}
-			else {
+			iw.open(map, this);
+			map.panTo(markerPosition);
+		});
+	
+		// Marker link event
+		var mapItem = document.getElementById(marker.id);
+		mapItem.on("click", function () {
+			if (info) {
+				iw.setContent(info);
+			} else {
 				iw.close();
 				iw.setContent("");
 			}
@@ -239,7 +234,7 @@ define(["exanpe/common",
 	 * Initializes the Poly object
 	 * @private
 	 */
-	Exanpe.GMap.prototype._initPolyPoint = function(point) {
+	GMap.prototype._initPolyPoint = function(point) {
 		// Add new Point to the poly path
 		var pointPosition = new google.maps.LatLng(point.latitude, point.longitude);
 		var path = this.poly.getPath();
@@ -250,7 +245,7 @@ define(["exanpe/common",
 	 * Prepare map and items to display
 	 * @private
 	 */
-	Exanpe.GMap.prototype._init = function(){
+	GMap.prototype._init = function(){
 		// Init map
 		this._initMap();
 
@@ -270,20 +265,26 @@ define(["exanpe/common",
 		}
 	};
 
-	/**
-	 * Initializes the GoogleMap component on DOM load
-	 * @param {Object} data the json data coming from Java class initialization
-	 * @private
-	 * @static
-	 */
-	function gMapBuilder(data) {
-		var gMap = new Exanpe.GMap(data.id, data.latitude, data.longitude, data.mapType, data.zoom, data.draggable===true, YAHOO.lang.JSON.parse(data.markers), YAHOO.lang.JSON.parse(data.polyPoints), data.polyStrokeColor, data.polyStrokeOpacity, data.polyStrokeWeight, data.polygon===true);
-		gMap._init();
-		window[data.id] = gMap;
-	};
-	
-	return {
-		init: gMapBuilder
-	}
-	
+		
+    /**
+     * Initializes the GoogleMap component on DOM load
+     * @param {String} the url to Google maps javascript
+     * @param {Object} data the json data coming from Java class initialization
+     * @private
+     * @static
+     */
+
+    return function (url, data) {
+
+		/**
+		 * Use the requirejs-plugins' async plugin to load Google maps javascript from the supplied URL
+		 * before creating the Google map object from the supplied data. Once Google maps js
+		 * is loaded it will call back our functions.
+		 */
+        require(["exanpe/async!" + url + "!callback"], function () {
+            var gMap = new GMap(data.id, data.latitude, data.longitude, data.mapType, data.zoom, data.draggable===true, jQuery.parseJSON(data.markers), jQuery.parseJSON(data.polyPoints), data.polyStrokeColor, data.polyStrokeOpacity, data.polyStrokeWeight, data.polygon===true);
+            gMap._init();
+        });
+    };
+
 });
