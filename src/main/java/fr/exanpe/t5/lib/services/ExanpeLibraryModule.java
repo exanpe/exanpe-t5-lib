@@ -114,6 +114,7 @@ public class ExanpeLibraryModule
         configuration.add(ExanpeSymbols.ASSET_BASE, "classpath:/fr/exanpe/t5/lib/components");
         configuration.add(ExanpeSymbols.YUI2_BASE, "classpath:fr/exanpe/t5/lib/external/js/yui/2.9.0/");
         configuration.add(ExanpeSymbols.CONTEXT_PAGE_RESET_MARKER, "reset");
+        configuration.add(ExanpeSymbols.GMAP_V3_API_KEY, "");
         configuration.add(ExanpeSymbols.GMAP_V3_BUSINESS_CLIENT_ID, "");
         configuration.add(ExanpeSymbols.GMAP_V3_VERSION, "3.6");
     }
