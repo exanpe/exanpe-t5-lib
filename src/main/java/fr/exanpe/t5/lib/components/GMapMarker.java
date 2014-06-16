@@ -88,7 +88,6 @@ public class GMapMarker implements ClientElement
     /**
      * Info text of the item
      */
-    @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private RenderCommand info;
 
