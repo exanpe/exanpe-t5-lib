@@ -12,7 +12,7 @@
 	<description>Enhanced components, services and utilities for Tapestry 5</description>
 
 	<scm>
-		<connection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</connection>
+		<connection>scm:git:git@gitproxy:exanpe/exanpe-t5-lib.git</connection>
 		<developerConnection>scm:git:git@github.com:exanpe/exanpe-t5-lib.git</developerConnection>
 		<url>https://github.com/exanpe/exanpe-t5-lib</url>
 	</scm>
@@ -79,6 +79,11 @@
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.1</version>
 		</dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.1</version>
+        </dependency>
 	</dependencies>
 
 	<developers>
@@ -136,7 +141,7 @@
 						<configuration>
 							<rules>
 								<requireJavaVersion>
-									<version>[1.5.0,1.7.0)</version>
+									<version>[1.5.0,1.8.0)</version>
 								</requireJavaVersion>
 							</rules>
 							<fail>true</fail>
@@ -314,13 +319,13 @@
 		<!-- Tapestry staging releases -->
 		<repository>
 			<id>apache-staging</id>
-			<url>https://repository.apache.org/content/groups/staging</url>
-		</repository>		
+			<url>https://repository.apache.org/content/groups/staging/</url>
+		</repository>
 	</repositories>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tapestry-release-version>5.4-alpha-14</tapestry-release-version>
+		<tapestry-release-version>5.4-beta-10</tapestry-release-version>
 		<compileSource>1.5</compileSource>
         <spring-version>3.0.6.RELEASE</spring-version>
 	</properties>

@@ -61,6 +61,11 @@ public class ExanpeSymbols
     public static final String GMAP_V3_BUSINESS_CLIENT_ID = "exanpe.gmap-v3-client-id";
 
     /**
+     * Google Maps API V3 - API key
+     */
+    public static final String GMAP_V3_API_KEY = "exanpe.gmap-v3-api-key";
+    
+    /**
      * Google Maps API V3 - version
      */
     public static final String GMAP_V3_VERSION = "exanpe.gmap-v3-version";
